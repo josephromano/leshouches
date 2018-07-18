@@ -61,8 +61,8 @@ Suggested Exercises}
 July 2018}
 \maketitle
 
-\abstract{We provide some suggested exercises accompanying the 
-lectures on searches for stochastic gravitational-wave backgrounds.}
+\abstract{Some suggested exercises accompanying the lectures on 
+searches for stochastic gravitational-wave backgrounds.}
 
 \tableofcontents
 \pagebreak
@@ -74,14 +74,14 @@ lectures on searches for stochastic gravitational-wave backgrounds.}
 {1 Rate estimate of stellar-mass binary black hole mergers}
 
 Estimate the total rate (number of events per time) of 
-stellar-mass binary black hole mergers by multiplying LIGO's 
-O1 local rate 
+stellar-mass binary black hole mergers throughout the universe 
+by multiplying LIGO's O1 local rate 
 estimate $R_0 \sim 10$~-~$200~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$ by 
-the comoving volume out to some large redshift, e.g., 
-$z\simeq 10$.
-(You can ignore any dependence of the rate density with 
-redshift.)
-You should find a rate of $\sim 1$~per minute to a few per hour.
+the comoving volume out to some large redshift, e.g., $z= 10$.
+(For this calculation you can ignore any dependence of the 
+rate density with redshift.)
+You should find a merger rate of $\sim\!1$~per minute to a few 
+per hour.
 
 {\em Hint}: You will need to do numerically evaluate the
 following integral for proper distance today as a function 
@@ -90,7 +90,7 @@ of source redshift:
 \be
 d_0(z) = \frac{c}{H_0}\int_0^z\frac{\D z'}{E(z')}\,,
 \qquad
-E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}
+E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}\,,
 \ee
 %
 with 
@@ -179,7 +179,7 @@ in the source frame).
 (a) will allow 
 you to go from the ``Phinney formula" for
 $\Omega_{\rm gw}(f)$ written in terms of the number 
-density $n(z)$:
+density $n(z)$,
 %
 \be
 \Omega_{\rm gw}(f)= \frac{1}{\rho_c}\int_0^\infty \D z\>
@@ -195,9 +195,9 @@ some set of average source parameters.
 If there is more than one type of source, one must sum
 the contributions of each source to $\Omega_{\rm gw}(f)$.)
 
-\i {\em Optimal filtering for cross-correlation statistic:}
+\i {\em Optimal filtering for the cross-correlation statistic:}
 \addcontentsline{toc}{subsection}
-{4 Optimal filtering for cross-correlation statistic}
+{4 Optimal filtering for the cross-correlation statistic}
 
 Verify the form 
 %
@@ -206,23 +206,24 @@ Verify the form
 {P_1(f)P_2(f)}\,,
 \ee
 of the optimal filter function in the weak-signal limit,
-where $H(f)$ is the assumed spectral shape of the GWB,
+where $H(f)$ is the assumed spectral shape of the 
+gravitational-wave background,
 $\Gamma_{12}(f)$ is the overlap function, and $P_1(f)$, $P_2(f)$ 
 are the power spectral densities of the outputs of the 
-two detectors, approximately equal to 
-$P_{n_1}(f)$, $P_{n_2}(f)$, respectively.
+two detectors (which are approximately equal to 
+$P_{n_1}(f)$, $P_{n_2}(f)$, respectively).
 Recall that the optimal filter $\tilde Q(f)$ maximizes
 the signal-to-noise ratio of the cross-correlation 
 statistic.
 ({\em Hint}: Introduce an inner product on the space of
-functions of frequency 
+functions of frequency $A(f)$, $B(f)$:
 %
 \be
-(A,B)\equiv\int df A(f) B^*(f) P_1(f) P_2(f)\,,
+(A,B)\equiv\int df A(f) B^*(f) P_1(f) P_2(f)\,.
 \ee
 %
-which
-has all of the properties of the familiar inner product
+This inner product
+has all of the properties of the familiar dot product
 of vectors in 3-dimensional space.
 The signal-to-noise ratio of the cross-correlation
 statistic can be written in terms of this inner product.)
@@ -254,7 +255,7 @@ p(d|A, C) \propto
 %
 where $A\equiv A_\alpha$ is a vector of parameters,
 $C\equiv C_{ij}$ is the noise covariance matrix, and 
-$M\equiv M_{i\alpha}$ is response matrix mapping 
+$M\equiv M_{i\alpha}$ is the response matrix mapping 
 $A_\alpha$ to data samples, $MA\equiv \sum_\alpha M_{i\alpha}A_\alpha$.
 For this more general case you should find:
 %
@@ -271,11 +272,11 @@ X \equiv M^\dagger C^{-1} d\,.
 %
 In general, the matrix $F$ (called the {\em Fisher} matrix)
 is not invertible, so some sort of regularization is needed
-to do the inversion.
+to do the matrix inversion.
 
-\i {\em Timing-residual response for 1-arm, 1-way detector:}
+\i {\em Timing-residual response for a 1-arm, 1-way detector:}
 \addcontentsline{toc}{subsection}
-{6 Timing-residual response for 1-arm, 1-way detector}
+{6 Timing-residual response for a 1-arm, 1-way detector}
 
 Derive the timing residual reponse function
 %
@@ -313,7 +314,7 @@ $\hat u_1$ and $\hat u_2$ is given by
 \equiv\cos\zeta
 \ee
 % 
-for an unpolarized, isotropic electromagnetic field.
+for the case of an unpolarized, isotropic electromagnetic field.
 ({\em Hint}: ``short" means that the phase of the electric 
 field can be taken to be constant over of the lengths of 
 the dipole antennae, 
@@ -321,10 +322,10 @@ so that the reponse of antenna $I=1,2$ to the field is
 given by $r_I(t)=\hat u_I\cdot\vec E(t, \vec x_0)$, where
 $\vec x_0$ is the common location of the two antenna.)
  
-\i {\em Maximum-likelihood estimators for standard 
+\i {\em Maximum-likelihood estimators for the standard 
 cross-correlation statistic:}
 \addcontentsline{toc}{subsection}
-{8 Maximum-likelihood estimators for standard 
+{8 Maximum-likelihood estimators for the standard 
 cross-correlation statistic}
 
 \label{exer:MLestimators} 
@@ -380,13 +381,13 @@ d_{Ii} \left(C^{-1}\right)_{Ii,Jj} d_{Jj}\,.
 \label{e:argexp}
 \ee
 
-\i {\em Derivation of maximum-likelihood ratio detection statistic:}
+\i {\em Derivation of the maximum-likelihood ratio detection statistic:}
 \addcontentsline{toc}{subsection}
-{9 Derivation of maximum-likelihood ratio detection statistic}
+{9 Derivation of the maximum-likelihood ratio detection statistic}
 
 Verify that twice the log of the maximum-likelihood
 ratio for the standard stochastic likelihood function
-goes like the square of the power signal-to-noise ratio,
+goes like the square of the (power) signal-to-noise ratio,
 \be
 2\ln \Lambda_{\rm ML}(d) \simeq
 \frac{\hat C_{12}^2}{\hat C_{11}\hat C_{22}/N}\,,
@@ -434,6 +435,17 @@ over the signal samples $h$ for the {\em stochastic} signal prior
 p(h|S_h) = \frac{1}{\sqrt{2\pi S_h}}\exp\left[
 -\frac{1}{2}\frac{h^2}{S_h}\right]\,.
 \ee
+%
+In other words, show that
+%
+\be
+p(d|S_{n_1}, S_{n_2}, S_h) 
+=\int_{-\infty}^\infty \D h\>
+p_n(d-h|S_{n_1}, S_{n_2}) p(h|S_h)\,.
+\ee
+%
+({\em Hint}: You'll have to complete the square in the argument
+of the exponential in the marginalization integral.)
 
 \een
 
