@@ -1,0 +1,440 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath,amsthm,longtable}
+\usepackage{epsfig}
+\usepackage{epsf}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+% more packages
+\usepackage{draftcopy}
+%\numberwithin{equation}{section}
+
+% begin equation, itemize, etc.
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bi{\begin{itemize}}
+\def\ei{\end{itemize}}
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+\def\i{\item{}}
+\def\edth{\check\partial}
+\def\D{{\rm d}}
+
+% special math fonts
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\ms}[1]{\mathsf{#1}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\unit}{\mathsf{1}}
+\newcommand{\zero}{\mathsf{0}}
+ 
+% some more definitions
+\def\cross{\times}
+\def\del{\nabla}
+\def\grad{\vec\nabla}
+\def\div{\grad\cdot}
+\def\curl{\grad\cross}
+\def\I{I\!\!\!-}
+ 
+\def\defn{\underline{Definition}:\ }
+\def\ex{\underline{Example}:\ }
+\def\exer{\underline{Exercise}:\ }
+\def\soln{\underline{Solution}:\ }
+\def\theor{\underline{Theorem}:\ }
+\def\pf{\underline{Proof}:\ }
+\def\ques{\underline{Question}:\ }
+\def\ans{\underline{Answer}:\ }
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Searches for stochastic gravitational-wave backgrounds:\\
+Suggested Exercises}
+\author{J.D.\ Romano}
+\date{Les Houches Summer School\\
+July 2018}
+\maketitle
+
+\abstract{We provide some suggested exercises accompanying the 
+lectures on searches for stochastic gravitational-wave backgrounds.}
+
+\tableofcontents
+\pagebreak
+
+\ben
+
+\i {\em Rate estimate of stellar-mass binary black hole mergers:}
+\addcontentsline{toc}{subsection}
+{1 Rate estimate of stellar-mass binary black hole mergers}
+
+Estimate the total rate (number of events per time) of 
+stellar-mass binary black hole mergers by multiplying LIGO's 
+O1 local rate 
+estimate $R_0 \sim 10$~-~$200~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$ by 
+the comoving volume out to some large redshift, e.g., 
+$z\simeq 10$.
+(You can ignore any dependence of the rate density with 
+redshift.)
+You should find a rate of $\sim 1$~per minute to a few per hour.
+
+{\em Hint}: You will need to do numerically evaluate the
+following integral for proper distance today as a function 
+of source redshift:
+%
+\be
+d_0(z) = \frac{c}{H_0}\int_0^z\frac{\D z'}{E(z')}\,,
+\qquad
+E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}
+\ee
+%
+with 
+%
+\be
+\Omega_{\rm m}=0.31\,,
+\qquad
+\Omega_\Lambda=0.69\,,
+\qquad
+H_0 = 68~{\rm km}\,{\rm s}^{-1}\, {\rm Mpc}^{-1}\,.
+\ee
+Doing that integral, you should find what's shown in
+Figure~\ref{f:d0vsz}, which you can then evaluate at
+$z=10$ to convert $R_0$ (number of events per 
+comoving volume per time) to total rate (number of 
+events per time) for sources out to redshift $z=10$.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{d0vsz}
+\caption{}
+\label{f:d0vsz}
+\end{center}
+\end{figure}
+%
+
+\i {\em Relating $S_h(f)$ and $\Omega_{\rm gw}(f)$:}
+\addcontentsline{toc}{subsection}
+{2 Relating $S_h(f)$ and $\Omega_{\rm gw}(f)$}
+
+Derive the relationship 
+\be
+S_h(f) = \frac{3 H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}
+\ee
+between the strain power spectral density $S_h(f)$ and the 
+dimensionless fractional energy density spectrum $\Omega_{\rm gw}(f)$.
+({\em Hint}: You will need to use the various definitions of these
+quantities and also 
+\be
+\rho_{\rm gw} =\frac{c^2}{32\pi G}\langle \dot h_{ab}(t,\vec x)\dot h^{ab}(t,\vec x)\rangle\,,
+\ee
+which expresses the energy-density in gravitational-waves to 
+the metric perturbations $h_{ab}(t,\vec x)$.)
+
+\i {\em Cosmology and the ``Phinney formula" for astrophysical backgrounds:}
+\addcontentsline{toc}{subsection}
+{3 Cosmology and the ``Phinney formula" for astrophysical backgrounds}
+
+(a) Using the Friedmann equation
+%
+\be
+\left(\frac{\dot a}{a}\right)^2
+=H_0^2\left(\frac{\Omega_{\rm m}}{a^{3}} + \Omega_\Lambda\right)
+\ee
+%
+for a spatially-flat FRW spacetime with matter and 
+cosmological constant, and the relationship 
+%
+\be
+1+z = \frac{1}{a(t)}\,,
+\qquad a(t_0)\equiv 1\quad(t_0\equiv {\rm today})\,,
+\ee
+%
+between redshift $z$ and scale factor $a(t)$,
+derive 
+%
+\be
+\frac{\D t}{\D z} =-\frac{1}{(1+z)H_0 E(z)}\,,
+\qquad
+E(z) = \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}\,.
+\ee
+%
+(b) Using this result for $\D t/\D z$, show that 
+%
+\be
+\Omega_{\rm gw}(f)= \frac{f}{\rho_{\rm c}H_0}
+\int_0^\infty \D z\>R(z)\,\frac{1}{(1+z)E(z)}
+\left(\frac{\D E_{\rm gw}}{\D f_{\rm s}}\right)\bigg|_{f_{\rm s}=f(1+z)}
+\ee
+%
+in terms of the rate density $R(z)$ as measured in 
+the source frame 
+(number of events per comoving volume per time interval
+in the source frame).
+({\em Hint}: The expression for $\D t/\D z$ from part
+(a) will allow 
+you to go from the ``Phinney formula" for
+$\Omega_{\rm gw}(f)$ written in terms of the number 
+density $n(z)$:
+%
+\be
+\Omega_{\rm gw}(f)= \frac{1}{\rho_c}\int_0^\infty \D z\>
+n(z)\,\frac{1}{1+z}\left(f_{\rm s}\,
+\frac{\D E_{\rm gw}}{\D f_{\rm s}}\right)\bigg|_{f_{\rm s}=f(1+z)}\,,
+\ee
+%
+to one in terms of the rate density 
+$R(z)$, where $n(z)\,\D z=R(z)\,|\D t|_{t=t(z)}$.
+Note: Both of the above expressions for $\Omega_{\rm gw}(f)$
+assume that there is only one type of source, described by 
+some set of average source parameters.  
+If there is more than one type of source, one must sum
+the contributions of each source to $\Omega_{\rm gw}(f)$.)
+
+\i {\em Optimal filtering for cross-correlation statistic:}
+\addcontentsline{toc}{subsection}
+{4 Optimal filtering for cross-correlation statistic}
+
+Verify the form 
+%
+\be
+\tilde Q(f)\propto \frac{\Gamma_{12}(f)H(f)}
+{P_1(f)P_2(f)}\,,
+\ee
+of the optimal filter function in the weak-signal limit,
+where $H(f)$ is the assumed spectral shape of the GWB,
+$\Gamma_{12}(f)$ is the overlap function, and $P_1(f)$, $P_2(f)$ 
+are the power spectral densities of the outputs of the 
+two detectors, approximately equal to 
+$P_{n_1}(f)$, $P_{n_2}(f)$, respectively.
+Recall that the optimal filter $\tilde Q(f)$ maximizes
+the signal-to-noise ratio of the cross-correlation 
+statistic.
+({\em Hint}: Introduce an inner product on the space of
+functions of frequency 
+%
+\be
+(A,B)\equiv\int df A(f) B^*(f) P_1(f) P_2(f)\,,
+\ee
+%
+which
+has all of the properties of the familiar inner product
+of vectors in 3-dimensional space.
+The signal-to-noise ratio of the cross-correlation
+statistic can be written in terms of this inner product.)
+
+\i {\em Maximum-likelihood estimators for single and multiple
+parameters:}
+\addcontentsline{toc}{subsection}
+{5 Maximum-likelihood estimators for single and multiple
+parameters}
+
+(a) Show that the maximum-likelihood estimator $\hat a$ of 
+the single parameter $a$ in the likelihood function
+\be
+p(d|a, \sigma) \propto
+\exp\left[-\frac{1}{2}\sum_{i=1}^N \frac{(d_i-a)^2}{\sigma_i^2}\right]
+\ee
+%
+is given by the noise-weighted average
+%
+\be
+\hat a={\sum_i \frac{d_i}{\sigma_i^2}}\bigg/{\sum_j \frac{1}{\sigma_j^2}}\,.
+\ee
+%
+(b) Extend the previous calculation to the likelihood
+\be
+p(d|A, C) \propto
+\exp\left[-\frac{1}{2}(d-MA)^\dagger C^{-1} (d-MA)\right]\,,
+\ee
+%
+where $A\equiv A_\alpha$ is a vector of parameters,
+$C\equiv C_{ij}$ is the noise covariance matrix, and 
+$M\equiv M_{i\alpha}$ is response matrix mapping 
+$A_\alpha$ to data samples, $MA\equiv \sum_\alpha M_{i\alpha}A_\alpha$.
+For this more general case you should find:
+%
+\be
+\hat A = F^{-1} X\,,
+\ee
+%
+where
+%
+\be
+F \equiv M^\dagger C^{-1} M\,,\qquad
+X \equiv M^\dagger C^{-1} d\,.
+\ee
+%
+In general, the matrix $F$ (called the {\em Fisher} matrix)
+is not invertible, so some sort of regularization is needed
+to do the inversion.
+
+\i {\em Timing-residual response for 1-arm, 1-way detector:}
+\addcontentsline{toc}{subsection}
+{6 Timing-residual response for 1-arm, 1-way detector}
+
+Derive the timing residual reponse function
+%
+\be
+R^A(f,\hat n) = 
+\frac{1}{2}u^a u^b e^A_{ab}(\hat n)
+\frac{1}{i2\pi f}
+\frac{1}{1+\hat n\cdot \hat u}
+\left[1-e^{-\frac{i2\pi fL}{c}(1+\hat n\cdot\hat u)}\right]
+\ee
+%
+for a single-link (i.e., a one-arm, one-way detector like 
+that for pulsar timing).
+Here $\hat u$ is the direction of propagation of the
+electromagnetic pulse, and $\hat n$ is the direction to the 
+GW source (the direction of wave propagation is 
+$\hat k\equiv -\hat n$ and the direction to the pulsar is
+$\hat p\equiv -\hat u$).
+The origin of coordinates is taken to be at the position 
+of the detector.
+
+\i {\em Overlap function for colocated electric dipole antennae:}
+\addcontentsline{toc}{subsection}
+{7 Overlap function for colocated electric dipole antennae}
+
+Show that the overlap function for a pair of (short)
+colocated electric dipole antennae pointing in directions 
+$\hat u_1$ and $\hat u_2$ is given by 
+%
+\be
+\Gamma_{12} 
+%\equiv \langle r_1 r_2\rangle
+\propto
+\hat u_1\cdot\hat u_2 
+\equiv\cos\zeta
+\ee
+% 
+for an unpolarized, isotropic electromagnetic field.
+({\em Hint}: ``short" means that the phase of the electric 
+field can be taken to be constant over of the lengths of 
+the dipole antennae, 
+so that the reponse of antenna $I=1,2$ to the field is
+given by $r_I(t)=\hat u_I\cdot\vec E(t, \vec x_0)$, where
+$\vec x_0$ is the common location of the two antenna.)
+ 
+\i {\em Maximum-likelihood estimators for standard 
+cross-correlation statistic:}
+\addcontentsline{toc}{subsection}
+{8 Maximum-likelihood estimators for standard 
+cross-correlation statistic}
+
+\label{exer:MLestimators} 
+Verify that 
+%
+\be
+\hat C_{11}\equiv \frac{1}{N}\sum_{i=1}^N d_{1i}^2\,,
+\qquad
+\hat C_{22}\equiv \frac{1}{N}\sum_{i=1}^N d_{2i}^2\,,
+\qquad
+\hat C_{12}\equiv \frac{1}{N}\sum_{i=1}^N d_{1i} d_{2i}
+\ee
+%
+are maximum-likelihood estimators of 
+%
+\be
+S_1\equiv S_{n_1}+S_h\,,
+\quad
+S_2\equiv S_{n_2}+S_h\,,
+\quad
+S_h\,,
+\ee
+for the case of $N$ samples of a white GWB in uncorrelated
+white detector noise, for a pair of colocated and coaligned 
+detectors.
+Recall that the likelihood function is
+%
+\be
+p(d|S_{n_1}, S_{n_2}, S_h) =\frac{1}{\sqrt{{\rm det}(2\pi C)}}
+\exp\left[-\frac{1}{2}d^T C^{-1} d\right]\,,
+\ee
+%
+where
+\be
+C
+= \left[
+\begin{array}{cc}
+(S_{n_1} +S_h)\,\unit_{N\times N} & S_h\,\unit_{N\times N}
+\\
+S_h\,\unit_{N\times N} & (S_{n_2} +S_h)\,\unit_{N\times N}
+\\
+\end{array}
+\right]
+\label{e:C_marginalized}
+\ee
+%
+and 
+%
+\be
+d^T C^{-1} d
+\equiv \sum_{I,J=1}^2\sum_{i,j=1}^N
+d_{Ii} \left(C^{-1}\right)_{Ii,Jj} d_{Jj}\,.
+\label{e:argexp}
+\ee
+
+\i {\em Derivation of maximum-likelihood ratio detection statistic:}
+\addcontentsline{toc}{subsection}
+{9 Derivation of maximum-likelihood ratio detection statistic}
+
+Verify that twice the log of the maximum-likelihood
+ratio for the standard stochastic likelihood function
+goes like the square of the power signal-to-noise ratio,
+\be
+2\ln \Lambda_{\rm ML}(d) \simeq
+\frac{\hat C_{12}^2}{\hat C_{11}\hat C_{22}/N}\,,
+\ee
+in the weak-signal approximation.
+({\em Hint:} For simplicity, do the calculation in the context 
+of $N$ samples of a white GWB in uncorrelated 
+white detector noise, for a pair of colocated and coaligned
+detectors, using the results of Exercise~\ref{exer:MLestimators}.)
+
+\i {\em Standard cross-correlation likelihood by marginalizing over 
+stochastic signal prior:}
+\addcontentsline{toc}{subsection}
+{10 Standard cross-correlation likelihood by marginalizing over 
+stochastic signal prior}
+
+Derive the standard form of the likelihood function
+for stochastic background searches 
+\be
+p(d|S_{n_1}, S_{n_2}, S_h)
+=\frac{1}{\sqrt{{\rm det}(2\pi C)}}
+\exp\left[-\frac{1}{2} \sum_{I,J=1}^2 d_I \left(C^{-1}\right)_{IJ} d_J\right]\,,
+\ee
+%
+where
+%
+\be
+C\equiv \left[
+\begin{array}{cc}
+S_{n_1}+S_h & S_h\\
+S_h & S_{n_2} + S_h\\
+\end{array}
+\right]\,,
+\ee
+by marginalizing 
+\be
+p_n(d- h|S_{n_1},S_{n_2}) =
+\frac{1}{2\pi\sqrt{S_{n_1}S_{n_2}}}
+\exp\left[-\frac{1}{2}\left\{
+\frac{(d_1- h)^2}{S_{n_1}} + \frac{(d_2- h)^2}{S_{n_2}}
+\right\}\right]
+\ee
+over the signal samples $h$ for the {\em stochastic} signal prior 
+\be
+p(h|S_h) = \frac{1}{\sqrt{2\pi S_h}}\exp\left[
+-\frac{1}{2}\frac{h^2}{S_h}\right]\,.
+\ee
+
+\een
+
+\end{document}
