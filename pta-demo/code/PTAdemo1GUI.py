@@ -340,6 +340,10 @@ def func_calprofile(value=1):
         ax_profile2.plot(profile2[:,0], profile2[:,1])
         redraw_axes()
 
+        # write pulse profile to file
+        outfile2 = var_metronome2filename.get()+"_profile.txt"
+        np.savetxt(outfile2, profile2)
+
     var_message.set("finished calculating pulse period and profile")
     root.update()
 
