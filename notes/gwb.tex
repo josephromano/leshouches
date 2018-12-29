@@ -72,15 +72,18 @@ background of gravitational radiation---a superposition
 of gravitational-wave signals either too weak or too 
 numerous to individually detect.
 The lectures are divided into two main pieces:
-(i) an overview, with a description of different types 
-of stochastic backgrounds and an introduction to the
-correlation method using multiple detectors;
+(i) an overview, consisting of a description of different 
+types of gravitational-wave backgrounds and an introduction 
+to the correlation method using multiple detectors;
 (ii) details, extending the previous discussion to 
 non-trivial detector response, what to do in the absence
 of correlations, and a recently proposed Bayesian method 
 to search for the gravitational-wave background produced 
 by stellar-mass binary black hole mergers throughout the 
 universe.
+Some suggested exercises for the reader are given 
+throughout the text.
+\pagebreak
 
 \tableofcontents
 \pagebreak
@@ -101,6 +104,101 @@ The individual signals making up the background are thus
 binary black-hole (BBH) and binary neutron-star (BNS)
 merger signals recently detected by the advanced LIGO 
 and Virgo detectors.
+But despite the fact that the individual signals are 
+unresolvable, we shall see below that the detection of a 
+stochastic gravitational-wave background (GWB) will 
+be able to provide information about the statistical 
+properties of the source.
+
+\subsection{Comparison with the CMB}
+
+The ultimate goal of gravitational-wave background
+searches is to produce the GW analogue of Figure~\ref{f:CMB}.
+Figure~\ref{f:CMB} is a sky map of the temperature 
+fluctuations in the CMB blackbody radiation, relative 
+to the $T_0 = 2.73~{\rm K}$ isotropic component.
+(The dipole contribution due to our motion with respect 
+to the cosmic rest frame has also been subtracted out.)
+Recall that the CMB is a background of electromagnetic
+radiation, produced at the time of last scattering,
+roughly 380,000~yr after the Big Bang.
+At that time, the universe had a temperature of 
+$\sim 3000~{\rm K}$, roughly one thousand times larger 
+than the temperature today, but cool enough for 
+neutral hydrogen atoms to first form and photons to 
+propagate freely.
+The temperature fluctuations in the CMB radiation tell
+us about the density of matter on the surface of last 
+scattering and also about the integrated ...
+
+For perspective, this map of the temperature fluctuations 
+in the CMB was produced by the Planck mission in 2013,
+almost 50 years after its initial detection by Penzias
+and Wilson in 1965.
+It took many years and many more improved experiments
+(COBE, Boomerang, WMAP, Planck to name a few) to get to 
+the high-precision measurements that we have now of the 
+CMB.
+So its somewhat sobering to realize that right now, 
+in 2018, we have not yet detected even the isotropic 
+component of the GWB.
+So we have a long road ahead of us.  
+
+\subsection{The background of BBH and BNS mergers in the 
+LIGO band}
+
+But fortunately, as mentioned above, the advanced LIGO
+and Virgo detectors have detected other 
+gravitational-wave signals from several individual BBH 
+and BNS mergers.
+These were very strong signals, having 
+matched-filter signal-to-noise ratios $\gtrsim 10$, 
+and false alarm probabilities $<2\times 10^{-7}$---i.e.,
+5-sigma ``gold-plated" events.
+Similar detections are expected in the upcoming 
+observing run O3, which is scheduled to start in early 2019.
+
+But we also expect many more signals, corresponding to
+more distant mergers or smaller mass systems, which are 
+individually undetectable (i.e., {\em subthreshold} events).
+This weaker background of gravitational radiation is 
+nonetheless detectable as a collectivity via the common 
+influence of the gravitational waves on multiple detectors.
+
+To get an idea of the statistical properties of this
+GWB, we note that the local rate estimate from these 
+first detections of BBH mergers in the LIGO band 
+($9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$) lead to 
+predictions of the total rate of such mergers throughout 
+the universe to between $\sim\!1$~per minute to a few
+per hour.
+(\exer 1: Verify the above values for the total rate.)
+Since the duration of BBH merger signals in band 
+is $\sim\!1~{\rm s}$, the combined signal is 
+highly-nonstationary (or {\em popcorn}-like).
+
+One can do similar calculations for BNS mergers:
+The predicted total rate for such events is roughly 
+one event every 15~{\rm s}, while the duration of 
+a BNS signal in band is roughly 100~{\rm s}. 
+Thus, the signals overlap leading to a continuous
+(or {\em confusion-limited}) background.
+
+The combined signal from BBH and BNS mergers is potentially
+detectable with advanced LIGO and Virgo, shortly after 
+reaching design sensitivity (3-$\sigma$, correspond to a 
+1/1000 false alarm probability).
+
+This estimate of time to detection is based on 
+the standard cross-correlation search, which assumes a
+Gaussian-stationary background.
+
+But there is a 
+better method, proposed by Smith and Thrane, which we will
+discuss at the end of these lectures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Different types of stochastic backgrounds}
 
 Stochastic backgrounds can be of either astrophysical 
 or cosmological origin:
@@ -128,47 +226,27 @@ radiation.
 The Planck satellite and BICEP experiment (located
 at the South Pole) are searching for this signal.
 
-The ultimate goal of gravitational-wave background
-searches is to produce the GW analogue of Figure~\ref{f:CMB}.
-Figure~\ref{f:CMB} is a sky map of the temperature 
-fluctuations in the CMB blackbody radiation, relative 
-to the $T_0 = 2.73~{\rm K}$ isotropic component.
-(The dipole contribution due to our motion with respect 
-to the cosmic rest frame has also been subtracted out.)
-Recall that the CMB is a background of electromagnetic
-radiation, produced at the time of last scattering,
-roughly 380,000~yr after the Big Bang.
-At that time, the universe had a temperature of 
-$\sim 3000~{\rm K}$, roughly one thousand times larger 
-than the temperature today, but cool enough for 
-neutral hydrogen atoms to first form and photons to 
-propagate freely.
-The temperature fluctuations in the CMB radiation tell
-us about the density of matter on the surface of last 
-scattering and also about the integrated ...
-
-For perspective, this map of the temperature fluctuations 
-in the CMB was produced by the Planck mission in 2013,
-almost 50 years after its initial detection by Penzias
-and Wilson in 1965.
-
-\section{Different types of stochastic backgrounds}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical characterization of a stochastic background}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some simple examples}
 
 We now apply the above correlation method
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial correlations}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{What to do in the absence of correlations?}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Searching for the background of binary black-hole
 mergers}
 
