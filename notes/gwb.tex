@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath,amsthm,longtable}
+\usepackage{epsfig}
+\usepackage{epsf}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+% more packages
+%\usepackage{draftcopy}
+%\usepackage{aas_macros}
+\numberwithin{equation}{section}
+\usepackage{hyperref}
+
+% draft watermark
+\usepackage{draftwatermark}
+\SetWatermarkText{DRAFT}
+\SetWatermarkColor[gray]{0.9}
+\SetWatermarkScale{7}
+
+% begin equation, itemize, etc.
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bi{\begin{itemize}}
+\def\ei{\end{itemize}}
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+\def\i{\item{}}
+\def\edth{\check\partial}
+
+% special math fonts
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\ms}[1]{\mathsf{#1}}
+\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\unit}{\mathds{1}}
+\newcommand{\zero}{\mb{0}}
+ 
+% some more definitions
+\def\cross{\times}
+\def\del{\nabla}
+\def\grad{\vec\nabla}
+\def\div{\grad\cdot}
+\def\curl{\grad\cross}
+\def\I{I\!\!\!-}
+ 
+\def\defn{\underline{Definition}:\ }
+\def\ex{\underline{Example}:\ }
+\def\exer{\underline{Exercise}:\ }
+\def\soln{\underline{Solution}:\ }
+\def\theor{\underline{Theorem}:\ }
+\def\pf{\underline{Proof}:\ }
+\def\ques{\underline{Question}:\ }
+\def\ans{\underline{Answer}:\ }
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Searches for stochastic gravitational-wave backgrounds}
+\author{Joseph D.\ Romano}
+\date{Les Houches Summer School\\
+July 2018}
+\maketitle
+
+\abstract{These lecture notes provide a brief introduction 
+to detection methods used to search for a stochastic 
+background of gravitational radiation---a superposition
+of gravitational-wave signals either too weak or too 
+numerous to individually detect.
+The lectures are divided into two main pieces:
+(i) an overview, with a description of different types 
+of stochastic backgrounds and an introduction to the
+correlation method using multiple detectors;
+(ii) details, extending the previous discussion to 
+non-trivial detector response, what to do in the absence
+of correlations, and a recently proposed Bayesian method 
+to search for the gravitational-wave background produced 
+by stellar-mass binary black hole mergers throughout the 
+universe.
+
+\tableofcontents
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% noindent, space between paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Motivation}
+
+A stochastic background of gravitational radiation 
+is a superposition of gravitational-wave signals either 
+too weak or too numerous to individually detect.
+The individual signals making up the background are thus
+{\em unresolvable}, unlike the large signal-to-noise 
+binary black-hole (BBH) and binary neutron-star (BNS)
+merger signals recently detected by the advanced LIGO 
+and Virgo detectors.
+
+Stochastic backgrounds can be of either astrophysical 
+or cosmological origin:
+
+(i) A potential astrophysical background for the 
+current generation of ground-based interferometers 
+is the combined signal from the population of 
+stellar-mass BBH and BNS mergers throughout the universe.
+We will discuss the prospects of detecting this 
+potential background throughout these lectures; the 
+last section is devoted to a recently proposed 
+detection method that targets this particular source.
+
+(ii) A potential cosmological background is formed 
+from {\em relic gravitational waves}---that is, 
+quantum fluctuations in the geometry of space-time,
+driven to macroscopic scales 
+by a period of rapid expansion (e.g., inflation) 
+a mere $\sim 10^{-32}~{\rm s}$ after the Big Bang.
+This relic background is too weak to be detected by 
+advanced LIGO, Virgo, etc.,
+but is potentially detectable by its effect on the 
+polarization of the cosmic microwave background (CMB)
+radiation.
+The Planck satellite and BICEP experiment (located
+at the South Pole) are searching for this signal.
+
+The ultimate goal of gravitational-wave background
+searches is to produce the GW analogue of Figure~\ref{f:CMB}.
+Figure~\ref{f:CMB} is a sky map of the temperature 
+fluctuations in the CMB blackbody radiation, relative 
+to the $T_0 = 2.73~{\rm K}$ isotropic component.
+(The dipole contribution due to our motion with respect 
+to the cosmic rest frame has also been subtracted out.)
+Recall that the CMB is a background of electromagnetic
+radiation, produced at the time of last scattering,
+roughly 380,000~yr after the Big Bang.
+At that time, the universe had a temperature of 
+$\sim 3000~{\rm K}$, roughly one thousand times larger 
+than the temperature today, but cool enough for 
+neutral hydrogen atoms to first form and photons to 
+propagate freely.
+The temperature fluctuations in the CMB radiation tell
+us about the density of matter on the surface of last 
+scattering and also about the integrated ...
+
+For perspective, this map of the temperature fluctuations 
+in the CMB was produced by the Planck mission in 2013,
+almost 50 years after its initial detection by Penzias
+and Wilson in 1965.
+
+\section{Different types of stochastic backgrounds}
+
+\section{Mathematical characterization of a stochastic background}
+
+
+\section{Correlation methods - basic idea}
+
+\section{Some simple examples}
+
+We now apply the above correlation method
+
+\section{Non-trivial detector response}
+
+\section{Non-trivial correlations}
+
+\section{What to do in the absence of correlations?}
+
+\section{Searching for the background of binary black-hole
+mergers}
+
+\input refs
+
+\end{document}
+
