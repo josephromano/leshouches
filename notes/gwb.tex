@@ -4,12 +4,11 @@
 \usepackage{amssymb,amsmath,amsthm,longtable}
 \usepackage{epsfig}
 \usepackage{epsf}
-\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{caption}
 
 % more packages
 %\usepackage{draftcopy}
 %\usepackage{aas_macros}
-\numberwithin{equation}{section}
 \usepackage{hyperref}
 
 % draft watermark
@@ -17,6 +16,11 @@
 \SetWatermarkText{DRAFT}
 \SetWatermarkColor[gray]{0.9}
 \SetWatermarkScale{7}
+
+\captionsetup{width=5.75in}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\numberwithin{equation}{section}
 
 % begin equation, itemize, etc.
 \def\be{\begin{equation}}
@@ -37,8 +41,8 @@
 \newcommand{\mr}[1]{\mathrm{#1}}
 \newcommand{\ms}[1]{\mathsf{#1}}
 \newcommand{\mat}[1]{\mathsf{#1}}
-\newcommand{\unit}{\mathds{1}}
-\newcommand{\zero}{\mb{0}}
+\newcommand{\unit}{\mathsf{1}}
+\newcommand{\zero}{\mathsf{0}}
  
 % some more definitions
 \def\cross{\times}
@@ -47,6 +51,7 @@
 \def\div{\grad\cdot}
 \def\curl{\grad\cross}
 \def\I{I\!\!\!-}
+\def\D{{\rm d}}
  
 \def\defn{\underline{Definition}:\ }
 \def\ex{\underline{Example}:\ }
@@ -64,6 +69,7 @@
 \author{Joseph D.\ Romano}
 \date{Les Houches Summer School\\
 July 2018}
+
 \maketitle
 
 \abstract{These lecture notes provide a brief introduction 
@@ -82,16 +88,16 @@ to search for the gravitational-wave background produced
 by stellar-mass binary black hole mergers throughout the 
 universe.
 Some suggested exercises for the reader are given 
-throughout the text.
-\pagebreak
+throughout the text.}
 
+\pagebreak
 \tableofcontents
 \pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % noindent, space between paragraphs
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\medskipamount}
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{\medskipamount}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Motivation}
@@ -110,12 +116,22 @@ stochastic gravitational-wave background (GWB) will
 be able to provide information about the statistical 
 properties of the source.
 
-\subsection{Comparison with the CMB}
+\subsection{Gravitational-wave analogue of the CMB}
 
 The ultimate goal of gravitational-wave background
 searches is to produce the GW analogue of Figure~\ref{f:CMB}.
-Figure~\ref{f:CMB} is a sky map of the temperature 
-fluctuations in the CMB blackbody radiation, relative 
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/CMB}
+\caption{Skymap of $\Delta T/T_0$ for the cosmic microwave background
+radiation produced by the Planck 2013 mission.}
+\label{f:CMB}
+\end{center}
+\end{figure}
+%
+This is a sky map of the temperature fluctuations in 
+the CMB blackbody radiation, relative 
 to the $T_0 = 2.73~{\rm K}$ isotropic component.
 (The dipole contribution due to our motion with respect 
 to the cosmic rest frame has also been subtracted out.)
@@ -123,25 +139,24 @@ Recall that the CMB is a background of electromagnetic
 radiation, produced at the time of last scattering,
 roughly 380,000~yr after the Big Bang.
 At that time, the universe had a temperature of 
-$\sim 3000~{\rm K}$, roughly one thousand times larger 
-than the temperature today, but cool enough for 
+$\sim 3000~{\rm K}$, approximately one thousand times 
+larger than the temperature today, but cool enough for 
 neutral hydrogen atoms to first form and photons to 
 propagate freely.
 The temperature fluctuations in the CMB radiation tell
 us about the density of matter on the surface of last 
 scattering and also about the integrated ...
 
-For perspective, this map of the temperature fluctuations 
-in the CMB was produced by the Planck mission in 2013,
-almost 50 years after its initial detection by Penzias
-and Wilson in 1965.
+For perspective, Figure~\ref{f:CMB} was produced by 
+the Planck mission in 2013,
+almost 50 years after the CMB radiation was initially
+detected by Penzias and Wilson in 1965.
 It took many years and many more improved experiments
 (COBE, Boomerang, WMAP, Planck to name a few) to get to 
-the high-precision measurements that we have now of the 
-CMB.
+the high-precision measurements that we have today.
 So its somewhat sobering to realize that right now, 
-in 2018, we have not yet detected even the isotropic 
-component of the GWB.
+in 2018, we have yet to detect the isotropic component 
+of the GWB.
 So we have a long road ahead of us.  
 
 \subsection{The background of BBH and BNS mergers in the 
@@ -157,36 +172,53 @@ and false alarm probabilities $<2\times 10^{-7}$---i.e.,
 5-sigma ``gold-plated" events.
 Similar detections are expected in the upcoming 
 observing run O3, which is scheduled to start in early 2019.
-
-But we also expect many more signals, corresponding to
-more distant mergers or smaller mass systems, which are 
+We also expect that there are many more signals, 
+corresponding to more distant mergers or smaller mass systems, 
+which are 
 individually undetectable (i.e., {\em subthreshold} events).
 This weaker background of gravitational radiation is 
-nonetheless detectable as a collectivity via the common 
+nonetheless detectable {\em as a collectivity} via the common 
 influence of the gravitational waves on multiple detectors.
 
 To get an idea of the statistical properties of this
-GWB, we note that the local rate estimate from these 
-first detections of BBH mergers in the LIGO band 
-($9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$) lead to 
-predictions of the total rate of such mergers throughout 
-the universe to between $\sim\!1$~per minute to a few
-per hour.
-(\exer 1: Verify the above values for the total rate.)
+background, we can estimate the total rate of stellar-mass
+BBH mergers throughout the universe using the 
+local rate estimate from these first detections,
+$9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$.
+This leads to a prediction for the total rate of 
+BBH mergers between $\sim\!1$~per minute to a few per hour.
+(\exer 1: Verify these values for the total rate.%
+\footnote{A more complete description of this and 
+all other exercises is given in Section~\ref{s:exercises}.})
 Since the duration of BBH merger signals in band 
-is $\sim\!1~{\rm s}$, the combined signal is 
-highly-nonstationary (or {\em popcorn}-like).
-
-One can do similar calculations for BNS mergers:
+is $\sim\!1~{\rm s}$, which is much smaller than the 
+average duration between successive mergers, the 
+combined signal is highly-nonstationary (or {\em popcorn}-like).
+One can do similar calculations for BNS mergers.
 The predicted total rate for such events is roughly 
 one event every 15~{\rm s}, while the duration of 
 a BNS signal in band is roughly 100~{\rm s}. 
-Thus, the signals overlap leading to a continuous
-(or {\em confusion-limited}) background.
+Thus, the signals overlap in time leading to a 
+continuous (or {\em confusion-limited}) background.
+Figure~\ref{f:BBH-BNS-timeseries} is a plot of the
+expected time-domain signal corresponding the rate
+estimates calculated above.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/BBH-BNS-timeseries}
+\caption{Simulated time-domain signal for the predicted BBH and 
+BNS background.  
+Figure taken from \cite{stoch-implications}.}
+\label{f:BBH-BNS-timeseries}
+\end{center}
+\end{figure}
+%
 
 The combined signal from BBH and BNS mergers is potentially
 detectable with advanced LIGO and Virgo, shortly after 
-reaching design sensitivity (3-$\sigma$, correspond to a 
+reaching design sensitivity.
+Figure 3-$\sigma$, correspond to a 
 1/1000 false alarm probability).
 
 This estimate of time to detection is based on 
@@ -250,6 +282,373 @@ We now apply the above correlation method
 \section{Searching for the background of binary black-hole
 mergers}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Exercises}
+\label{s:exercises}
+
+A more detailed description of the suggested exercises.
+
+\ben
+
+\i {\em Rate estimate of stellar-mass binary black hole mergers:}
+
+Estimate the total rate (number of events per time) of 
+stellar-mass binary black hole mergers throughout the universe 
+by multiplying LIGO's O1 local rate 
+estimate $R_0 \sim 10$~-~$200~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$ by 
+the comoving volume out to some large redshift, e.g., $z= 10$.
+(For this calculation you can ignore any dependence of the 
+rate density with redshift.)
+You should find a merger rate of $\sim\!1$~per minute to a few 
+per hour.
+
+{\em Hint}: You will need to do numerically evaluate the
+following integral for proper distance today as a function 
+of source redshift:
+%
+\be
+d_0(z) = \frac{c}{H_0}\int_0^z\frac{\D z'}{E(z')}\,,
+\qquad
+E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}\,,
+\ee
+%
+with 
+%
+\be
+\Omega_{\rm m}=0.31\,,
+\qquad
+\Omega_\Lambda=0.69\,,
+\qquad
+H_0 = 68~{\rm km}\,{\rm s}^{-1}\, {\rm Mpc}^{-1}\,.
+\ee
+Doing that integral, you should find what's shown in
+Figure~\ref{f:d0vsz}, which you can then evaluate at
+$z=10$ to convert $R_0$ (number of events per 
+comoving volume per time) to total rate (number of 
+events per time) for sources out to redshift $z=10$.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/d0vsz}
+\caption{}
+\label{f:d0vsz}
+\end{center}
+\end{figure}
+%
+
+\i {\em Relating $S_h(f)$ and $\Omega_{\rm gw}(f)$:}
+
+Derive the relationship 
+\be
+S_h(f) = \frac{3 H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}
+\ee
+between the strain power spectral density $S_h(f)$ and the 
+dimensionless fractional energy density spectrum $\Omega_{\rm gw}(f)$.
+({\em Hint}: You will need to use the various definitions of these
+quantities and also 
+\be
+\rho_{\rm gw} =\frac{c^2}{32\pi G}\langle \dot h_{ab}(t,\vec x)\dot h^{ab}(t,\vec x)\rangle\,,
+\ee
+which expresses the energy-density in gravitational-waves to 
+the metric perturbations $h_{ab}(t,\vec x)$.)
+
+\i {\em Cosmology and the ``Phinney formula" for astrophysical backgrounds:}
+
+(a) Using the Friedmann equation
+%
+\be
+\left(\frac{\dot a}{a}\right)^2
+=H_0^2\left(\frac{\Omega_{\rm m}}{a^{3}} + \Omega_\Lambda\right)
+\ee
+%
+for a spatially-flat FRW spacetime with matter and 
+cosmological constant, and the relationship 
+%
+\be
+1+z = \frac{1}{a(t)}\,,
+\qquad a(t_0)\equiv 1\quad(t_0\equiv {\rm today})\,,
+\ee
+%
+between redshift $z$ and scale factor $a(t)$,
+derive 
+%
+\be
+\frac{\D t}{\D z} =-\frac{1}{(1+z)H_0 E(z)}\,,
+\qquad
+E(z) = \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}\,.
+\ee
+%
+(b) Using this result for $\D t/\D z$, show that 
+%
+\be
+\Omega_{\rm gw}(f)= \frac{f}{\rho_{\rm c}H_0}
+\int_0^\infty \D z\>R(z)\,\frac{1}{(1+z)E(z)}
+\left(\frac{\D E_{\rm gw}}{\D f_{\rm s}}\right)\bigg|_{f_{\rm s}=f(1+z)}
+\ee
+%
+in terms of the rate density $R(z)$ as measured in 
+the source frame 
+(number of events per comoving volume per time interval
+in the source frame).
+({\em Hint}: The expression for $\D t/\D z$ from part
+(a) will allow 
+you to go from the ``Phinney formula" for
+$\Omega_{\rm gw}(f)$ written in terms of the number 
+density $n(z)$,
+%
+\be
+\Omega_{\rm gw}(f)= \frac{1}{\rho_c}\int_0^\infty \D z\>
+n(z)\,\frac{1}{1+z}\left(f_{\rm s}\,
+\frac{\D E_{\rm gw}}{\D f_{\rm s}}\right)\bigg|_{f_{\rm s}=f(1+z)}\,,
+\ee
+%
+to one in terms of the rate density 
+$R(z)$, where $n(z)\,\D z=R(z)\,|\D t|_{t=t(z)}$.
+Note: Both of the above expressions for $\Omega_{\rm gw}(f)$
+assume that there is only one type of source, described by 
+some set of average source parameters.  
+If there is more than one type of source, one must sum
+the contributions of each source to $\Omega_{\rm gw}(f)$.)
+
+\i {\em Optimal filtering for the cross-correlation statistic:}
+
+Verify the form 
+%
+\be
+\tilde Q(f)\propto \frac{\Gamma_{12}(f)H(f)}
+{P_1(f)P_2(f)}\,,
+\ee
+of the optimal filter function in the weak-signal limit,
+where $H(f)$ is the assumed spectral shape of the 
+gravitational-wave background,
+$\Gamma_{12}(f)$ is the overlap function, and $P_1(f)$, $P_2(f)$ 
+are the power spectral densities of the outputs of the 
+two detectors (which are approximately equal to 
+$P_{n_1}(f)$, $P_{n_2}(f)$, respectively).
+Recall that the optimal filter $\tilde Q(f)$ maximizes
+the signal-to-noise ratio of the cross-correlation 
+statistic.
+({\em Hint}: Introduce an inner product on the space of
+functions of frequency $A(f)$, $B(f)$:
+%
+\be
+(A,B)\equiv\int df A(f) B^*(f) P_1(f) P_2(f)\,.
+\ee
+%
+This inner product
+has all of the properties of the familiar dot product
+of vectors in 3-dimensional space.
+The signal-to-noise ratio of the cross-correlation
+statistic can be written in terms of this inner product.)
+
+\i {\em Maximum-likelihood estimators for single and multiple
+parameters:}
+
+(a) Show that the maximum-likelihood estimator $\hat a$ of 
+the single parameter $a$ in the likelihood function
+\be
+p(d|a, \sigma) \propto
+\exp\left[-\frac{1}{2}\sum_{i=1}^N \frac{(d_i-a)^2}{\sigma_i^2}\right]
+\ee
+%
+is given by the noise-weighted average
+%
+\be
+\hat a={\sum_i \frac{d_i}{\sigma_i^2}}\bigg/{\sum_j \frac{1}{\sigma_j^2}}\,.
+\ee
+%
+(b) Extend the previous calculation to the likelihood
+\be
+p(d|A, C) \propto
+\exp\left[-\frac{1}{2}(d-MA)^\dagger C^{-1} (d-MA)\right]\,,
+\ee
+%
+where $A\equiv A_\alpha$ is a vector of parameters,
+$C\equiv C_{ij}$ is the noise covariance matrix, and 
+$M\equiv M_{i\alpha}$ is the response matrix mapping 
+$A_\alpha$ to data samples, $MA\equiv \sum_\alpha M_{i\alpha}A_\alpha$.
+For this more general case you should find:
+%
+\be
+\hat A = F^{-1} X\,,
+\ee
+%
+where
+%
+\be
+F \equiv M^\dagger C^{-1} M\,,\qquad
+X \equiv M^\dagger C^{-1} d\,.
+\ee
+%
+In general, the matrix $F$ (called the {\em Fisher} matrix)
+is not invertible, so some sort of regularization is needed
+to do the matrix inversion.
+
+\i {\em Timing-residual response for a 1-arm, 1-way detector:}
+
+Derive the timing residual reponse function
+%
+\be
+R^A(f,\hat n) = 
+\frac{1}{2}u^a u^b e^A_{ab}(\hat n)
+\frac{1}{i2\pi f}
+\frac{1}{1+\hat n\cdot \hat u}
+\left[1-e^{-\frac{i2\pi fL}{c}(1+\hat n\cdot\hat u)}\right]
+\ee
+%
+for a single-link (i.e., a one-arm, one-way detector like 
+that for pulsar timing).
+Here $\hat u$ is the direction of propagation of the
+electromagnetic pulse, and $\hat n$ is the direction to the 
+GW source (the direction of wave propagation is 
+$\hat k\equiv -\hat n$ and the direction to the pulsar is
+$\hat p\equiv -\hat u$).
+The origin of coordinates is taken to be at the position 
+of the detector.
+
+\i {\em Overlap function for colocated electric dipole antennae:}
+
+Show that the overlap function for a pair of (short)
+colocated electric dipole antennae pointing in directions 
+$\hat u_1$ and $\hat u_2$ is given by 
+%
+\be
+\Gamma_{12} 
+%\equiv \langle r_1 r_2\rangle
+\propto
+\hat u_1\cdot\hat u_2 
+\equiv\cos\zeta
+\ee
+% 
+for the case of an unpolarized, isotropic electromagnetic field.
+({\em Hint}: ``short" means that the phase of the electric 
+field can be taken to be constant over of the lengths of 
+the dipole antennae, 
+so that the reponse of antenna $I=1,2$ to the field is
+given by $r_I(t)=\hat u_I\cdot\vec E(t, \vec x_0)$, where
+$\vec x_0$ is the common location of the two antenna.)
+ 
+\i {\em Maximum-likelihood estimators for the standard 
+cross-correlation statistic:}
+
+\label{exer:MLestimators} 
+Verify that 
+%
+\be
+\hat C_{11}\equiv \frac{1}{N}\sum_{i=1}^N d_{1i}^2\,,
+\qquad
+\hat C_{22}\equiv \frac{1}{N}\sum_{i=1}^N d_{2i}^2\,,
+\qquad
+\hat C_{12}\equiv \frac{1}{N}\sum_{i=1}^N d_{1i} d_{2i}
+\ee
+%
+are maximum-likelihood estimators of 
+%
+\be
+S_1\equiv S_{n_1}+S_h\,,
+\quad
+S_2\equiv S_{n_2}+S_h\,,
+\quad
+S_h\,,
+\ee
+for the case of $N$ samples of a white GWB in uncorrelated
+white detector noise, for a pair of colocated and coaligned 
+detectors.
+Recall that the likelihood function is
+%
+\be
+p(d|S_{n_1}, S_{n_2}, S_h) =\frac{1}{\sqrt{{\rm det}(2\pi C)}}
+\exp\left[-\frac{1}{2}d^T C^{-1} d\right]\,,
+\ee
+%
+where
+\be
+C
+= \left[
+\begin{array}{cc}
+(S_{n_1} +S_h)\,\unit_{N\times N} & S_h\,\unit_{N\times N}
+\\
+S_h\,\unit_{N\times N} & (S_{n_2} +S_h)\,\unit_{N\times N}
+\\
+\end{array}
+\right]
+\label{e:C_marginalized}
+\ee
+%
+and 
+%
+\be
+d^T C^{-1} d
+\equiv \sum_{I,J=1}^2\sum_{i,j=1}^N
+d_{Ii} \left(C^{-1}\right)_{Ii,Jj} d_{Jj}\,.
+\label{e:argexp}
+\ee
+
+\i {\em Derivation of the maximum-likelihood ratio detection statistic:}
+
+Verify that twice the log of the maximum-likelihood
+ratio for the standard stochastic likelihood function
+goes like the square of the (power) signal-to-noise ratio,
+\be
+2\ln \Lambda_{\rm ML}(d) \simeq
+\frac{\hat C_{12}^2}{\hat C_{11}\hat C_{22}/N}\,,
+\ee
+in the weak-signal approximation.
+({\em Hint:} For simplicity, do the calculation in the context 
+of $N$ samples of a white GWB in uncorrelated 
+white detector noise, for a pair of colocated and coaligned
+detectors, using the results of Exercise~\ref{exer:MLestimators}.)
+
+\i {\em Standard cross-correlation likelihood by marginalizing over 
+stochastic signal prior:}
+
+Derive the standard form of the likelihood function
+for stochastic background searches 
+\be
+p(d|S_{n_1}, S_{n_2}, S_h)
+=\frac{1}{\sqrt{{\rm det}(2\pi C)}}
+\exp\left[-\frac{1}{2} \sum_{I,J=1}^2 d_I \left(C^{-1}\right)_{IJ} d_J\right]\,,
+\ee
+%
+where
+%
+\be
+C\equiv \left[
+\begin{array}{cc}
+S_{n_1}+S_h & S_h\\
+S_h & S_{n_2} + S_h\\
+\end{array}
+\right]\,,
+\ee
+by marginalizing 
+\be
+p_n(d- h|S_{n_1},S_{n_2}) =
+\frac{1}{2\pi\sqrt{S_{n_1}S_{n_2}}}
+\exp\left[-\frac{1}{2}\left\{
+\frac{(d_1- h)^2}{S_{n_1}} + \frac{(d_2- h)^2}{S_{n_2}}
+\right\}\right]
+\ee
+over the signal samples $h$ for the {\em stochastic} signal prior 
+\be
+p(h|S_h) = \frac{1}{\sqrt{2\pi S_h}}\exp\left[
+-\frac{1}{2}\frac{h^2}{S_h}\right]\,.
+\ee
+%
+In other words, show that
+%
+\be
+p(d|S_{n_1}, S_{n_2}, S_h) 
+=\int_{-\infty}^\infty \D h\>
+p_n(d-h|S_{n_1}, S_{n_2}) p(h|S_h)\,.
+\ee
+%
+({\em Hint}: You'll have to complete the square in the argument
+of the exponential in the marginalization integral.)
+
+\een
+
+\newpage
 \input refs
 
 \end{document}
