@@ -1,4 +1,6 @@
 \documentclass[11pt]{article}
+\bibliographystyle{livrevrel}
+
 \usepackage{latexsym}
 \usepackage{graphicx}
 \usepackage{amssymb,amsmath,amsthm,longtable}
@@ -17,7 +19,7 @@
 \SetWatermarkColor[gray]{0.9}
 \SetWatermarkScale{7}
 
-\captionsetup{width=5.75in}
+%\captionsetup{width=5.75in}
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 
 \numberwithin{equation}{section}
@@ -72,7 +74,8 @@ July 2018}
 
 \maketitle
 
-\abstract{These lecture notes provide a brief introduction 
+\begin{abstract}
+These lecture notes provide a brief introduction 
 to detection methods used to search for a stochastic 
 background of gravitational radiation---i.e., a 
 superposition of gravitational-wave signals either too weak 
@@ -88,7 +91,8 @@ to search for the gravitational-wave background produced
 by stellar-mass binary black hole mergers throughout the 
 universe.
 Suggested exercises for the reader are given throughout 
-the text.}
+the text.
+\end{abstract}
 
 \pagebreak
 \tableofcontents
@@ -245,7 +249,7 @@ This estimate of time to detection is based on
 the standard cross-correlation search (Section~\ref{s:correlations}), 
 which assumes a Gaussian-stationary background.
 But there is a better method, recently proposed by 
-Smith and Thrane~\cite{Smith-Thrane:2018}, 
+Smith and Thrane~\cite{Smith-Thrane:2019}, 
 which should reduce the time to detection by several 
 orders of magnitude (factor of $\sim\!1000$), 
 meaning that the background would be detectable after only
@@ -711,7 +715,7 @@ of the exponential in the marginalization integral.)
 \een
 
 \newpage
-\input refs
+\bibliography{refs}
 
 \end{document}
 
