@@ -74,9 +74,9 @@ July 2018}
 
 \abstract{These lecture notes provide a brief introduction 
 to detection methods used to search for a stochastic 
-background of gravitational radiation---a superposition
-of gravitational-wave signals either too weak or too 
-numerous to individually detect.
+background of gravitational radiation---i.e., a 
+superposition of gravitational-wave signals either too weak 
+or too numerous to individually detect.
 The lectures are divided into two main pieces:
 (i) an overview, consisting of a description of different 
 types of gravitational-wave backgrounds and an introduction 
@@ -87,8 +87,8 @@ of correlations, and a recently proposed Bayesian method
 to search for the gravitational-wave background produced 
 by stellar-mass binary black hole mergers throughout the 
 universe.
-Some suggested exercises for the reader are given 
-throughout the text.}
+Suggested exercises for the reader are given throughout 
+the text.}
 
 \pagebreak
 \tableofcontents
@@ -111,10 +111,10 @@ binary black-hole (BBH) and binary neutron-star (BNS)
 merger signals recently detected by the advanced LIGO 
 and Virgo detectors.
 But despite the fact that the individual signals are 
-unresolvable, we shall see below that the detection of a 
-stochastic gravitational-wave background (GWB) will 
-be able to provide information about the statistical 
-properties of the source.
+unresolvable, the detection of a stochastic 
+gravitational-wave background (GWB) will 
+be able to provide information about the 
+{\em statistical} properties of the source.
 
 \subsection{Gravitational-wave analogue of the CMB}
 
@@ -123,7 +123,7 @@ searches is to produce the GW analogue of Figure~\ref{f:CMB}.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{Figures/CMB}
+\includegraphics[width=0.6\textwidth]{Figures/CMB}
 \caption{Skymap of $\Delta T/T_0$ for the cosmic microwave background
 radiation produced by the Planck 2013 mission.}
 \label{f:CMB}
@@ -131,7 +131,7 @@ radiation produced by the Planck 2013 mission.}
 \end{figure}
 %
 This is a sky map of the temperature fluctuations in 
-the CMB blackbody radiation, relative 
+the CMB blackbody radiation, $\Delta T/T$, relative 
 to the $T_0 = 2.73~{\rm K}$ isotropic component.
 (The dipole contribution due to our motion with respect 
 to the cosmic rest frame has also been subtracted out.)
@@ -145,13 +145,14 @@ neutral hydrogen atoms to first form and photons to
 propagate freely.
 The temperature fluctuations in the CMB radiation tell
 us about the density of matter on the surface of last 
-scattering and also about the integrated ...
+scattering, thus giving us a picture of the ``seeds" of 
+large-scale structure formation in the early universe.
 
 For perspective, Figure~\ref{f:CMB} was produced by 
 the Planck mission in 2013,
 almost 50 years after the CMB radiation was initially
 detected by Penzias and Wilson in 1965.
-It took many years and many more improved experiments
+It took many years and improved experiments
 (COBE, Boomerang, WMAP, Planck to name a few) to get to 
 the high-precision measurements that we have today.
 So its somewhat sobering to realize that right now, 
@@ -167,12 +168,12 @@ and Virgo detectors have detected other
 gravitational-wave signals from several individual BBH 
 and BNS mergers.
 These were very strong signals, having 
-matched-filter signal-to-noise ratios $\gtrsim 10$, 
-and false alarm probabilities $<2\times 10^{-7}$---i.e.,
-5-sigma ``gold-plated" events.
-Similar detections are expected in the upcoming 
-observing run O3, which is scheduled to start in early 2019.
-We also expect that there are many more signals, 
+matched-filter signal-to-noise ratios ${\rm SNR}\gtrsim 10$, 
+and false alarm probabilities $<2\times 10^{-7}$,
+corresponding to 5-sigma ``gold-plated" events.
+Similar large SNR detections are expected during the 
+upcoming observing run O3, which is scheduled to start in early 2019.
+But we also expect that there are many more signals, 
 corresponding to more distant mergers or smaller mass systems, 
 which are 
 individually undetectable (i.e., {\em subthreshold} events).
@@ -181,9 +182,9 @@ nonetheless detectable {\em as a collectivity} via the common
 influence of the gravitational waves on multiple detectors.
 
 To get an idea of the statistical properties of this
-background, we can estimate the total rate of stellar-mass
-BBH mergers throughout the universe using the 
-local rate estimate from these first detections,
+background signal, we can estimate the total rate of 
+stellar-mass BBH mergers throughout the universe by
+using the local rate estimate from these first detections,
 $9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$.
 This leads to a prediction for the total rate of 
 BBH mergers between $\sim\!1$~per minute to a few per hour.
@@ -193,20 +194,20 @@ all other exercises is given in Section~\ref{s:exercises}.})
 Since the duration of BBH merger signals in band 
 is $\sim\!1~{\rm s}$, which is much smaller than the 
 average duration between successive mergers, the 
-combined signal is highly-nonstationary (or {\em popcorn}-like).
-One can do similar calculations for BNS mergers.
+combined signal will be highly-nonstationary (or {\em popcorn}-like).
+We can perform similar calculations for BNS mergers.
 The predicted total rate for such events is roughly 
-one event every 15~{\rm s}, while the duration of 
+one event every $15~{\rm s}$, while the duration of 
 a BNS signal in band is roughly 100~{\rm s}. 
-Thus, the signals overlap in time leading to a 
-continuous (or {\em confusion-limited}) background.
+Thus, the BNS merger signals overlap in time leading to 
+a continuous (or {\em confusion-limited}) background.
 Figure~\ref{f:BBH-BNS-timeseries} is a plot of the
 expected time-domain signal corresponding the rate
 estimates calculated above.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{Figures/BBH-BNS-timeseries}
+\includegraphics[width=0.6\textwidth]{Figures/BBH-BNS-timeseries}
 \caption{Simulated time-domain signal for the predicted BBH and 
 BNS background.  
 Figure taken from \cite{stoch-implications}.}
@@ -215,23 +216,81 @@ Figure taken from \cite{stoch-implications}.}
 \end{figure}
 %
 
-The combined signal from BBH and BNS mergers is potentially
-detectable with advanced LIGO and Virgo, shortly after 
-reaching design sensitivity.
-Figure 3-$\sigma$, correspond to a 
-1/1000 false alarm probability).
-
+The combined signal from BBH and BNS mergers is 
+potentially detectable with advanced LIGO and Virgo, 
+shortly after reaching design sensitivity.
+Although the signal-to-noise ratios for the 
+individual events are small, the combined 
+signal-to-noise ratio of the correlated data 
+summed over all events grows like the square-root 
+of the observation time, reaching a detectable
+level of $3$-sigma after roughly 40~months of
+observation (Figure~\ref{f:BBH-BNS-SNR}).
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Figures/BBH-BNS-SNR}
+\caption{Expected signal-to-noise ratio of the correlated 
+data for the advanced LIGO and Virgo detectors as a function 
+of observation time.
+The points labeled O1, O2, etc., indicate the start of
+advanced LIGO's first observation run, second observation
+run, etc. 
+Figure taken from \cite{stoch-implications}.}
+\label{f:BBH-BNS-SNR}
+\end{center}
+\end{figure}
+%
 This estimate of time to detection is based on 
-the standard cross-correlation search, which assumes a
-Gaussian-stationary background.
-
-But there is a 
-better method, proposed by Smith and Thrane, which we will
-discuss at the end of these lectures.
+the standard cross-correlation search (Section~\ref{s:correlations}), 
+which assumes a Gaussian-stationary background.
+But there is a better method, recently proposed by 
+Smith and Thrane~\cite{Smith-Thrane:2018}, 
+which should reduce the time to detection by several 
+orders of magnitude (factor of $\sim\!1000$), 
+meaning that the background would be detectable after only
+a few days of operation. 
+We will describe this method in more detail in 
+Section~\ref{s:nonstationary}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Different types of stochastic backgrounds}
+\label{s:different_types}
 
+The combined signal from stellar-mass BBH and BNS 
+mergers is just one way of producing a GWB, relevant 
+for the current generation of ground-based laser 
+interferometers like LIGO and Virgo.
+Heavier-mass systems, which produce lower-frequency 
+gravitational waves, are also expected to give rise 
+to GWBs that are potentially detectable with other 
+existing or proposed detectors.
+Figure~\ref{f:GWspectrum} is a plot of the 
+gravitational-wave spectrum, with frequencies ranging
+from $10^3~{\rm Hz}$ (for ground-based interferometers)
+to $10^{-17}~{\rm Hz}$ (corresponding to a period
+equal to the age of the universe), together with 
+potential sources and relevant detectors.  
+Of particular note is the combined gravitational-wave
+signal produced by compact white-dwarf binaries in 
+the Milky Way, producing a ``confusion-limited" GWB
+in the frequency band $\sim 10^{-4}~{\rm Hz}$ to 
+$10^{-1}~{\rm Hz}$ relevant for the proposed space-based
+interferometer LISA (expected launch date 2034).
+This signal is expected to be so strong that it will
+larger than the instrumental noise, forming actual 
+a gravitational-wave ``foreground", rather than background,
+signal.
+almost 20 orders of magnitude (from kHz
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{Figures/GWspectrum}
+\caption{Detectors and potential sources of gravitational-wave
+backgrounds across the gravitational-wave spectrum.}
+\label{f:GWspectrum}
+\end{center}
+\end{figure}
+%
 Stochastic backgrounds can be of either astrophysical 
 or cosmological origin:
 
@@ -263,9 +322,11 @@ at the South Pole) are searching for this signal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
+\label{s:correlations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some simple examples}
+\label{s:simple_examples}
 
 We now apply the above correlation method
 
@@ -281,6 +342,7 @@ We now apply the above correlation method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Searching for the background of binary black-hole
 mergers}
+\label{s:nonstationary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
