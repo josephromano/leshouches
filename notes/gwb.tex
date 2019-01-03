@@ -284,7 +284,7 @@ potential sources of GWBs and relevant detectors.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{Figures/GWspectrum}
+\includegraphics[width=\textwidth]{Figures/GWspectrum}
 \caption{Detectors and potential sources of gravitational-wave
 backgrounds across the gravitational-wave spectrum.}
 \label{f:GWspectrum}
@@ -383,8 +383,8 @@ LISA will see from the population of close white-dwarf
 binaries in the Milky Way will have its gravitational-wave 
 power concentrated in the direction of the Milky Way.
 Figure~\ref{f:statiso-vs-aniso} shows simulated skymaps 
-for both a statistically isotropic (left panel) and an
-anisotropic (right panel) background. 
+for a statistically isotropic background (left panel) and an
+anisotropic background (right panel). 
 The anisotropic background in that figure follows the
 galactic plane in equatorial coordinates. 
 %
@@ -392,8 +392,8 @@ galactic plane in equatorial coordinates.
 \begin{center}
 \includegraphics[width=0.9\textwidth]{Figures/statiso-vs-aniso}
 \caption{Simulated sky maps of gravitational-wave power
-for both a statistically isotropic (left panel) and an 
-anisotropic (right panel) background.}
+for a statistically isotropic background (left panel) and an 
+anisotropic background (right panel).}
 \label{f:GWspectrum}
 \end{center}
 \end{figure}
@@ -401,9 +401,62 @@ anisotropic (right panel) background.}
 
 (ii) Stochastic backgrounds can also differ in 
 temporal distribution and amplitude.
+We have already seen examples of this in 
+Figure~\ref{f:BBH-BNS-timeseries}, for the expected
+backgrounds from stellar-mass BBH mergers and 
+BNS mergers throughout the universe (a LIGO source).
+As mentioned earlier, the rate estimates and 
+durations of these individual merger signals are such 
+that the BBH background is expected to be popcorn-like 
+(consisting of non-overlapping mergers), 
+while that for the BNS background is expected to be
+stationary and confusion-limited 
+(consisting of several overlapping BNS mergers at any
+instant of time).
+Another example of non-trivial temporal dependence
+is the confusion-limited signal from close 
+white-dwarf binaries in the Milky Way (a LISA source).
+This is an amplitude-modulated signal with 
+a 6-month period (Figure~\ref{f:cyclostationary_data}), 
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/cyclostationary_data}
+\caption{Simiulated time-domain output of a particular 
+combination of the LISA data over a 2-year period.
+Figure taken from \cite{Romano-Cornish:2017}.}
+\label{f:cyclostationary_data}
+\end{center}
+\end{figure}
+%
+due to LISA's ``cartwheeling" orbital motion around 
+the Sun.
+(The antenna pattern of LISA will point in the direction
+of the Galactic center twice every year.) 
+From the figure, we also see that the expected 
+white-dwarf binary signal will be larger than that 
+of the instrumental noise for LISA, thus constituting 
+an astrophysical {\em foreground}.
+This is atypical, however, 
+as most expected GWBs (e.g., for advanced LIGO, Virgo, 
+pulsar timing arrays, and CMB polarization measurements) 
+will be buried well below the instrumental noise,
+requiring observation over long periods of time to 
+confidently detect.
 
 (iii) Stochastic backgrounds can their power spectra
 depending on the source.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=\textwidth]{Figures/different_power_spectra}
+\caption{Simulated sky maps of gravitational-wave power
+for both a statistically isotropic (left panel) and an 
+anisotropic (right panel) background.}
+\label{f:different_power_spectra}
+\end{center}
+\end{figure}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical characterization of a stochastic background}
