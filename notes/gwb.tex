@@ -422,8 +422,10 @@ a 6-month period (Figure~\ref{f:cyclostationary_data}),
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{Figures/cyclostationary_data}
-\caption{Simiulated time-domain output of a particular 
+\caption{Simulated time-domain output of a particular 
 combination of the LISA data over a 2-year period.
+The modulation of the signal with a 6-month period
+is apparent in the data.
 Figure taken from \cite{Romano-Cornish:2017}.}
 \label{f:cyclostationary_data}
 \end{center}
@@ -437,26 +439,42 @@ From the figure, we also see that the expected
 white-dwarf binary signal will be larger than that 
 of the instrumental noise for LISA, thus constituting 
 an astrophysical {\em foreground}.
-This is atypical, however, 
-as most expected GWBs (e.g., for advanced LIGO, Virgo, 
-pulsar timing arrays, and CMB polarization measurements) 
-will be buried well below the instrumental noise,
-requiring observation over long periods of time to 
-confidently detect.
+This is atypical, however, as most expected GWBs will sit 
+below the instrumental noise (e.g., for advanced LIGO / Virgo,
+pulsar timing, CMB polarization experiments), requiring 
+observation over long periods of time to confidently detect.
 
-(iii) Stochastic backgrounds can their power spectra
-depending on the source.
+(iii) Stochastic backgrounds can also differ in their power 
+spectra as shown in Figure~\ref{f:different_power_spectra}.
 %
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/different_power_spectra}
-\caption{Simulated sky maps of gravitational-wave power
-for both a statistically isotropic (left panel) and an 
-anisotropic (right panel) background.}
+\caption{Simulated time-domain data (including the signals for an
+individual BNS merger and BBH ringdown), histograms, and power spectra
+for three different types of Gaussian-stationary GWBs.}
 \label{f:different_power_spectra}
 \end{center}
 \end{figure}
 %
+Here we plot simulated time-domain data (including the signals for an
+individaul BNS merger and BBH ringdown%
+\footnote{Our toy-model simulation for BBH ringdown is simply a 
+damped sinusoid with frequency 440~Hz.
+It has the correct qualitative behavior for a BBH ringdown, but 
+is not meant to be astrophysically realistic.}), 
+histograms, and power spectra
+for three different types of GWBs.
+For these toy-model simulations, we overlapped a sufficient number of 
+individual BNS merger and BBH ringdown signals to produce 
+Gaussian-stationary confusion-limited GWBs
+(second column and third columns).
+The difference between these backgrounds shows up in their power 
+spectra (third column).
+The power spectra for the BNS merger and BBH ringdown backgrounds 
+have the same shape as those for an individual BNS merger or 
+BBH ringdown, scaled by the total number of sources contributing 
+to the background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical characterization of a stochastic background}
