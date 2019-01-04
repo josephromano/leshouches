@@ -123,7 +123,7 @@ be able to provide information about the
 \subsection{Gravitational-wave analogue of the CMB}
 
 The ultimate goal of gravitational-wave background
-searches is to produce the GW analogue of Figure~\ref{f:CMB}.
+searches is to produce the GW equivalent of Figure~\ref{f:CMB},
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -134,7 +134,7 @@ radiation produced by the Planck 2013 mission.}
 \end{center}
 \end{figure}
 %
-This is a sky map of the temperature fluctuations in 
+which is a sky map of the temperature fluctuations in 
 the CMB blackbody radiation, $\Delta T/T$, relative 
 to the $T_0 = 2.73~{\rm K}$ isotropic component.
 (The dipole contribution due to our motion with respect 
@@ -151,6 +151,13 @@ The temperature fluctuations in the CMB radiation tell
 us about the density of matter on the surface of last 
 scattering, thus giving us a picture of the ``seeds" of 
 large-scale structure formation in the early universe.
+Given the weakness of the gravitational interaction 
+compared to the electromagnetic force, the GW equivalent 
+of Figure~\ref{f:CMB} would give us a picture of the 
+Universe a mere fraction of a second after the Big
+Bang (this is explained in a bit more detail in 
+Section~\ref{s:different_sources})---a ``holy grail" 
+for gravitational-wave astronomy.
 
 For perspective, Figure~\ref{f:CMB} was produced by 
 the Planck mission in 2013,
@@ -261,6 +268,7 @@ Section~\ref{s:nonstationary}.
 \label{s:different_types}
 
 \subsection{Different sources}
+\label{s:different_sources}
 
 The combined signal from stellar-mass BBH and BNS 
 mergers throughout the universe is just one way 
@@ -478,6 +486,123 @@ to the background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical characterization of a stochastic background}
+
+Since the individual signals comprising a GWB 
+background are either too weak or too numerous to 
+individually detect, the combined signal for the 
+background is for all practical purposes 
+{\em random}, similar to noise in an single detector.
+Hence, we need to describe the GWB {\em statistically}, 
+in terms of moments 
+(i.e., ensemble averages) of the metric perturbations 
+describing the GWB.
+
+\subsection{Ensemble averages and the energy 
+density spectrum in GWs}
+
+Recall that gravitational waves are time-varying 
+perturbations to the geometry of space-time, 
+which propagate away from the source at the speed 
+of light.
+In so-called transverse-traceless coordinates
+$(t,\vec x)\equiv (t,x^a)$, where $a=1,2,3$,
+the metric perturbations corresponding to a 
+plane wave (propagating in direction $\hat k\equiv-\hat n$) 
+have two degrees of freedom, corresponding to the 
+amplitudes of the 
+plus ($+$) and cross ($\times$) polarizations of
+the gravitational wave (Figure~\ref{f:polarizations}).
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/polarizations}
+\caption{The two orthogonal polarizations of a gravitational wave.}
+\label{f:polarizations}
+\end{center}
+\end{figure}
+%
+The metric perturbation for the most general GWB 
+can thus be written as a superposition of such 
+wave:
+%
+\be
+h_{ab}(t,\vec x) =
+\int_{-\infty}^\infty \D f\>
+\int \D^2\Omega_{\hat n}\>
+\sum_{A=+,\times}
+h_A(f,\hat n)e^A_{ab}(\hat n) 
+e^{i2\pi f(t+\hat n\cdot \vec x/c)}
+\label{e:planewave}
+\ee
+%
+where $f$ denotes the frequency of the 
+component waves, $\hat n$ their direction on the
+sky, and $A=+,\times$ their polarization.
+The quantities $e^A_{ab}(\hat n)$ are polarization
+tensors, given by
+%
+\be
+\begin{aligned}
+e_{ab}^+(\hat n)
+&=\hat l_a\hat l_b-\hat m_a\hat m_b\,,
+\\
+e_{ab}^\times(\hat n)
+&=\hat l_a\hat m_b+\hat m_a\hat l_b\,,
+\end{aligned}
+\ee
+%
+where $\hat l$, $\hat m$ are any two orthogonal unit 
+vectors in the plane orthogonal to $\hat n$
+(Figure~\ref{f:plane_wave}).
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/plane_wave}
+\caption{Coordinate system and unit vectors used in the 
+plane-wave expansion of a GWB.}
+\label{f:plane}
+\end{center}
+\end{figure}
+%
+Typically, for stochastic background analyses, 
+we take $\hat l$, $\hat m$ to be the 
+standard angular unit vectors tangent to the sphere:
+%
+\be
+\begin{aligned}
+\hat n
+&=\sin\theta\cos\phi\,\hat x
++\sin\theta\sin\phi\,\hat y
++\cos\theta\,\hat z
+\equiv \hat r\,,
+\\
+\hat l
+&=\cos\theta\cos\phi\,\hat x
++\cos\theta\sin\phi\,\hat y
+-\sin\theta\,\hat z 
+\equiv \hat\theta\,,
+\\
+\hat m
+&=-\sin\phi\,\hat x
++\cos\phi\,\hat y
+\equiv \hat\phi\,.
+\end{aligned}
+\label{e:nlm_def}
+\ee
+%
+The quantities $h_A(f,\hat n)$ are the Fourier 
+coefficients of the plane wave expansion.
+Since the metric perturbations $h_{ab}(t,\vec x)$ 
+for a stochastic background are random variables, 
+so too are the 
+Fourier coefficients $h_A(f,\hat n)$.
+The probability distributions of $h_A(f,\hat n)$ 
+define the statistical properties of the background.
+
+Without loss of generality 
+
+\subsection{Calculating $\Omega_{\rm gw}(f)$ for an
+astrophysically-generated background}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
