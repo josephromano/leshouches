@@ -7,6 +7,7 @@
 \usepackage{epsfig}
 \usepackage{epsf}
 \usepackage{caption}
+\usepackage{cancel}
 
 % more packages
 %\usepackage{draftcopy}
@@ -402,7 +403,7 @@ galactic plane in equatorial coordinates.
 \caption{Simulated sky maps of gravitational-wave power
 for a statistically isotropic background (left panel) and an 
 anisotropic background (right panel).}
-\label{f:GWspectrum}
+\label{f:statiso-vs-aniso}
 \end{center}
 \end{figure}
 %
@@ -497,8 +498,7 @@ in terms of moments
 (i.e., ensemble averages) of the metric perturbations 
 describing the GWB.
 
-\subsection{Ensemble averages and the energy 
-density spectrum in GWs}
+\subsection{Plane-wave expansion}
 
 Recall that gravitational waves are time-varying 
 perturbations to the geometry of space-time, 
@@ -542,6 +542,18 @@ e^{i2\pi f(t+\hat n\cdot \vec x/c)}
 where $f$ denotes the frequency of the 
 component waves, $\hat n$ their direction on the
 sky, and $A=+,\times$ their polarization.
+(The direction of propagation of the component
+waves is given by $\hat k=-\hat n$.)
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/plane_wave}
+\caption{Coordinate system and unit vectors used in the 
+plane-wave expansion of a GWB.}
+\label{f:plane_wave}
+\end{center}
+\end{figure}
+%
 The quantities $e^A_{ab}(\hat n)$ are polarization
 tensors, given by
 %
@@ -556,44 +568,46 @@ e_{ab}^\times(\hat n)
 \ee
 %
 where $\hat l$, $\hat m$ are any two orthogonal unit 
-vectors in the plane orthogonal to $\hat n$
-(Figure~\ref{f:plane_wave}).
-%
-\begin{figure}[htbp!]
-\begin{center}
-\includegraphics[width=0.4\textwidth]{Figures/plane_wave}
-\caption{Coordinate system and unit vectors used in the 
-plane-wave expansion of a GWB.}
-\label{f:plane_wave}
-\end{center}
-\end{figure}
-%
+vectors in the plane orthogonal to $\hat n$.
 Typically, for stochastic background analyses, 
-we take $\hat l$, $\hat m$ to be the 
-standard angular unit vectors tangent to the sphere:
+we take $\hat l$, $\hat m$ to be proportional to 
+the standard angular unit vectors tangent to the sphere,
+so that $\{\hat k, \hat l, \hat m\}$ is a right-handed
+system (Figure~\ref{f:plane_wave}):
 %
 \be
 \begin{aligned}
-\hat n
-&=\sin\theta\cos\phi\,\hat x
-+\sin\theta\sin\phi\,\hat y
-+\cos\theta\,\hat z
-\equiv \hat r\,,
+\hat k
+&=-\sin\theta\cos\phi\,\hat x
+-\sin\theta\sin\phi\,\hat y
+-\cos\theta\,\hat z
+= -\hat r\,,
 \\
 \hat l
-&=\cos\theta\cos\phi\,\hat x
-+\cos\theta\sin\phi\,\hat y
--\sin\theta\,\hat z 
-\equiv \hat\theta\,,
+&=+\sin\phi\,\hat x
+-\cos\phi\,\hat y
+= -\hat\phi\,,
 \\
 \hat m
-&=-\sin\phi\,\hat x
-+\cos\phi\,\hat y
-\equiv \hat\phi\,.
+&=-\cos\theta\cos\phi\,\hat x
+-\cos\theta\sin\phi\,\hat y
++\sin\theta\,\hat z 
+= -\hat\theta\,.
 \end{aligned}
-\label{e:nlm_def}
+\label{e:klm_def}
 \ee
 %
+For analyzing deterministic sources that have 
+a symmetry axis (e.g., the angular momentum 
+vector for binary inspiral), one takes 
+$\hat l$ and $\hat m$ to be rotated relative 
+to $-\hat\phi$ and $-\hat\theta$, 
+where the rotation angle is the 
+{\em polarization angle} of the source.
+
+\subsection{Ensemble averages and the energy 
+density spectrum in GWs}
+
 The quantities $h_A(f,\hat n)$ are the Fourier 
 coefficients of the plane wave expansion.
 Since the metric perturbations 
@@ -603,7 +617,41 @@ Fourier coefficients.
 The probability distributions of the Fourier coefficients
 thus define the statistical properties of the background.
 
-Without loss of generality 
+Without loss of generality, we will assume that the 
+expected value of the Fourier coefficients is 
+zero---i.e., $\langle h_A(f,\hat n)\rangle=0$.
+The quadratic (or second-order) moments 
+specify possible correlations between the Fourier
+coefficients.
+For example, for an unpolarized, stationary, 
+isotropic background, we have
+%
+\be
+\langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
+=\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,
+\ee
+%
+where $S_h(f)$ is the strain power spectral
+density of the background.
+(The fact that the RHS is proportional 
+to $\delta(f-f')$ is a consequence of stationarity.
+That it is proportional to $\delta_{AA'}$ is a 
+consequence of the background being unpolarized---i.e.,
+that the $+$ and $\times$ polarization components 
+are statistically
+equivalent and uncorrelated with one another.
+And since the RHS depends on the directions $\hat n$,
+$\hat n'$ only via $\delta(n,n')$ is a consequence 
+of isotropy.
+For an unpolarized, stationary, anisotropic background
+
+For {\em Gaussian} backgrounds, all cubic 
+and higher-order moments are either identically zero 
+or can be written in terms of the quadratic moments.
+Thus, the quadratic expectation values of the Fourier
+coefficients completely characterize the statistical
+properties of a Gaussian-distributed GWB.
+
 
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
 astrophysically-generated background}
