@@ -617,32 +617,40 @@ Fourier coefficients.
 The probability distributions of the Fourier coefficients
 thus define the statistical properties of the background.
 
-Without loss of generality, we will assume that the 
+Without loss of generality, we can assume that the 
 expected value of the Fourier coefficients is 
-zero---i.e., $\langle h_A(f,\hat n)\rangle=0$.
-The quadratic (or second-order) moments 
+zero---i.e.,
+%
+\be
+\langle h_A(f,\hat n)\rangle=0\,,
+\ee
+%
+where angle brackets denote {\em ensemble average}
+over different realizations of the background.
+The quadratic (i.e., second-order) moments 
 specify possible correlations between the Fourier
 coefficients.
-For example, for an unpolarized, stationary, 
-isotropic background, we have
+For example, for an {\em unpolarized, stationary, 
+isotropic} background, we have
 %
 \be
 \langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
-=\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,
+=\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,,
 \ee
 %
-where $S_h(f)$ is the strain power spectral
-density of the background.
-(The fact that the RHS is proportional 
-to $\delta(f-f')$ is a consequence of stationarity.
-That it is proportional to $\delta_{AA'}$ is a 
-consequence of the background being unpolarized---i.e.,
-that the $+$ and $\times$ polarization components 
-are statistically
+where $S_h(f)$ is the {\em strain power spectral 
+density} of the background, with units of ${\rm Hz}^{-1}$.
+The fact that the RHS is proportional 
+to $\delta(f-f')$ is a consequence of stationarity,
+which is the lack of a preferred origin of time.
+That the RHS depends on the polarization indices
+only via  $\delta_{AA'}$ is a consequence of the 
+background being unpolarized---i.e., the $+$ and $\times$ 
+polarization components are statistically
 equivalent and uncorrelated with one another.
-And since the RHS depends on the directions $\hat n$,
-$\hat n'$ only via $\delta(n,n')$ is a consequence 
-of isotropy.
+Similarly. the dependence on sky directions
+only via $\delta(n,n')$ is a consequence of isotropy.
+
 For an unpolarized, stationary, anisotropic background
 
 For {\em Gaussian} backgrounds, all cubic 
