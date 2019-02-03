@@ -605,8 +605,8 @@ to $-\hat\phi$ and $-\hat\theta$,
 where the rotation angle is the 
 {\em polarization angle} of the source.
 
-\subsection{Ensemble averages and the energy 
-density spectrum in GWs}
+\subsection{Ensemble averages}
+\label{s:ensemble_averages}
 
 The quantities $h_A(f,\hat n)$ are the Fourier 
 coefficients of the plane wave expansion.
@@ -627,42 +627,108 @@ zero---i.e.,
 %
 where angle brackets denote {\em ensemble average}
 over different realizations of the background.
-The quadratic (i.e., second-order) moments 
-specify possible correlations between the Fourier
-coefficients.
-For example, for an {\em unpolarized, stationary, 
-isotropic} background, we have
+(The different realizations could be thought of 
+as the different backgrounds observed by
+different spatially-located observers in a homogeneous 
+and isotropic universe.)
+The second-order moments (i.e., quadratic expectation 
+values) specify possible correlations between the 
+Fourier coefficients.
+For example, if the background is 
+{\em unpolarized, stationary, and isotropic}, then
 %
 \be
 \langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
 =\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,,
+\label{e:quad_iso}
 \ee
 %
 where $S_h(f)$ is the {\em strain power spectral 
-density} of the background, with units of ${\rm Hz}^{-1}$.
+density} of the background, 
+having units of ${\rm strain}^2\,{\rm Hz}^{-1}$.
 The fact that the RHS is proportional 
-to $\delta(f-f')$ is a consequence of stationarity,
-which is the lack of a preferred origin of time.
+to $\delta(f-f')$ is a consequence of the assumption
+of {\em stationarity}---i.e., that there is no 
+preferred origin of time.
 That the RHS depends on the polarization indices
 only via  $\delta_{AA'}$ is a consequence of the 
 background being unpolarized---i.e., the $+$ and $\times$ 
 polarization components are statistically
 equivalent and uncorrelated with one another.
-Similarly. the dependence on sky directions
-only via $\delta(n,n')$ is a consequence of isotropy.
+Similarly, the dependence on sky directions only via 
+$\delta(n,n')$ is a consequence of isotropy---i.e., 
+that the power in the GWB has no preferred
+direction on the sky.
 
-For an unpolarized, stationary, anisotropic background
+If we drop the last assumption, allowing the background
+to be {\em anisotropic}, then the quadratic
+expectation values become
+%
+\be
+\langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
+=\frac{1}{4} {\cal P}(f,\hat n)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,,
+\label{e:quad_aniso}
+\ee
+%
+where
+%
+\be
+S_h(f) = \int \D^2\Omega_{\hat n}\,{\cal P}(f,\hat n)\,.
+\ee
+%
+Here ${\cal P}(f,\hat n)$ is the strain power
+spectral density per unit solid angle,
+units ${\rm strain}^2\,{\rm Hz}^{_1}\,{\rm sr}^{-1}$.
 
 For {\em Gaussian} backgrounds, all cubic 
 and higher-order moments are either identically zero 
-or can be written in terms of the quadratic moments.
+or can be written in terms of the second-order moments.
 Thus, the quadratic expectation values of the Fourier
 coefficients completely characterize the statistical
-properties of a Gaussian-distributed GWB.
+properties of a Gaussian-distributed background.
 
+\subsection{Energy density spectrum in gravitational waves}
+\label{s:Omega_gw}
+
+As mentioned above, $S_h(f)$ is the strain power 
+spectral density of the GWB.
+It can be related to the {\em energy density spectrum}
+%
+\be
+\Omega_{\rm gw}(f) 
+\equiv \frac{1}{\rho_c}\frac{\D\rho_{\rm gw}}{\D\ln f}
+=\frac{f}{\rho_c}\frac{\D\rho_{\rm gw}}{\D f}\,,
+\ee
+%
+where $\D\rho_{\rm gw}$ is the energy density in gravitational
+waves contained in the frequency interval $f$ to $f+\D f$, and 
+$\rho_c\equiv {3 H_0^2 c^2}/{8\pi G}$
+is the {\em critical} energy density (that needed to just 
+close the universe today).
+We leave it as an exercise for you to show that
+%
+\be
+S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,,
+\label{e:S_h_and_Omega_gw}
+\ee
+%
+for which you will need to use
+%
+\be
+\rho_{\rm gw} = \frac{c^2}{32\pi G}
+\langle \dot h_{ab}(t,\vec x)\dot h^{ab}(t,\vec x)\rangle\,,
+\ee
+%
+the plane-wave expansion (\ref{e:planewave}) for the
+metric perturbations, and the quadratic expectation
+values (\ref{e:quad_iso}) for the Fourier coefficients.
+(\exer 2: Derive the above relationship
+(\ref{e:S_h_and_Omega_gw}) 
+between $S_h(f)$ and $\Omega_{\rm gw}(f)$.)
 
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
 astrophysically-generated background}
+\label{s:Phinney_formula}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
