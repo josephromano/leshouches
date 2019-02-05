@@ -121,7 +121,8 @@ gravitational-wave background (GWB) will
 be able to provide information about the 
 {\em statistical} properties of the source.
 
-\subsection{Gravitational-wave analogue of the CMB}
+\subsection{Gravitational-wave analogue of the cosmic
+microwave background}
 
 The ultimate goal of gravitational-wave background
 searches is to produce the GW analogue of Figure~\ref{f:CMB},
@@ -136,7 +137,8 @@ radiation produced by the Planck 2013 mission.}
 \end{figure}
 %
 which is a sky map of the temperature fluctuations in 
-the CMB blackbody radiation, $\Delta T/T$, relative 
+the cosmic microwave background (CMB) 
+blackbody radiation, $\Delta T/T$, relative 
 to the $T_0 = 2.73~{\rm K}$ isotropic component.
 (The dipole contribution due to our motion with respect 
 to the cosmic rest frame has also been subtracted out.)
@@ -692,12 +694,14 @@ properties of a Gaussian-distributed background.
 
 As mentioned above, $S_h(f)$ is the strain power 
 spectral density of the GWB.
-It can be related to the {\em energy density spectrum}
+It can be related to the (normalized) 
+{\em energy density spectrum}
 %
 \be
 \Omega_{\rm gw}(f) 
 \equiv \frac{1}{\rho_c}\frac{\D\rho_{\rm gw}}{\D\ln f}
 =\frac{f}{\rho_c}\frac{\D\rho_{\rm gw}}{\D f}\,,
+\label{e:Omega_gw}
 \ee
 %
 where $\D\rho_{\rm gw}$ is the energy density in gravitational
@@ -705,27 +709,76 @@ waves contained in the frequency interval $f$ to $f+\D f$, and
 $\rho_c\equiv {3 H_0^2 c^2}/{8\pi G}$
 is the {\em critical} energy density (that needed to just 
 close the universe today).
-We leave it as an exercise for you to show that
-%
-\be
-S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,,
-\label{e:S_h_and_Omega_gw}
-\ee
-%
-for which you will need to use
+Using
 %
 \be
 \rho_{\rm gw} = \frac{c^2}{32\pi G}
 \langle \dot h_{ab}(t,\vec x)\dot h^{ab}(t,\vec x)\rangle\,,
+\label{e:rho_gw}
 \ee
 %
-the plane-wave expansion (\ref{e:planewave}) for the
-metric perturbations, and the quadratic expectation
-values (\ref{e:quad_iso}) for the Fourier coefficients.
-(\exer 2: Derive the above relationship
-(\ref{e:S_h_and_Omega_gw}) 
-between $S_h(f)$ and $\Omega_{\rm gw}(f)$.)
+which gives the energy density in gravitational waves
+in terms of the quadratic expectation values of the
+metric perturbations, one can show that
+%
+\be
+S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,.
+\label{e:S_h_and_Omega_gw}
+\ee
+%
+(\exer 2: Derive the above relationship 
+between $S_h(f)$ and $\Omega_{\rm gw}(f)$.
+In addition to (\ref{e:Omega_gw}) and (\ref{e:rho_gw}),
+you will need to use the plane-wave expansion (\ref{e:planewave})
+and the quadratic expectation values 
+(\ref{e:quad_iso} or (\ref{e:quad_aniso}).
 
+In addition to $S_h(f)$ and $\Omega_{\rm gw}(f)$, one
+sometimes describes the strength of a GWB in terms of
+the (dimensionless) {\em characteristic strain}
+$h_c(f)$ defined by
+%
+\be
+h_c(f) = \sqrt{f S_h(f)}\,.
+\ee
+%
+For backgrounds described by a power-law dependence
+on frequency,% 
+\footnote{There is no sum over $\alpha$ or $\beta$ in 
+the following expressions.}
+%
+\be
+h_c(f) = A_\alpha \left(\frac{f}{f_{\rm ref}}\right)^\alpha\,
+\quad\Leftrightarrow\quad
+\Omega_{\rm gw}(f) = \Omega_\beta\left(\frac{f}{f_{\rm ref}}\right)^\beta\,,
+\label{e:powerlaw}
+\ee
+%
+where $\alpha$ and $\beta$ are spectral indices,
+and $A_\alpha$ and $\Omega_\beta$ are the amplitudes 
+of the characteristic strain and energy density 
+spectrum, respectively, at some reference frequency
+$f=f_{\rm ref}$.
+Using the above definitions and relationships between
+$\Omega_{\rm gw}(f)$, $S_h(f)$, and $h_c(f)$, we have
+%
+\be
+\Omega_\beta = \frac{2\pi^2}{3 H_0^2}f_{\rm ref}^2 A_\alpha^2\,,
+\qquad
+\beta = 2\alpha +2\,.
+\ee
+%
+For standard inflationary backgrounds, $\Omega_{\rm gw}(f)={\rm const}$,
+for which $\beta=0$ and $\alpha=-1$.
+For GWBs associated with binary inspiral, 
+$\Omega_{\rm gw}(f)\propto f^{2/3}$ (as we shall show below),
+for which $\beta=2/3$ and $\alpha=-2/3$.
+This last dependence is valid for both compact binary coalescences 
+consisting of neutron stars and/or 
+stellar-mass black holes (relevant for advanced LIGO, Virgo, etc.) 
+and also for super-massive black hole binaries in the 
+centers of distant galaxies (relevant for pulsar timing searches).
+ 
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
 astrophysically-generated background}
 \label{s:Phinney_formula}
