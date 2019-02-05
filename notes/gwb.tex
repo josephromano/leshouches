@@ -106,6 +106,7 @@ the text.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Motivation}
+\label{s:motivation}
 
 A stochastic background of gravitational radiation 
 is a superposition of gravitational-wave signals that
@@ -123,6 +124,7 @@ be able to provide information about the
 
 \subsection{Gravitational-wave analogue of the cosmic
 microwave background}
+\label{s:GW_CMB}
 
 The ultimate goal of gravitational-wave background
 searches is to produce the GW analogue of Figure~\ref{f:CMB},
@@ -175,6 +177,7 @@ of the GWB.
 
 \subsection{The background of BBH and BNS mergers in the 
 LIGO band}
+\label{s:BBH-BNS-LIGO}
 
 But fortunately, as mentioned above, the advanced LIGO
 and Virgo detectors have detected other 
@@ -201,9 +204,13 @@ using the local rate estimate from these first detections,
 $9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$.
 This leads to a prediction for the total rate of 
 BBH mergers between $\sim\!1$~per minute to a few per hour.
-(\exer 1: Verify these values for the total rate.%
+(You are asked in Exercise~\ref{exer:1} to verify
+these predictions.)%
 \footnote{A more complete description of this and 
-all other exercises is given in Section~\ref{s:exercises}.})
+all other exercises are given in 
+Section~\ref{s:exercises}.
+The number next to ``Exercise" is a link that brings 
+you to the detailed exercise in Section~\ref{s:exercises}.}
 Since the duration of BBH merger signals in band 
 is $\sim\!1~{\rm s}$, which is much smaller than the 
 average duration between successive mergers, the 
@@ -357,6 +364,7 @@ The Planck satellite and BICEP experiment (located
 at the South Pole) are searching for this signal.
 
 \subsection{Different signal properties}
+\label{s:different_signal_properties}
 
 Not surprisingly, different sources of a GWB give
 rise, in general, to different properties of the 
@@ -489,6 +497,7 @@ to the background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical characterization of a stochastic background}
+\label{s:mathematical_characterization}
 
 Since the individual signals comprising a GWB 
 background are either too weak or too numerous to 
@@ -501,6 +510,7 @@ in terms of moments
 describing the GWB.
 
 \subsection{Plane-wave expansion}
+\label{s:plane_wave}
 
 Recall that gravitational waves are time-varying 
 perturbations to the geometry of space-time, 
@@ -699,17 +709,24 @@ It can be related to the (normalized)
 %
 \be
 \Omega_{\rm gw}(f) 
-\equiv \frac{1}{\rho_c}\frac{\D\rho_{\rm gw}}{\D\ln f}
-=\frac{f}{\rho_c}\frac{\D\rho_{\rm gw}}{\D f}\,,
+\equiv \frac{1}{\rho_{\rm c}}\frac{\D\rho_{\rm gw}}{\D\ln f}
+=\frac{f}{\rho_{\rm c}}\frac{\D\rho_{\rm gw}}{\D f}\,,
 \label{e:Omega_gw}
 \ee
 %
 where $\D\rho_{\rm gw}$ is the energy density in gravitational
 waves contained in the frequency interval $f$ to $f+\D f$, and 
-$\rho_c\equiv {3 H_0^2 c^2}/{8\pi G}$
+$\rho_{\rm c}\equiv {3 H_0^2 c^2}/{8\pi G}$
 is the {\em critical} energy density (that needed to just 
 close the universe today).
-Using
+The result is 
+%
+\be
+S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,.
+\label{e:S_h_and_Omega_gw}
+\ee
+%
+which makes use of the relation
 %
 \be
 \rho_{\rm gw} = \frac{c^2}{32\pi G}
@@ -719,17 +736,11 @@ Using
 %
 which gives the energy density in gravitational waves
 in terms of the quadratic expectation values of the
-metric perturbations, one can show that
-%
-\be
-S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,.
-\label{e:S_h_and_Omega_gw}
-\ee
-%
-(\exer 2: Derive the above relationship 
-between $S_h(f)$ and $\Omega_{\rm gw}(f)$.
-In addition to (\ref{e:Omega_gw}) and (\ref{e:rho_gw}),
-you will need to use the plane-wave expansion (\ref{e:planewave})
+metric perturbations.
+You are asked in Exercise~\ref{exer:2} to derive
+(\ref{e:S_h_and_Omega_gw}); to do so, 
+you will also need to use the 
+plane-wave expansion (\ref{e:planewave})
 and the quadratic expectation values 
 (\ref{e:quad_iso} or (\ref{e:quad_aniso}).
 
@@ -775,13 +786,75 @@ $\Omega_{\rm gw}(f)\propto f^{2/3}$ (as we shall show below),
 for which $\beta=2/3$ and $\alpha=-2/3$.
 This last dependence is valid for both compact binary coalescences 
 consisting of neutron stars and/or 
-stellar-mass black holes (relevant for advanced LIGO, Virgo, etc.) 
-and also for super-massive black hole binaries in the 
-centers of distant galaxies (relevant for pulsar timing searches).
+stellar-mass black holes (relevant for advanced LIGO, Virgo, etc.),
+and also for inspirals of supermassive black-holes (SMBHs) 
+in the centers of distant galaxies (relevant for pulsar timing searches).
  
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
 astrophysically-generated background}
 \label{s:Phinney_formula}
+
+There is a relatively simple formula for calculating
+the energy density spectrum $\Omega_{\rm gw}(f)$ 
+produced by a collection of discrete astrophysical GW 
+sources distributed throughout the universe\cite{Phinney:2001}:
+%
+\be
+\left.
+\Omega_{\rm gw}(f) = \frac{1}{\rho_{\rm c}}\int_0^\infty \D z\>
+n(z) \frac{1}{1+z}\left(f_{\rm s}\frac{\D E_{\rm gw}}{\D f_{\rm s}}
+\right)\right|_{f_{\rm s}=f(1+z)}\,.
+\label{e:phinney1}
+\ee
+%
+(We will call this the ``Phinney formula", since it was 
+first written down by E.S.~Phinney in an unpublished
+paper in 2001.)
+For this formula,
+one needs only the comoving number density of
+sources $n(z)$ as a function of the cosmological redshift $z$, 
+and the energy spectrum of an individual source
+$\D E_{\rm gw}/\D f_s)$ as measured in its rest frame.
+The source frame frequency $f_{\rm s}$ is related to the 
+observed (present-day) frequency $f$ via $f_{\rm s}=f(1+z)$.
+The factor of $1/(1+z)$ in the integrand is needed to 
+redshift the energy measured in the source frame to that
+measured today.
+
+The above relationship can also be written in terms of 
+the comoving rate density $R(z)$, which is related to the
+comoving number density $n(z)$ via
+%
+\be
+n(z)\,\D z = R(z)\,|\D t|_{t=t(z)}\,.
+\ee
+%
+The result is
+%
+\be
+\left.
+\Omega_{\rm gw}(f) = \frac{f}{\rho_{\rm c}H_0}\int_0^\infty \D z\>
+R(z) \frac{1}{(1+z)E(z)}\left(\frac{\D E_{\rm gw}}{\D f_{\rm s}}
+\right)\right|_{f_{\rm s}=f(1+z)}\,,
+\label{e:phinney2}
+\ee
+%
+where 
+%
+\be
+E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}
+\ee
+%
+is a cosmological factor that arises when relating
+evaluating $\D t/\D z$.
+(Exercise~\ref{exer:3} asks you to prove this 
+rate-version of the Phinney formula, filling in some 
+of the cosmology-related details.)
+
+To illustrate the Phinney formula in action, we will 
+now verify the $\Omega_{\rm gw}(f)\propto f^{2/3}$
+power-law dependence for binary inspiral, which we
+stated without proof at the end of Section~\ref{s:Omega_gw}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
@@ -817,6 +890,7 @@ A more detailed description of the suggested exercises.
 \ben
 
 \i {\em Rate estimate of stellar-mass binary black hole mergers:}
+\label{exer:1}
 
 Estimate the total rate (number of events per time) of 
 stellar-mass binary black hole mergers throughout the universe 
@@ -863,6 +937,7 @@ events per time) for sources out to redshift $z=10$.
 %
 
 \i {\em Relating $S_h(f)$ and $\Omega_{\rm gw}(f)$:}
+\label{exer:2}
 
 Derive the relationship 
 \be
@@ -879,6 +954,7 @@ which expresses the energy-density in gravitational-waves to
 the metric perturbations $h_{ab}(t,\vec x)$.)
 
 \i {\em Cosmology and the ``Phinney formula" for astrophysical backgrounds:}
+\label{exer:3}
 
 (a) Using the Friedmann equation
 %
