@@ -722,7 +722,7 @@ close the universe today).
 The result is 
 %
 \be
-S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,.
+S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,,
 \label{e:S_h_and_Omega_gw}
 \ee
 %
@@ -807,14 +807,14 @@ n(z) \frac{1}{1+z}\left(f_{\rm s}\frac{\D E_{\rm gw}}{\D f_{\rm s}}
 \label{e:phinney1}
 \ee
 %
-(We will call this the ``Phinney formula", since it was 
+We will call this the ``Phinney formula", since it was 
 first written down by E.S.~Phinney in an unpublished
-paper in 2001.)
-For this formula,
+paper in 2001.
+For this expression,
 one needs only the comoving number density of
 sources $n(z)$ as a function of the cosmological redshift $z$, 
 and the energy spectrum of an individual source
-$\D E_{\rm gw}/\D f_s)$ as measured in its rest frame.
+$\D E_{\rm gw}/\D f_s$ as measured in its rest frame.
 The source frame frequency $f_{\rm s}$ is related to the 
 observed (present-day) frequency $f$ via $f_{\rm s}=f(1+z)$.
 The factor of $1/(1+z)$ in the integrand is needed to 
@@ -845,16 +845,99 @@ where
 E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}
 \ee
 %
-is a cosmological factor that arises when relating
-evaluating $\D t/\D z$.
-(Exercise~\ref{exer:3} asks you to prove this 
-rate-version of the Phinney formula, filling in some 
-of the cosmology-related details.)
+is a cosmological factor that arises when evaluating $\D t/\D z$.
+$\Omega_{\rm m}$ and $\Omega_\Lambda$ are the 
+fractional energy densities for matter
+(ordinary baryonic matter plus dark matter) 
+and dark energy, with numerical values roughly
+equal to $0.30$ and $0.70$, respectively.
+Exercise~\ref{exer:3} asks you to prove this 
+``rate-version" of the Phinney formula, filling in some 
+of the cosmology-related details.
+
+\subsubsection{Example: $\Omega_{\rm gw}(f)$ for binary inspiral}
+\label{s:binary_inspiral}
 
 To illustrate the Phinney formula in action, we will 
-now verify the $\Omega_{\rm gw}(f)\propto f^{2/3}$
+verify the $\Omega_{\rm gw}(f)\propto f^{2/3}$
 power-law dependence for binary inspiral, which we
 stated without proof at the end of Section~\ref{s:Omega_gw}.
+Since we are interested here only in the frequency 
+dependence of $\Omega_{\rm gw}(f)$, all we need to 
+calculate is the energy spectrum $\D E_{\rm gw}/\D f_{\rm s}$
+for a single binary system.
+
+So let us consider two masses, $m_1$ and $m_2$, in orbit 
+around their common center of mass (Figure~\ref{f:binary_inspiral}).
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/binary_inspiral}
+\caption{Two masses $m_1$, $m_2$ in orbit around their common
+of mass.}
+\label{f:binary_inspiral}
+\end{center}
+\end{figure}
+%
+We make the standard definitions
+%
+\be
+\begin{aligned}
+r\equiv r_1+r_2\,,\quad
+M\equiv m_1 + m_2\,,\quad
+\mu\equiv \frac{m_1 m_2}{m_1 + m_2}
+\end{aligned}
+\ee
+%
+of the {\em relative separation}, {\em total mass}, 
+and {\em reduced mass} of the system.
+In terms of these quantities, Kepler's third law and 
+the total orbital energy of the system can be written as
+\be
+\omega^2 r^3 = GM\,,\qquad
+E_{\rm orb} = -\frac{GM\mu}{2r}\,.
+\ee
+%
+The power emitted in gravitational waves comes from
+the orbital energy
+%
+\be
+\frac{\D E_{\rm gw}}{\D t} 
+= -\frac{\D E_{\rm orb}}{\D t}\,,
+\ee
+%
+which implies that the energy spectrum is given by
+%
+\be
+\frac{\D E_{\rm gw}}{\D f_{\rm s}} 
+= \frac{\D t}{\D f_{\rm s}}\frac{\D E_{\rm gw}}{\D t}
+= -\frac{\D t}{\D f_{\rm s}}\frac{\D E_{\rm orb}}{\D t}\,.
+\ee
+%
+It is now a relatively simple matter to evaluate the
+RHS of the last expression, using Kepler's law to 
+replace all occurences of $r$ and $\dot r$ with 
+expressions involving $\omega$ and $\dot\omega$.
+The final result is 
+%
+\be
+\frac{\D E_{\rm gw}}{\D f_{\rm s}} 
+\sim {\cal M}_{\rm c}^{5/3} f_{\rm s}^{-1/3}\,,
+\qquad
+{\cal M}_c^{5/3} \equiv M^{2/3}\mu\,,
+\ee
+%
+where ${\cal M}_{\rm c}$ is the {\em chirp mass} of 
+the system, and where we have ignored all numerical
+factors.
+Note that we also replaced the orbital angular frequency
+$\omega\equiv 2\pi f_{\rm orb}$ by the GW frequency
+$f_{\rm s} = 2 f_{\rm orb}$, with the factor of 2 
+arising for quadrupolar radiation in general relativity.
+Returning now to (\ref{e:phinney2}), we substitute
+$f_s=(1+z)f$ and multiply by the factor of $f$ outside 
+the integral, to get
+$\Omega_{\rm gw}(f) \propto f^{2/3}$ as claimed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Correlation methods - basic idea}
