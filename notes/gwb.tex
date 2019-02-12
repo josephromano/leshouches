@@ -179,7 +179,7 @@ of the GWB.
 LIGO band}
 \label{s:BBH-BNS-LIGO}
 
-But fortunately, as mentioned above, the advanced LIGO
+Fortunately, as mentioned above, the advanced LIGO
 and Virgo detectors have detected other 
 gravitational-wave signals from several individual BBH 
 and BNS mergers.
@@ -936,12 +936,78 @@ $f_{\rm s} = 2 f_{\rm orb}$, with the factor of 2
 arising for quadrupolar radiation in general relativity.
 Returning now to (\ref{e:phinney2}), we substitute
 $f_s=(1+z)f$ and multiply by the factor of $f$ outside 
-the integral, to get
+the integral to get
 $\Omega_{\rm gw}(f) \propto f^{2/3}$ as claimed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Correlation methods - basic idea}
+\section{Correlation methods}
 \label{s:correlations}
+
+As discussed above, a stochastic GWB is described by a 
+{\em random} signal, which looks much like noise in a 
+single detector.
+This means that standard search techniques, such 
+as {\em matched filtering}, that correlate the 
+data against known, deterministic waveforms 
+(e.g., BBH chirps) won't work for a GWB.
+So we have to consider other possibilities:
+(i) One possibility is to know the noise sources 
+in our GW detectors {\em well enough} (in both 
+amplitude and spectral shape) so that we can 
+attribute any unexpected excess to a GWB.
+(This was basically how Penzias and Wilson 
+initially detected the CMB in 1965; they saw an excess 
+noise temperature of about $3.5^\circ~{\rm K}$ in their
+radio antenna that could not be attributed to any other
+noise source.)
+(ii) The second possibility is to use data
+from multiple detectors.
+Then we can look for evidence of a common 
+disturbance in the multiple data streams consistent 
+with the response of each detector to gravitational waves.
+
+Currently, (i) is not an option for ground-based 
+interferometers as the noise sources are not known 
+to the level needed to attribute any observed excess
+to gravitational waves.
+But (ii) is an option as LIGO consists of two 
+detectors, one in Hanford, WA, the other in Livingston,
+LA; Virgo, in Pisa, Italy provides a third detector; 
+and soon we will have large-scale interferometers in
+both Japan and India.
+Cross-correlating data from multiple detectors works
+for searching for a GWB works because, even though the 
+signal is random, it is the {\em same} in the different 
+dectors (modulo the known instrument response functions).
+The correlated signal thus grows coherently (i.e.,
+linear with observation time), in contrast to the
+correlated noise, which is incoherent (and grows
+like the square-root of the observation time).
+
+\subsection{Basic idea}
+
+To illustrate how cross-correlation works in the
+simplest possible scenario, consider a single
+sample of data from two detectors:
+%
+\be
+\ee
+%
+where $h$ is the common GW signal component, and
+$n_1$, $n_2$ are the corresponding instrumental
+noise components.
+Cross-correlation for this case simply amounts to 
+taking the product of the two data samples, 
+$\hat C_{12}\equiv d_1 d_2$.
+If we take the expectation value of this crorrelation
+we get
+%
+\be
+\ee
+
+\subsection{Extension to multiple data samples}
+
+\subsection{Optimal filtering}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some simple examples}
