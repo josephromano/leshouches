@@ -946,7 +946,7 @@ $\Omega_{\rm gw}(f) \propto f^{2/3}$ as claimed.
 As discussed above, a stochastic background of GWs 
 is described by a {\em random} signal, which looks 
 like noise in a single detector.
-As such, standard search techniques, like 
+As such, standard search techniques like 
 {\em matched filtering}, which correlate the data 
 against known, deterministic waveforms (e.g., BBH chirps) 
 won't work when trying to detect a GWB.
@@ -979,34 +979,39 @@ interferometers in Japan and India.
 Cross-correlating data from multiple detectors works
 for detecting a GWB since, even though the signal is 
 random, it is the {\em same} signal in the different 
-dectors (modulo the known instrument response functions).
+dectors (modulo the physical separation and relative
+orientation of the detectors).
+In effect, the random output of one detector is
+used as a template for the data in another detector.
 As we shall see below, the signal-to-noise ratio of 
 the cross-correlation grows like the square-root of 
 the observation time.
-This means that although the GWB might be weak 
+Thus, although the GWB might be weak 
 relative to the noise, it can still be extracted from 
 a cross-correlation measurement if it is observed
 for a long enough period of time.
 
 \subsection{Basic idea}
+\label{s:basic_idea}
 
 To illustrate the basic idea behind cross-correlation,
 we will consider first the simplest possible scenario---i..e,
-a single sample of data from two detectors:
+a single sample of data from two colocated and coaligned
+detectors:
 %
 \be
 \begin{aligned}
 d_1 &= h + n_1\,,
 \\
-d_2 &= h + n_2\,,
+d_2 &= h + n_2\,.
 \end{aligned}
 \ee
 %
-where $h$ is the common GW signal component, and
-$n_1$, $n_2$ are the corresponding instrumental
+Here $h$ denotes the common GW signal component, 
+and $n_1$, $n_2$ denote the corresponding instrumental
 noise components.
-Cross-correlating the data for this case simply 
-amounts to taking the product of the two data 
+Cross-correlating the data for this case amounts to 
+simply taking the product of the two data 
 samples, $\hat C_{12}\equiv d_1 d_2$.
 The expected value of the cross-correlation is
 %
@@ -1032,13 +1037,13 @@ leaving
 \be
 \langle \hat C_{12}\rangle = \langle h^2\rangle\equiv S_h\,,
 \ee
-which is just the variance (or power) in the GW signal.
+which is just the variance (i.e., power) in the GW signal.
 
 \subsection{Extension to multiple data samples}
+\label{s:multiple_samples}
 
-The above analysis can be easily extended to multiple samples.
-Here we will consider the case of $N$ sample of a {\em white}
-GWB in {\em white} uncorrelated detector noise:
+The above analysis can be easily extended to the case of 
+multiple samples:
 %
 \be
 \begin{aligned}
@@ -1049,17 +1054,112 @@ d_{2i} &= h_i + n_{2i}\,,
 \ee
 %
 where $i=1,2,\cdots,N$.
-The statement that the GWB and signal are ``white" means
+As before, we will assume that the two detectors are
+coincident and coaligned, and that the noise in the
+two detectors are uncorrelated with the GW signal 
+and with one another
+%
+\be
+\langle n_{1i} h_j\rangle = 0\,,
+\qquad
+\langle n_{2i} h_j\rangle = 0\,,
+\qquad
+\langle n_{1i}n_{2j}\rangle=0\,.
+\ee
+%
+We will also assume that the GWB 
+and detector noise are both {\em white}, which means 
 %
 \be
 \langle h_ih_j\rangle = S_h\,\delta_{ij}\,,
 \qquad
 \langle n_{1i}n_{1j}\rangle = S_{n_1}\,\delta_{ij}\,,
 \qquad
-\langle n_{2i}n_{2j}\rangle = S_{n_2}\,\delta_{ij}\,.
+\langle n_{2i}n_{2j}\rangle = S_{n_2}\,\delta_{ij}\,,
 \ee
+%
+where $S_h$, $S_{n_1}$, $S_{n_2}$ are the variances
+(i.e., power) in the GW signal and detector noise, respectively.
+For this case, our cross-correlation statistic is the
+average of the products of the individual data samples
+%
+\be
+\hat S_h 
+\equiv \hat C_{12} 
+\equiv \frac{1}{N}\sum_{i=1}^N d_{1i} d_{2i}\,,
+\ee
+%
+which, as we shall see below, is again an estimator of the 
+power in the GWB (hence the ``hat" ($\hat{\ }$) over the 
+$S_h$ on the LHS of this equation).
+
+Using the above definitions and quadratic expectation 
+values, it is easy to show that
+%
+\be
+\mu\equiv \langle \hat C_{12}\rangle
+= \frac{1}{N}\sum_{i=1}^N \langle d_{1i} d_{2i}\rangle
+= \frac{1}{N}\sum_{i=1}^N \langle h_i^2\rangle
+= S_h\,.
+\ee
+%
+Thus, the cross-correlation statistic $\hat C_{12}$ is 
+an (unbiased) estimator of the GW power $S_h$.
+The variance in this estimator can be calculated via
+%
+\be
+\sigma^2\equiv \langle \hat C_{12}^2\rangle-
+\langle \hat C_{12}\rangle^2
+=\left(\frac{1}{N}\right)^2
+\sum_{i=1}^N \sum_{ij=1}^N 
+\left(\langle d_{1i} d_{2i} d_{1j} d_{2j}\rangle - 
+\langle d_{1i} d_{2i}\rangle \langle d_{1j} d_{2j}\rangle\right)\,.
+\ee
+%
+To evaluate the RHS of the above equation, we make use of 
+the identity
+%
+\be
+\langle abcd\rangle =
+\langle ab\rangle\langle cd\rangle + \langle ac\rangle \langle bd\rangle 
++\langle ad\rangle \langle bc\rangle\,,
+\ee
+%
+which is valid for zero-mean Gaussian random variables.
+Using this identity and the quadratic expectation values
+between the signal and noise, we end up with
+%
+\be
+\sigma^2 = \frac{1}{N}(S_1 S_2 + S_h^2)
+\ee
+%
+where 
+%
+\be
+S_1\equiv S_{n_1} + S_h\,,
+\qquad
+S_2\equiv S_{n_2} + S_h\,,
+\ee
+%
+are the total power in the detector output (consisting of 
+both signal and noise power).
+Since the power in the GWB is expected to be weak compared
+to the detector noise, the variance can be approximated
+as $\sigma^2\simeq S_1 S_2/N$, for which the expected 
+signal-to-noise ratio is given by
+%
+\be
+\rho\equiv \frac{\mu}{\sigma}\simeq \frac{S_h}{\sqrt{S_1 S_2/N}}
+\simeq \sqrt{N}\,\frac{S_h}{S_n}\,,
+\ee
+%
+where $\sqrt{S_1 S_2}\simeq\sqrt{S_{n_1} S_{n_2}}\equiv S_n$.
+This result verifies the statement made earlier that the signal-to-noise
+ratio for a cross-correlation measurement grows like the square-root 
+of the observation time (in this case, the total number of samples).
 
 \subsection{Optimal filtering}
+\label{s:optimal_filtering}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some simple examples}
