@@ -943,69 +943,121 @@ $\Omega_{\rm gw}(f) \propto f^{2/3}$ as claimed.
 \section{Correlation methods}
 \label{s:correlations}
 
-As discussed above, a stochastic GWB is described by a 
-{\em random} signal, which looks much like noise in a 
-single detector.
-This means that standard search techniques, such 
-as {\em matched filtering}, that correlate the 
-data against known, deterministic waveforms 
-(e.g., BBH chirps) won't work for a GWB.
-So we have to consider other possibilities:
+As discussed above, a stochastic background of GWs 
+is described by a {\em random} signal, which looks 
+like noise in a single detector.
+As such, standard search techniques, like 
+{\em matched filtering}, which correlate the data 
+against known, deterministic waveforms (e.g., BBH chirps) 
+won't work when trying to detect a GWB.
+Instead, we have to consider other possibilities:
 (i) One possibility is to know the noise sources 
-in our GW detectors {\em well enough} (in both 
-amplitude and spectral shape) so that we can 
-attribute any unexpected excess to a GWB.
+in our GW detector well enough (in both 
+amplitude and spectral shape) that we can 
+attribute any unexpected excess ``noise" to a GWB.
 (This was basically how Penzias and Wilson 
-initially detected the CMB in 1965; they saw an excess 
-noise temperature of about $3.5^\circ~{\rm K}$ in their
-radio antenna that could not be attributed to any other
-noise source.)
-(ii) The second possibility is to use data
-from multiple detectors.
+initially detected the CMB; they saw an excess 
+noise temperature of $\sim\!3.5^\circ~{\rm K}$ in their
+radio antenna that they could not attribute to 
+any other noise source.)
+(ii) Another possibility is to use data from 
+multiple detectors.
 Then we can look for evidence of a common 
-disturbance in the multiple data streams consistent 
-with the response of each detector to gravitational waves.
+disturbance in the multiple data streams 
+consistent with each detector's response to 
+gravitational waves.
 
 Currently, (i) is not an option for ground-based 
-interferometers as the noise sources are not known 
-to the level needed to attribute any observed excess
-to gravitational waves.
+interferometers since the noise sources are not known 
+at the level needed to attribute any observed excess
+power to gravitational waves.
 But (ii) is an option as LIGO consists of two 
-detectors, one in Hanford, WA, the other in Livingston,
-LA; Virgo, in Pisa, Italy provides a third detector; 
-and soon we will have large-scale interferometers in
-both Japan and India.
+detectors, one in Hanford, WA, the other in Livingston, LA.
+Virgo, in Italy, provides a third detector, 
+and soon we will have two more large-scale 
+interferometers in Japan and India.
 Cross-correlating data from multiple detectors works
-for searching for a GWB works because, even though the 
-signal is random, it is the {\em same} in the different 
+for detecting a GWB since, even though the signal is 
+random, it is the {\em same} signal in the different 
 dectors (modulo the known instrument response functions).
-The correlated signal thus grows coherently (i.e.,
-linear with observation time), in contrast to the
-correlated noise, which is incoherent (and grows
-like the square-root of the observation time).
+As we shall see below, the signal-to-noise ratio of 
+the cross-correlation grows like the square-root of 
+the observation time.
+This means that although the GWB might be weak 
+relative to the noise, it can still be extracted from 
+a cross-correlation measurement if it is observed
+for a long enough period of time.
 
 \subsection{Basic idea}
 
-To illustrate how cross-correlation works in the
-simplest possible scenario, consider a single
-sample of data from two detectors:
+To illustrate the basic idea behind cross-correlation,
+we will consider first the simplest possible scenario---i..e,
+a single sample of data from two detectors:
 %
 \be
+\begin{aligned}
+d_1 &= h + n_1\,,
+\\
+d_2 &= h + n_2\,,
+\end{aligned}
 \ee
 %
 where $h$ is the common GW signal component, and
 $n_1$, $n_2$ are the corresponding instrumental
 noise components.
-Cross-correlation for this case simply amounts to 
-taking the product of the two data samples, 
-$\hat C_{12}\equiv d_1 d_2$.
-If we take the expectation value of this crorrelation
-we get
+Cross-correlating the data for this case simply 
+amounts to taking the product of the two data 
+samples, $\hat C_{12}\equiv d_1 d_2$.
+The expected value of the cross-correlation is
 %
 \be
+\langle \hat C_{12}\rangle
+=\langle d_1 d_2\rangle
+= \langle h^2\rangle + \cancelto{0}{\langle h n_2\rangle} 
++ \cancelto{0}{\langle n_1 h\rangle}
++ \langle n_1 n_2\rangle\,,
 \ee
+%
+where we $\langle h n_2\rangle = 0 = \langle n_1 h\rangle$,
+since the GW signal and instrumental noise are not correlated
+with one another.
+If we further assume that the noise in the two detectors
+is {\em uncorrelated} (which is a good valid assumption 
+if the detectors are widely separated%
+\footnote{Note that global magnetic fields, e.g., Schumann 
+resonances, {\em can} produce environmental correlations in 
+widely separated detectors.}), then $\langle n_1 n_2\rangle =0$,
+leaving
+%
+\be
+\langle \hat C_{12}\rangle = \langle h^2\rangle\equiv S_h\,,
+\ee
+which is just the variance (or power) in the GW signal.
 
 \subsection{Extension to multiple data samples}
+
+The above analysis can be easily extended to multiple samples.
+Here we will consider the case of $N$ sample of a {\em white}
+GWB in {\em white} uncorrelated detector noise:
+%
+\be
+\begin{aligned}
+d_{1i} &= h_i + n_{1i}\,,
+\\
+d_{2i} &= h_i + n_{2i}\,,
+\end{aligned}
+\ee
+%
+where $i=1,2,\cdots,N$.
+The statement that the GWB and signal are ``white" means
+%
+\be
+\langle h_ih_j\rangle = S_h\,\delta_{ij}\,,
+\qquad
+\langle n_{1i}n_{1j}\rangle = S_{n_1}\,\delta_{ij}\,,
+\qquad
+\langle n_{2i}n_{2j}\rangle = S_{n_2}\,\delta_{ij}\,.
+\ee
 
 \subsection{Optimal filtering}
 
