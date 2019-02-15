@@ -1161,6 +1161,101 @@ of the observation time (in this case, the total number of samples).
 \subsection{Optimal filtering}
 \label{s:optimal_filtering}
 
+To handle the case of physically-separated and misaligned 
+detectors, we need to include the non-trivial response of 
+a GW detector to a GWB.  
+We will do this in Sections~\ref{s:nontrivial_response} and
+\ref{s:nontrivial_correlations}.
+For now, we will simply state without proof that the 
+correlated response of physically separated and misaligned 
+detectors to a GWB is represented by the so-called 
+{\em overlap function} (or overlap reduction function)
+$\Gamma_{12}(f)$, which relates the strain power in the
+GWB $S_h(f)$ to the cross-correlated signal power in two 
+detectors, i.e., $C_{12}(f) = \Gamma_{12}(f) S_h(f)$.
+In terms of the quadratic expectation values of the GW 
+signal in the two detectors%
+\footnote{The factor of $1/2$ is included on the RHS
+so that the power spectrum is {\em one-sided}.
+That is, the total cross-correlated power in the GWB is
+given by the integral of $\Gamma_{12}(f)S_h(f)$ over just
+the {\em positive} frequencies.
+The factor of $\delta(f-f')$ is a consequence of stationarity.}:
+%
+\be
+\langle \tilde h_1(f) \tilde h_2^*(f')\rangle
+=\frac{1}{2}\delta(f-f')\Gamma_{12}(f)S_h(f)\,,
+\ee
+%
+where $\tilde h_1(f)$, $\tilde h_2(f)$ denote the 
+Fourier transforms of GW signal components 
+$h_1(t)$, $h_2(t)$ in  the two detectors.
+For reference, the (auto-correlated) power spectra 
+of the detector noise $P_{n_1}(f)$, $P_{n_2}(f)$ 
+are defined in terms of the noise components 
+$\tilde n_1(f)$, $\tilde n_2(f)$ via:
+%
+\be
+\begin{aligned}
+\langle \tilde n_1(f) \tilde n_1^*(f')\rangle
+&=\frac{1}{2}\delta(f-f')P_{n_1}(f)\,,
+\\
+\langle \tilde n_2(f) \tilde n_2^*(f')\rangle
+&=\frac{1}{2}\delta(f-f')P_{n_2}(f)\,,
+\end{aligned}
+\ee
+%
+and the cross-correlated noise is assumed to be zero:
+%
+\be
+\langle \tilde n_1(f) \tilde n_2^*(f')\rangle =0\,.
+\ee
+A plot of $\Gamma_{12}(f)$ for the LIGO Hanford and
+LIGO Livingston interferometers are given in 
+Section~\ref{s:nontrivial_correlations}.
+
+Given the above definitions, we can now ask and answer
+the question: what is the optimal way to correlate the 
+data from two physically separated and possibly 
+mis-aligned detectors to search for an isotropic GWB?
+To do this, we start by forming the generic 
+cross-correlation
+%
+\be
+\hat C_{12} = \int_{-T/2}^{T/2}\D t\>\int_{-T/2}^{T/2}\D t'\>
+d_1(t)d_2(t) Q(t,t')\,,
+\ee
+%
+where $Q(t,t')$ is an a~apriori arbitrary filter 
+function and $T$ is the observation time.
+For stationary data, $Q(t,t')$ should depend only on
+the difference between the two time arguments, 
+so that $Q(t,t')\equiv Q(t-t')$.
+In the Fourier domain, we can then write
+%
+\be
+\hat C_{12} \simeq 
+\int_{-\infty}^{\infty}\D f\>\int_{-\infty}^{\infty}\D f'\>
+\delta_T(f,f')\tilde d_1(f)\tilde d_2(f') \tilde Q^*(f')\,,
+\ee
+%
+where $\tilde Q(f)$ is the Fourier transform of 
+$Q(\Delta t)$, and $\delta_T(f-f')$ is a finite-time
+version of the Dirac delta function defined as
+$\delta_T(f-f')\equiv T\,{\rm sinc}\,(f-f')$, where
+${\rm sinc}\,x \equiv \sin x/x$.
+
+Our criterion for optimality is to chose the filter
+function $Q$ so that the expected signal-to-noise 
+ratio of $\hat C_{12}$ is maximized.
+(The expected signal-to-noise ratio is defined as 
+in the previous section
+$\rho\equiv \mu/\sigma$, where 
+$\mu\equiv\langle \hat C_{12}\rangle$
+and 
+$\sigma^2\equiv \langle \hat C_{12}^2\rangle -\langle
+\hat C_{12}\rangle^2$.) ...
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some simple examples}
 \label{s:simple_examples}
@@ -1169,9 +1264,11 @@ We now apply the above correlation method
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
+\label{s:nontrivial_response}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial correlations}
+\label{s:nontrivial_correlations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{What to do in the absence of correlations?}
