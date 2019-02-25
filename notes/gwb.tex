@@ -1164,14 +1164,16 @@ of the observation time (in this case, the total number of samples).
 To handle the case of physically-separated and misaligned 
 detectors, we need to include the non-trivial response of 
 a GW detector to a GWB.  
-We will do this in Sections~\ref{s:nontrivial_response} and
+We will do this in more detail in 
+Sections~\ref{s:nontrivial_response} and
 \ref{s:nontrivial_correlations}.
-For now, we will simply state without proof that the 
+For now, we simply state without proof that the 
 correlated response of physically separated and misaligned 
 detectors to a GWB is represented by the so-called 
-{\em overlap function} (or overlap reduction function)
-$\Gamma_{12}(f)$, which relates the strain power in the
-GWB $S_h(f)$ to the cross-correlated signal power in two 
+{\em overlap function} (or overlap reduction function),
+denoted $\Gamma_{12}(f)$, 
+which relates the strain power in the
+GWB, $S_h(f)$, to the cross-correlated signal power in two 
 detectors, i.e., $C_{12}(f) = \Gamma_{12}(f) S_h(f)$.
 In terms of the quadratic expectation values of the GW 
 signal in the two detectors%
@@ -1190,7 +1192,7 @@ The factor of $\delta(f-f')$ is a consequence of stationarity.}:
 where $\tilde h_1(f)$, $\tilde h_2(f)$ denote the 
 Fourier transforms of GW signal components 
 $h_1(t)$, $h_2(t)$ in  the two detectors.
-For reference, the (auto-correlated) power spectra 
+For comparison, the (auto-correlated) power spectra 
 of the detector noise $P_{n_1}(f)$, $P_{n_2}(f)$ 
 are defined in terms of the noise components 
 $\tilde n_1(f)$, $\tilde n_2(f)$ via:
@@ -1210,16 +1212,17 @@ and the cross-correlated noise is assumed to be zero:
 \be
 \langle \tilde n_1(f) \tilde n_2^*(f')\rangle =0\,.
 \ee
-A plot of $\Gamma_{12}(f)$ for the LIGO Hanford and
-LIGO Livingston interferometers are given in 
+Plots of $\Gamma_{12}(f)$ for the LIGO Hanford and 
+LIGO Livingston interferometers, and for LIGO Hanford
+and Virgo interferometers can be found in 
 Section~\ref{s:nontrivial_correlations}.
 
-Given the above definitions, we can now ask and answer
-the question: what is the optimal way to correlate the 
+Given the above definitions, we can now ask
+the question: what is the optimal way to correlate 
 data from two physically separated and possibly 
 mis-aligned detectors to search for an isotropic GWB?
-To do this, we start by forming the generic 
-cross-correlation
+To answer this question, we start by forming the 
+generic cross-correlation
 %
 \be
 \hat C_{12} = \int_{-T/2}^{T/2}\D t\>\int_{-T/2}^{T/2}\D t'\>
@@ -1230,6 +1233,7 @@ where $Q(t,t')$ is an a~apriori arbitrary filter
 function and $T$ is the observation time.
 For stationary data, $Q(t,t')$ should depend only on
 the difference between the two time arguments, 
+$\Delta t\equiv t-t'$, 
 so that $Q(t,t')\equiv Q(t-t')$.
 In the Fourier domain, we can then write
 %
@@ -1241,26 +1245,69 @@ In the Fourier domain, we can then write
 %
 where $\tilde Q(f)$ is the Fourier transform of 
 $Q(\Delta t)$, and $\delta_T(f-f')$ is a finite-time
-version of the Dirac delta function defined as
+version of the Dirac delta function defined by 
 $\delta_T(f-f')\equiv T\,{\rm sinc}\,(f-f')$, where
 ${\rm sinc}\,x \equiv \sin x/x$.
 
-Our criterion for optimality is to chose the filter
-function $Q$ so that the expected signal-to-noise 
-ratio of $\hat C_{12}$ is maximized.
+To proceed further we need to define what we mean by
+{\em optimal}.
+A natural criterion in this context is to {\em maximize 
+the expected signal-to-noise ratio} of $\hat C_{12}$ 
+for a GWB with fixed spectral shape $H(f)$.
 (The expected signal-to-noise ratio is defined as 
 in the previous section
 $\rho\equiv \mu/\sigma$, where 
 $\mu\equiv\langle \hat C_{12}\rangle$
 and 
 $\sigma^2\equiv \langle \hat C_{12}^2\rangle -\langle
-\hat C_{12}\rangle^2$.) ...
+\hat C_{12}\rangle^2$.) 
+As you are asked to show in Exercise~\ref{exer:4},
+this maximization condition  determines the form of the 
+filter 
+function $\tilde Q(f)$ up to an overall normalization:
+%
+\be
+\tilde Q(f) \propto \frac{\Gamma_{12}(f) H(f)}
+{P_1(f) P_2(f)}\,,
+\ee
+%
+where $P_1(f)$, $P_2(f)$ are the total power in the two
+detectors---i.e., 
+$P_1(f) = P_{n_1}(f) + P_{\rm gw}(f)$,
+$P_2(f) = P_{n_2}(f) + P_{\rm gw}(f)$, 
+which are approximately equal to 
+$P_{n_1}(f)$, $P_{n_2}(f)$ assuming that the GW signal
+is weak compared to the detector noise.
+Note that the numerator of $\tilde Q(f)$ is proportional
+to the expected value of the cross-correlated data in
+the frequency domain, while
+the denominator basically deweights the correlation when 
+the detector noise is large.
+The dependence of $\tilde Q(f)$ on the spectral shape
+$H(f)$ means that the optimal filter is tuned to a 
+particular GWB.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Some simple examples}
+\section{Optimal filtering applied to some simple examples}
 \label{s:simple_examples}
 
-We now apply the above correlation method
+We now apply the above correlation methods to some simulated data.%
+\footnote{These are {\em toy model} simulations, whose sole 
+purpose is to illustrate how optimal filtering works.
+The amplitude and duration of the simulated data are not meant 
+to be representative of real searches for GWBs.}
+We will consider three different GWB injected into 
+uncorrelated, white detector noise in two coincident
+and coaligned detectors:
+(i) a white GWB, 
+(ii) a confusion-limited BNS GWB, 
+and 
+(iii) a two-component GWB, formed from the superposition
+of the GWB backgrounds from (i) and (ii).
+The three cases are shown in Figure~\ref{f:simple_examples}.
+Recall that a white GWB has spectral shape $H(f)=1$, while
+a confusion-limited background of BNS has spectral shape
+$H(f)=(f/f_{\rm ref})^{-7/3}$ (Figure~\ref{f:different_power_spectra}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
@@ -1411,6 +1458,7 @@ If there is more than one type of source, one must sum
 the contributions of each source to $\Omega_{\rm gw}(f)$.)
 
 \i {\em Optimal filtering for the cross-correlation statistic:}
+\label{exer:4}
 
 Verify the form 
 %
@@ -1443,6 +1491,7 @@ statistic can be written in terms of this inner product.)
 
 \i {\em Maximum-likelihood estimators for single and multiple
 parameters:}
+\label{exer:5}
 
 (a) Show that the maximum-likelihood estimator $\hat a$ of 
 the single parameter $a$ in the likelihood function
@@ -1485,6 +1534,7 @@ is not invertible, so some sort of regularization is needed
 to do the matrix inversion.
 
 \i {\em Timing-residual response for a 1-arm, 1-way detector:}
+\label{exer:6}
 
 Derive the timing residual reponse function
 %
@@ -1507,6 +1557,7 @@ The origin of coordinates is taken to be at the position
 of the detector.
 
 \i {\em Overlap function for colocated electric dipole antennae:}
+\label{exer:7}
 
 Show that the overlap function for a pair of (short)
 colocated electric dipole antennae pointing in directions 
@@ -1530,6 +1581,7 @@ $\vec x_0$ is the common location of the two antenna.)
  
 \i {\em Maximum-likelihood estimators for the standard 
 cross-correlation statistic:}
+\label{exer:8}
 
 \label{exer:MLestimators} 
 Verify that 
@@ -1585,6 +1637,7 @@ d_{Ii} \left(C^{-1}\right)_{Ii,Jj} d_{Jj}\,.
 \ee
 
 \i {\em Derivation of the maximum-likelihood ratio detection statistic:}
+\label{exer:9}
 
 Verify that twice the log of the maximum-likelihood
 ratio for the standard stochastic likelihood function
@@ -1601,6 +1654,7 @@ detectors, using the results of Exercise~\ref{exer:MLestimators}.)
 
 \i {\em Standard cross-correlation likelihood by marginalizing over 
 stochastic signal prior:}
+\label{exer:10}
 
 Derive the standard form of the likelihood function
 for stochastic background searches 
