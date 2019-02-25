@@ -1179,7 +1179,8 @@ In terms of the quadratic expectation values of the GW
 signal in the two detectors%
 \footnote{The factor of $1/2$ is included on the RHS
 so that the power spectrum is {\em one-sided}.
-That is, the total cross-correlated power in the GWB is
+In other words, 
+the total cross-correlated power in the GWB is
 given by the integral of $\Gamma_{12}(f)S_h(f)$ over just
 the {\em positive} frequencies.
 The factor of $\delta(f-f')$ is a consequence of stationarity.}:
@@ -1251,9 +1252,10 @@ ${\rm sinc}\,x \equiv \sin x/x$.
 
 To proceed further we need to define what we mean by
 {\em optimal}.
-A natural criterion in this context is to {\em maximize 
-the expected signal-to-noise ratio} of $\hat C_{12}$ 
-for a GWB with fixed spectral shape $H(f)$.
+A natural criterion in this context is to 
+{\em maximize the expected signal-to-noise ratio} 
+of $\hat C_{12}$ 
+for a GWB with a fixed spectral shape $H(f)$.
 (The expected signal-to-noise ratio is defined as 
 in the previous section
 $\rho\equiv \mu/\sigma$, where 
@@ -1287,28 +1289,151 @@ The dependence of $\tilde Q(f)$ on the spectral shape
 $H(f)$ means that the optimal filter is tuned to a 
 particular GWB.
 
+The overall normalization of the optimal filter $\tilde Q(f)$ 
+is not determined by the maximation condition, since
+the normalization factor cancels out in the calculation 
+of the signal-to-noise ratio $\rho=\mu/sigma$.  
+Typically, one uses this freedom in the choice of 
+normalization factor to set the expected value $\mu$ 
+equal to the amplitude of the background---i.e.,
+$\mu = \Omega_{\rm gw}(f_{\rm ref})$.
+In other words, the measured value of the cross-correlation,
+$\hat C_{12}$, is a {\em point estimate} of $\Omega_{\rm gw}(f_{\rm ref})$.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Optimal filtering applied to some simple examples}
 \label{s:simple_examples}
 
-We now apply the above correlation methods to some simulated data.%
+We now apply the above correlation methods to some simple 
+examples involving simulated data.%
 \footnote{These are {\em toy model} simulations, whose sole 
 purpose is to illustrate how optimal filtering works.
 The amplitude and duration of the simulated data are not meant 
 to be representative of real searches for GWBs.}
-We will consider three different GWB injected into 
+We will consider three different GWBs injected into 
 uncorrelated, white detector noise in two coincident
 and coaligned detectors:
 (i) a white GWB, 
 (ii) a confusion-limited BNS GWB, 
 and 
 (iii) a two-component GWB, formed from the superposition
-of the GWB backgrounds from (i) and (ii).
-The three cases are shown in Figure~\ref{f:simple_examples}.
+of the GWBs from (i) and (ii).
+The simulated time-domain data for the three different 
+cases are shown in Figure~\ref{f:simple_examples}.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/simple_examples}
+\caption{Similuted time-domain data for the three different
+cases discussed in the main text:
+(top row) a white GWB in uncorrelated, white detector noise,
+(middle row) a confusion-limited BNS GWB in uncorrelated, 
+white detector noise,
+(bottom row) a two-component GWB formed from the superposition 
+of the GWBs from the top two rows in uncorrelated, white 
+detector noise.}
+\label{f:simple_examples}
+\end{center}
+\end{figure}
+%
 Recall that a white GWB has spectral shape $H(f)=1$, while
 a confusion-limited background of BNS has spectral shape
-$H(f)=(f/f_{\rm ref})^{-7/3}$ (Figure~\ref{f:different_power_spectra}).
+$H(f)=(f/f_{\rm ref})^{-7/3}$ 
+(see Figure~\ref{f:different_power_spectra}).
 
+\subsection{Single-component analyses}
+
+For example (i), we find that the measured and injected
+values of the amplitude of the GWB agree to 3.5\%, 
+which is within 1-$\sigma$.
+The corresponding optimally-filtered signal-to-noise
+ratio is $\rho=2.9$.
+For example (ii), the measured and injected values of
+the amplitude of the GWB agree to 2.7\%, which again 
+is within 1-$\sigma$.
+The corresponding optimally-filtered signal-to-noise
+ratio for this case is $\rho=12$.
+Note that even though the overall amplitude of the
+background is noticeably smaller for the confusion-limited
+BNS GWB, the signal-to-noise ratio is considerably
+larger (12 versus 2.9).
+This is because the spectrum of the GW signal differs 
+in this case from that of the detector noise,
+which helps in distinguishing the signal and noise components.
+
+Finally for example (iii), if we filter the data for 
+the two components separately, 
+we overestimate the amplitude of the white GWB component 
+by 48\%, which is greater than 1-$\sigma$, and overestimate
+the amplitude of the BNS GWB by 6.9\%, which is within 1-$\sigma$.
+Basically, filtering the data for each GWB component 
+separately typically leads to {\em overestimates}
+of the amplitudes of the individual components, 
+but {\em underestimates} of the error bars.
+The overestimates arise since the other GWB component
+also contributes to the correlated signal.
+
+\subsection{Multi-component analysis}
+
+To better extract the amplitudes of the individual
+components for example (iii), we need to go beyond 
+the simple one-component filtering model, 
+enlarging our signal model to allow for a superpostion 
+of multiple GWB components.
+(We will explain this in more detail below.)
+Doing so allows us to extract the ampltitude 
+of the white GWB component to 7.3\%, corresponding
+to a signal-to-noise ratio of 1.4, and extract
+the amplitude of the BNS GWB component to 3.8\%,
+correponding to a signal-to-noise ratio of 6.0.
+This {\em joint} analysis for the two components
+properly takes into account the {\em covariance}
+between the spectral shapes of the two components~\cite{Parida:2016}.
+
+To see how this joint analysis works in more
+detail, we will write down a likelihood function
+for the data 
+%
+\be
+\hat C_{12}(f)\equiv\frac{2}{T} \tilde d_1(f)d_2(f)\,.
+\ee
+%
+The expected value of this correlated data is
+\be
+\langle\hat C_{12}(f)\rangle
+=\sum_\alpha \Gamma_{12}(f)H_\alpha(f)
+\equiv \sum_\alpha M_\alpha(f) A_\alpha\,,
+\ee
+%
+where $H_\alpha(f)$ are the different spectral
+shapes with amplitudes $A_\alpha$.
+The covariance matrix of the data is given by
+%
+\be
+\begin{aligned}
+N_{12}(f,f') \equiv
+\langle \hat C_{12}(f)\hat C_{12}^*(f')\rangle -
+\langle \hat C_{12}(f)\rangle \langle \hat C_{12}^*(f')\rangle
+\\
+&\simeq \delta_{ff'}\,P_1(f) P_2(f)
+\end{aligned}
+\ee
+%
+in the weak-signal approximation.
+The likelihood function is then
+
+
+
+
+
+
+ 
+that is not consistent with uncorrelated noise.
+
+For the two-component background example, one
+should instead filter for both components
+
+imagine filtering
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
 \label{s:nontrivial_response}
