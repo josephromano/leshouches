@@ -1173,10 +1173,10 @@ detectors to a GWB is represented by the so-called
 {\em overlap function} (or overlap reduction function),
 denoted $\Gamma_{12}(f)$, 
 which relates the strain power in the
-GWB, $S_h(f)$, to the cross-correlated signal power in two 
-detectors, i.e., $C_{12}(f) = \Gamma_{12}(f) S_h(f)$.
+GWB, $S_h(f)$, to the cross-correlated signal power 
+in the two detectors, i.e., $C_{12}(f) = \Gamma_{12}(f) S_h(f)$.
 In terms of the quadratic expectation values of the GW 
-signal in the two detectors%
+signal in the two detectors, we have%
 \footnote{The factor of $1/2$ is included on the RHS
 so that the power spectrum is {\em one-sided}.
 In other words, 
@@ -1195,7 +1195,7 @@ Fourier transforms of GW signal components
 $h_1(t)$, $h_2(t)$ in  the two detectors.
 For comparison, the (auto-correlated) power spectra 
 of the detector noise $P_{n_1}(f)$, $P_{n_2}(f)$ 
-are defined in terms of the noise components 
+can be written in terms of the noise components 
 $\tilde n_1(f)$, $\tilde n_2(f)$ via:
 %
 \be
@@ -1219,9 +1219,9 @@ and Virgo interferometers can be found in
 Section~\ref{s:nontrivial_correlations}.
 
 Given the above definitions, we can now ask
-the question: what is the optimal way to correlate 
+the question: ``What is the optimal way to correlate 
 data from two physically separated and possibly 
-mis-aligned detectors to search for an isotropic GWB?
+mis-aligned detectors to search for a GWB?"
 To answer this question, we start by forming the 
 generic cross-correlation
 %
@@ -1299,7 +1299,8 @@ Typically, we use this freedom in the choice of
 normalization to set the expected value $\mu$ of the
 cross-correlation equal to the overall amplitude of 
 the background---i.e., $\mu = \Omega_{\rm gw}(f_{\rm ref})$.
-In other words, the measured value of the 
+In other words, for this choice of normalization, 
+the measured value of the 
 cross-correlation statistic, $\hat C_{12}$, is a 
 {\em point estimate} of $\Omega_{\rm gw}(f_{\rm ref})$.
 
@@ -1384,8 +1385,8 @@ also contributes to the correlated signal.
 
 To better extract the amplitudes of the individual
 components for example (iii), we need to go beyond 
-the simple single-component optimal-filtering model, 
-to a signal model that allows for a superpostion 
+single-component optimal-filtering, and consider 
+a signal model that allows for a superpostion 
 of multiple GWB components~\cite{Parida:2016}.
 So instead of taking the cross-correlation to be a 
 {\em single number}, $\hat C_{12}$, which is obtained 
@@ -1401,7 +1402,8 @@ explicit, defining
 where $\tilde d_1(f)$, $\tilde d_2(f)$ are the Fourier
 transforms of the time-domain data $d_1(t)$, $d_2(t)$ 
 from the two detectors.
-We will treat $\hat C_{12}(f)$ for different frequencies 
+We will treat the values of $\hat C_{12}(f)$ 
+for different frequencies $f$
 as the `data points' from which to construct a 
 likelihood function.
 Now, the expected value of the correlated data is
@@ -1453,14 +1455,15 @@ p(\hat C|A,N)\propto\exp\left[-\frac{1}{2}
 %
 which is the probability of the cross-correlated data
 $\hat C_{12}(f)$ 
-given the amplitudes of the GWB spectral components 
-$A_\alpha$ and the noise in the two detectors $N_{12}(f,f')$.
+given the amplitudes $A_\alpha$ of the GWB 
+spectral components 
+and the noise in the two detectors $N_{12}(f,f')$.
 
-We are now in a position To obtain estimators of the 
-amplitudes of the components of the GWB, by maximizing
-the likelihood function with respect the $A_\alpha$.
-The final result, as you will show in Exercise~\ref{exer:5}(b),
-is 
+We can now obtain estimators of the amplitudes of the 
+GWB components, by maximizing the likelihood function 
+with respect to the $A_\alpha$.
+The final result (which you are asked to show in 
+Exercise~\ref{exer:5}) is: 
 %
 \be
 \hat A = F^{-1} X\,,
@@ -1474,10 +1477,8 @@ F\equiv M^\dagger N^{-1} M\,,
 X\equiv M^\dagger N^{-1} \hat C\,.
 \ee
 %
-The quantity $F$ is called the {\em Fisher information matrix}.
-It is basically a noise-weighted inner product 
-of the spectral shapes $H_\alpha(f)$, $H_\beta(f)$ together with
-the overlap function $\Gamma_{12}(f)$.  
+The quantity $F$ is called the 
+{\em Fisher information matrix}.
 In terms of its components,
 %
 \be
@@ -1485,21 +1486,29 @@ F_{\alpha\beta} = \int_{-\infty}^\infty \D f\> \frac{H_\alpha(f)\Gamma_{12}^2(f)
 {P_1(f)P_2(f)}\,.
 \ee
 %
+Thus, we see that the Fisher matrix is a noise-weighted 
+inner product 
+of the spectral shapes $H_\alpha(f)$, $H_\beta(f)$ with one 
+another.
 Provided the spectral shapes are not degenerate (i.e., not 
 propoportional to one another), then the Fisher matrix $F$
 can be inverted and $\hat A$ calculated.
 Otherwise, some form or regularization would be needed to 
 perform the matrix inversion.
+The inverse of the Fisher matrix, $F^{-1}$, is the covariance 
+matrix of the estimators $\hat A_\alpha$.  
 
-Using the above formalism, we are now able to extract the 
-ampltitude of the white GWB component to 7.3\%, 
+Using the above multi-component formalism, we are now able 
+to extract the ampltitude of the white GWB component to 7.3\%, 
 corresponding to a signal-to-noise ratio of 1.4, 
 and extract
 the amplitude of the BNS GWB component to 3.8\%,
 correponding to a signal-to-noise ratio of 6.0.
-In short, the {\em joint} multicomponent analysis 
+In short, the {\em joint} multi-component analysis 
 properly takes into account the {\em covariance}
-between the spectral shapes of the two components.
+between the spectral shapes of the two components, 
+allowing for unbiased, minimal variance estimates of 
+the amplitudes $A_\alpha$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
