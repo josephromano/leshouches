@@ -396,10 +396,14 @@ For example:
 in terms of the angular distribution of 
 gravitational-wave power on the sky.
 Cosmologically-generated backgrounds, like those from 
-cosmic strings or relic gravitational waves,
-are expected to be statistically {\em isotropic},
-with equal gravitational-wave power in all different
-directions, similar to the CMB (Figure~\ref{f:CMB}).
+cosmic strings or relic GWs,
+are expected to be {\em statistically isotropic},
+qualitatively similar to the CMB (Figure~\ref{f:CMB}).
+The GW power in these backgrounds is {\em anisotropic}, 
+following the spatial distribution of the particular
+sources that produced it, but having no preferred 
+direction when averaged over different realizations 
+of the sources.
 Different statistically isotropic backgrounds will
 be characterized by different angular power spectra,
 $C_l$ as a function of multipole moment $l$, where
@@ -407,18 +411,27 @@ $C_l$ as a function of multipole moment $l$, where
 \be
 C(\theta) = \sum_{l=0}^\infty \frac{2l+1}{4\pi} 
 C_l P_l(\cos\theta)\,,
+\label{e:legendre_series}
 \ee
 %
-is the angular correlation between the gravitational-wave
-power coming from two directions $\hat n$ and $\hat n'$
+is the angular correlation between the GW power 
+coming from two directions $\hat n$ and $\hat n'$
 separated by angle $\theta$.
+If all of the $C_l$'s except the monopole, $C_0$, 
+are equal to zero, then the GWB is said to be 
+``exactly" isotropic.
+Exact isotropy is the simplest mathematical model 
+for stochastic backgrounds, and will be discussed
+further in Section~\ref{s:ensemble_averages}.
+
 Statistically isotropic backgrounds are to be contrasted
-with {\em anisotropic} backgrounds, whose distribution of
-power on the sky follows the spatial distribution of 
-sources.
+with {\em statistically anisotropic} backgrounds, 
+whose distribution of power on the sky has preferred 
+directions, even when averaged over different 
+realizations of the sources that produce it.
 For example, the ``confusion-limited" foreground that 
 LISA will see from the population of close white-dwarf 
-binaries in the Milky Way will have its gravitational-wave 
+binaries in the Milky Way will have its GW
 power concentrated in the direction of the Milky Way.
 Figure~\ref{f:statiso-vs-aniso} shows simulated skymaps 
 for a statistically isotropic background (left panel) and an
@@ -483,7 +496,16 @@ pulsar timing, CMB polarization experiments), requiring
 observation over long periods of time to confidently detect.
 
 (iii) Stochastic backgrounds can also differ in their power 
-spectra as shown in Figure~\ref{f:different_power_spectra}.
+spectra%
+\footnote{Recall that if $x(t)$ is stationary time-domain data, 
+then the power spectrum $P_x(f)$ is defined as the Fourier 
+transform of the correlation function 
+$C(t-t') \equiv \langle x(t)x(t')\rangle$, or,
+equivalently, $\langle \tilde x(f)\tilde x^*(f')\rangle =
+\frac{1}{2}P_x(f)\,\delta(f-f')$, where $\tilde x(f)$ is the Fourier
+transform of $x(t)$.
+See also Eq.~(\ref{e:quad_iso}).}
+as shown in Figure~\ref{f:different_power_spectra}.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -628,7 +650,7 @@ system (Figure~\ref{f:plane_wave}):
 \label{e:klm_def}
 \ee
 %
-For analyzing deterministic sources that have 
+For analyzing non-stochastics GW sources that have 
 a symmetry axis (e.g., the angular momentum 
 vector for binary inspiral), one takes 
 $\hat l$ and $\hat m$ to be rotated relative 
@@ -687,13 +709,15 @@ background being unpolarized---i.e., the $+$ and $\times$
 polarization components are statistically
 equivalent and uncorrelated with one another.
 Similarly, the dependence on sky directions only via 
-$\delta(n,n')$ is a consequence of isotropy---i.e., 
-that the power in the GWB has no preferred
-direction on the sky.
+$\delta(\hat n,\hat n')$ is a consequence of exact 
+isotropy,
+i.e., that the power in the GWB has no preferred
+direction on the sky, and that the GWs coming from
+different directions have uncorrelated phases.
 
 If we drop the last assumption, allowing the background
-to be {\em anisotropic}, then the quadratic
-expectation values become
+to be either {\em anisotropic} or {\em statistically 
+isotropic}, then the quadratic expectation values become
 %
 \be
 \langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
@@ -708,8 +732,16 @@ S_h(f) = \int \D^2\Omega_{\hat n}\,{\cal P}(f,\hat n)\,.
 \ee
 %
 Here ${\cal P}(f,\hat n)$ is the strain power
-spectral density per unit solid angle,
-units ${\rm strain}^2\,{\rm Hz}^{_1}\,{\rm sr}^{-1}$.
+spectral density per unit solid angle, with 
+units ${\rm strain}^2\,{\rm Hz}^{-1}\,{\rm sr}^{-1}$.
+For statistically isotropic backgrounds, the angular power 
+spectra $C_l$ are the coefficients of a Legendre 
+series expansion (\ref{e:legendre_series})
+of the two-point function 
+$C(\theta)\equiv 
+\langle {\cal P}(f,\hat n){\cal P}(f,\hat n')\rangle_{\rm sky\ avg}$, 
+for all $\hat n$, $\hat n'$ having 
+$\cos\theta = \hat n\cdot \hat n'$.
 
 For {\em Gaussian} backgrounds, all cubic 
 and higher-order moments are either identically zero 
@@ -886,8 +918,8 @@ dependence of $\Omega_{\rm gw}(f)$, all we need to
 calculate is the energy spectrum $\D E_{\rm gw}/\D f_{\rm s}$
 for a single binary system.
 
-So let us consider two masses, $m_1$ and $m_2$, in orbit 
-around their common center of mass (Figure~\ref{f:binary_inspiral}).
+So let us consider two masses, $m_1$ and $m_2$, in circular 
+orbits around their common center of mass (Figure~\ref{f:binary_inspiral}).
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -914,9 +946,11 @@ In terms of these quantities, Kepler's third law and
 the total orbital energy of the system can be written as
 \be
 \omega^2 r^3 = GM\,,\qquad
-E_{\rm orb} = -\frac{GM\mu}{2r}\,.
+E_{\rm orb} = -\frac{GM\mu}{2r}\,,
 \ee
 %
+where $\omega\equiv 2\pi f_{\rm orb}$ is the orbital 
+angular frequency.
 The power emitted in gravitational waves comes from
 the orbital energy
 %
@@ -950,9 +984,13 @@ where ${\cal M}_{\rm c}$ is the {\em chirp mass} of
 the system, and where we have ignored all numerical
 factors.
 Note that we also replaced the orbital angular frequency
-$\omega\equiv 2\pi f_{\rm orb}$ by the GW frequency
+$\omega$ by the GW frequency
 $f_{\rm s} = 2 f_{\rm orb}$, with the factor of 2 
-arising for quadrupolar radiation in general relativity.
+arising for quadrupolar radiation in general relativity.%
+\footnote{For elliptical orbits, one should average
+the radiated power, etc., over a period of the orbit.
+There will also be contributions to the gravitational
+radiation from harmonics other than just the quadrupole.} 
 Returning now to (\ref{e:phinney2}), we substitute
 $f_s=(1+z)f$ and multiply by the factor of $f$ outside 
 the integral to get
@@ -987,9 +1025,14 @@ consistent with each detector's response to
 gravitational waves.
 
 Currently, (i) is not an option for ground-based 
-interferometers since the noise sources are not known 
-at the level needed to attribute any observed excess
-power to gravitational waves.
+interferometers since, even though the individual 
+noise sources 
+are understood pretty well, their amplitude is not 
+known precisely enough to attribute any observed 
+excess power to gravitational waves.
+One would need a really loud GWB relative to the
+detector noise in order detect it in a similar way
+to Penzias and Wilson.
 But (ii) is an option as LIGO consists of two 
 detectors, one in Hanford, WA, the other in Livingston, LA.
 Virgo, in Italy, provides a third detector, 
@@ -1219,6 +1262,7 @@ $\tilde n_1(f)$, $\tilde n_2(f)$ via:
 %
 \be
 \begin{aligned}
+\label{e:noise_power_spectra}
 \langle \tilde n_1(f) \tilde n_1^*(f')\rangle
 &=\frac{1}{2}\delta(f-f')P_{n_1}(f)\,,
 \\
