@@ -1556,10 +1556,10 @@ another.
 Provided the spectral shapes are not degenerate (i.e., not 
 propoportional to one another), then the Fisher matrix $F$
 can be inverted and $\hat A$ calculated.
-Otherwise, some form or regularization would be needed to 
+Otherwise, some form of regularization is needed to 
 perform the matrix inversion.
 The inverse of the Fisher matrix, $F^{-1}$, is the covariance 
-matrix of the estimators $\hat A_\alpha$.  
+matrix of the estimators $\hat A$.  
 
 Using the above multi-component formalism, we are now able 
 to extract the ampltitude of the white GWB component to 7.3\%, 
@@ -1576,6 +1576,73 @@ the amplitudes $A_\alpha$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
 \label{s:nontrivial_response}
+
+To understand stochastic background searches on a 
+more quantitative level, we need to describe the 
+non-trivial response of a GW detector to a passing GW.
+In Section~\ref{s:optimal_filtering}, we introduced
+the concept of the overlap function, $\Gamma_{12}(f)$,
+for a pair of detector, but we didn't specify how 
+to calculate it, and how its different for different
+GW detector.
+In this and the following section, we will develop
+the tools that we need to do that calculation.
+
+For simplicity, we will restrict our attention to 
+{\em beam detectors}, which use electromagnetic radiation
+to monitor the separation of two or more test masses.
+Laser interferometers (both ground-based and space-based),
+spacecraft Doppler tracking, and pulsar timing arrays
+are all examples of beam detectors.
+(A resonant-bar detector, like that first used by
+Joseph Weber, is a much different type of detector.
+Roughly speaking, a resonant bar detector responds
+like a giant tuning fork to a passing GW, provided
+the GW has frequencies equal to the resonant frequency 
+of the bar.)
+The response of a beam detector to a passing GW is 
+basically the change in the light travel time between
+the two masses.
+This is illustrated schematically in Figure~\ref{f:beam_detectors}.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{Figures/beam_detectors}
+\caption{Spacetime diagram showing the response of beam
+detectors to a passing GW.  
+Left column: pulsar timing; middle column: spacecraft Doppler
+tracking; right column: interferometer (ground or space-based).
+A passing GW perturbs the path of the photon (red trajectory) 
+relative to its nominal path in the absence of the wave 
+(blue dotted line), leading to a 
+difference in the expected arrival time of the photon.
+(Figure adapted from \cite{Romano-Cornish:2017}.)}
+\label{f:beam_detectors}
+\end{center}
+\end{figure}
+%
+
+In the literature, one might see the detector response
+written in terms of strain, $\Delta L(t)/L$, 
+fractional Doppler frequency, $\Delta v(t)/\nu_0$, or 
+phase, $\Delta\Phi(t)$, instead of the timing residual
+$\Delta T(t)$.
+Despite the apparent differences in the responses, 
+they are all simply related to the timing residual 
+response via the relations:
+%
+\be
+\begin{aligned}
+&h(t)\equiv \Delta T(t) &({\rm pulsar\ timing})\\
+&h(t)\equiv \frac{\Delta L(t)}{L} = \frac{\Delta T(t)}{T}
+&({\rm LIGO,\ Virgo,\ }\cdots) \\
+&h(t)\equiv \frac{\Delta\nu(t)}{\nu_0}=\frac{\D \Delta T(t)}{\D t}
+&({\rm spacecraft\ Doppler\ tracking})\\
+&h(t)\equiv \Delta\Phi(t) = 2\pi \nu_0\,\Delta T(t)
+&({\rm LISA})\,.
+\end{aligned}
+\ee
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial correlations}
