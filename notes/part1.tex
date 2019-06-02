@@ -935,8 +935,8 @@ are understood pretty well, their amplitude is not
 known precisely enough to attribute any observed 
 excess power to gravitational waves.
 One would need a really loud GWB relative to the
-detector noise in order detect it in a similar way
-to Penzias and Wilson.
+detector noise in order detect it in a way similar
+to Penzias and Wilson's detection of the CMB.
 But (ii) is an option as LIGO consists of two 
 detectors, one in Hanford, WA, the other in Livingston, LA.
 Virgo, in Italy, provides a third detector, 
@@ -989,7 +989,7 @@ The expected value of the cross-correlation is
 + \langle n_1 n_2\rangle\,,
 \ee
 %
-where we $\langle h n_2\rangle = 0 = \langle n_1 h\rangle$,
+where $\langle h n_2\rangle = 0 = \langle n_1 h\rangle$,
 since the GW signal and instrumental noise are not correlated
 with one another.
 If we further assume that the noise in the two detectors
@@ -1045,7 +1045,12 @@ and detector noise are both {\em white}, which means
 \ee
 %
 where $S_h$, $S_{n_1}$, $S_{n_2}$ are the variances
-(i.e., power) in the GW signal and detector noise, respectively.
+(i.e., power) in the GW signal and detector noise, respectively.%
+\footnote{The assumption that both the GWB and detector noise
+are white is made here just to simplify the analysis.
+One can use cross-correlation methods for the more 
+general case where the signal and noise power spectral
+densities are non-trivial functions of frequency~\cite{allen-romano}.}
 For this case, our cross-correlation statistic is the
 average of the products of the individual data samples
 %
@@ -1077,9 +1082,10 @@ The variance in this estimator can be calculated via
 \sigma^2\equiv \langle \hat C_{12}^2\rangle-
 \langle \hat C_{12}\rangle^2
 =\left(\frac{1}{N}\right)^2
-\sum_{i=1}^N \sum_{ij=1}^N 
+\sum_{i=1}^N \sum_{j=1}^N 
 \left(\langle d_{1i} d_{2i} d_{1j} d_{2j}\rangle - 
 \langle d_{1i} d_{2i}\rangle \langle d_{1j} d_{2j}\rangle\right)\,.
+\label{e:sigma2_def}
 \ee
 %
 To evaluate the RHS of the above equation, we make use of 
@@ -1096,7 +1102,8 @@ Using this identity and the quadratic expectation values
 between the signal and noise, we end up with
 %
 \be
-\sigma^2 = \frac{1}{N}(S_1 S_2 + S_h^2)
+\sigma^2 = \frac{1}{N}(S_1 S_2 + S_h^2)\,,
+\label{e:sigma2_final}
 \ee
 %
 where 
@@ -1109,6 +1116,11 @@ S_2\equiv S_{n_2} + S_h\,,
 %
 are the total power in the detector output (consisting of 
 both signal and noise power).
+Note that the factor of $1/N$ in \eqref{e:sigma2_final} 
+comes from the double sum in \eqref{e:sigma2_def} having
+non-zero contributions from only the diagonal terms $(i=j)$, 
+which are all equal to one another.
+
 Since the power in the GWB is expected to be weak compared
 to the detector noise, the variance can be approximated
 as $\sigma^2\simeq S_1 S_2/N$, for which the expected 
@@ -1133,14 +1145,19 @@ a GW detector to a GWB.
 We will do this in more detail in 
 Sections~\ref{s:nontrivial_response} and
 \ref{s:nontrivial_correlations}.
-For now, we simply state without proof that the 
-correlated response of physically separated and misaligned 
-detectors to a GWB is represented by the so-called 
-{\em overlap function} (or overlap reduction function),
-denoted $\Gamma_{12}(f)$, 
-which relates the strain power in the
-GWB, $S_h(f)$, to the cross-correlated signal power 
-in the two detectors, i.e., $C_{12}(f) = \Gamma_{12}(f) S_h(f)$.
+Here, it suffices to simply define the {\em overlap function} 
+(or overlap reduction function),
+denoted $\Gamma_{12}(f)$, as the transfer function relating
+the strain power in the GWB, $S_h(f)$, 
+to the cross-correlated signal power 
+in the two detectors, 
+%
+\be
+C_{12}(f) \equiv \Gamma_{12}(f) S_h(f)\,.
+\ee
+%
+(We will derive the form of $\Gamma_{12}(f)$ and discuss
+more of its properties in Section~\ref{s:nontrivial_correlations}.)
 In terms of the quadratic expectation values of the GW 
 signal in the two detectors, we have%
 \footnote{The factor of $1/2$ is included on the RHS
@@ -1175,14 +1192,15 @@ $\tilde n_1(f)$, $\tilde n_2(f)$ via:
 \end{aligned}
 \ee
 %
-and the cross-correlated noise is assumed to be zero:
+while the cross-correlated noise is assumed to be zero:
 %
 \be
 \langle \tilde n_1(f) \tilde n_2^*(f')\rangle =0\,.
 \ee
-Plots of $\Gamma_{12}(f)$ for the LIGO Hanford and 
-LIGO Livingston interferometers, and for LIGO Hanford
-and Virgo interferometers can be found in 
+Plots of $\Gamma_{12}(f)$ for the 
+LIGO Hanford-LIGO Livingston interferometer pair 
+and for the LIGO Hanford-Virgo interferometer pair 
+can be found in 
 Section~\ref{s:nontrivial_correlations}.
 
 Given the above definitions, we can now ask
@@ -1214,14 +1232,13 @@ In the Fourier domain, we can then write
 where $\tilde Q(f)$ is the Fourier transform of 
 $Q(\Delta t)$, and $\delta_T(f-f')$ is a finite-time
 version of the Dirac delta function defined by 
-$\delta_T(f-f')\equiv T\,{\rm sinc}\,(f-f')$, where
+$\delta_T(f-f')\equiv T\,{\rm sinc}\,(\pi(f-f'))$, where
 ${\rm sinc}\,x \equiv \sin x/x$.
 
-To proceed further we need to define what we mean by
+To proceed further we need to define what we mean by 
 {\em optimal}.
-A natural criterion in this context is to 
-{\em maximize the expected signal-to-noise ratio} 
-of $\hat C_{12}$ 
+A natural criterion in this context is to maximize the 
+expected signal-to-noise ratio of $\hat C_{12}$ 
 for a GWB with a fixed spectral shape $H(f)$.
 (The expected signal-to-noise ratio is defined as 
 in the previous section
@@ -1241,13 +1258,19 @@ function $\tilde Q(f)$ up to an overall normalization:
 \ee
 %
 where $P_1(f)$, $P_2(f)$ are the total power in the two
-detectors---i.e., 
-$P_1(f) \equiv P_{n_1}(f) + P_{\rm gw}(f)$,
-$P_2(f) \equiv P_{n_2}(f) + P_{\rm gw}(f)$, 
+detectors, 
+%
+\be
+\begin{aligned}
+P_1(f) \equiv P_{n_1}(f) + P_{\rm gw}(f)\,,
+\qquad
+P_2(f) \equiv P_{n_2}(f) + P_{\rm gw}(f)\,,
+\end{aligned}
+\ee
+%
 which are approximately equal to 
-$P_{n_1}(f)$, $P_{n_2}(f)$, under the assumption that 
-the gravitational-wave signal is 
-weak compared to the detector noise.
+$P_{n_1}(f)$, $P_{n_2}(f)$ under the assumption that 
+the GW signal is weak compared to the detector noise.
 Note that the numerator of $\tilde Q(f)$ is proportional
 to the expected value of the cross-correlated data in
 the frequency domain, 
@@ -1276,42 +1299,49 @@ cross-correlation statistic, $\hat C_{12}$, is a
 \label{s:simple_examples}
 
 We now apply the above correlation methods to analyze 
-some simple examples involving simulated data.%
+some simple examples involving simulated data.
 (The simulations are solely meant to illustrate how 
 optimal filtering works;
-the amplitude ad duration of the simulated data are 
-not representative of real interferometer data.)
+the amplitude and duration of the simulated data are 
+not representative of real interferometer data.%
+\footnote{The simulated data used for these examples 
+can be found at \cite{github-code}.
+Access to real GW data is available via the 
+Gravitational-Wave Open Science Center (GWOSC)~\cite{gwosc}.})
 We will consider three different GWBs injected into 
 uncorrelated, white detector noise in two coincident
 and coaligned detectors:
 (i) a white GWB, 
-(ii) a confusion-limited BNS GWB, 
+(ii) a confusion-limited BNS background, 
 and 
-(iii) a two-component GWB, formed from the superposition
+(iii) a two-component background, formed from the superposition
 of the GWBs from (i) and (ii).
 The simulated time-domain data for the three different 
 cases are shown in Figure~\ref{f:simple_examples}.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{Figures/simple_examples}
-\caption{Similuted time-domain data for the three different
+\includegraphics[width=\textwidth]{Figures/simple_examples}
+\caption{Simulated time-domain data for the three different
 cases discussed in the main text:
 (top row) a white GWB in uncorrelated, white detector noise,
-(middle row) a confusion-limited BNS GWB in uncorrelated, 
+(middle row) a confusion-limited BNS background in uncorrelated, 
 white detector noise,
-(bottom row) a two-component GWB formed from the superposition 
+(bottom row) a two-component background formed from the superposition 
 of the GWBs from the top two rows in uncorrelated, white 
 detector noise.
 The two columns correspond to data in the two coincident
-and coaligned detectors.}
+and coaligned detectors.
+By eye one can see that signal components in the two detectors 
+are identical, but the noise (and hence the data) in the two 
+detectors are different.}
 \label{f:simple_examples}
 \end{center}
 \end{figure}
 %
 Recall that a white GWB has a flat spectrum $H(f)=1$, 
-while a confusion-limited background of BNS has 
-spectral shape $H(f)=(f/f_{\rm ref})^{-7/3}$ 
+while a confusion-limited background produced by BNS 
+inspirals and mergers has spectral shape $H(f)=(f/f_{\rm ref})^{-7/3}$ 
 (see Figure~\ref{f:different_power_spectra}).
 
 \subsection{Single-component analyses}
@@ -1330,7 +1360,7 @@ The corresponding optimally-filtered signal-to-noise
 ratio for this case is $\rho=12$.
 Note that even though the overall amplitude of the
 background is noticeably smaller for the confusion-limited
-BNS GWB, the signal-to-noise ratio is considerably
+BNS background, the signal-to-noise ratio is considerably
 larger (12 versus 2.9).
 This is because the spectrum of the GW signal differs 
 in this case from that of the detector noise,
@@ -1340,13 +1370,13 @@ Finally for example (iii), if we filter the data for
 the two components separately, 
 we overestimate the amplitude of the white GWB component 
 by 48\%, which is greater than 1-$\sigma$, and overestimate
-the amplitude of the BNS GWB by 6.9\%, which is within 1-$\sigma$.
+the amplitude of the BNS background by 6.9\%, which is within 1-$\sigma$.
 Basically, filtering the data for each GWB component 
 separately typically leads to {\em overestimates}
 of the amplitudes of the individual components, 
 but {\em underestimates} of the error bars.
-The overestimates arise since the other GWB component
-also contributes to the correlated signal.
+The overestimates arise since the other GWB component is
+also contributing to the correlated signal.
 
 \subsection{Multi-component analysis}
 
