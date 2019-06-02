@@ -11,17 +11,17 @@ from noise.
 
 A stochastic background of gravitational radiation 
 is a superposition of gravitational-wave signals that
-are too weak or too numerous to individually detect.
+are either too weak or too numerous to individually detect.
 The individual signals making up the background are thus
 {\em unresolvable}, unlike the large signal-to-noise 
 binary black-hole (BBH) and binary neutron-star (BNS)
 merger signals recently detected by the advanced LIGO 
 and Virgo detectors.
 But despite the fact that the individual signals are 
-unresolvable, the detection of a stochastic 
-gravitational-wave background (GWB) will 
-be able to provide information about the 
-{\em statistical} properties of the source.
+unresolvable, the detection of a gravitational-wave 
+background (GWB) will provide information about the 
+{\em statistical} properties (or population properties)
+of the source.
 
 \subsection{Gravitational-wave analogue of the cosmic
 microwave background}
@@ -41,13 +41,12 @@ radiation produced by the Planck 2013 mission.}
 %
 which is a sky map of the temperature fluctuations in 
 the cosmic microwave background (CMB) 
-blackbody radiation, $\Delta T/T$, relative 
+blackbody radiation, $\Delta T/T_0$, relative 
 to the $T_0 = 2.73~{\rm K}$ isotropic component.
 (The dipole contribution due to our motion with respect 
 to the cosmic rest frame has also been subtracted out.)
-Recall that the CMB is a background of electromagnetic
-radiation, produced at the time of last scattering,
-roughly 380,000~yr after the Big Bang.
+The CMB is a background of electromagnetic
+radiation, produced roughly 380,000~yr after the Big Bang.
 At that time, the universe had a temperature of 
 $\sim 3000~{\rm K}$, approximately one thousand times 
 larger than the temperature today, but cool enough for 
@@ -55,15 +54,17 @@ neutral hydrogen atoms to first form and photons to
 propagate freely.
 The temperature fluctuations in the CMB radiation tell
 us about the density perturbations at the time of 
-the surface of last 
-scattering, thus giving us a picture of the ``seeds" of 
+last scattering of photons, 
+thus giving us a picture of the ``seeds" of 
 large-scale structure formation in the early universe.
 Given the weakness of the gravitational interaction 
 compared to the electromagnetic force, the GW analogue 
-of Figure~\ref{f:CMB} would give us a picture of the 
-Universe a mere fraction of a second after the Big
-Bang (this is explained in a bit more detail in 
-Section~\ref{s:different_sources})---a ``holy grail" 
+of Figure~\ref{f:CMB} would provide information about
+a much earlier time in the evolution of the universe,
+a mere fraction of a second after the Big Bang 
+(this is explained in a bit more detail in 
+Section~\ref{s:different_sources}).  
+Detecting the cosmological GWB is thus a ``holy grail" 
 for GW astronomy.
 
 For perspective, Figure~\ref{f:CMB} was produced by 
@@ -81,7 +82,7 @@ of the GWB.
 LIGO band}
 \label{s:BBH-BNS-LIGO}
 
-Even though a full map of the primordial GWB is likely
+Even though a detailed map of the primordial GWB is likely
 to be out of reach for many years, there are other
 sources of GWBs that are much more immediately accessible
 to us.
@@ -90,11 +91,11 @@ and Virgo detectors have detected other
 gravitational-wave signals from several individual BBH 
 and BNS mergers.
 These were very strong signals, having 
-matched-filter signal-to-noise ratios ${\rm SNR}\gtrsim 10$, 
+matched-filter signal-to-noise ratios (SNR) $\gtrsim 10$, 
 and false alarm probabilities $<2\times 10^{-7}$,
 corresponding to 5-sigma ``gold-plated" events.
-Similar large SNR detections are expected during the 
-upcoming observing run O3, which is scheduled to start in early 2019.
+Similar large-SNR detections are expected during the 
+observing run O3, which started on 1 April 2019.
 But we also expect that there are many more signals, 
 corresponding to more distant mergers or smaller mass systems, 
 which are 
@@ -131,12 +132,12 @@ a BNS signal in band is roughly 100~{\rm s}.
 Thus, the BNS merger signals overlap in time leading to 
 a continuous (or {\em confusion-limited}) background.
 Figure~\ref{f:BBH-BNS-timeseries} is a plot of the
-expected time-domain signal corresponding the rate
-estimates calculated above.
+expected time-domain signal corresponding to the rate
+estimates mentioned above.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Figures/BBH-BNS-timeseries}
+\includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-timeseries}
 \caption{Simulated time-domain signal for the predicted BBH and 
 BNS background.  
 Figure taken from \cite{stoch-implications}.}
@@ -158,7 +159,7 @@ observation (Figure~\ref{f:BBH-BNS-SNR}).
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Figures/BBH-BNS-SNR}
+\includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-SNR}
 \caption{Expected signal-to-noise ratio of the correlated 
 data for the advanced LIGO and Virgo detectors as a function 
 of observation time.
@@ -173,9 +174,9 @@ Figure taken from \cite{stoch-implications}.}
 This estimate of time to detection is based on 
 the standard cross-correlation search (Section~\ref{s:correlations}), 
 which assumes a Gaussian-stationary background.
-But there is a better method, recently proposed by 
+But there is a new method, recently proposed by 
 Smith and Thrane~\cite{Smith-Thrane:2019}, 
-which should reduce the time to detection by several 
+which can potentially reduce the time to detection by several 
 orders of magnitude (factor of $\sim\!1000$), 
 meaning that the background would be detectable after only
 a few days of operation. 
@@ -240,9 +241,11 @@ in orbit around the Sun.
 Each spacecraft houses two lasers, two telescopes, and 
 two test masses; 
 the arms will be several million km long.
-The signal is expected to be so strong that it will
+The confusion-limited 
+white-dwarf binary signal is expected to be 
+so strong that it will
 dominate the instrumental noise at low frequencies, 
-forming a gravitational-wave ``foreground" that will
+forming a GW ``foreground" that will
 have to be contended with when searching for other 
 gravitational sources in the LISA band.
 
@@ -258,7 +261,7 @@ galactic-scale gravitational-wave detector, with the
 radio pulses emitted by each pulsar behaving like 
 `ticks' of an extremely stable clock.
 By carefully monitoring the arrival times of these
-pulses, one can search for a GWB by looking for 
+radio pulses, one can search for a GWB by looking for 
 correlated modulations in the arrival times 
 induced by a passing gravitational wave.
 
@@ -291,7 +294,6 @@ rise, in general, to different properties of the
 observed signal.
 These differences are what will allow us to infer 
 the source of the background from the measured signal.
-For example:
 
 (i) Stochastic backgrounds can differ from one another 
 in terms of the angular distribution of 
@@ -302,7 +304,7 @@ are expected to be {\em statistically isotropic},
 qualitatively similar to the CMB (Figure~\ref{f:CMB}).
 The GW power in these backgrounds is {\em anisotropic}, 
 following the spatial distribution of the particular
-sources that produced it, but having no preferred 
+sources that produced it, but has no preferred 
 direction when averaged over different realizations 
 of the sources.
 Different statistically isotropic backgrounds will
@@ -335,14 +337,14 @@ LISA will see from the population of close white-dwarf
 binaries in the Milky Way will have its GW
 power concentrated in the direction of the Milky Way.
 Figure~\ref{f:statiso-vs-aniso} shows simulated skymaps 
-for a statistically isotropic background (left panel) and an
-anisotropic background (right panel). 
+for a statistically isotropic background (left panel) and 
+a statistically anisotropic background (right panel). 
 The anisotropic background in that figure follows the
 galactic plane in equatorial coordinates. 
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{Figures/statiso-vs-aniso}
+\includegraphics[width=\textwidth]{Figures/statiso-vs-aniso}
 \caption{Simulated sky maps of gravitational-wave power
 for a statistically isotropic background (left panel) and an 
 anisotropic background (right panel).}
@@ -351,8 +353,8 @@ anisotropic background (right panel).}
 \end{figure}
 %
 
-(ii) Stochastic backgrounds can also differ in 
-temporal distribution and amplitude.
+(ii) Stochastic backgrounds can also differ from one 
+another in temporal distribution and amplitude.
 We have already seen examples of this in 
 Figure~\ref{f:BBH-BNS-timeseries}, for the expected
 backgrounds from stellar-mass BBH mergers and 
@@ -373,7 +375,7 @@ a 6-month period (Figure~\ref{f:cyclostationary_data}),
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{Figures/cyclostationary_data}
+\includegraphics[width=0.6\textwidth]{Figures/cyclostationary_data}
 \caption{Simulated time-domain output of a particular 
 combination of the LISA data over a 2-year period.
 The modulation of the signal with a 6-month period
@@ -429,7 +431,7 @@ for three different types of GWBs.
 For these toy-model simulations, we overlapped a sufficient number of 
 individual BNS merger and BBH ringdown signals to produce 
 Gaussian-stationary confusion-limited GWBs
-(second column and third columns).
+(second and third columns).
 The difference between these backgrounds shows up in their power 
 spectra (third column).
 The power spectra for the BNS merger and BBH ringdown backgrounds 
@@ -481,23 +483,23 @@ passing of the wave.}
 %
 The metric perturbation for the most general GWB 
 can thus be written as a superposition of such 
-wave:
+waves:
 %
 \be
 h_{ab}(t,\vec x) =
 \int_{-\infty}^\infty \D f\>
-\int \D^2\Omega_{\hat n}\>
+\int \D^2\Omega_{\hat k}\>
 \sum_{A=+,\times}
-h_A(f,\hat n)e^A_{ab}(\hat n) 
-e^{i2\pi f(t+\hat n\cdot \vec x/c)}
+h_A(f,\hat k)e^A_{ab}(\hat k) 
+e^{i2\pi f(t-\hat k\cdot \vec x/c)}\,,
 \label{e:planewave}
 \ee
 %
 where $f$ denotes the frequency of the 
-component waves, $\hat n$ their direction on the
-sky, and $A=+,\times$ their polarization.
-(The direction of propagation of the component
-waves is given by $\hat k=-\hat n$.)
+component waves, $\hat k$ their direction of
+propagation, and $A=+,\times$ their polarization.
+(The direction to a particular GW source is given 
+by $\hat n=-\hat k$.)
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -508,21 +510,21 @@ plane-wave expansion of a GWB.}
 \end{center}
 \end{figure}
 %
-The quantities $e^A_{ab}(\hat n)$ are polarization
+The quantities $e^A_{ab}(\hat k)$ are polarization
 tensors, given by
 %
 \be
 \begin{aligned}
-e_{ab}^+(\hat n)
+e_{ab}^+(\hat k)
 &=\hat l_a\hat l_b-\hat m_a\hat m_b\,,
 \\
-e_{ab}^\times(\hat n)
+e_{ab}^\times(\hat k)
 &=\hat l_a\hat m_b+\hat m_a\hat l_b\,,
 \end{aligned}
 \ee
 %
 where $\hat l$, $\hat m$ are any two orthogonal unit 
-vectors in the plane orthogonal to $\hat n$.
+vectors in the plane orthogonal to $\hat k$.
 Typically, for stochastic background analyses, 
 we take $\hat l$, $\hat m$ to be proportional to 
 the standard angular unit vectors tangent to the sphere,
@@ -551,7 +553,7 @@ system (Figure~\ref{f:plane_wave}):
 \label{e:klm_def}
 \ee
 %
-For analyzing non-stochastics GW sources that have 
+For analyzing non-stochastic GW sources that have 
 a symmetry axis (e.g., the angular momentum 
 vector for binary inspiral), one takes 
 $\hat l$ and $\hat m$ to be rotated relative 
@@ -562,7 +564,7 @@ where the rotation angle is the
 \subsection{Ensemble averages}
 \label{s:ensemble_averages}
 
-The quantities $h_A(f,\hat n)$ are the Fourier 
+The quantities $h_A(f,\hat k)$ are the Fourier 
 coefficients of the plane wave expansion.
 Since the metric perturbations 
 for a stochastic background are random variables, 
@@ -573,10 +575,10 @@ thus define the statistical properties of the background.
 
 Without loss of generality, we can assume that the 
 expected value of the Fourier coefficients is 
-zero---i.e.,
+zero,
 %
 \be
-\langle h_A(f,\hat n)\rangle=0\,,
+\langle h_A(f,\hat k)\rangle=0\,,
 \ee
 %
 where angle brackets denote {\em ensemble average}
@@ -592,8 +594,8 @@ For example, if the background is
 {\em unpolarized, stationary, and isotropic}, then
 %
 \be
-\langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
-=\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,,
+\langle h_A(f,\hat k)h_{A'}^*(f',\hat k')\rangle
+=\frac{1}{16\pi} S_h(f)\delta(f-f')\delta_{AA'}\delta^2(\hat k,\hat k')\,,
 \label{e:quad_iso}
 \ee
 %
@@ -606,14 +608,14 @@ of {\em stationarity}---i.e., that there is no
 preferred origin of time.
 That the RHS depends on the polarization indices
 only via  $\delta_{AA'}$ is a consequence of the 
-background being unpolarized---i.e., the $+$ and $\times$ 
-polarization components are statistically
+background being unpolarized---i.e., that the 
+$+$ and $\times$ polarization components are statistically
 equivalent and uncorrelated with one another.
-Similarly, the dependence on sky directions only via 
-$\delta(\hat n,\hat n')$ is a consequence of exact 
-isotropy,
+Similarly, the dependence on GW propagation directions 
+only via $\delta(\hat k,\hat k')$ is a consequence of 
+exact isotropy,
 i.e., that the power in the GWB has no preferred
-direction on the sky, and that the GWs coming from
+direction, and that the GWs propagating in
 different directions have uncorrelated phases.
 
 If we drop the last assumption, allowing the background
@@ -621,18 +623,19 @@ to be either {\em anisotropic} or {\em statistically
 isotropic}, then the quadratic expectation values become
 %
 \be
-\langle h_A(f,\hat n)h_{A'}^*(f',\hat n')\rangle
-=\frac{1}{4} {\cal P}(f,\hat n)\delta(f-f')\delta_{AA'}\delta^2(\hat n,\hat n')\,,
+\langle h_A(f,\hat k)h_{A'}^*(f',\hat k')\rangle
+=\frac{1}{4} {\cal P}(f,\hat k)\delta(f-f')\delta_{AA'}
+\delta^2(\hat k,\hat k')\,,
 \label{e:quad_aniso}
 \ee
 %
 where
 %
 \be
-S_h(f) = \int \D^2\Omega_{\hat n}\,{\cal P}(f,\hat n)\,.
+S_h(f) = \int \D^2\Omega_{\hat k}\,{\cal P}(f,\hat k)\,.
 \ee
 %
-Here ${\cal P}(f,\hat n)$ is the strain power
+Here ${\cal P}(f,\hat k)$ is the strain power
 spectral density per unit solid angle, with 
 units ${\rm strain}^2\,{\rm Hz}^{-1}\,{\rm sr}^{-1}$.
 For statistically isotropic backgrounds, the angular power 
@@ -640,9 +643,9 @@ spectra $C_l$ are the coefficients of a Legendre
 series expansion (\ref{e:legendre_series})
 of the two-point function 
 $C(\theta)\equiv 
-\langle {\cal P}(f,\hat n){\cal P}(f,\hat n')\rangle_{\rm sky\ avg}$, 
-for all $\hat n$, $\hat n'$ having 
-$\cos\theta = \hat n\cdot \hat n'$.
+\langle {\cal P}(f,\hat k){\cal P}(f,\hat k')\rangle_{\rm sky\ avg}$, 
+for all $\hat k$, $\hat k'$ having 
+$\cos\theta = \hat k\cdot \hat k'$.
 
 For {\em Gaussian} backgrounds, all cubic 
 and higher-order moments are either identically zero 
@@ -694,7 +697,7 @@ You are asked in Exercise~\ref{exer:2} to derive
 you will also need to use the 
 plane-wave expansion (\ref{e:planewave})
 and the quadratic expectation values 
-(\ref{e:quad_iso} or (\ref{e:quad_aniso}).
+\eqref{e:quad_iso} or \eqref{e:quad_aniso}.
 
 In addition to $S_h(f)$ and $\Omega_{\rm gw}(f)$, one
 sometimes describes the strength of a GWB in terms of
@@ -737,9 +740,9 @@ For GWBs associated with binary inspiral,
 $\Omega_{\rm gw}(f)\propto f^{2/3}$ (as we shall show below),
 for which $\beta=2/3$ and $\alpha=-2/3$.
 This last dependence is valid for both compact binary coalescences 
-consisting of neutron stars and/or 
-stellar-mass black holes (relevant for advanced LIGO, Virgo, etc.),
-and also for inspirals of supermassive black-holes (SMBHs) 
+consisting of NSs and/or 
+stellar-mass BHs (relevant for advanced LIGO, Virgo, etc.),
+and also for inspirals of SMBHs
 in the centers of distant galaxies (relevant for pulsar timing searches).
  
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
