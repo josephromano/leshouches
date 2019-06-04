@@ -1,8 +1,9 @@
 \part{Overview}
 \label{p:overview}
 
-Wherein we describe different types of stochastic
-gravitational-wave backgrounds and introduce the
+In the first part of these notes, we describe different 
+types of stochastic gravitational-wave backgrounds and 
+introduce the
 method of cross-correlation for extracting the signal
 from noise.
 
@@ -1262,9 +1263,9 @@ detectors,
 %
 \be
 \begin{aligned}
-P_1(f) \equiv P_{n_1}(f) + P_{\rm gw}(f)\,,
+P_1(f) \equiv P_{n_1}(f) + P_h(f)\,,
 \qquad
-P_2(f) \equiv P_{n_2}(f) + P_{\rm gw}(f)\,,
+P_2(f) \equiv P_{n_2}(f) + P_h(f)\,,
 \end{aligned}
 \ee
 %
@@ -1402,8 +1403,14 @@ from the two detectors.
 We will treat the values of $\hat C_{12}(f)$ 
 for different frequencies $f$
 as the `data points' from which to construct a 
-likelihood function.
-Now, the expected value of the correlated data is
+{\em likelihood function}, which is the probability 
+of the data given the parameters defining the signal
+and noise models.%
+\footnote{See John Veitch's lectures in this Volume
+for more details regarding likelihood functions and
+Bayesian inference.}
+For this case, the signal model is given by the expected 
+value of the correlated data:
 %
 \be
 \langle\hat C_{12}(f)\rangle
@@ -1418,24 +1425,22 @@ shapes having amplitudes $A_\alpha$.
 $f$ and $\alpha$, where $f$ runs over different 
 frequency bins and $\alpha$ runs over different 
 spectral components.)
-The covariance matrix of the data is given by
+The noise model enters via the covariance matrix 
+of the data:
 %
 \be
-\begin{aligned}
 N_{12}(f,f') 
-&\equiv \langle \hat C_{12}(f)\hat C_{12}^*(f')\rangle -
+\equiv \langle \hat C_{12}(f)\hat C_{12}^*(f')\rangle -
 \langle \hat C_{12}(f)\rangle \langle \hat C_{12}^*(f')\rangle
-\\
-&\simeq \delta_{ff'}\,P_1(f) P_2(f)\,,
-\end{aligned}
+\simeq \delta_{ff'}\,P_1(f) P_2(f)\,,
 \ee
 %
-which is effectively the product of the noise power spectra
+which is the product of the noise power spectra
 in the two detectors in the weak-signal approximation.
 The likelihood function is then%
 \footnote{We are using here an {\em index-free} matrix notation, 
-dropping the $\alpha$, $\beta$, 
-$f$, $f'$, indices, and the sums and integrals 
+dropping the $\alpha$, $\beta$, $f$, and $f'$ indices, 
+as well as the sums and integrals 
 over $\alpha$ and $f$.
 If we explicitly insert all of the indices, 
 sums, etc., the argument of the exponential becomes
@@ -1492,16 +1497,16 @@ propoportional to one another), then the Fisher matrix $F$
 can be inverted and $\hat A$ calculated.
 Otherwise, some form of regularization is needed to 
 perform the matrix inversion.
-The inverse of the Fisher matrix, $F^{-1}$, is the covariance 
-matrix of the estimators $\hat A$.  
+The inverse of the Fisher matrix, $F^{-1}$, turns out to
+equal the covariance matrix of the estimators $\hat A$.  
 
 Using the above multi-component formalism, we are now able 
 to extract the ampltitude of the white GWB component to 7.3\%, 
 corresponding to a signal-to-noise ratio of 1.4, 
-and extract
-the amplitude of the BNS GWB component to 3.8\%,
-correponding to a signal-to-noise ratio of 6.0.
-In short, the {\em joint} multi-component analysis 
+and to extract
+the amplitude of the BNS background component to 3.8\%,
+corresponding to a signal-to-noise ratio of 6.0.
+In essence, the {\em joint} multi-component analysis 
 properly takes into account the {\em covariance}
 between the spectral shapes of the two components, 
 allowing for unbiased, minimal variance estimates of 
