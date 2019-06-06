@@ -458,21 +458,63 @@ two Earth-pulsar baselines.}
 antennas}
 
 For the final example, you are asked in Exercise 7 to 
-calculate the 
-
+calculate the overlap function for a pair of short, colocated
+electric dipole antennae in the presence of an unpolarized
+and isotropic electric field $\vec E(t,\vec x)$.
+The two dipole antennae point in different directions
+separated by an angle $\zeta$ (Figure~\ref{f:dipole-orf}).
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.25\textwidth]{Figures/dipole-orf}
 \caption{Geometry for calculating the overlap function
-for a pair of short, electric dipole antennae, for an
-unpolarized and isotropic electric field
+for a pair of short, colocated electric dipole antennae, 
+for an unpolarized and isotropic electric field
 (Exercise 7).}
 \label{f:dipole-orf}
 \end{center}
 \end{figure}
+%
+You should find that 
+%
+\be
+\Gamma_{12} \propto \hat u_1\cdot\hat u_2 =\cos\gamma\,.
+\ee
+%
+{\em Hint:} To do this problem, note that the response
+of dipole $I$ to the field is 
+%
+\be
+r_I(t) = \hat u_I\cdot\vec E(t,\vec x_0)
+\ee
+%
+Similar to the metric perturbations for a GWB, the electric 
+field can be written as
+%
+\be
+\vec E(t,\vec x) = \int_{-\infty}^\infty df\>\int d^2\Omega_{\hat n}\> 
+\sum_{\alpha =1}^2 \tilde E_\alpha(f,\hat n)\hat\epsilon_\alpha(\hat n) 
+e^{i2\pi f(t+\hat n\cdot \vec x/c)}
+\ee
+%
+where the polarization vectors are given by
+%
+\be
+\hat\epsilon_1(\hat n) = \hat \theta\,,
+\quad
+\hat\epsilon_2(\hat n) = \hat \phi
+\ee
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{What to do in the absence of correlations?}
+
+As discussed in Section~\ref{s:correlations}, one doesn't
+have to cross-correlate the output of multiple detectors
+to search for a stochastic background.
+It's just harder if correlation is not an option.
+If one knows...
+
+\subsection{LISA}
 
 \begin{figure}[htbp!]
 \begin{center}
@@ -487,6 +529,32 @@ $A, E, T$ described in the text.}
 \end{center}
 \end{figure}
 
+Although there are 3 Michelson combinations (X,Y,Z), they have common
+noise (since they share arms).
+Can diagonalize the noise covariance matrix to obtain noise-orthogonal
+combinations (A,E,T), which also turn out to be signal orthogonal
+%
+\be
+\begin{aligned}
+A&\equiv\frac{1}{3}(2X - Y -Z)\,,
+\\
+B&\equiv\frac{1}{\sqrt{3}}(Z - Y)\,,
+\\
+C&\equiv\frac{1}{3}(X+Y+Z)\,,
+\end{aligned}
+\ee
+%
+The $A$ and $E$ combinations correspond to the outputs of two 
+synthesized Michelson interferometers rotated by $45^\circ$ with
+respect to one another.
+The Sagnac combination $T$ is relatively insensitive to GW,
+at least at lowe frequencies.
+Hence it can be used as a {\em null channel}, allowing one to
+monitor the instrumental noise.
+Nonetheless, proper modeling of instrumental noise, astrophysical
+foregrounds (galactic WD binaries), and GWB allows you to discriminate
+all three components~\cite{Adams-Cornish:2010, Adams-Cornish:2014}.
+\\
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/LISA_timeseries}
@@ -519,7 +587,7 @@ Figure taken from \cite{Adams-Cornish:2014}.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bayesian inference}
+\section{Statistical inference}
 
 In order to discuss our final example, which is an
 optimal search for the popcorn-like background
@@ -537,79 +605,163 @@ consult John Veitch's contribution to this Volume.
 
 \subsection{Comparing frequentist statistics and Bayesian inference}
 
-Let us begin by giving a side-by-side comparison
-of frequentist statistics and Bayesian inference.
-See Table~\ref{t:bayes_freq}
-%
-\begin{table}[tb]
-\addtocounter{table}{-1}
-\centering
-\begin{longtable}{p{2.75in} | p{2.75in}}
-\hline
-FREQUENTIST STATISTICS & BAYESIAN INFERENCE\\
-\hline
-probabilities are long-run relative occurrence of 
+We start by listing the key ingredients of these two formulations 
+of statistical inference.
+\medskip
+
+\noindent{Frequentist statistics:}
+
+\bi
+
+\i probabilities are long-run relative occurrence of 
 outcomes of repeatable experiments (i.e., random variables);
 cannot be assigned to hypotheses or parameters, 
 which have fixed but unknown values
-&
-probabilities are degree of belief (or confidence)
-in any proposition, and hence 
-can be assigned to hypotheses and parameters
-\\
-\hline
-usually start with a likelihood function $p(d|H)$,
+
+\i usually start with a likelihood function $p(d|H)$,
 which is the probability distribution for the 
 measured data $d$, assuming the truth of a particular
-hypothesis $H$
-&
-same as frequentist approach
-\\
-\hline
-construct statistics for parameter estimation and
-hypothesis testing
-&
-specify prior degree of belief for parameters and 
-hypotheses
-\\
-\hline
-calculate the probability distribution of the 
-statistic (e.g., using time slides)
-&
-use Bayes' theorem to update degree of belief in
-light of new data 
-\\
-\hline
-construct confidence intervals and $p$-values
-&
-construct posteriors and odds ratios (Bayes factors)
-\\
-\hline
-\end{longtable}
-\vspace{0.2 in}
-\caption{Comparison of frequentist and Bayesian approaches
-to statistical inference.}
-\label{t:bayesfreq}
-\end{table}
+hypothesis $H$.
 
+\i construct statistics for parameter estimation and
+hypothesis testing
+
+\i calculate the probability distribution of the 
+statistic (e.g., using time slides)
+
+\i construct confidence intervals and $p$-values for 
+parameter estimation and hypothesis testing.
+
+\ei
+
+\noindent{Bayesian inference}
+
+\bi
+
+\i probabilities are degree of belief (or confidence)
+in any proposition, and hence 
+can be assigned to hypotheses and parameters
+
+\i usually start with a likelihood function $p(d|H)$,
+which is the probability distribution for the 
+measured data $d$, assuming the truth of a particular
+hypothesis $H$.
+
+\i specify prior degree of belief for parameters and 
+hypotheses
+
+\i use Bayes' theorem to update degree of belief in
+light of new data 
+
+\i construct posteriors and odds ratios (Bayes factors)
+for parameter estimation and model selection
+
+\ei
+\medskip
+
+As mentioned above, the starting point for most 
+frequentist and Bayesiona analyses is a likelihood function
+%
+\be
+{\rm likelihood} = p({\rm data}| {\rm parameters}, {\rm model})
+\ee
+%
+For Gaussian-distributed detector noise and 
+Gaussian-distributed GWB, the likelihood function
+for the noise-only model ${\cal M}_0$ and 
+signal+noise model ${\cal M}_1$ are given by
+%
+\be
+\begin{aligned}
+p(d|C_n, {\cal M}_0) 
+&= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
+\exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]
+\\
+p(d|C_n, S_h, {\cal M}_1) 
+&= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
+\exp\left[-\frac{1}{2} d^T C^{-1} d\right]
+\end{aligned}
+\ee
+%
+where $C_n$ an d $C$ are the covariance matrices
+for the noise-only and signal+noise models, respectively.
+For $N$ samples of white noise and white GWB in
+two colocated and coaligned detectors:
+%
+\be
+C_n = \begin{bmatrix}
+S_{n_1}\,{\mathsf 1}_{N\times N} & {\mathsf 0}_{N\times N}\\
+{\mathsf 0}_{N\times N} & S_{n_2}\,{\mathsf 1}_{N\times N}
+\end{bmatrix}
+\quad\&\quad
+C = \begin{bmatrix}
+(S_{n_1} + S_h)\,{\mathsf 1}_{N\times N} & S_h\,{\mathsf 1}_{N\times N}\\
+S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
+\end{bmatrix}
+\ee
+%
+
+\subsection{Frequentist analyses}
+
+Use maximum-likelihood (ML) ratio for detection, and
+maximum-likelihood parameter values as estimators 
+
+Maximum-likelihood detection statistic:
+%
+\be
+\Lambda_{\rm ML}(d)\equiv\frac{
+{\rm max}_{S_{n_1},S_{n_2},S_h}\,p(d|S_{n_1} S_{n_2},S_h,{\cal M}_1)}
+{{\rm max}_{S_{n_1},S_{n_2}}\,p(d|S_{n_1}, S_{n_2},{\cal M}_0)}
+\ee
+%
+\be
+\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))
+\simeq\frac{\hat S_h^2}{\hat S_{n_1}\hat S_{n_2}/N}
+\ee
+%
+Note that the right-hand-side is the square of the (power)
+signal-to-noise ratio.
+
+Maximum-likelihood estimators:
+%
+\be
+\hat S_h \equiv 
+\frac{1}{N}\sum_{i=1}^N d_{1i}d_{2i}\,,
+\qquad
+\hat S_{n_1} \equiv 
+\frac{1}{N}\sum_{i=1}^N d^2_{1i}-\hat S_h\,,
+\qquad
+\hat S_{n_2} \equiv 
+\frac{1}{N}\sum_{i=1}^N d^2_{2i}
+-\hat S_h
+\ee
+% 
+Note that $\hat S_h$ is standard cross-correlation
+statistic and $\hat S_{n_1}$, $\hat S_{n_2}$ are estimators
+for the detector noise power.
+In Exercise 8 you are asked to verify the 
+expressions for the ML estimators.
+In Exercise 9 you are asked to verify the ML detection
+statistic $2\ln(\Lambda_{\rm ML}(d))$.
+
+\subsection{Bayesian analyses}
 
 Bayes' theorem:
-
-We start by giv
 %
 \be
 p(H|d) = \frac{p(d|H) p(H)}{p(d)}
 \ee
 
 Posterior distributions:
+%
 \be
-p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
+\begin{aligned}
+&p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
 = \frac{p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1)p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}
-\ee
-
-\be
-p(S_h|d,{\cal M}_1) 
+\\
+&p(S_h|d,{\cal M}_1) 
 = \int {\rm d}S_{n_1}\>\int{\rm d}S_{n_2}\>p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1)
+\end{aligned}
 \ee
 
 Model selection:
@@ -618,7 +770,14 @@ Model selection:
 \frac{p(d|{\cal M}_1)\,p({\cal M}_1)}
 {p(d|{\cal M}_0)\,p({\cal M}_0)}
 \ee
-
+%
+The {\em Bayes factor} ${\cal B}_{10}(d)$ between models 
+${\cal M}_1$ and ${\cal M}_0$ is defined by
+%
+\be
+{\cal B}_{10}(d)\equiv \frac{p(d|{\cal M}_1)}{p(d|{\cal M}_0)}
+\ee
+%
 Relationship between Bayesian and frequentist approaches:
 \be
 {\cal B}_{10}(d) 
@@ -630,57 +789,7 @@ Relationship between Bayesian and frequentist approaches:
 {\int {\rm d}\vec\theta_n\>p(d|\vec\theta_n,{\cal M}_0)p(\vec\theta_n|{\cal M}_0)}
 \simeq\Lambda_{\rm ML}(d)\,\frac{\Delta V_1/V_1}{\Delta V_0/V_0}
 \ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-\be
-\ee
-
-
-
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{Figures/informative_data}
@@ -694,6 +803,34 @@ The parameter space volume is denoted by $V$.}
 \label{f:informative_data}
 \end{center}
 \end{figure}
+
+\subsubsection{Signal priors define the signal model}
+
+%
+\be 
+\ee
+%
+
+%
+\be 
+\ee
+%
+
+%
+\be 
+\ee
+%
+
+%
+\be 
+\ee
+%
+
+%
+\be 
+\ee
+%
+
 
 \begin{figure}[htbp!]
 \begin{center}
