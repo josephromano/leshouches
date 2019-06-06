@@ -519,9 +519,83 @@ Figure taken from \cite{Adams-Cornish:2014}.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Frequentist statistics and Bayesian inference}
+\section{Bayesian inference}
+
+In order to discuss our final example, which is an
+optimal search for the popcorn-like background
+produced by stellar-mass BBH mergers throughout the 
+universe, we need to go beyond the frequentist 
+statistics that we have used so far (Section~\ref{s:optimal_filtering}, 
+and introduce some concepts from the field of Bayesian inference.
+So here, in this section, we introduce Bayesian 
+inference by comparing it to the frequentist 
+statistics, focusing mainly on those topics needed for 
+the stochastic search that we shall describe in
+Section~\ref{s:nonstationary}.
+Readers who are interested in more details should 
+consult John Veitch's contribution to this Volume.
+
+\subsection{Comparing frequentist statistics and Bayesian inference}
+
+Let us begin by giving a side-by-side comparison
+of frequentist statistics and Bayesian inference.
+See Table~\ref{t:bayes_freq}
+%
+\begin{table}[tb]
+\addtocounter{table}{-1}
+\centering
+\begin{longtable}{p{2.75in} | p{2.75in}}
+\hline
+FREQUENTIST STATISTICS & BAYESIAN INFERENCE\\
+\hline
+probabilities are long-run relative occurrence of 
+outcomes of repeatable experiments (i.e., random variables);
+cannot be assigned to hypotheses or parameters, 
+which have fixed but unknown values
+&
+probabilities are degree of belief (or confidence)
+in any proposition, and hence 
+can be assigned to hypotheses and parameters
+\\
+\hline
+usually start with a likelihood function $p(d|H)$,
+which is the probability distribution for the 
+measured data $d$, assuming the truth of a particular
+hypothesis $H$
+&
+same as frequentist approach
+\\
+\hline
+construct statistics for parameter estimation and
+hypothesis testing
+&
+specify prior degree of belief for parameters and 
+hypotheses
+\\
+\hline
+calculate the probability distribution of the 
+statistic (e.g., using time slides)
+&
+use Bayes' theorem to update degree of belief in
+light of new data 
+\\
+\hline
+construct confidence intervals and $p$-values
+&
+construct posteriors and odds ratios (Bayes factors)
+\\
+\hline
+\end{longtable}
+\vspace{0.2 in}
+\caption{Comparison of frequentist and Bayesian approaches
+to statistical inference.}
+\label{t:bayesfreq}
+\end{table}
+
 
 Bayes' theorem:
+
+We start by giv
 %
 \be
 p(H|d) = \frac{p(d|H) p(H)}{p(d)}
@@ -606,57 +680,6 @@ Relationship between Bayesian and frequentist approaches:
 \ee
 
 
-
-\begin{table}[tb]
-\addtocounter{table}{-1}
-\centering
-\begin{longtable}{p{2.75in} | p{2.75in}}
-\hline
-FREQUENTIST STATISTICS & BAYESIAN INFERENCE\\
-\hline
-probabilities are long-run relative occurrence of 
-outcomes of repeatable experiments (i.e., random variables);
-cannot be assigned to hypotheses or parameters, 
-which have fixed but unknown values
-&
-probabilities are degree of belief (or confidence)
-in any proposition, and hence 
-can be assigned to hypotheses and parameters
-\\
-\hline
-usually start with a likelihood function $p(d|H)$,
-which is the probability distribution for the 
-measured data $d$, assuming the truth of a particular
-hypothesis $H$
-&
-same as frequentist approach
-\\
-\hline
-construct statistics for parameter estimation and
-hypothesis testing
-&
-specify prior degree of belief for parameters and 
-hypotheses
-\\
-\hline
-calculate the probability distribution of the 
-statistic (e.g., using time slides)
-&
-use Bayes' theorem to update degree of belief in
-light of new data 
-\\
-\hline
-construct confidence intervals and $p$-values
-&
-construct posteriors and odds ratios (Bayes factors)
-\\
-\hline
-\end{longtable}
-\vspace{0.2 in}
-\caption{Comparison of frequentist and Bayesian approaches
-to statistical inference.}
-\label{t:bayesfreq}
-\end{table}
 
 \begin{figure}[htbp!]
 \begin{center}
