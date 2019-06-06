@@ -1,4 +1,4 @@
-\part{Details}
+\part{Details / Example}
 \label{p:details}
 
 In the second part of these notes, 
@@ -82,9 +82,93 @@ Hence, once we know how to calculate the timing residual
 response $\Delta T(t)$, we can easily calculate all the
 other quantities listed above.
 
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.2\textwidth]{Figures/one_arm_one_way}
+\caption{Geometry for a one-arm, one-way beam detector, relevant for 
+a pulsar timing residual measurement.
+The GW propagates in the $\hat k$ direction; the electromagnetic wave
+(e.g., a radio pulse from a pulsar) propagates in the $\hat u$ direction
+(opposite of the direction to the pulsar, $\hat p=-\hat u$.} 
+\label{f:one_arm_one_way}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/one_arm_one_way_peanut}
+\caption{Polarization averaged response 
+$\sqrt{|F^+(\hat k)|^2+|F_\times(\hat k)|^2}$
+for pulsar timing residuals ignoring the pulsar term and the 
+frequency-dependent factor $1/(2\pi f)$ out front.
+The response is axially symmetric around the $z$-axis, which
+we've chose to be the direction to the pulsar.}
+\label{f:one_arm_one_way_peanut}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Figures/LHO_geometry}
+\caption{Geometry for a ground-based interferometer GW response
+calculation.
+(Shown here the LIGO Hanford Observatory, in Hanford, WA.)
+The GW propagates in the $\hat k$ direction;
+$\hat u$, $\hat v$ are unit vectors that point along the 
+two arms of the interferometer.
+In the short-antenna approximation, the length $L$ of the 
+arms does not enter the expression for the response function.}
+\label{f:LHO_geometry}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=\textwidth]{Figures/LIGO_beam_patterns}
+\caption{Beam pattern functions for a ground-based interferometer
+like LIGO in the short-antenna approximation---i.e., $f\lesssim {\rm few\ kHz}$.
+The vertex of the interferometer is at the origin of coordinates,
+and interferometer arms are assumed to be orthogonal pointing along
+the $x$ and $y$ directions.}
+\label{f:LIGO_beam_patterns}
+\end{center}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial correlations}
 \label{s:nontrivial_correlations}
+
+\begin{figure}[htbp!]
+\begin{center}
+%\includegraphics[width=0.24\textwidth]{Figures/}
+\caption{}
+\label{f:}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+%\includegraphics[width=0.24\textwidth]{Figures/}
+\caption{}
+\label{f:}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+%\includegraphics[width=0.24\textwidth]{Figures/}
+\caption{}
+\label{f:}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+%\includegraphics[width=0.24\textwidth]{Figures/}
+\caption{}
+\label{f:}
+\end{center}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{What to do in the absence of correlations?}
@@ -118,7 +202,7 @@ other quantities listed above.
 
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/informative_data}
+\includegraphics[width=0.24\textwidth]{Figures/informative_data}
 \caption{}
 \label{f:}
 \end{center}
@@ -126,24 +210,15 @@ other quantities listed above.
 
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.2\textwidth]{Figures/sinusoid_prior}
+\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/sinusoid_prior}}
 \hspace{1 in}
-\includegraphics[width=0.2\textwidth]{Figures/stochastic_prior}
+\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/stochastic_prior}}
 \caption{Different signal priors for $h(t)$.
-Left panel: Determinsitic (sinusoid) signal prior.
-Right panel: Stochastic signal prior.
+(a): Determinsitic (sinusoid) signal prior.
+(b): Stochastic signal prior.
 For the stochastic signal prior, $h(t)$ values are drawn from a
 Gaussian distribution with variance $S_h$.}
 \label{f:det_stoch_signal_priors}
-\end{center}
-\end{figure}
-
-\begin{figure}[htbp!]
-\begin{center}
-\includegraphics[width=0.2\textwidth]{Figures/chirp_prior}
-\includegraphics[width=0.2\textwidth]{Figures/no_signal_prior}
-\caption{}
-\label{f:}
 \end{center}
 \end{figure}
 
@@ -151,6 +226,36 @@ Gaussian distribution with variance $S_h$.}
 \section{Searching for the background of binary black-hole
 mergers}
 \label{s:nonstationary}
+
+\begin{figure}[htbp!]
+\begin{center}
+\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/chirp_prior}}
+\hspace{1 in}
+\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/no_signal_prior}}
+\caption{The two components of the ``mixture" signal prior for the Bayesian 
+BBH search:
+(a) with probability $\xi$, the signal prior for $h(t)$ is a 
+chirp waveform;
+(b) with probability $1-\xi$, the signal prior for $h(t)$ is that
+the signal is absent, $h(t)=0$.}
+\label{f:mixture_signal_priors}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=\textwidth]{Figures/BBH-BNS-simulated-data}
+\caption{Simulated BBH and BNS data in two coincident and coaligned
+detectors.
+The confusion-limited BNS background is shown in orange;
+the popcorn-like BBH background is shown in green.
+The black trace is the data consisting of the BBH and BNS signal
+plus white Gaussian-stationary noise, uncorrelated in the two
+detectors.}
+\label{f:BBH-BNS-simulated-data}
+\end{center}
+\end{figure}
+
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_0}
@@ -170,8 +275,17 @@ mergers}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_14}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_15}
 \caption{Posterior distributions for $\xi$ for the first 16 segments
-(first 4~s) of data.}
+(i.e., first 4~s) of data.}
 \label{f:posteriors_xi_seg}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/posterior_xi}
+\caption{The cumulative posterior distribution for $\xi$ after 
+combining all 40~segments of data.}
+\label{f:posterior_xi}
 \end{center}
 \end{figure}
 
@@ -186,7 +300,8 @@ mergers}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_29}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_39}
 \caption{Cumulative posterior distributions for $\xi$ combining the
-first $n$ segments of data.}
+first $n$ segments of data.
+The bottom-rightmost plot is also shown in Figure~\ref{f:posterior_xi}.}
 \label{f:posteriors_xi_cum}
 \end{center}
 \end{figure}
