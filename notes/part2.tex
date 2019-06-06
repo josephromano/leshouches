@@ -138,35 +138,46 @@ the $x$ and $y$ directions.}
 \section{Non-trivial correlations}
 \label{s:nontrivial_correlations}
 
+Note that the first zero crossing occurs at roughly
+60~Hz, corresponding to GW with wavelength equal to 
+twice the separation between the two observatories.
+
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.49\textwidth]{Figures/LHO-LLO-orf}
+\includegraphics[width=0.49\textwidth]{Figures/LHO-Virgo-orf}
+\caption{Normalized overlap function for ground-based
+interferometers.
+Left panel: LIGO Hanford-LIGO Livingston detector pair.
+Rght panel: LIGO Hanford-Virgo detector pair.
+These overlap functions were calculated in the small-antenna
+approximation.
+Note the reduced amplitude of the LHO-Virgo overlap function
+relative to the LHO-LLO overlap function due to the much larger 
+separation between Hanford, WA and Pisa, Italy.}
+\label{f:orfs}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.7\textwidth]{Figures/HD_curve}
+\caption{Hellings-Down curve.
+The values of the expected correlation for an unpolarized,
+isotropic GWB as a function of the angle $\zeta$ between
+two Earth-pulsar baselines.}
+\label{f:HD_curve}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
-\end{center}
-\end{figure}
-
-\begin{figure}[htbp!]
-\begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.25\textwidth]{Figures/dipole-orf}
+\caption{Geometry for calculating the overlap function
+for a pair of short, electric dipole antennae, for an
+unpolarized and isotropic electric field
+(Exercise 7).}
+\label{f:dipole-orf}
 \end{center}
 \end{figure}
 
@@ -175,25 +186,45 @@ the $x$ and $y$ directions.}
 
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.3\textwidth]{Figures/LISA_XYZ}
+\caption{Schematic representation of the LISA consellation.
+$X$, $Y$, $Z$ correspond to Michelson interferometers 
+with $60^\circ$ opening angles between the arms, with vertices
+located at spacecraft 1, 2, 3.
+From $X, Y, Z$, one can construct the TDI combinations
+$A, E, T$ described in the text.}
+\label{f:LISA_XYZ}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp!]
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.7\textwidth]{Figures/LISA_timeseries}
+\caption{One-years worth of simulated timeseries data for LISA.
+The total output consists of a cosmological GWB (pink);
+LISA instrument noise (blue); the full astrophysical foreground
+signal from the galactic white-dwarf binary population (red),
+which consist of individually resolvable binary signal and 
+the confusion-limited foreground (green).
+Of particular note are the amplitude and time variability 
+of the astrophysical foreground, having a period of 6~months.
+Figure taken from \cite{Adams-Cornish:2014}.}
+\label{f:LISA_timeseries}
 \end{center}
 \end{figure}
 \begin{figure}[htbp!]
 
 \begin{center}
-%\includegraphics[width=0.24\textwidth]{Figures/}
-\caption{}
-\label{f:}
+\includegraphics[width=0.6\textwidth]{Figures/LISA_psds}
+\caption{Simulated power spectral densities for the 
+LISA instrumental noise (red), cosmological GWB (green)
+and astrophysical foreground from galactic white dwarf
+binaries (blue), the latter at two times during LISAs orbit.
+Note the strength of the astrophyical foreground relative
+to the instrumental noise, and the different spectral shapes
+for the three different contributions.
+Figure taken from \cite{Adams-Cornish:2014}.}
+\label{f:LISA_psds}
 \end{center}
 \end{figure}
 
@@ -202,20 +233,26 @@ the $x$ and $y$ directions.}
 
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.24\textwidth]{Figures/informative_data}
-\caption{}
-\label{f:}
+\includegraphics[width=0.45\textwidth]{Figures/informative_data}
+\caption{Schematic representation of the likelihood function
+and prior probability distribution for a parameter $\theta$,
+when the data $d$ are informative.
+In this case, thelikelihood function is peaked relative to the 
+prior probability distribution, with maximum at 
+$\theta=\theta_{\rm ML}$ and characteristic width $\Delta V$.
+The parameter space volume is denoted by $V$.}
+\label{f:informative_data}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp!]
 \begin{center}
-\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/sinusoid_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/sinusoid_prior}}
 \hspace{1 in}
-\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/stochastic_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/stochastic_prior}}
 \caption{Different signal priors for $h(t)$.
-(a): Determinsitic (sinusoid) signal prior.
-(b): Stochastic signal prior.
+Panel (a): Determinsitic (sinusoid) signal prior.
+Panel (b): Stochastic signal prior.
 For the stochastic signal prior, $h(t)$ values are drawn from a
 Gaussian distribution with variance $S_h$.}
 \label{f:det_stoch_signal_priors}
@@ -229,15 +266,15 @@ mergers}
 
 \begin{figure}[htbp!]
 \begin{center}
-\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/chirp_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/chirp_prior}}
 \hspace{1 in}
-\subfigure[]{\includegraphics[width=0.2\textwidth]{Figures/no_signal_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/no_signal_prior}}
 \caption{The two components of the ``mixture" signal prior for the Bayesian 
-BBH search:
-(a) with probability $\xi$, the signal prior for $h(t)$ is a 
-chirp waveform;
-(b) with probability $1-\xi$, the signal prior for $h(t)$ is that
-the signal is absent, $h(t)=0$.}
+BBH search.
+Panel (a): With probability $\xi$, the signal prior for $h(t)$ is a 
+chirp waveform.
+Panel (b): With probability $(1-\xi)$, the signal prior for $h(t)$ is that
+the signal is absent, i.e., $h(t)=0$.}
 \label{f:mixture_signal_priors}
 \end{center}
 \end{figure}
