@@ -1,11 +1,12 @@
-\part{Details / Example}
+\part{Details / Examples}
 \label{p:details}
 
 In the second part of these notes, 
 we describe the non-trivial response of a beam
 detector to gravitational waves, calculate the overlap function
-between a pair of detectors, and introduce a promising Bayesian method
-to search for the astrophysical background produced by stellar-mass
+between a pair of detectors, and introduce a Bayesian method that
+can optimally search for the astrophysical background 
+produced by stellar-mass
 binary BHs and NSs throughout the universe.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,16 +124,20 @@ R^A(f,\hat n) \equiv R^{ab}(f,\hat n)e^A_{ab}(\hat n)
 and
 %
 \be
-R^{ab}(f,\hat n) \equiv e^{i 2\pi f\hat n\cdot\vec x/c}\,\int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau+\hat n\cdot\vec y/c)}
+R^{ab}(f,\hat n) \equiv e^{i 2\pi f\hat n\cdot\vec x/c}\,
+\int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>
+R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau+\hat n\cdot\vec y/c)}
 \ee
 %
 Note that $R^A(f,\hat n)$ is the 
 detector response for a plane-wave
 with frequency $f$, propagation direction $\hat k$, and polarization $A$.
 
-\subsubsection{Example: One-arm, one-way detector}
+\subsection{Examples}
 
-As an example, we will consider the timing response of a one-arm,
+\subsubsection{Detector response for a one-arm, one-way detector}
+
+For our first example, we will consider the timing response of a one-arm,
 one-way beam detector, which is relevant for pulsar timing observations.
 The geometry of the situation is shown in Figure~\ref{f:one_arm_one_way}.
 %
@@ -147,7 +152,6 @@ The GW propagates in the $\hat k$ direction; the electromagnetic wave
 \label{f:one_arm_one_way}
 \end{center}
 \end{figure}
- 
 %
 \be
 h(t)\equiv
@@ -160,7 +164,7 @@ t(s) = (t-L/c) + s/c\,, \qquad
 \vec x(s) = \vec r_1 + s\hat u
 \ee
 %
-Then (as you are asked to show in Exercise 6), the timing
+In Exercise 6, you are asked to show that the timing
 residual response is given by
 %
 \be
@@ -190,6 +194,7 @@ Then the Doppler frequency response simplifies to
 \be
 F^A(\hat k) 
 =\frac{1}{2}u^a u^b e_{ab}^A(\hat k)\frac{1}{1-\hat k\cdot\hat u}
+\label{e:F^A(k)}
 \ee
 %
 where the last expression is written in terms of the direction
@@ -233,29 +238,14 @@ and
 where $\hat u=-\hat z$ and $\theta$ is the usual polar
 angle between $\hat k$ and the $z$ direction.
 
-\subsubsection{Example: Laser interferometer in short-antenna limit}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Detector response for a laser interferometer 
+in the short-antenna limit}
 
+Another simple example of a detector response function is
+for a equal-arm laser interferometer, like LIGO, in the 
+{\em short-antenna limit} (Figure~\ref{f:LHO_geometry}).
 %
-\be
-\ee
-%
-%
-\be
-\ee
-%
-%
-\be
-\ee
-%
-%
-\be
-\ee
-%
-%
-\be
-\ee
-%
-
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{Figures/LHO_geometry}
@@ -270,7 +260,42 @@ arms does not enter the expression for the response function.}
 \label{f:LHO_geometry}
 \end{center}
 \end{figure}
-
+%
+This approximation is valid when the wavelength of the GW is 
+much larger than the dimensions of the detector.  
+Then, the GW phase is effectively constant as a photon
+travels down an back an interferometer arm.
+Defining the strain response of the interferometer as
+%
+\be
+h(t) = \frac{1}{2}\left(
+\frac{\Delta T_{\vec u,\, {\rm roundtrip}}(t)}{T}
+-
+\frac{\Delta T_{\vec v,\, {\rm roundtrip}}(t)}{T}
+\right)
+\ee
+%
+one can show that
+%
+\be
+R^A(f,\hat n)\simeq\frac{1}{2}\left(u^au^b-v^av^b\right)\,e^A_{ab}(\hat n)
+\ee
+%
+The quantity multiply $e^A_{ab}(\hat k)$ in the 
+reponse function
+is called the {\em detector tensor}
+%
+\be
+D^{ab}\equiv\frac{1}{2}\left(u^a u^b - v^a v^b\right)\,.
+\ee
+%
+Plots of the {\em beam pattern functions}
+$|R^+(f,\hat k)|$, $|R^\times(f,\hat k)|$ for the 
+two polarizations individually, and the 
+root-summed-squared response for both polarization
+$\sqrt{|R^+(f,\hat k)|^2 + |R^\times(f,\hat k)|^2}$
+is shown in Figure~\ref{f:LIGO_beam_patterns}.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/LIGO_beam_patterns}
@@ -283,9 +308,93 @@ the $x$ and $y$ directions.}
 \end{center}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial correlations}
 \label{s:nontrivial_correlations}
+
+\subsection{Overlap function}
+
+Detectors in different locations and with different 
+orientations respond differently to a passing GW.
+Overlap function encodes reduction in sensitivity of a
+cross-correlation analysis due to separation and misalignment 
+of the detectors.
+
+In the time domain:
+%
+\be
+\langle h_I(t)h_J(t')\rangle 
+= \frac{1}{2}\int_{-\infty}^\infty{\rm d}f\>
+e^{i2\pi f(t-t')}\Gamma_{IJ}(f)S_h(f)
+\label{e:Gamma-time}
+\ee
+%
+In the frequency domain:
+%
+\be
+\langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
+= \frac{1}{2}\delta(f-f')\Gamma_{IJ}(f)S_h(f)
+\label{e:Gamma-freq}
+\ee
+%
+One finds
+%
+\be
+\Gamma_{IJ}(f) 
+= \frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat n}\> 
+\sum_A R_I^A(f,\hat n) R_J^{A}{}^{*}(f,\hat n)
+\label{e:Gamma}
+\ee
+%
+for an unpolarized, stationary isotropic GWB.
+As mentioned in Section~\ref{s:optimal_filtering},
+$\Gamma_{IJ}(f)$ is the transfer function between the strain
+power in the GWB and detector cross-power.
+The integrand of $\Gamma_{IJ}(f)$ is important for 
+statistically {\em anisotropic} backgrounds as the 
+right-hand-side of \eqref{e:Gamma-freq} is replaced by
+%
+\be
+\frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat k}\> 
+\sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k) {\cal P}(f,\hat k)
+\label{e:aniso_RHS}
+\ee
+%
+One then typically expands 
+${\cal P}(f,\hat k)$ in terms of spherical harmonics 
+%
+\be
+{\cal P}(f,\hat k) = \sum_{l=0}^\infty\sum_{m=-l}^l
+{\cal P}_{lm}(f)Y_{lm}(\hat k)\,,
+\ee
+%
+for which \eqref{e:Gamma-freq} becomes
+%
+\be
+\langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
+= \frac{1}{2}\delta(f-f')\sum_{l=0}^\infty\sum_{m=-l}^l
+\Gamma_{IJ,lm}(f,\hat k){\cal P}_{lm}(f)\,.
+\label{e:Gamma-freq}
+\ee
+%
+with
+%
+\be
+\Gamma_{IJ,lm}(f,\hat k) = 
+\frac{1}{8\pi}
+\sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k) 
+Y_{lm}(\hat k)\,.
+\ee
+%
+Interested readers can find much more discussion
+about anisotropic background in Section~7 of
+\cite{Romano-Cornish:2017}, and references to the
+original work cited therein.
+
+\subsection{Examples}
+
+\subsubsection{Overlap function for a pair of laser
+interferometers in the short-antenna limit}
 
 Note that the first zero crossing occurs at roughly
 60~Hz, corresponding to GW with wavelength equal to 
@@ -308,6 +417,32 @@ separation between Hanford, WA and Pisa, Italy.}
 \end{center}
 \end{figure}
 
+\subsubsection{Overlap function for pulsar timing arrays}
+
+If one uses \eqref{e:F^A(k)} for the Doppler frequency
+repsonse of a pulsar timing measurement, then the correlation
+between two Earth-pulsar baseline is just a single number as 
+the response functions $F^A_{I,J}(\hat k)$ are independent of
+frequency.
+This number, which can be interpreted as the expected
+correlation between the two pulsar timing measuerment, 
+depends on the angular separation between the two 
+Earth-pulsar baselines.
+A plot of this expected correlation as a function of the 
+angular separation between the Earth-pulsar baselines is
+shown in Figure~\ref{f:HD_curve}.
+This is called the {\em Hellings-Down curve}, originally 
+calculated in 1983 by Hellings and Down~\cite{Hellings-Down:1983}.
+This calculation assumes that the background is unpolarized
+and isotropic.
+Generalizations of the Hellings-Down curve allowing for 
+anisotropy and non-general-relativity polarization modes
+can be found in e.g., \cite{Mingarelli-et-al, Lee-et-al}.
+The quadrupolar nature of GWs in general relativity is
+apparent in the Hellings-Down curve, with an angular dependence
+that is qualitatively similar to $\cos(2\zeta)$, where 
+$\zeta$ is the angle between two Earth-pulsar baselines.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/HD_curve}
@@ -318,6 +453,12 @@ two Earth-pulsar baselines.}
 \label{f:HD_curve}
 \end{center}
 \end{figure}
+
+\subsubsection{Overlap function for a pair of electric dipole 
+antennas}
+
+For the final example, you are asked in Exercise 7 to 
+calculate the 
 
 \begin{figure}[htbp!]
 \begin{center}
@@ -488,7 +629,7 @@ which is the probability distribution for the
 measured data $d$, assuming the truth of a particular
 hypothesis $H$
 &
-same as frequentis approach
+same as frequentist approach
 \\
 \hline
 construct statistics for parameter estimation and
