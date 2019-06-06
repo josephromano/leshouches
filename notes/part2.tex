@@ -23,6 +23,9 @@ GW detectors.
 In this and the following section, we will develop
 the tools that we need to do these calculations.
 
+\subsection{Beam detectors and different types of 
+detector response}
+
 For simplicity, we will restrict our attention to 
 {\em beam detectors}, which use electromagnetic radiation
 to monitor the separation of two or more test masses.
@@ -63,8 +66,8 @@ fractional Doppler frequency $\Delta v(t)/\nu_0$, or
 phase $\Delta\Phi(t)$, instead of the timing residual
 $\Delta T(t)$.
 Despite the apparent differences in the responses, 
-they are all simply related to the timing residual 
-response via the relations:
+they are all derivable from the change in light travel
+time $\Delta T(t)$ via the relations:
 %
 \be
 \begin{aligned}
@@ -82,6 +85,57 @@ Hence, once we know how to calculate the timing residual
 response $\Delta T(t)$, we can easily calculate all the
 other quantities listed above.
 
+\subsection{Detector response functions}
+\label{e:det_response}
+
+GWs are weak.
+As such, a detector act like a {\em linear} system, 
+which converts metric perturbations to detector output.
+Mathematically, this is represented by the 
+{\em convolution} of the metric perturbations with the 
+{\em response function} of the detector:
+%
+\be
+h(t) = (\mb{R}*\mb{h})(t,\vec x)\equiv
+\int_{-\infty}^\infty {\rm d}\tau
+\int {\rm d}^3 y\>
+R^{ab}(\tau,\vec y)h_ab(t-\tau, \vec x-\vec y)
+\ee
+%
+Here $h(t)$ is the output of the detector at time $t$.
+The vector $\vec x$ is the location of detector, and 
+$R^{ab}(\tau,\vec y)$ is the {\em impulse repsonse}
+of the detector.
+Expanding $h_{ab}(t-\tau,\vec x-\vec y)$ as a sum of
+plane waves \eqref{e:planewave}, we find that the Fourier
+transform $\tilde h(f)$ of $h(t)$ can be written as
+%
+\be
+\tilde h(f)=\int {\rm d}^2\Omega_{\hat n}\sum_A R^A(f,\hat n)\,h_A(f,\hat n)
+\ee
+%
+where
+%
+\be
+R^A(f,\hat n) \equiv R^{ab}(f,\hat n)e^A_{ab}(\hat n)
+\ee
+%
+and
+%
+\be
+R^{ab}(f,\hat n) \equiv e^{i 2\pi f\hat n\cdot\vec x/c}\,\int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau+\hat n\cdot\vec y/c)}
+\ee
+%
+Note that $R^A(f,\hat n)$ is the 
+detector response for a plane-wave
+with frequency $f$, propagation direction $\hat k$, and polarization $A$.
+
+\subsubsection{Example: One-arm, one-way detector}
+
+As an example, we will consider the timing response of a one-arm,
+one-way beam detector, which is relevant for pulsar timing observations.
+The geometry of the situation is shown in Figure~\ref{f:one_arm_one_way}.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.2\textwidth]{Figures/one_arm_one_way}
@@ -93,19 +147,114 @@ The GW propagates in the $\hat k$ direction; the electromagnetic wave
 \label{f:one_arm_one_way}
 \end{center}
 \end{figure}
+ 
+%
+\be
+h(t)\equiv
+\Delta T(t) = \frac{1}{2c} u^a u^b\int_0^L{\rm d}s\> h_{ab}(t(s),\vec x(s))
+\ee
+%
+%
+\be
+t(s) = (t-L/c) + s/c\,, \qquad
+\vec x(s) = \vec r_1 + s\hat u
+\ee
+%
+Then (as you are asked to show in Exercise 6), the timing
+residual response is given by
+%
+\be
+R^A(f,\hat n) = \frac{1}{i2\pi f}\,
+\frac{1}{2}u^a u^b e^A_{ab}(\hat n)\frac{1}{1+\hat n\cdot \hat u}\,
+\left[ 1-e^{-\frac{i 2\pi fL}{c}(1+\hat n\cdot\hat u)}\right]
+\,e^{i2\pi f\hat n\cdot\vec r_2/c}
+\ee
+%
+In the context of pulsar timing, the two terms in square brackets 
+are called the {\em Earth term} and {\em pulsar term} respectively.
+The pulsar term encodes information about the phase of the GW at
+the location of the pulsar.
+It is usually ignored for stochastic background searches, as 
+this term for different pulsars will not be correlated with one other
+(since the spatial distance between two pulsars is much greater than
+the wavelengths of the GWs that pulsar timing arrays are 
+sensitive to).
 
+Note that the factor $1/(i2\pi f)$ goes away for the Doppler 
+frequency response, $\Delta\nu(t)/\nu_0$, and that the
+phase term $e^{-i2\pi f\hat k\cdot\vec r_2/c}$ equals one
+if we take the $\vec r_2$ to be the origin of coordinates, e.g.,
+at the solar system barycentre.
+Then the Doppler frequency response simplifies to 
+%
+\be
+F^A(\hat k) 
+=\frac{1}{2}u^a u^b e_{ab}^A(\hat k)\frac{1}{1-\hat k\cdot\hat u}
+\ee
+%
+where the last expression is written in terms of the direction
+to the pulsar $\hat p = -\hat u$.
+A plot of this response, summed over the two polarizations,
+is shown in Figure~\ref{f:one_arm_one_way_peanut}.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.4\textwidth]{Figures/one_arm_one_way_peanut}
-\caption{Polarization averaged response 
+\caption{Polarization-averaged Doppler frequency response
 $\sqrt{|F^+(\hat k)|^2+|F_\times(\hat k)|^2}$
-for pulsar timing residuals ignoring the pulsar term and the 
-frequency-dependent factor $1/(2\pi f)$ out front.
+for pulsar timing, ignoring the frequency-dependendent part of
+the pulsar term.
 The response is axially symmetric around the $z$-axis, which
-we've chose to be the direction to the pulsar.}
+we've chose to be the direction to the pulsar $\hat p=-\hat u$.}
 \label{f:one_arm_one_way_peanut}
 \end{center}
 \end{figure}
+%
+The response is maximum when the GW and radio pulse propagate 
+in the same direction---i.e., when $\hat k=\hat u$.
+It is zero when they propagate in opposite directions.
+These results follow from 
+%
+\be
+\begin{aligned}
+&u^a u^b e^+_{ab}(\hat k) 
+= \sin^2\theta = (1-\cos\theta)(1+\cos\theta)\,,
+\\
+&u^a u^b e^\times_{ab}(\hat k)=0\,,
+\end{aligned}
+\ee
+%
+and
+%
+\be
+\frac{1}{1-\hat k\cdot\hat u} = \frac{1}{1-\cos\theta}\,,
+\ee
+%
+where $\hat u=-\hat z$ and $\theta$ is the usual polar
+angle between $\hat k$ and the $z$ direction.
+
+\subsubsection{Example: Laser interferometer in short-antenna limit}
+
+%
+\be
+\ee
+%
+%
+\be
+\ee
+%
+%
+\be
+\ee
+%
+%
+\be
+\ee
+%
+%
+\be
+\ee
+%
 
 \begin{figure}[htbp!]
 \begin{center}
@@ -231,6 +380,92 @@ Figure taken from \cite{Adams-Cornish:2014}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Frequentist statistics and Bayesian inference}
 
+Bayes' theorem:
+%
+\be
+p(H|d) = \frac{p(d|H) p(H)}{p(d)}
+\ee
+
+Posterior distributions:
+\be
+p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
+= \frac{p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1)p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}
+\ee
+
+\be
+p(S_h|d,{\cal M}_1) 
+= \int {\rm d}S_{n_1}\>\int{\rm d}S_{n_2}\>p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1)
+\ee
+
+Model selection:
+\be
+\frac{p({\cal M}_1|d)}{p({\cal M}_0|d)} =
+\frac{p(d|{\cal M}_1)\,p({\cal M}_1)}
+{p(d|{\cal M}_0)\,p({\cal M}_0)}
+\ee
+
+Relationship between Bayesian and frequentist approaches:
+\be
+{\cal B}_{10}(d) 
+\equiv\frac{p(d|{\cal M}_1)}{p(d|{\cal M}_0)}
+= \frac{
+\int{\rm d}\vec\theta_n
+\int{\rm d}\vec\theta_h
+\>p(d|\vec\theta_n,\vec\theta_h,{\cal M}_1)p(\vec\theta_n,\vec\theta_h|{\cal M}_1)}
+{\int {\rm d}\vec\theta_n\>p(d|\vec\theta_n,{\cal M}_0)p(\vec\theta_n|{\cal M}_0)}
+\simeq\Lambda_{\rm ML}(d)\,\frac{\Delta V_1/V_1}{\Delta V_0/V_0}
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+\be
+\ee
+
+
+
 \begin{table}[tb]
 \addtocounter{table}{-1}
 \centering
@@ -248,31 +483,31 @@ in any proposition, and hence
 can be assigned to hypotheses and parameters
 \\
 \hline
-Usually start with a likelihood function $p(d|H)$,
+usually start with a likelihood function $p(d|H)$,
 which is the probability distribution for the 
 measured data $d$, assuming the truth of a particular
 hypothesis $H$
 &
-same
+same as frequentis approach
 \\
 \hline
-Construct statistics for parameter estimation and
+construct statistics for parameter estimation and
 hypothesis testing
 &
-Specify prior degree of belief for parameters and 
+specify prior degree of belief for parameters and 
 hypotheses
 \\
 \hline
-Calculate the probability distribution of the 
+calculate the probability distribution of the 
 statistic (e.g., using time slides)
 &
-Use Bayes' theorem to update degree of belief in
+use Bayes' theorem to update degree of belief in
 light of new data 
 \\
 \hline
-constructs confidence intervals and $p$-values
+construct confidence intervals and $p$-values
 &
-constructs posteriors and odds ratios (Bayes factors)
+construct posteriors and odds ratios (Bayes factors)
 \\
 \hline
 \end{longtable}
