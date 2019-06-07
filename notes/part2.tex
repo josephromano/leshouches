@@ -100,7 +100,7 @@ Mathematically, this is represented by the
 h(t) = (\mb{R}*\mb{h})(t,\vec x)\equiv
 \int_{-\infty}^\infty {\rm d}\tau
 \int {\rm d}^3 y\>
-R^{ab}(\tau,\vec y)h_ab(t-\tau, \vec x-\vec y)
+R^{ab}(\tau,\vec y)h_{ab}(t-\tau, \vec x-\vec y)
 \ee
 %
 Here $h(t)$ is the output of the detector at time $t$.
@@ -671,8 +671,7 @@ Gaussian-distributed GWB, the likelihood function
 for the noise-only model ${\cal M}_0$ and 
 signal+noise model ${\cal M}_1$ are given by
 %
-\be
-\begin{aligned}
+\begin{align}
 p(d|C_n, {\cal M}_0) 
 &= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
 \exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]
@@ -680,8 +679,8 @@ p(d|C_n, {\cal M}_0)
 p(d|C_n, S_h, {\cal M}_1) 
 &= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
 \exp\left[-\frac{1}{2} d^T C^{-1} d\right]
-\end{aligned}
-\ee
+label{e:stochastic_likelihood}
+\end{align}
 %
 where $C_n$ an d $C$ are the covariance matrices
 for the noise-only and signal+noise models, respectively.
@@ -698,6 +697,7 @@ C = \begin{bmatrix}
 (S_{n_1} + S_h)\,{\mathsf 1}_{N\times N} & S_h\,{\mathsf 1}_{N\times N}\\
 S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
 \end{bmatrix}
+\label{e:covariance_matrices}
 \ee
 %
 
@@ -804,34 +804,30 @@ The parameter space volume is denoted by $V$.}
 \end{center}
 \end{figure}
 
-\subsubsection{Signal priors define the signal model}
+\subsection{Signal priors define the signal model}
 
+Stochastic:
 %
 \be 
+p(h|S_h) 
+= \frac{1}{\sqrt{2\pi S_h}}\,\exp\left[-\frac{1}{2}\frac{h^2}{S_h}\right]
+\label{e:stoch-prior}
 \ee
 %
-
+Deterministic:
 %
 \be 
+p(h|A, t_0, f_0)
+=\delta\left(h- A\sin[2\pi f_0(t-t_0)]\right) 
 \ee
 %
-
+Hybrid (mixture) prior:
 %
 \be 
+p(h|\xi, A, t_0, f_0) 
+= \xi\,\delta\left(h-A\sin[2\pi f_0(t-t_0)]\right) + (1-\xi)\,\delta(h)
 \ee
 %
-
-%
-\be 
-\ee
-%
-
-%
-\be 
-\ee
-%
-
-
 \begin{figure}[htbp!]
 \begin{center}
 \subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/sinusoid_prior}}
@@ -845,11 +841,70 @@ Gaussian distribution with variance $S_h$.}
 \label{f:det_stoch_signal_priors}
 \end{center}
 \end{figure}
+%
+As an example, start with the generic likelihood:
+%
+\be 
+p(d|C_n,h) \equiv p_n(d-h|C_n) 
+= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,\exp\left[-\frac{1}{2}(d-h)^T C_n^{-1}(d-h)\right]
+\ee
+%
+where
+%
+\be 
+C_n = \begin{bmatrix}
+S_{n_1} & 0\\
+0 & S_{n_2}
+\end{bmatrix}
+\ee
+%
+Then multiply by the stochastic signal prior 
+\eqref{e:stoch-prior} and marginalize over $h$:
+%
+\be 
+p(d|C_n,S_h) = \int {\rm d}h\>p_n(d-h|C_n)p(h|S_h) 
+\ee
+%
+Since the likelihood function and prior are both
+Gaussian distributions, the integral can be done
+analytically by completing the square.
+The final result (which you are asked to show in 
+Exercise 10) is
+%
+\be
+p(d|C_n, S_h)
+= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]
+\ee
+%
+where
+%
+\be 
+C = \begin{bmatrix}
+S_{n_1} + S_h & S_h\\
+S_h & S_{n_2} + S_h
+\end{bmatrix}
+\ee
+%
+ia the covariance matrix for both the signal and noise.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Searching for the background of binary black-hole
 mergers}
 \label{s:nonstationary}
+
+%
+\be 
+\ee
+%
+%
+\be 
+\ee
+%
+%
+\be 
+\ee
+%
+
 
 \begin{figure}[htbp!]
 \begin{center}
