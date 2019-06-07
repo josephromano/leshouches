@@ -630,11 +630,13 @@ Maximum-likelihood detection statistic:
 \Lambda_{\rm ML}(d)\equiv\frac{
 {\rm max}_{S_{n_1},S_{n_2},S_h}\,p(d|S_{n_1} S_{n_2},S_h,{\cal M}_1)}
 {{\rm max}_{S_{n_1},S_{n_2}}\,p(d|S_{n_1}, S_{n_2},{\cal M}_0)}
+\label{e:Lambda_ML}
 \ee
 %
 \be
 \Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))
 \simeq\frac{\hat S_h^2}{\hat S_{n_1}\hat S_{n_2}/N}
+\label{e:Lambda}
 \ee
 %
 Note that the right-hand-side is the square of the (power)
@@ -721,6 +723,21 @@ The parameter space volume is denoted by $V$.}
 \label{f:informative_data}
 \end{center}
 \end{figure}
+%
+This last expression can also be written as
+%
+\be
+2\ln({\cal B}_{10}(d)) \simeq \Lambda(d) + 
+2\ln\left(\frac{\Delta V_1/V_1}{\Delta V0/V_0}\right)
+\ee
+%
+where $\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))$
+plays the role of a frequentist detection statistic, 
+and the last term is an Occam's factor that penalizes
+models that use more parameter space volume than needed
+to match the data.
+As shown in~\eqref{e:Lambda}, $\Lambda(d)$ is effectively
+a squared signal-to-noise ratio,
 
 \subsection{Signal priors define the signal model}
 
@@ -1047,17 +1064,25 @@ shown before in Figure~\ref{f:posterior_xi}.
 
 \subsection{Comparison with the standard cross-correlation search}
 
-Of course, one can also use the standard cross-correlation search
-to search for the background for this example.
+Of course, one can also run the standard cross-correlation search
+on this data to search for the signal.
 Although, not optimal for an intermitent background like this,
-for this particular example, the optimally-filtered signal-to-noise
-ratio is 
+the cross-correlation signal-to-noise ratio is 
 %
 \be
 {\rm SNR}_{\rm CC} = 8.9
 \ee
-
-$2\ln({\rm BF}) =  233$
+%
+compared to
+%
+\be
+{\rm SNR}_{\rm bayesian} = 15.3
+\ee
+%
+for the Bayesian search.
+This signal-to-noise ratio value was obtained by taking the square-root
+of $2\ln({\cal B}_{10}(d)) = 233$, where ${\cal B}_{10}(d)$ is the 
+signal+noise to noise-only Bayes factor.
 
 Note that for this Bayesian analysis, {\em all} segments contribute
 to estimating the probability parameter $\xi$.
