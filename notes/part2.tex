@@ -892,20 +892,52 @@ ia the covariance matrix for both the signal and noise.
 mergers}
 \label{s:nonstationary}
 
-%
-\be 
-\ee
-%
-%
-\be 
-\ee
-%
-%
-\be 
-\ee
-%
+As discussed in Section~\ref{s:BBH-BNS-LIGO}, the non-stationary 
+popcorn-like background from BBH mergers is a potential signal 
+for advanced LIGO and Virgo.
+The recent detections of several large signal-to-noise ratio
+BBH and BNS mergers imply the existence of a stochastic GW 
+background of the more distant, weaker events.
+In 2018, Smith \& Thrane~\cite{Smith-Thrane:2018} 
+proposed an alternative to the standard cross-correlation 
+method (Section~\ref{s:correlations})
+to search for the BBH component, optimally suited for the non-stationarity.
+One of their insights was to describe the BBH 
+background with a ``mixture" signal prior consisting of
+a BBH chirp in a certain fraction $\xi$ of the analyzed 
+segments, and noise only for the remaining segments.
+As the individual signals will not be resolvable, they also 
+choose to marginalize over the BBH chirp parameters 
+leaving only the probabity parameter $\xi$ (which is 
+simply related to the rate of BBH signals) to estimate.
+Although in principle they can do the analysis with a
+single detector, they use two detectors to help 
+discriminate against glitches.
 
+\subsection{Mathematical details / data analysis pipeline}
 
+The key components of their analysis are as follows:
+\smallskip
+
+\noindent
+1) They begin by splitting data in short (e.g., 4 sec) segments, 
+which should contain at most one BBH merger.
+
+\smallskip
+\noindent
+2) They choose a mixture signal model:
+%
+\be 
+p(h|\xi, \vec\lambda) 
+= \xi\,\delta\left(h-{\rm chirp}(\vec\lambda)\right) +
+(1-\xi)\,\delta(h)\,,
+\label{e:mixture-signal-prior}
+\ee
+%
+consisting of a BBH chirp signal with probabiity
+$\xi$ and noise-only ($h=0$) with probability $(1-\xi)$
+(Figure~\ref{f:mixture_signal_priors}).
+%
 \begin{figure}[htbp!]
 \begin{center}
 \subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/chirp_prior}}
@@ -921,6 +953,80 @@ the signal is absent, i.e., $h(t)=0$.}
 \end{center}
 \end{figure}
 
+\smallskip
+\noindent
+3) For each segment of data $d_i$, they marginalize
+the standard likelihood function
+%
+\be 
+p(d_i|C_n,h)\equiv p_n(d_i-h|C_n)
+\ee
+%
+over the signal prior \eqref{e:mixture-signal-prior}:
+%
+\be
+p(d_i|\xi, \vec\lambda, C_n)=\int {\rm d_i}h\>
+p(d_i|C_n,h)p(h|\xi,\vec\lambda)
+\ee
+%
+thereby obtaining
+%
+\be
+p(d_i|\xi, \vec\lambda, C_n) 
+= \xi\,p_n(d_i-{\rm chirp}(\vec\lambda)|C_n) + (1-\xi)\,p_n(d_i|C_n)
+\ee
+%
+which is a mixture Gaussian distribution.
+
+\smallskip
+\noindent
+4) They marginalize over the BBH signal
+parameters $\vec\lambda$, and use an estimate of 
+the detector noise thus fixing $C_n\equiv \bar C_n$:%
+%
+\be 
+p(d_i|\xi)=\int {\rm d}\vec\lambda\>
+p(d_i|\xi,\vec\lambda, \bar C_n)\,p(\vec\lambda)
+\equiv (S_i-N_i)\xi + N_i\,.
+\ee
+%
+
+\smallskip
+\noindent
+5) They calculate the posterior for each segment
+using Bayes theorem
+%
+\be
+p(\xi|d_i)
+=\frac{p(d_i|\xi)p(\xi)}{p(d_i)}\,,
+\ee
+%
+taking $p(\xi)={\rm const}$.
+
+\smallskip
+\noindent
+6) They finally combine segments
+by multiplying the individual marginalized likelihoods
+$p(d_i|\xi)$.
+The final posterior $p(\xi|d)$ is
+proportional to the product of the segment posteriors
+$p(\xi|d_i)$ since $p(\xi)={\rm const}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Illustrating the method on simulated data}
+
+We now illustrate the method on some simple toy model
+data.%
+\footnote{The simulated data and analysis routines are
+publically available at \cite{github}.}
+The timeseries data are only 10~s long, and our simulated 
+BBH chirps are less than 0.25~sec in duration.
+As such we chose to divide the simulated data into 40
+segments (each of duration 0.25~s), and we injected 10
+signals into the data, to give a injected value of the 
+probability parameter $\xi = 0.25$ 
+(Figure~\ref{f:BBH-BNS-simulated-data}).
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/BBH-BNS-simulated-data}
@@ -985,4 +1091,22 @@ The bottom-rightmost plot is also shown in Figure~\ref{f:posterior_xi}.}
 \end{center}
 \end{figure}
 
+\subsection{Discussion}
+
+Note that for this Bayesian analysis, {\em all} segments contribute
+to estimating the probability parameter $\xi$.
+
+BBH chirp signal is deterministic and not stochastic.
+
+\be
+\frac{{\rm SNR}_{\rm non-stationary}}{{\rm SNR}_{\rm stationary}}\sim \sqrt{\frac{N_{\rm cycles}}{\xi}}
+\ee
+
+~40 months of observation reduces to ~1 day!!
+So stay tuned.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Final words}
+
+The purpose of these lecture notes was to
 
