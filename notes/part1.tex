@@ -913,15 +913,35 @@ As such, standard search techniques like
 against known, deterministic waveforms (e.g., BBH chirps) 
 won't work when trying to detect a GWB.
 Instead, we have to consider other possibilities:
+
 (i) One possibility is to know the noise sources 
 in our GW detector well enough (in both 
 amplitude and spectral shape) that we can 
 attribute any unexpected excess ``noise" to a GWB.
-(This was basically how Penzias and Wilson 
+This was basically how Penzias and Wilson 
 initially detected the CMB; they saw an excess 
 noise temperature of $\sim\!3.5^\circ~{\rm K}$ in their
 radio antenna that they could not attribute to 
-any other noise source.)
+any other noise source.
+This is also what one hopes to do with LISA,
+because the time-delay interferometry (TDI) data
+combinations that one uses to remove the laser
+frequency noise are orthogonal to one another.
+Thus, one cannot cross-correlate these data 
+streams to look for a GWB.
+Instead, one must properly model the instrumental 
+noise and astrophysical foreground (galactic WD 
+binaries) in order to have a chance to detect a
+cosmological GWB.
+Studies by Adams and 
+Cornish~\cite{Adams-Cornish:2010, Adams-Cornish:2014}
+have shown that you can separate the detector
+noise, astrophysical foreground, and cosmological
+background using differences in their spectral
+shapes and the modulation of the astrophysical 
+background due LISA motion around the Sun 
+(Figure~\ref{f:cyclostationarity}).
+
 (ii) Another possibility is to use data from 
 multiple detectors.
 Then we can look for evidence of a common 
@@ -1406,7 +1426,8 @@ as the `data points' from which to construct a
 {\em likelihood function}, which is the probability 
 of the data given the parameters defining the signal
 and noise models.%
-\footnote{See John Veitch's lectures in this Volume
+\footnote{See Section~\ref{s:statistical_inference}
+and John Veitch's lectures in this Volume 
 for more details regarding likelihood functions and
 Bayesian inference.}
 For this case, the signal model is given by the expected 
