@@ -189,16 +189,14 @@ frequency response, $\Delta\nu(t)/\nu_0$, and that the
 phase term $e^{-i2\pi f\hat k\cdot\vec r_2/c}$ equals one
 if we take the $\vec r_2$ to be the origin of coordinates, e.g.,
 at the solar system barycentre.
-Then the Doppler frequency response simplifies to 
+Thus the Doppler frequency response is given simply by
 %
 \be
 F^A(\hat k) 
-=\frac{1}{2}u^a u^b e_{ab}^A(\hat k)\frac{1}{1-\hat k\cdot\hat u}
+=\frac{1}{2}u^a u^b e_{ab}^A(\hat k)\frac{1}{1-\hat k\cdot\hat u}\,.
 \label{e:F^A(k)}
 \ee
 %
-where the last expression is written in terms of the direction
-to the pulsar $\hat p = -\hat u$.
 A plot of this response, summed over the two polarizations,
 is shown in Figure~\ref{f:one_arm_one_way_peanut}.
 %
@@ -206,7 +204,6 @@ is shown in Figure~\ref{f:one_arm_one_way_peanut}.
 \begin{center}
 \includegraphics[width=0.4\textwidth]{Figures/one_arm_one_way_peanut}
 \caption{Polarization-averaged Doppler frequency response
-$\sqrt{|F^+(\hat k)|^2+|F_\times(\hat k)|^2}$
 for pulsar timing, ignoring the frequency-dependendent part of
 the pulsar term.
 The response is axially symmetric around the $z$-axis, which
@@ -507,15 +504,17 @@ where the polarization vectors are given by
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Statistical inference}
+\label{s:statistical_inference}
 
 In order to discuss our final example, which is an
 optimal search for the popcorn-like background
 produced by stellar-mass BBH mergers throughout the 
 universe, we need to go beyond the frequentist 
-statistics that we have used so far (Section~\ref{s:optimal_filtering}, 
+statistics that we have used so far 
+(Section~\ref{s:optimal_filtering}), 
 and introduce some concepts from the field of Bayesian inference.
-So here, in this section, we introduce Bayesian 
-inference by comparing it to the frequentist 
+So here, we briefly introduce Bayesian inference by comparing 
+it the frequentist 
 statistics, focusing mainly on those topics needed for 
 the stochastic search that we shall describe in
 Section~\ref{s:nonstationary}.
