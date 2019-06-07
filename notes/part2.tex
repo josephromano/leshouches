@@ -810,7 +810,7 @@ ia the covariance matrix for both the signal and noise.
 mergers}
 \label{s:nonstationary}
 
-As discussed in Section~\ref{s:BBH-BNS-LIGO}, the non-stationary 
+As discussed in Section~\ref{s:BBH-BNS-LIGO}, the non-continuous 
 popcorn-like background from BBH mergers is a potential signal 
 for advanced LIGO and Virgo.
 The recent detections of several large signal-to-noise ratio
@@ -819,12 +819,13 @@ background of the more distant, weaker events.
 In 2018, Smith \& Thrane~\cite{Smith-Thrane:2018} 
 proposed an alternative to the standard cross-correlation 
 method (Section~\ref{s:correlations})
-to search for the BBH component, optimally suited for the non-stationarity.
-One of their insights was to describe the BBH 
+to search for the BBH component, optimally suited for the 
+intermitent nature of the signal.
+This was done by describing the BBH 
 background with a ``mixture" signal prior consisting of
 a BBH chirp in a certain fraction $\xi$ of the analyzed 
 segments, and noise only for the remaining segments.
-As the individual signals will not be resolvable, they also 
+Also, as the individual signals will not be resolvable, they 
 choose to marginalize over the BBH chirp parameters 
 leaving only the probabity parameter $\xi$ (which is 
 simply related to the rate of BBH signals) to estimate.
@@ -832,18 +833,18 @@ Although in principle they can do the analysis with a
 single detector, they use two detectors to help 
 discriminate against glitches.
 
-\subsection{Mathematical details / data analysis pipeline}
+\subsection{Analysis details}
 
 The key components of their analysis are as follows:
 \smallskip
 
 \noindent
-1) They begin by splitting data in short (e.g., 4 sec) segments, 
+1) Begin by splitting data in short (e.g., 4 sec) segments, 
 which should contain at most one BBH merger.
 
 \smallskip
 \noindent
-2) They choose a mixture signal model:
+2) Choose a mixture signal prior for the signal model:
 %
 \be 
 p(h|\xi, \vec\lambda) 
@@ -852,28 +853,30 @@ p(h|\xi, \vec\lambda)
 \label{e:mixture-signal-prior}
 \ee
 %
-consisting of a BBH chirp signal with probabiity
-$\xi$ and noise-only ($h=0$) with probability $(1-\xi)$
+which consists of a BBH chirp signal with probabiity
+$\xi$ and noise only ($h=0$) with probability $(1-\xi)$
 (Figure~\ref{f:mixture_signal_priors}).
+This mixture signal prior captures the non-continuous
+popcorn-like nature of the BBH mergers.
 %
 \begin{figure}[htbp!]
 \begin{center}
 \subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/chirp_prior}}
 \hspace{1 in}
 \subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/no_signal_prior}}
-\caption{The two components of the ``mixture" signal prior for the Bayesian 
-BBH search.
+\caption{The two components of the mixture signal prior for the 
+Bayesian BBH merger search.
 Panel (a): With probability $\xi$, the signal prior for $h(t)$ is a 
 chirp waveform.
-Panel (b): With probability $(1-\xi)$, the signal prior for $h(t)$ is that
-the signal is absent, i.e., $h(t)=0$.}
+Panel (b): With probability $(1-\xi)$, the signal prior for $h(t)$ is
+noise only, i.e., $h(t)=0$.}
 \label{f:mixture_signal_priors}
 \end{center}
 \end{figure}
 
 \smallskip
 \noindent
-3) For each segment of data $d_i$, they marginalize
+3) For each segment of data $d_i$, marginalize
 the standard likelihood function
 %
 \be 
@@ -883,22 +886,19 @@ p(d_i|C_n,h)\equiv p_n(d_i-h|C_n)
 over the signal prior \eqref{e:mixture-signal-prior}:
 %
 \be
-p(d_i|\xi, \vec\lambda, C_n)=\int {\rm d_i}h\>
-p(d_i|C_n,h)p(h|\xi,\vec\lambda)
+\begin{aligned}
+p(d_i|\xi, \vec\lambda, C_n)
+&=\int {\rm d}h\>p(d_i|C_n,h)p(h|\xi,\vec\lambda)
+\\
+&= \xi\,p_n(d_i-{\rm chirp}(\vec\lambda)|C_n) + (1-\xi)\,p_n(d_i|C_n)\,.
+\end{aligned}
 \ee
 %
-thereby obtaining
-%
-\be
-p(d_i|\xi, \vec\lambda, C_n) 
-= \xi\,p_n(d_i-{\rm chirp}(\vec\lambda)|C_n) + (1-\xi)\,p_n(d_i|C_n)
-\ee
-%
-which is a mixture Gaussian distribution.
+Note that this is a mixture Gaussian likelihood function.
 
 \smallskip
 \noindent
-4) They marginalize over the BBH signal
+4) Further marginalize over the BBH signal
 parameters $\vec\lambda$, and use an estimate of 
 the detector noise thus fixing $C_n\equiv \bar C_n$:%
 %
@@ -906,12 +906,13 @@ the detector noise thus fixing $C_n\equiv \bar C_n$:%
 p(d_i|\xi)=\int {\rm d}\vec\lambda\>
 p(d_i|\xi,\vec\lambda, \bar C_n)\,p(\vec\lambda)
 \equiv (S_i-N_i)\xi + N_i\,.
+\label{e:p(d_i|xi)}
 \ee
 %
 
 \smallskip
 \noindent
-5) They calculate the posterior for each segment
+5) Calculate the posterior for each segment
 using Bayes theorem
 %
 \be
@@ -923,26 +924,32 @@ taking $p(\xi)={\rm const}$.
 
 \smallskip
 \noindent
-6) They finally combine segments
+6) Finally, combine segments
 by multiplying the individual marginalized likelihoods
-$p(d_i|\xi)$.
-The final posterior $p(\xi|d)$ is
-proportional to the product of the segment posteriors
-$p(\xi|d_i)$ since $p(\xi)={\rm const}$.
+%
+\be
+p(d|\xi) = \prod_{i} p(d_i|\xi)\,.
+\ee
+%
+The final posterior distribution $p(\xi|d)$ is
+proportional to the product of the individual segment 
+posteriors $p(\xi|d_i)$ since $p(\xi)={\rm const}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Illustrating the method on simulated data}
+\subsection{Illustrating the analysis method on simulated data}
 
-We now illustrate the method on some simple toy model
+We now illustrate the method on simulated toy-model
 data.%
 \footnote{The simulated data and analysis routines are
 publically available at \cite{github}.}
-The timeseries data are only 10~s long, and our simulated 
-BBH chirps are less than 0.25~sec in duration.
+The timeseries data for two detector are each only 
+10~s long, and our simulated BBH chirps are less than 
+0.25~sec in duration.
 As such we chose to divide the simulated data into 40
 segments (each of duration 0.25~s), and we injected 10
-signals into the data, to give a injected value of the 
-probability parameter $\xi = 0.25$ 
+signals into the white Gaussian noise in the two coincident
+and coaligned detector, corresponding ti a injected value 
+of the probability parameter $\xi = 0.25$ 
 (Figure~\ref{f:BBH-BNS-simulated-data}).
 %
 \begin{figure}[htbp!]
@@ -959,6 +966,31 @@ detectors.}
 \end{center}
 \end{figure}
 
+The final result of the analysis is the posterior distribution
+for $\xi$, shown in Figure~\ref{f:posterior_xi}.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/posterior_xi}
+\caption{The cumulative posterior distribution for $\xi$ after 
+combining all 40~segments of data.}
+\label{f:posterior_xi}
+\end{center}
+\end{figure}
+%
+One sees that it is peaked around the value of $\xi$ used for 
+the injections, $\xi=0.25$.
+Figure~\ref{f:posteriors_xi_seg} shows the posterior distributions
+for $\xi$ for the first 16 segments (i.e., first 4~s) of data.
+Note that these distribution are all linear in $\xi$, as to be
+expected from \eqref{e:p(d_i|xi)} for the individual-segment 
+likelihood functions.
+In addition,
+the cumulative posterior distributions for $\xi$, obtained by 
+combining the likelihood functions for the first $n$ segments of
+data are shown in Figure~\ref{f:posteriors_xi_cum} for 
+$n=1,2,3,4,10,20,30,40$ segments.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_0}
@@ -978,20 +1010,14 @@ detectors.}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_14}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_15}
 \caption{Posterior distributions for $\xi$ for the first 16 segments
-(i.e., first 4~s) of data.}
+(i.e., first 4~s) of data.
+Since the injected signals were relatively large, the posteriors
+having positive (negative) slope correspond to the segments 
+having (not having) an injected BBH chirp signal.}
 \label{f:posteriors_xi_seg}
 \end{center}
 \end{figure}
-
-\begin{figure}[htbp!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{Figures/posterior_xi}
-\caption{The cumulative posterior distribution for $\xi$ after 
-combining all 40~segments of data.}
-\label{f:posterior_xi}
-\end{center}
-\end{figure}
-
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_0}
@@ -1002,14 +1028,36 @@ combining all 40~segments of data.}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_19}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_29}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_cum_39}
-\caption{Cumulative posterior distributions for $\xi$ combining the
-first $n$ segments of data.
+\caption{Cumulative posterior distributions for $\xi$, obtained by 
+combining the likelihood functions for the first $n$ segments of data.
 The bottom-rightmost plot is also shown in Figure~\ref{f:posterior_xi}.}
 \label{f:posteriors_xi_cum}
 \end{center}
 \end{figure}
+%
+As $n$ increases, the product of the individual linear functions 
+of $\xi$,
+some with positive slope (when the evidence is in favor of the 
+presence of a signal) and some with negative slope (when the 
+evidence is in favor of the absence of a signal), give rise to 
+a distribution that gets more and more peaked.
+The bottom-rightmost part is just the final posterior distribution
+shown before in Figure~\ref{f:posterior_xi}.
+%
 
-\subsection{Discussion}
+\subsection{Comparison with the standard cross-correlation search}
+
+Of course, one can also use the standard cross-correlation search
+to search for the background for this example.
+Although, not optimal for an intermitent background like this,
+for this particular example, the optimally-filtered signal-to-noise
+ratio is 
+%
+\be
+{\rm SNR}_{\rm CC} = 8.9
+\ee
+
+$2\ln({\rm BF}) =  233$
 
 Note that for this Bayesian analysis, {\em all} segments contribute
 to estimating the probability parameter $\xi$.
@@ -1038,7 +1086,7 @@ The interested reader can find more detail about those topics
 in~\cite{Romano-Cornish:2017} and references therein.
 
 Although in Summer 2019 we have not yet detected a stochastic
-GW background, we know now that such a signal definitely exists, 
+GW background, we know now that such a signal exists, 
 and its just a matter of time 
 before we reach the sensitivity level needed to make a confident 
 detection.
