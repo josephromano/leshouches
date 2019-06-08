@@ -1082,16 +1082,32 @@ This should be compared to
 for the Bayesian search, where we used 
 \eqref{e:BF-SNR} to relate a Bayesian factor to a frequentist
 signal-to-noise ratio.
-So the Bayesian search performed better as expected.
+So the Bayesian search performed better as expected, roughly
+a factor of two for this particular simulation.
+
+The Bayesian method performs better than the standard 
+cross-correlation method for the BBH background because it 
+properly models the popcorn-nature of the BBH merger signals.
+It uses a mixture likelihood, allowing for different 
+probability distributions for those 
+segments that contain a signal and those that don't.
+The standard cross-correlation method, on the other hand,
+treats all segments equally, looking for excess correlated
+power which it can ascribe to the signal.
+If most of the segments contain only noise, as is the case
+for BBH merger background, the standard cross-correlation
+method is going to take a longer to build up a sufficiently
+signal-to-noise ratio needed to claim detection.
+The standard cross-correlation method is basically measuring
+the product of the duty cycle $\xi$ and the cross-correlated
+power in an individual segment containing a signal.
+The Bayesian method, on the other hand, is just measuring
+the duty cycle $\xi$.
 
 Note that for this Bayesian analysis, {\em all} segments contribute
 to estimating the probability parameter $\xi$.
 
 BBH chirp signal is deterministic and not stochastic.
-
-\be
-\frac{{\rm SNR}_{\rm non-stationary}}{{\rm SNR}_{\rm stationary}}\sim \sqrt{\frac{N_{\rm cycles}}{\xi}}
-\ee
 
 ~40 months of observation reduces to ~1 day!!
 So stay tuned.
@@ -1135,19 +1151,21 @@ Either way, it will be an exciting time.
 Finally, unlike the detection of the individually resolvable
 BBH and BNS mergers, we probably
 won't be able to say on one particular day that yes, we've 
-definitely detected the background.
-Rather we will first see evidence for a GWB at the 
-3-$\sigma$ level; and 
-then 6 months or a year later, we will have evidence at the 
-4 or 5-$\sigma$ level.
+definitely detected a stochastic GW background.
+Rather we will first see evidence for a background at the 
+3-$\sigma$ level; and then a year or two later, we will have
+evidence at the 4 or 5-$\sigma$ level.
 One of the nice things about stochatic backgrounds is that
-they are continuous signals (even if they are popcorn-like), 
-so the more we observe them, the greater our confidence in
+they are persistent signals (even if they are popcorn-like), 
+so the longer we observe them, the greater our confidence in
 detecting them.
 And once we've confidently detected a stochastic background, 
 the fun part of characterizing what we have seen begins.
 As mentioned in Section~\ref{s:different_types}, different 
 unresolved sources will produce different types of backgrounds,
 so we will need to tease apart their different contributions.
+And as the sensitivity of GW detectors improve, we will be 
+able to observe additional structures in a background, e.g., 
+anisotropies, that were not resolvable before.
 Needless to say, there is plenty of work ahead of us.
  
