@@ -410,9 +410,6 @@ orientations respond differently to a passing GW.
 The {\em overlap function} encodes the reduction in 
 sensitivity of a cross-correlation analysis due to 
 separation and misalignment of the detectors.
-(The overlap function for two identical, coincident
-and coaligned detectors---i.e., an auto-correlation
-measurement---is just the identity.)
 
 So let $I$ and $J$ label two detectors, and let 
 $h_I(t)$ and $h_J(t)$ denote the corresponding response
@@ -514,7 +511,7 @@ original work cited therein.
 
 Given \eqref{e:Gamma} for $\Gamma_{IJ}(f)$ and 
 explicit expressions for the response functions 
-$R_I(f,\hat k)$ for different detectors, we now
+$R^A_I(f,\hat k)$ for different detectors, we now
 calculate the overlap function for different 
 detector pairs.
 
@@ -526,13 +523,36 @@ for pairs of laser interferometers in the short-antenna
 limit.
 For concreteness, we will consider the LIGO Hanford-LIGO Livingston
 detector pair and the LIGO-Hanford-Virgo detector pair.
-Plots of thee overlap functions, on a log-scale frequency
-axis are given in Figure~{f:orfs}.
+Plots of these overlap functions, normalized to unity
+for coincident and coaligned detetors 
+(denoted $\gamma(f)$), are shown in Figure~\ref{f:orfs}.
 
-Note that the first zero crossing occurs at roughly
-60~Hz, corresponding to GW with wavelength equal to 
-twice the separation between the two observatories.
-
+For the LIGO Hanford-LIGO Livingston detector pair,
+note that as $f\rightarrow 0$, $\gamma(f)\rightarrow -0.89$.
+The minus sign indicates that the two interferometers
+are rotated by $90^\circ$ relative to one another.
+The fact that the absolute value $|\gamma(0)|=0.89$ is 
+not exactly equal to 1, even though the overlap function
+is normalized, indicates that the two interferometers
+don't lie in same plane.
+The two interferometers are separated by $27.2^\circ$ as 
+seen from the center of the Earth, so the tangent planes are
+tilted relative to one another due to the curvature of
+the Earth.
+Finally, the first zero crossing of the overlap function
+occurs at approximately 60~Hz, which corresponds (roughly)
+to the frequency (50~HZ) of a GW having a wavelength 
+equal to 
+twice the separation (3000~km) between the two observatories.
+For lower frequencies the two interferometer are driven
+(on average) by the same positive (or negative) part of
+a passing GW; for slightly larger frequencies, the two 
+interferometers will start to be driven by parts of the GW 
+having opposite signs.  
+The zero crossings correspond to the transitions between
+these in-phase and out-of-phase excitations of the 
+interferometers.
+%
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.49\textwidth]{Figures/LHO-LLO-orf}
@@ -549,6 +569,12 @@ separation between Hanford, WA and Pisa, Italy.}
 \label{f:orfs}
 \end{center}
 \end{figure}
+
+For the LIGO Hanford-Virgo interferometer pair, note 
+that in the limit $f\rightarrow 0$, $\gamma(f)\approx 0$.
+This means that the two interferometers are effectively
+orthogonal to one another---i.e., rotated by $45^\circ$.
+The reduced amplitude of the LHO
 
 \subsubsection{Overlap function for pulsar timing arrays}
 
