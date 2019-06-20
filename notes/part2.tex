@@ -6,8 +6,7 @@ we describe the non-trivial response of a beam
 detector to gravitational waves, calculate the overlap function
 between a pair of detectors, and introduce a Bayesian method that
 can optimally search for the astrophysical background 
-produced by stellar-mass
-binary BHs and NSs throughout the universe.
+produced by stellar-mass binary BHs and NSs throughout the universe.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
@@ -89,51 +88,59 @@ other quantities listed above.
 \subsection{Detector response functions}
 \label{e:det_response}
 
-GWs are weak.
-As such, a detector act like a {\em linear} system, 
-which converts metric perturbations to detector output.
+Gravitational waves are weak.
+As such, a GW detector act like a {\em linear} system,%
+\footnote{Since second-order and higher terms in the 
+metric perturbations can be safely ignored.}
+converting metric perturbations $h_{ab}(t,\vec x)$ 
+to the detector output.
 Mathematically, this is represented by the 
 {\em convolution} of the metric perturbations with the 
 {\em response function} of the detector:
 %
-\be
+\begin{equation}
 h(t) = (\mb{R}*\mb{h})(t,\vec x)\equiv
 \int_{-\infty}^\infty {\rm d}\tau
 \int {\rm d}^3 y\>
-R^{ab}(\tau,\vec y)h_{ab}(t-\tau, \vec x-\vec y)
-\ee
+R^{ab}(\tau,\vec y)h_{ab}(t-\tau, \vec x-\vec y)\,.
+\end{equation}
 %
 Here $h(t)$ is the output of the detector at time $t$.
 The vector $\vec x$ is the location of detector, and 
 $R^{ab}(\tau,\vec y)$ is the {\em impulse repsonse}
 of the detector.
 Expanding $h_{ab}(t-\tau,\vec x-\vec y)$ as a sum of
-plane waves \eqref{e:planewave}, we find that the Fourier
-transform $\tilde h(f)$ of $h(t)$ can be written as
+plane waves, cf.~\eqref{e:planewave}, and substituting 
+this into the RHS of the above expression, we find that the 
+Fourier transform $\tilde h(f)$ of $h(t)$ can be written as
 %
 \be
-\tilde h(f)=\int {\rm d}^2\Omega_{\hat n}\sum_A R^A(f,\hat n)\,h_A(f,\hat n)
+\tilde h(f)=\int {\rm d}^2\Omega_{\hat n}
+\sum_{A=+,\times} R^A(f,\hat k)\,h_A(f,\hat k)\,,
 \ee
 %
 where
 %
 \be
-R^A(f,\hat n) \equiv R^{ab}(f,\hat n)e^A_{ab}(\hat n)
+R^A(f,\hat k) \equiv R^{ab}(f,\hat k)e^A_{ab}(\hat k)
 \ee
 %
 and
 %
 \be
-R^{ab}(f,\hat n) \equiv e^{i 2\pi f\hat n\cdot\vec x/c}\,
+R^{ab}(f,\hat k) \equiv e^{-i 2\pi f\hat k\cdot\vec x/c}\,
 \int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>
-R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau+\hat n\cdot\vec y/c)}
+R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau-\hat k\cdot\vec y/c)}
 \ee
 %
-Note that $R^A(f,\hat n)$ is the 
+Note that $R^A(f,\hat k)$ is the 
 detector response for a plane-wave
 with frequency $f$, propagation direction $\hat k$, and polarization $A$.
 
 \subsection{Examples}
+
+We now calculate the detector response functions for a couple of
+examples.
 
 \subsubsection{Detector response for a one-arm, one-way detector}
 
@@ -153,25 +160,58 @@ The GW propagates in the $\hat k$ direction; the electromagnetic wave
 \end{center}
 \end{figure}
 %
+The timing residual response is then given by
 \be
 h(t)\equiv
 \Delta T(t) = \frac{1}{2c} u^a u^b\int_0^L{\rm d}s\> h_{ab}(t(s),\vec x(s))
 \ee
 %
+where
 %
 \be
 t(s) = (t-L/c) + s/c\,, \qquad
 \vec x(s) = \vec r_1 + s\hat u
 \ee
 %
-In Exercise 6, you are asked to show that the timing
-residual response is given by
+is a parametric representation of the photon path from the 
+source ($s=0$) to the detector ($s=L$).
+Note that we do not need to include any corrections to
+the straight-line path for the photon given above, as the 
+metric perturbations are already first-order small and we 
+can ignore all second-order terms.
+
+So to do the integral, we first substitute $t(s)$ and 
+$\vec x(s)$ for $t$ and $\vec x$ in the plane-wave 
+expansion for $h_{ab}(t,\vec x)$.
+The $s$ dependence shows up only in the exponential:
+%
+\begin{equation}
+\begin{aligned}
+e^{i2\pi f(t(s)-\hat k\cdot\vec x(s)/c)}
+&= e^{i2\pi f(t-L/c + s/c -\hat k\cdot(\vec r_1 + s\hat u)/c)}
+\\
+&= e^{i2\pi f(t-L/c -\hat k\cdot\vec r_1/c)}
+e^{i2\pi f(1 -\hat k\cdot\hat u)s/c}\,,
+\end{aligned}
+\end{equation}
+%
+and the integral over $s$ is easy to do:
 %
 \be
-R^A(f,\hat n) = \frac{1}{i2\pi f}\,
-\frac{1}{2}u^a u^b e^A_{ab}(\hat n)\frac{1}{1+\hat n\cdot \hat u}\,
-\left[ 1-e^{-\frac{i 2\pi fL}{c}(1+\hat n\cdot\hat u)}\right]
-\,e^{i2\pi f\hat n\cdot\vec r_2/c}
+\int_0^L {\rm d}s\>
+e^{i2\pi f(1-\hat k\cdot\hat u)s/c}=
+\frac{c}{i2\pi f}\frac{1}{1-\hat k\cdot\hat u}\left[e^{\frac{i2\pi f L}{c}
+(1-\hat k\cdot\hat u)}-1\right]\,.
+\ee
+Then including all the other factors and rearranging terms, 
+you should find (Exercise 6):
+%
+\be
+R^A(f,\hat k) = \frac{1}{i2\pi f}\,
+\frac{1}{2}u^a u^b e^A_{ab}(\hat k)\frac{1}{1-\hat k\cdot \hat u}\,
+\left[ 1-e^{-\frac{i 2\pi fL}{c}(1-\hat k\cdot\hat u)}\right]
+\,e^{-i2\pi f\hat k\cdot\vec r_2/c}\,.
+\label{e:response_one_arm_one_way}
 \ee
 %
 In the context of pulsar timing, the two terms in square brackets 
@@ -184,16 +224,55 @@ this term for different pulsars will not be correlated with one other
 the wavelengths of the GWs that pulsar timing arrays are 
 sensitive to).
 
-Note that the factor $1/(i2\pi f)$ goes away for the Doppler 
+Both terms {\em are} important for LISA data analysis, however,
+as the wavelengths of the GWs that LISA will be sensitive to
+are of the same order of magnitude as the lengths of LISA's arms 
+(i.e., the separation between the spacecraft).
+For this case, one defines a {\em timing transfer function} for 
+one-way photon propagation as
+%
+\be
+\begin{aligned}
+{\cal T}_{\vec u}(f,\hat k\cdot \hat u) 
+&\equiv\frac{1}{i2\pi f}\frac{1}{1-\hat k\cdot\hat u}
+\left[1-e^{-\frac{i2\pi f L}{c}(1-\hat k\cdot\hat u)}\right]
+\\
+&= \frac{L}{c}\,e^{-\frac{i\pi fL}{c}(1-\hat k\cdot\hat u)}
+{\rm sinc}\left(\frac{\pi fL}{c}[1-\hat k\cdot\hat u]\right)\,,
+\end{aligned}
+\ee
+%
+where ${\rm sinc}\,x\equiv \sin x/x$.
+Note that for normal incidence (i.e., $\hat k\cdot\hat u=0$), 
+the timing transfer function has zeroes when $L$ is equal to 
+an integer number of GW wavelengths $\lambda\equiv c/f$, that
+is when $fL/c$ equals an integer
+(Figure~\ref{f:timing_transfer}).
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures/timing_transfer}
+\caption{Plot of the absolute value of the timing transfer 
+function $|{\cal T}_{\vec u}(f,0)|$ for normal incidence.
+Note the nulls in the response when $L$ equals an integer 
+number of GW wavelengths $\lambda \equiv c/f$.}
+\label{f:timing_transfer}
+\end{center}
+\end{figure}
+%
+
+Returning to \eqref{e:response_one_arm_one_way} and its 
+application to pulsar timing analyses, 
+note that the factor $1/(i2\pi f)$ goes away for the Doppler 
 frequency response, $\Delta\nu(t)/\nu_0$, and that the
 phase term $e^{-i2\pi f\hat k\cdot\vec r_2/c}$ equals one
 if we take the $\vec r_2$ to be the origin of coordinates, e.g.,
 at the solar system barycentre.
-Thus the Doppler frequency response is given simply by
+Thus, the Doppler frequency response is given simply by
 %
 \be
 F^A(\hat k) 
-=\frac{1}{2}u^a u^b e_{ab}^A(\hat k)\frac{1}{1-\hat k\cdot\hat u}\,.
+=\frac{1}{2}\frac{u^a u^b}{1-\hat k\cdot\hat u}\,e_{ab}^A(\hat k)\,.
 \label{e:F^A(k)}
 \ee
 %
@@ -241,7 +320,7 @@ in the short-antenna limit}
 
 Another simple example of a detector response function is
 for a equal-arm laser interferometer, like LIGO, in the 
-{\em short-antenna limit} (Figure~\ref{f:LHO_geometry}).
+{\em short-antenna approximation} (Figure~\ref{f:LHO_geometry}).
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -743,7 +822,7 @@ a squared signal-to-noise ratio,
 
 Stochastic:
 %
-\be 
+\begin{equation}
 p(h|S_h) 
 = \frac{1}{\sqrt{2\pi S_h}}\,\exp\left[-\frac{1}{2}\frac{h^2}{S_h}\right]
 \label{e:stoch-prior}
@@ -751,14 +830,14 @@ p(h|S_h)
 %
 Deterministic:
 %
-\be 
+\begin{equation}
 p(h|A, t_0, f_0)
 =\delta\left(h- A\sin[2\pi f_0(t-t_0)]\right) 
 \ee
 %
 Hybrid (mixture) prior:
 %
-\be 
+\begin{equation}
 p(h|\xi, A, t_0, f_0) 
 = \xi\,\delta\left(h-A\sin[2\pi f_0(t-t_0)]\right) + (1-\xi)\,\delta(h)
 \ee
@@ -779,14 +858,14 @@ Gaussian distribution with variance $S_h$.}
 %
 As an example, start with the generic likelihood:
 %
-\be 
+\begin{equation}
 p(d|C_n,h) \equiv p_n(d-h|C_n) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,\exp\left[-\frac{1}{2}(d-h)^T C_n^{-1}(d-h)\right]
 \ee
 %
 where
 %
-\be 
+\begin{equation}
 C_n = \begin{bmatrix}
 S_{n_1} & 0\\
 0 & S_{n_2}
@@ -796,7 +875,7 @@ S_{n_1} & 0\\
 Then multiply by the stochastic signal prior 
 \eqref{e:stoch-prior} and marginalize over $h$:
 %
-\be 
+\begin{equation}
 p(d|C_n,S_h) = \int {\rm d}h\>p_n(d-h|C_n)p(h|S_h) 
 \ee
 %
@@ -813,7 +892,7 @@ p(d|C_n, S_h)
 %
 where
 %
-\be 
+\begin{equation}
 C = \begin{bmatrix}
 S_{n_1} + S_h & S_h\\
 S_h & S_{n_2} + S_h
@@ -863,7 +942,7 @@ which should contain at most one BBH merger.
 \noindent
 2) Choose a mixture signal prior for the signal model:
 %
-\be 
+\begin{equation}
 p(h|\xi, \vec\lambda) 
 = \xi\,\delta\left(h-{\rm chirp}(\vec\lambda)\right) +
 (1-\xi)\,\delta(h)\,,
@@ -896,7 +975,7 @@ noise only, i.e., $h(t)=0$.}
 3) For each segment of data $d_i$, marginalize
 the standard likelihood function
 %
-\be 
+\begin{equation}
 p(d_i|C_n,h)\equiv p_n(d_i-h|C_n)
 \ee
 %
@@ -919,7 +998,7 @@ Note that this is a mixture Gaussian likelihood function.
 parameters $\vec\lambda$, and use an estimate of 
 the detector noise thus fixing $C_n\equiv \bar C_n$:%
 %
-\be 
+\begin{equation}
 p(d_i|\xi)=\int {\rm d}\vec\lambda\>
 p(d_i|\xi,\vec\lambda, \bar C_n)\,p(\vec\lambda)
 \equiv (S_i-N_i)\xi + N_i\,.
