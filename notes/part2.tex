@@ -399,15 +399,27 @@ the $x$ and $y$ directions.}
 \section{Non-trivial correlations}
 \label{s:nontrivial_correlations}
 
+In this section, we describe how to correlate the outputs
+of two detectors, taking into account their non-trivial
+response to GWs.
+
 \subsection{Overlap function}
 
 Detectors in different locations and with different 
 orientations respond differently to a passing GW.
-Overlap function encodes reduction in sensitivity of a
-cross-correlation analysis due to separation and misalignment 
-of the detectors.
+The {\em overlap function} encodes the reduction in 
+sensitivity of a cross-correlation analysis due to 
+separation and misalignment of the detectors.
+(The overlap function for two identical, coincident
+and coaligned detectors---i.e., an auto-correlation
+measurement---is just the identity.)
 
-In the time domain:
+So let $I$ and $J$ label two detectors, and let 
+$h_I(t)$ and $h_J(t)$ denote the corresponding response
+of these detectors to an unpolarized and isotropic
+GW background.
+The expected correlation of the two detector outputs
+can then be written as
 %
 \be
 \langle h_I(t)h_J(t')\rangle 
@@ -416,37 +428,51 @@ e^{i2\pi f(t-t')}\Gamma_{IJ}(f)S_h(f)
 \label{e:Gamma-time}
 \ee
 %
-In the frequency domain:
-%
-\be
-\langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
-= \frac{1}{2}\delta(f-f')\Gamma_{IJ}(f)S_h(f)
-\label{e:Gamma-freq}
-\ee
-%
-One finds
+where $S_h(f)$ is the (1-sided) strain power spectral density
+of the GWB, cf.~\eqref{e:quad_iso} and \eqref{e:S_h_and_Omega_gw}, 
+and $\Gamma_{IJ}(f)$ is the overlap function: 
 %
 \be
 \Gamma_{IJ}(f) 
-= \frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat n}\> 
-\sum_A R_I^A(f,\hat n) R_J^{A}{}^{*}(f,\hat n)
+= \frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat k}\> 
+\sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k)\,.
 \label{e:Gamma}
 \ee
 %
-for an unpolarized, stationary isotropic GWB.
-As mentioned in Section~\ref{s:optimal_filtering},
-$\Gamma_{IJ}(f)$ is the transfer function between the strain
-power in the GWB and detector cross-power.
-The integrand of $\Gamma_{IJ}(f)$ is important for 
-statistically {\em anisotropic} backgrounds as the 
-right-hand-side of \eqref{e:Gamma-freq} is replaced by
+The physical interpretation of $\Gamma_{IJ}(f)$ as
+encoding the reduction in sensitivity of a cross-correlation
+analysis relative to an auto-correlation meaurement
+is most easily seen in the frequency domain, where
 %
 \be
-\frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat k}\> 
-\sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k) {\cal P}(f,\hat k)
-\label{e:aniso_RHS}
+\langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
+= \frac{1}{2}\delta(f-f')\Gamma_{IJ}(f)S_h(f)\,.
+\label{e:Gamma-freq}
 \ee
 %
+From this expression, one sees that $\Gamma_{IJ}(f)$ 
+acts like a transfer function between the strain
+power in the GWB and detector cross-power.
+(The factor of $1/2$ arises since $S_h(f)$ is a 
+1-sided power spectral density; the Dirac delta
+function $\delta(f-f)$ is a consequence of 
+stationarity.)
+
+For statistically {\em anisotropic} backgrounds, it 
+turns out that the {\em integrand} of 
+$\Gamma_{IJ}(f)$ is the most important quantity for
+describing the cross-correlation.
+This is because for this case
+%
+\be
+\langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
+= \frac{1}{4}\delta(f-f')\int {\rm d}^2\Omega_{\hat k}\> 
+\sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k) {\cal P}(f,\hat k)\,,
+\label{e:aniso-corr}
+\ee
+%
+where ${\cal P}(f,\hat k)$ is the GW power on the 
+sky, coming from direction $\hat n=-\hat k$.
 One then typically expands 
 ${\cal P}(f,\hat k)$ in terms of spherical harmonics 
 %
@@ -455,33 +481,53 @@ ${\cal P}(f,\hat k)$ in terms of spherical harmonics
 {\cal P}_{lm}(f)Y_{lm}(\hat k)\,,
 \ee
 %
-for which \eqref{e:Gamma-freq} becomes
+for which \eqref{e:aniso-corr} becomes
 %
 \be
 \langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
 = \frac{1}{2}\delta(f-f')\sum_{l=0}^\infty\sum_{m=-l}^l
-\Gamma_{IJ,lm}(f,\hat k){\cal P}_{lm}(f)\,.
+\Gamma_{IJ,lm}(f){\cal P}_{lm}(f)\,.
 \label{e:Gamma-freq}
 \ee
 %
 with
 %
 \be
-\Gamma_{IJ,lm}(f,\hat k) = 
-\frac{1}{8\pi}
+\Gamma_{IJ,lm}(f) \equiv 
+\frac{1}{2}
+\int{\rm d}^2\Omega_{\hat k}\>
 \sum_A R_I^A(f,\hat k) R_J^{A}{}^{*}(f,\hat k) 
 Y_{lm}(\hat k)\,.
 \ee
 %
+So up to a factor of $1/4\pi$, the spherical harmonic 
+components of the integrand of the overlap function
+\eqref{e:Gamma} encodes the reduction in sensitivity
+when doing a cross-correlation for anisotropic backgrounds.
 Interested readers can find much more discussion
 about anisotropic background in Section~7 of
 \cite{Romano-Cornish:2017}, and references to the
 original work cited therein.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Examples}
+
+Given \eqref{e:Gamma} for $\Gamma_{IJ}(f)$ and 
+explicit expressions for the response functions 
+$R_I(f,\hat k)$ for different detectors, we now
+calculate the overlap function for different 
+detector pairs.
 
 \subsubsection{Overlap function for a pair of laser
 interferometers in the short-antenna limit}
+
+Our first example will be the overlap function 
+for pairs of laser interferometers in the short-antenna
+limit.
+For concreteness, we will consider the LIGO Hanford-LIGO Livingston
+detector pair and the LIGO-Hanford-Virgo detector pair.
+Plots of thee overlap functions, on a log-scale frequency
+axis are given in Figure~{f:orfs}.
 
 Note that the first zero crossing occurs at roughly
 60~Hz, corresponding to GW with wavelength equal to 
