@@ -595,14 +595,14 @@ depends on the angular separation between the two
 Earth-pulsar baselines:
 %
 \be
-\chi_{IJ} \equiv
+\chi(\zeta_{IJ})\equiv
 \frac{1}{2} + \frac{3}{2}\left(\frac{1-\cos\zeta_{IJ}}{2}\right)
 \left[\ln\left(\frac{1-\cos\zeta_{IJ}}{2}\right) - \frac{1}{6}\right]
 +\frac{1}{2}\,\delta_{IJ}\,,
 \label{e:HD}
 \ee
 %
-where $\cos\zeta_{IJ} = \hat p_I\cdot\hat p_J$, with 
+where $\zeta_{IJ} = \cos^{-1}(\hat p_I\cdot\hat p_J)$, with 
 $\hat p_{I,J}$ being unit vectors pointing in the directions
 {\em to} the two pulsars ($\hat p=-\hat u$ in the notation 
 of \eqref{e:F^A(k)}).
@@ -633,14 +633,14 @@ two Earth-pulsar baselines.}
 \end{figure}
 
 \subsubsection{Overlap function for a pair of electric dipole 
-antennas}
+antennae}
 
 For the final example, you are asked in Exercise 7 to 
 calculate the overlap function for a pair of short, colocated
 electric dipole antennae in the presence of an unpolarized
 and isotropic electric field $\vec E(t,\vec x)$.
 The two dipole antennae point in different directions
-separated by an angle $\zeta$ (Figure~\ref{f:dipole-orf}).
+separated by an angle $\zeta$ as shown in Figure~\ref{f:dipole-orf}.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -653,35 +653,50 @@ for an unpolarized and isotropic electric field
 \end{center}
 \end{figure}
 %
-You should find that 
+To do the calculation, you should use the fact that the 
+response of dipole $I$ to the electric field is 
 %
 \be
-\Gamma_{12} \propto \hat u_1\cdot\hat u_2 =\cos\gamma\,.
+r_I(t) = \hat u_I\cdot\vec E(t,\vec x_0)\,.
 \ee
 %
-{\em Hint:} To do this problem, note that the response
-of dipole $I$ to the field is 
+The electric field can be expanded in a manner
+similar to that for an unpolarized, isotropic GWB:
 %
 \be
-r_I(t) = \hat u_I\cdot\vec E(t,\vec x_0)
-\ee
-%
-Similar to the metric perturbations for a GWB, the electric 
-field can be written as
-%
-\be
-\vec E(t,\vec x) = \int_{-\infty}^\infty df\>\int d^2\Omega_{\hat n}\> 
-\sum_{\alpha =1}^2 \tilde E_\alpha(f,\hat n)\hat\epsilon_\alpha(\hat n) 
-e^{i2\pi f(t+\hat n\cdot \vec x/c)}
+\vec E(t,\vec x) = \int_{-\infty}^\infty df\>\int d^2\Omega_{\hat k}\> 
+\sum_{\alpha =1}^2 \tilde E_\alpha(f,\hat k)\hat\epsilon_\alpha(\hat k) 
+e^{i2\pi f(t-\hat k\cdot \vec x/c)}
 \ee
 %
 where the polarization vectors are given by
 %
 \be
-\hat\epsilon_1(\hat n) = \hat \theta\,,
+\hat\epsilon_1(\hat k) = \hat \theta\,,
 \quad
-\hat\epsilon_2(\hat n) = \hat \phi
+\hat\epsilon_2(\hat k) = \hat \phi\,.
 \ee
+%
+In addition, the Fourier components $\tilde E_\alpha(f,\hat k)$
+satify the quadratic expectation values, cf.~\eqref{e:quad_iso}:
+%
+\be
+\langle \tilde E_\alpha(f,\vec k) \tilde E_{\alpha'}^*(f',\hat k')
+=\frac{1}{16\pi} P(f)\delta(f-f')\delta_{\alpha\alpha'}
+\delta^2(\hat k,\hat k')
+\ee
+%
+Then it is just a matter of ``turning the crank" to calculate
+the expectation value $\langle r_1(t) r_2(t')\rangle$, from
+which you can read off the overlap function $\Gamma_{12}(f)$.
+You should find
+%
+\be
+\Gamma_{12} \propto \hat u_1\cdot\hat u_2 =\cos\gamma\,.
+\ee
+%
+The dipole nature of the antennae shows up in the $\cos\gamma$
+dependence of the overlap function.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Statistical inference}
