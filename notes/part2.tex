@@ -521,8 +521,10 @@ interferometers in the short-antenna limit}
 Our first example will be the overlap function 
 for pairs of laser interferometers in the short-antenna
 limit.
-For concreteness, we will consider the LIGO Hanford-LIGO Livingston
-detector pair and the LIGO-Hanford-Virgo detector pair.
+For concreteness, we will consider the 
+LIGO Hanford-LIGO Livingston detector pair (which we will
+denote LHO-LLO)
+and the LIGO Hanford-Virgo (LHO-Virgo) detector pair.
 Plots of these overlap functions, normalized to unity
 for coincident and coaligned detetors 
 (denoted $\gamma(f)$), are shown in Figure~\ref{f:orfs}.
@@ -533,18 +535,15 @@ for coincident and coaligned detetors
 \includegraphics[width=0.49\textwidth]{Figures/LHO-Virgo-orf}
 \caption{Normalized overlap function for ground-based
 interferometers.
-Left panel: LIGO Hanford-LIGO Livingston detector pair.
-Rght panel: LIGO Hanford-Virgo detector pair.
+Left panel: LHO-LLO overlap funtion.
+Right panel: LHO-Virgo overlap function.
 These overlap functions were calculated in the small-antenna
-approximation.
-Note the reduced amplitude of the LHO-Virgo overlap function
-relative to the LHO-LLO overlap function due to the much larger 
-separation between Hanford, WA and Pisa, Italy.}
+approximation.}
 \label{f:orfs}
 \end{center}
 \end{figure}
 
-For the LIGO Hanford-LIGO Livingston detector pair,
+For the LHO-LLO detector pair,
 note that as $f\rightarrow 0$, $\gamma(f)\rightarrow -0.89$.
 The minus sign indicates that the two interferometers
 are rotated by $90^\circ$ relative to one another.
@@ -562,18 +561,26 @@ to the frequency (50~Hz) of a GW having a wavelength
 equal to 
 twice the separation ($2\times 3000$~km) between the two observatories.
 For lower frequencies, the two interferometers are driven
-(on average) by the same positive (or negative) part of a passing GW.
-For slightly larger frequencies, the two interferometers 
+(on average) by the same positive (or negative) part of a passing GW;
+while for slightly larger frequencies, the two interferometers 
 will start to be driven by parts of the GW having opposite signs.  
 The zero crossings correspond to the transitions between
 these in-phase and out-of-phase excitations of the 
 interferometers.
 
-For the LIGO Hanford-Virgo interferometer pair, note 
-that in the limit $f\rightarrow 0$, $\gamma(f)\approx 0$.
-This means that the two interferometers are effectively
-orthogonal to one another---i.e., rotated by $45^\circ$.
-The reduced amplitude of the LHO
+For the LHO-Virgo detector pair, note 
+that in the limit $f\rightarrow 0$, $\gamma(f)\simeq 0$.
+This is because the two interferometers effectively respond
+to the two orthogonal polarizations of a GW, corresponding 
+to a rotation by $45^\circ$.
+This $45^\circ$ misalignment is also the reason for the 
+(overall) reduced amplitude of the LHO-Virgo overlap 
+function relative to that for LHO-LLO.  
+The fact that the first zero crossing for the LHO-Virgo 
+overlap function is just over $30^\circ$ (almost half of 
+that for LHO-LLO) is due the larger separation between the
+LHO and Virgo interferometers, compared to that for LHO 
+and LLO.
 
 \subsubsection{Overlap function for pulsar timing arrays}
 
@@ -585,13 +592,26 @@ frequency.
 This number, which can be interpreted as the expected
 correlation between the two pulsar timing measuerment, 
 depends on the angular separation between the two 
-Earth-pulsar baselines.
+Earth-pulsar baselines:
+%
+\be
+\chi_{IJ} \equiv
+\frac{1}{2} + \frac{3}{2}\left(\frac{1-\cos\zeta_{IJ}}{2}\right)
+\left[\ln\left(\frac{1-\cos\zeta_{IJ}}{2}\right) - \frac{1}{6}\right]
++\frac{1}{2}\,\delta_{IJ}\,,
+\label{e:HD}
+\ee
+%
+where $\cos\zeta_{IJ} = \hat p_I\cdot\hat p_J$, with 
+$\hat p_{I,J}$ being unit vectors pointing in the directions
+{\em to} the two pulsars ($\hat p=-\hat u$ in the notation 
+of \eqref{e:F^A(k)}).
 A plot of this expected correlation as a function of the 
 angular separation between the Earth-pulsar baselines is
 shown in Figure~\ref{f:HD_curve}.
 This is called the {\em Hellings-Down curve}, originally 
 calculated in 1983 by Hellings and Down~\cite{Hellings-Down:1983}.
-This calculation assumes that the background is unpolarized
+This calculation assumes that the GWB is unpolarized
 and isotropic.
 Generalizations of the Hellings-Down curve allowing for 
 anisotropy and non-general-relativity polarization modes
