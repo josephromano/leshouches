@@ -484,7 +484,7 @@ for which \eqref{e:aniso-corr} becomes
 \langle \tilde h_I(f)\tilde h_J^*(f')\rangle 
 = \frac{1}{2}\delta(f-f')\sum_{l=0}^\infty\sum_{m=-l}^l
 \Gamma_{IJ,lm}(f){\cal P}_{lm}(f)\,.
-\label{e:Gamma-freq}
+\label{e:Gamma-freq-aniso}
 \ee
 %
 with
@@ -682,17 +682,19 @@ satify the quadratic expectation values, cf.~\eqref{e:quad_iso}:
 %
 \be
 \langle \tilde E_\alpha(f,\vec k) \tilde E_{\alpha'}^*(f',\hat k')
-=\frac{1}{16\pi} P(f)\delta(f-f')\delta_{\alpha\alpha'}
-\delta^2(\hat k,\hat k')
+=\frac{1}{16\pi} S_E(f)\delta(f-f')\delta_{\alpha\alpha'}
+\delta^2(\hat k,\hat k')\,.
 \ee
 %
 Then it is just a matter of ``turning the crank" to calculate
 the expectation value $\langle r_1(t) r_2(t')\rangle$, from
-which you can read off the overlap function $\Gamma_{12}(f)$.
+which you can read off the overlap function $\Gamma_{12}(f)$,
+see~\eqref{e:Gamma-time}.
 You should find
 %
 \be
-\Gamma_{12} \propto \hat u_1\cdot\hat u_2 =\cos\gamma\,.
+\Gamma_{12}(f) =\frac{2}{3}\,\hat u_1\cdot\hat u_2 
+=\frac{2}{3}\cos\gamma\,.
 \ee
 %
 The dipole nature of the antennae shows up in the $\cos\gamma$
