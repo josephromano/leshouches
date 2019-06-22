@@ -268,7 +268,8 @@ frequency response, $\Delta\nu(t)/\nu_0$, and that the
 phase term $e^{-i2\pi f\hat k\cdot\vec r_2/c}$ equals one
 if we take the $\vec r_2$ to be the origin of coordinates, e.g.,
 at the solar system barycentre.
-Thus, the Doppler frequency response is given simply by
+Thus, ignoring the pulsar term, the Doppler frequency 
+response is given simply by
 %
 \be
 F^A(\hat k) 
@@ -277,16 +278,17 @@ F^A(\hat k)
 \ee
 %
 A plot of this response, summed over the two polarizations,
-is shown in Figure~\ref{f:one_arm_one_way_peanut}.
+is shown in Figure~\ref{f:one_arm_one_way_peanut} for the 
+case $\hat u=-\hat z$ (or, equivalently, $\hat p=\hat z$ where 
+$\hat p=-\hat u$ is the direction to the pulsar).
 %
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.4\textwidth]{Figures/one_arm_one_way_peanut}
 \caption{Polarization-averaged Doppler frequency response
-for pulsar timing, ignoring the frequency-dependendent part of
-the pulsar term.
+for pulsar timing, ignoring the pulsar term.
 The response is axially symmetric around the $z$-axis, which
-we've chose to be the direction to the pulsar $\hat p=-\hat u$.}
+we've chosen to be the direction to the pulsar $\hat p=-\hat u$.}
 \label{f:one_arm_one_way_peanut}
 \end{center}
 \end{figure}
@@ -302,17 +304,22 @@ These results follow from
 = \sin^2\theta = (1-\cos\theta)(1+\cos\theta)\,,
 \\
 &u^a u^b e^\times_{ab}(\hat k)=0\,,
+\\
+& 1-\hat k\cdot\hat u = 1-\cos\theta\,,
 \end{aligned}
 \ee
 %
-and
+for which
 %
 \be
-\frac{1}{1-\hat k\cdot\hat u} = \frac{1}{1-\cos\theta}\,,
+F^+(\hat k) = \frac{1}{2}(1+\cos\theta)\,,
+\qquad
+F^\times(\hat k) = 0\,.
+\label{e:FA_Earth_z}
 \ee
 %
-where $\hat u=-\hat z$ and $\theta$ is the usual polar
-angle between $\hat k$ and the $z$ direction.
+Here $\theta$ is the angle between $\hat k$ and $\hat u$
+(which is the usual polar angle measured from the $z$-axis).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Detector response for a laser interferometer 
@@ -609,17 +616,6 @@ of \eqref{e:F^A(k)}).
 A plot of this expected correlation as a function of the 
 angular separation between the Earth-pulsar baselines is
 shown in Figure~\ref{f:HD_curve}.
-This is called the {\em Hellings-Down curve}, originally 
-calculated in 1983 by Hellings and Down~\cite{Hellings-Down:1983}.
-This calculation assumes that the GWB is unpolarized
-and isotropic.
-Generalizations of the Hellings-Down curve allowing for 
-anisotropy and non-general-relativity polarization modes
-can be found in e.g., \cite{Mingarelli-et-al, Lee-et-al}.
-The quadrupolar nature of GWs in general relativity is
-apparent in the Hellings-Down curve, with an angular dependence
-that is qualitatively similar to $\cos(2\zeta)$, where 
-$\zeta$ is the angle between two Earth-pulsar baselines.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -631,6 +627,76 @@ two Earth-pulsar baselines.}
 \label{f:HD_curve}
 \end{center}
 \end{figure}
+%
+This is called the {\em Hellings-Down curve}, originally 
+calculated in 1983 by Hellings and Down~\cite{Hellings-Down:1983}.
+This calculation assumes that the GWB is unpolarized
+and isotropic.
+Generalizations of the Hellings-Down curve allowing for 
+anisotropy and non-general-relativity polarization modes
+can be found in e.g., \cite{Mingarelli-et-al, Lee-et-al}.
+The quadrupolar nature of GWs in general relativity is
+apparent in the Hellings-Down curve, with an angular dependence
+that is qualitatively similar to $\cos(2\zeta)$, where 
+$\zeta$ is the angle between two Earth-pulsar baselines.
+
+The fact that $\chi(0^\circ)$ is twice as large as
+$\chi(180^\circ)$ can easily be demonstrated by using 
+\eqref{e:FA_Earth_z} for the relevant response functions.
+Taking $\hat p_1=\hat p_2 = \hat z$, we have
+%
+\be
+\sum_A F_1^A(\hat k) F_2^A(\hat k) = \frac{1}{4}(1+\cos\theta)^2\,,
+\ee
+%
+while $\hat p_1 = -\hat p_2=\hat z$ leads to
+%
+\be
+\sum_A F_1^A(\hat k) F_2^A(\hat k) = \frac{1}{4}(1+\cos\theta)(1-\cos\theta)
+= \frac{1}{4}\sin^2\theta\,.
+\ee
+%
+These functions are plotted in Figure~\ref{f:pulsar_overlap},
+where $\theta$ is the usual polar angle measured with respect
+to the $z$-axis.
+Multiplying by $1/8\pi$ and integrating 
+over the sphere, we find:
+%
+\be
+\Gamma_{12} = \frac{1}{6}\quad({\rm for}\ \hat p_1=\hat p_2=\hat z)\,,
+\qquad
+\Gamma_{12} = \frac{1}{12}\quad({\rm for}\ \hat p_1=-\hat p_2=\hat z)\,.
+\ee
+%
+The factor of 3 difference between these values and $\chi(0^\circ)=1/2$
+and $\chi(180^\circ)=1/4$ is due to a normalization factor that is conventionally
+applied to relate $\Gamma_{IJ}$ to $\chi(\zeta_{IJ})$.
+From Figure~\ref{f:pulsar_overlap}, we see that when the 
+two pulsars both point in the $\hat z$ direction, 
+the majority of support for the overlap function comes from 
+GW sky directions $\hat n=-\hat k$ having $z>0$.
+When the two pulsars point in opposite directions, 
+$\hat p_1=-\hat p_2=\hat z$,
+the majority of support for the overlap function comes 
+from GW sky directions in the in the $xy$-plane, which is
+a smaller contribution.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/pulsar_overlap}
+\caption{Graphical representation of the integrand of the 
+(Earth-only) overlap function for pulsar timing Doppler frequency
+measurements.
+Panel (a): integrand for two Earth-pulsar baselines having
+$\zeta = 0^\circ$ (e.g., $\hat p_1=\hat p_2=\hat z)$;
+Panel (b): integrand for two Earth-pulsar baselines having
+$\zeta = 180^\circ$ (e.g., $\hat p_1=-\hat p_2 =\hat z)$.
+These functions are axially symmetric around the $z$-axis,
+which we've chosen to the direction to pulsar 1.}
+\label{f:pulsar_overlap}
+\end{center}
+\end{figure}
+%
 
 \subsubsection{Overlap function for a pair of electric dipole 
 antennae}
@@ -681,7 +747,7 @@ In addition, the Fourier components $\tilde E_\alpha(f,\hat k)$
 satify the quadratic expectation values, cf.~\eqref{e:quad_iso}:
 %
 \be
-\langle \tilde E_\alpha(f,\vec k) \tilde E_{\alpha'}^*(f',\hat k')
+\langle \tilde E_\alpha(f,\vec k) \tilde E_{\alpha'}^*(f',\hat k')\rangle
 =\frac{1}{16\pi} S_E(f)\delta(f-f')\delta_{\alpha\alpha'}
 \delta^2(\hat k,\hat k')\,.
 \ee
