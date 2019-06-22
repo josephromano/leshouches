@@ -775,12 +775,11 @@ optimal search for the popcorn-like background
 produced by stellar-mass BBH mergers throughout the 
 universe, we need to go beyond the frequentist 
 statistics that we have used so far 
-(Section~\ref{s:optimal_filtering}), 
+(Section~\ref{s:correlations}), 
 and introduce some concepts from the field of Bayesian inference.
 So here, we briefly introduce Bayesian inference by comparing 
-it the frequentist 
-statistics, focusing mainly on those topics needed for 
-the stochastic search that we shall describe in
+it to frequentist statistics, focusing mainly on those topics 
+needed for the stochastic search that we shall describe in
 Section~\ref{s:nonstationary}.
 Readers who are interested in more details should 
 consult John Veitch's contribution to this Volume.
@@ -797,71 +796,99 @@ of statistical inference.
 
 \i probabilities are long-run relative occurrence of 
 outcomes of repeatable experiments (i.e., random variables);
-cannot be assigned to hypotheses or parameters, 
-which have fixed but unknown values
+probabilities cannot be assigned to hypotheses or parameters, 
+which have fixed but unknown values.
 
-\i usually start with a likelihood function $p(d|H)$,
-which is the probability distribution for the 
-measured data $d$, assuming the truth of a particular
+\i one usually starts by writing down a likelihood 
+function $p(d|H)$, which is the probability distribution 
+for the measured data $d$, assuming the truth of a particular
 hypothesis $H$.
 
-\i construct statistics for parameter estimation and
-hypothesis testing
+\i to estimate the value of parameters and/or to decide
+between different hypotheses, one constructs 
+{\em statistics}, which are just functions of the data.
 
-\i calculate the probability distribution of the 
-statistic (e.g., using time slides)
+\i to make probabilistic statements about the 
+parameter estimates or hypothesis testing, 
+one needs to calculate
+the probability distribution of the statistics;
+this can be done either analytically or numerically 
+(e.g., using time slides).
 
-\i construct confidence intervals and $p$-values for 
-parameter estimation and hypothesis testing.
+\i given te probability distributions of the statistics,
+one is then able construct confidence intervals and 
+$p$-values for parameter estimation and hypothesis 
+testing.
 
 \ei
 
-\noindent{Bayesian inference}
+\noindent{Bayesian inference:}
 
 \bi
 
-\i probabilities are degree of belief (or confidence)
-in any proposition, and hence 
-can be assigned to hypotheses and parameters
+\i probability is degree of belief (or confidence)
+in any proposition, and hence can be assigned to 
+hypotheses and parameters.
+(This is a more general definition of probability than 
+that used in frequentist statististics.)
 
-\i usually start with a likelihood function $p(d|H)$,
-which is the probability distribution for the 
-measured data $d$, assuming the truth of a particular
-hypothesis $H$.
+\i like a frequentist, one usually starts by writing 
+down a likelihood function $p(d|H)$.
 
-\i specify prior degree of belief for parameters and 
-hypotheses
+\i in addition to the likeihood function, one needs to
+specify prior degree of belief for the various parameters 
+and hypotheses one is considering.
 
-\i use Bayes' theorem to update degree of belief in
-light of new data 
+\i one uses Bayes' theorem to update the prior degree 
+of belief in a parameter value or hypothesis in light 
+of new data.
 
-\i construct posteriors and odds ratios (Bayes factors)
-for parameter estimation and model selection
+\i one constructs posterior distributions and odds 
+ratios (or {\em Bayes factors}, see below) for 
+parameter estimation and hypothesis testing (also 
+called model selection).
 
 \ei
-\medskip
+\noindent
+In a nutshell, the main different between Bayesian and 
+frequentist statistics is the definition of probability.
+As such, certain probabilistic statements that you can
+make as a Bayesian are not valid from a frequentist perspective.
+Hence Bayesian and frequentist statistic often ask 
+(and subsequently answer) {\em different} questions 
+about the data.
+Nonetheless, despite this fundamental difference in approach,
+if the data are sufficiently informative (i.e., if the 
+likelihood is peaked relative to the prior distributions 
+for the parameters, etc.), then
+both Bayesian and frequentist analyses should give more or 
+less consistent results.
+
+\subsubsection{Likelihood functions}
+\label{s:likelihood}
 
 As mentioned above, the starting point for most 
-frequentist and Bayesiona analyses is a likelihood function
+frequentist and Bayesiona analyses is a likelihood function,
+whic we can write schematically as
 %
 \be
 {\rm likelihood} = p({\rm data}| {\rm parameters}, {\rm model})
 \ee
 %
-For Gaussian-distributed detector noise and 
-Gaussian-distributed GWB, the likelihood function
-for the noise-only model ${\cal M}_0$ and 
+For example, for Gaussian-distributed detector noise 
+and a Gaussian-distributed GWB, the likelihood 
+function for the noise-only model ${\cal M}_0$ and 
 signal+noise model ${\cal M}_1$ are given by
 %
 \begin{align}
-p(d|C_n, {\cal M}_0) 
-&= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
-\exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]
+&p(d|C_n, {\cal M}_0) 
+= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
+\exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]\,,
 \\
-p(d|C_n, S_h, {\cal M}_1) 
-&= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
-\exp\left[-\frac{1}{2} d^T C^{-1} d\right]
-label{e:stochastic_likelihood}
+&p(d|C_n, S_h, {\cal M}_1) 
+= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
+\exp\left[-\frac{1}{2} d^T C^{-1} d\right]\,,
+\label{e:stochastic_likelihood}
 \end{align}
 %
 where $C_n$ an d $C$ are the covariance matrices
@@ -878,10 +905,17 @@ S_{n_1}\,{\mathsf 1}_{N\times N} & {\mathsf 0}_{N\times N}\\
 C = \begin{bmatrix}
 (S_{n_1} + S_h)\,{\mathsf 1}_{N\times N} & S_h\,{\mathsf 1}_{N\times N}\\
 S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
-\end{bmatrix}
+\end{bmatrix}\,.
 \label{e:covariance_matrices}
 \ee
 %
+For this simple case, there are only three relevant 
+parameters: $S_{n_1}$ and $S_{n_2}$ for the detector noise, 
+and $S_h$ for the GWB.
+Also, by assuming that the detectors are colocated and 
+coaligned, we don't need to worry about including an 
+overlap function in the
+off-diagonal blocks of the signal+noise covariance matrix $C$.
 
 \subsection{Frequentist analyses}
 
