@@ -204,7 +204,7 @@ e^{i2\pi f(1-\hat k\cdot\hat u)s/c}=
 (1-\hat k\cdot\hat u)}-1\right]\,.
 \ee
 Then including all the other factors and rearranging terms, 
-you should find (Exercise 6):
+you should find (Exercise~\ref{exer:6}):
 %
 \be
 R^A(f,\hat k) = \frac{1}{i2\pi f}\,
@@ -701,7 +701,7 @@ which we've chosen to the direction to pulsar 1.}
 \subsubsection{Overlap function for a pair of electric dipole 
 antennae}
 
-For the final example, you are asked in Exercise 7 to 
+For the final example, you are asked in Exercise~\ref{exer:7} to 
 calculate the overlap function for a pair of short, colocated
 electric dipole antennae in the presence of an unpolarized
 and isotropic electric field $\vec E(t,\vec x)$.
@@ -714,7 +714,7 @@ separated by an angle $\zeta$ as shown in Figure~\ref{f:dipole-orf}.
 \caption{Geometry for calculating the overlap function
 for a pair of short, colocated electric dipole antennae, 
 for an unpolarized and isotropic electric field
-(Exercise 7).}
+(Exercise \ref{exer:7}).}
 \label{f:dipole-orf}
 \end{center}
 \end{figure}
@@ -860,16 +860,16 @@ about the data.
 Nonetheless, despite this fundamental difference in approach,
 if the data are sufficiently informative (i.e., if the 
 likelihood is peaked relative to the prior distributions 
-for the parameters, etc.), then
-both Bayesian and frequentist analyses should give more or 
-less consistent results.
+for the parameters, see Figure~\ref{f:informative_data}), 
+then both Bayesian and frequentist analyses should give 
+more or less consistent results.
 
 \subsubsection{Likelihood functions}
 \label{s:likelihood}
 
 As mentioned above, the starting point for most 
-frequentist and Bayesiona analyses is a likelihood function,
-whic we can write schematically as
+frequentist and Bayesian analyses is a likelihood function,
+which we can write schematically as
 %
 \be
 {\rm likelihood} = p({\rm data}| {\rm parameters}, {\rm model})
@@ -880,7 +880,8 @@ and a Gaussian-distributed GWB, the likelihood
 function for the noise-only model ${\cal M}_0$ and 
 signal+noise model ${\cal M}_1$ are given by
 %
-\begin{align}
+\be
+\begin{aligned}
 &p(d|C_n, {\cal M}_0) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
 \exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]\,,
@@ -889,7 +890,8 @@ signal+noise model ${\cal M}_1$ are given by
 = \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
 \exp\left[-\frac{1}{2} d^T C^{-1} d\right]\,,
 \label{e:stochastic_likelihood}
-\end{align}
+\end{aligned}
+\ee
 %
 where $C_n$ an d $C$ are the covariance matrices
 for the noise-only and signal+noise models, respectively.
@@ -918,29 +920,24 @@ overlap function in the
 off-diagonal blocks of the signal+noise covariance matrix $C$.
 
 \subsection{Frequentist analyses}
+\label{s:frequentist}
 
-Use maximum-likelihood (ML) ratio for detection, and
-maximum-likelihood parameter values as estimators 
-
-Maximum-likelihood detection statistic:
+Starting from the likelihood functions for the noise 
+and signal+noise models, one can construct the 
+{\em maximum-likelihood ratio} statistic:
 %
 \be
 \Lambda_{\rm ML}(d)\equiv\frac{
 {\rm max}_{S_{n_1},S_{n_2},S_h}\,p(d|S_{n_1} S_{n_2},S_h,{\cal M}_1)}
-{{\rm max}_{S_{n_1},S_{n_2}}\,p(d|S_{n_1}, S_{n_2},{\cal M}_0)}
+{{\rm max}_{S_{n_1},S_{n_2}}\,p(d|S_{n_1}, S_{n_2},{\cal M}_0)}\,.
 \label{e:Lambda_ML}
 \ee
 %
-\be
-\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))
-\simeq\frac{\hat S_h^2}{\hat S_{n_1}\hat S_{n_2}/N}
-\label{e:Lambda}
-\ee
-%
-Note that the right-hand-side is the square of the (power)
-signal-to-noise ratio.
-
-Maximum-likelihood estimators:
+The values of the parameters that maximize the likelihood,
+$\hat S_{n_1}$, $\hat S_{n_2}$, $\hat S_h$, can be used as 
+frequentist estimators of the true values of the parameters 
+$S_{n_1}$, $S_{n_2}$, $S_h$.
+In Exercise~\ref{exer:8} you are asked to show that 
 %
 \be
 \hat S_h \equiv 
@@ -951,19 +948,44 @@ Maximum-likelihood estimators:
 \qquad
 \hat S_{n_2} \equiv 
 \frac{1}{N}\sum_{i=1}^N d^2_{2i}
--\hat S_h
+-\hat S_h\,,
 \ee
 % 
-Note that $\hat S_h$ is standard cross-correlation
-statistic and $\hat S_{n_1}$, $\hat S_{n_2}$ are estimators
-for the detector noise power.
-In Exercise 8 you are asked to verify the 
-expressions for the ML estimators.
-In Exercise 9 you are asked to verify the ML detection
-statistic $2\ln(\Lambda_{\rm ML}(d))$.
+which follow from \eqref{e:stochastic_likelihood} and 
+\eqref{e:covariance_matrices}.
+Note that the maximum-likelihood estimator $\hat S_h$ 
+is just the standard cross-correlation estimator
+$\hat C_{12}$ introduced in \eqref{e:Sh_ML}.
+In addition, in Exercise~\ref{exer:9}, you are asked to 
+show that 
+%
+\be
+\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))
+\simeq\frac{\hat S_h^2}{\hat S_{n_1}\hat S_{n_2}/N}\,,
+\label{e:Lambda}
+\ee
+%
+where the approximate equality is appropriate for the
+{\em weak-signal approximation}, where we assume that 
+$S_h\ll S_{n_1}, S_{n_2}$.
+The quantity $\Lambda(d)$ can be used as a frequentist detection 
+statistic, by comparing its value for the given data $d$ 
+to a threshold $\Lambda_*$.
+If $\Lambda(d)\ge \Lambda_*$, we reject the null 
+hypothesis (that is, the noise-only model) and claim detection 
+of a GW signal, while if $\Lambda(d)<\Lambda_*$, we accept
+the null-hypothesis and reject the signal+noise hypothesis.
+Note that the right-hand-side of \eqref{e:Lambda} is the 
+square of the 
+(power) signal-to-noise ratio, which illustrates a connection
+between signal-to-noise ratios and the maximum-likelihood 
+statisitic.
 
 \subsection{Bayesian analyses}
+\label{s:bayesian}
 
+GOT TO HERE!
+!
 Bayes' theorem:
 %
 \be
@@ -1102,7 +1124,7 @@ Since the likelihood function and prior are both
 Gaussian distributions, the integral can be done
 analytically by completing the square.
 The final result (which you are asked to show in 
-Exercise 10) is
+Exercise~\ref{exer:10}) is
 %
 \be
 p(d|C_n, S_h)
