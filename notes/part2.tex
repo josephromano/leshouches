@@ -923,7 +923,7 @@ off-diagonal blocks of the signal+noise covariance matrix $C$.
 \label{s:frequentist}
 
 Starting from the likelihood functions for the noise 
-and signal+noise models, one can construct the 
+and signal+noise models, we can construct the 
 {\em maximum-likelihood ratio} statistic:
 %
 \be
@@ -933,46 +933,64 @@ and signal+noise models, one can construct the
 \label{e:Lambda_ML}
 \ee
 %
-The values of the parameters that maximize the likelihood,
-$\hat S_{n_1}$, $\hat S_{n_2}$, $\hat S_h$, can be used as 
+The values of the parameters that maximize the likelihood
+for the signal+noise model can be used as 
 frequentist estimators of the true values of the parameters 
 $S_{n_1}$, $S_{n_2}$, $S_h$.
-In Exercise~\ref{exer:8} you are asked to show that 
+In Exercise~\ref{exer:8} you are asked to show that the 
+data combinations
 %
 \be
-\hat S_h \equiv 
+\hat C_{11} \equiv 
+\frac{1}{N}\sum_{i=1}^N d_{1i}^2\,,
+\qquad
+\hat C_{22} \equiv 
+\frac{1}{N}\sum_{i=1}^N d_{2i}^2\,,
+\qquad
+\hat C_{12} \equiv 
 \frac{1}{N}\sum_{i=1}^N d_{1i}d_{2i}\,,
-\qquad
-\hat S_{n_1} \equiv 
-\frac{1}{N}\sum_{i=1}^N d^2_{1i}-\hat S_h\,,
-\qquad
-\hat S_{n_2} \equiv 
-\frac{1}{N}\sum_{i=1}^N d^2_{2i}
--\hat S_h\,,
 \ee
 % 
-which follow from \eqref{e:stochastic_likelihood} and 
-\eqref{e:covariance_matrices}.
-Note that the maximum-likelihood estimator $\hat S_h$ 
-is just the standard cross-correlation estimator
-$\hat C_{12}$ introduced in \eqref{e:Sh_ML}.
+are maximum-likelihood estimators of 
+%
+\be
+S_1\equiv S_{n_1}+S_h\,,\quad
+S_2\equiv S_{n_2}+S_h\,,\quad
+S_h\,.
+\ee
+%
+Note that the maximum-likelihood estimator 
+$\hat S_h\equiv \hat C_{12}$ is just the standard 
+cross-correlation estimator introduced in \eqref{e:Sh_ML}.
+The maximum-likelihood estimators of the detector
+noise $S_{n_1}$, $S_{n_2}$ are then
+%
+\be
+\hat S_{n_1} = 
+\hat S_1-\hat S_h=
+\hat C_{11}-\hat C_{12}\,,
+\qquad
+\hat S_{n_2} = 
+\hat S_2-\hat S_h=
+\hat C_{22}-\hat C_{12}\,.
+\ee
+%
 In addition, in Exercise~\ref{exer:9}, you are asked to 
 show that 
 %
 \be
 \Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))
-\simeq\frac{\hat S_h^2}{\hat S_{n_1}\hat S_{n_2}/N}\,,
+\simeq\frac{\hat C_{12}^2}{\hat C_{11}\hat C_{22}/N}
 \label{e:Lambda}
 \ee
 %
-where the approximate equality is appropriate for the
-{\em weak-signal approximation}, where we assume that 
+in the {\em weak-signal approximation}, where we assume that 
 $S_h\ll S_{n_1}, S_{n_2}$.
 The quantity $\Lambda(d)$ can be used as a frequentist detection 
-statistic, by comparing its value for the given data $d$ 
+statistic, comparing its value for the given data $d$ 
 to a threshold $\Lambda_*$.
 If $\Lambda(d)\ge \Lambda_*$, we reject the null 
-hypothesis (that is, the noise-only model) and claim detection 
+hypothesis (the noise-only model) and claim detection 
 of a GW signal, while if $\Lambda(d)<\Lambda_*$, we accept
 the null-hypothesis and reject the signal+noise hypothesis.
 Note that the right-hand-side of \eqref{e:Lambda} is the 
@@ -981,6 +999,7 @@ square of the
 between signal-to-noise ratios and the maximum-likelihood 
 statisitic.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Bayesian analyses}
 \label{s:bayesian}
 
