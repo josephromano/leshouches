@@ -1,12 +1,12 @@
 \part{Details / Examples}
 \label{p:details}
 
-In the second part of these notes, 
+In the second part of these lecture notes, 
 we describe the non-trivial response of a beam
 detector to gravitational waves, calculate the overlap function
 between a pair of detectors, and introduce a Bayesian method that
 can optimally search for the astrophysical background 
-produced by stellar-mass binary BHs and NSs throughout the universe.
+produced by stellar-mass binary BHs throughout the universe.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Non-trivial detector response}
@@ -36,11 +36,12 @@ are all examples of beam detectors.
 Joseph Weber, is a much different type of detector.
 Roughly speaking, a resonant bar detector responds
 like a giant tuning fork to a passing GW, provided
-the GW has frequencies equal to the resonant frequency 
+the GW has frequencies equal to the resonant frequencies 
 of the bar.)
 The response of a beam detector to a passing GW is 
-the change in the light-travel time between the two 
-masses relative to the nominal light-travel time
+the change in the light-travel time $\Delta T(t)$ 
+between the two 
+masses relative to the nominal light-travel time.
 This is illustrated schematically in Figure~\ref{f:beam_detectors}.
 %
 \begin{figure}[htbp!]
@@ -90,7 +91,8 @@ other quantities listed above.
 
 Gravitational waves are weak.
 As such, a GW detector act like a {\em linear} system,%
-\footnote{Since second-order and higher terms in the 
+\footnote{It's a linear system 
+since second-order and higher terms in the 
 metric perturbations can be safely ignored.}
 converting metric perturbations $h_{ab}(t,\vec x)$ 
 to the detector output.
@@ -110,7 +112,7 @@ The vector $\vec x$ is the location of detector, and
 $R^{ab}(\tau,\vec y)$ is the {\em impulse repsonse}
 of the detector.
 Expanding $h_{ab}(t-\tau,\vec x-\vec y)$ as a sum of
-plane waves, cf.~\eqref{e:planewave}, and substituting 
+plane waves \eqref{e:planewave}, and substituting 
 this into the RHS of the above expression, we find that the 
 Fourier transform $\tilde h(f)$ of $h(t)$ can be written as
 %
@@ -130,7 +132,7 @@ and
 \be
 R^{ab}(f,\hat k) \equiv e^{-i 2\pi f\hat k\cdot\vec x/c}\,
 \int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>
-R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau-\hat k\cdot\vec y/c)}
+R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau-\hat k\cdot\vec y/c)}\,.
 \ee
 %
 Note that $R^A(f,\hat k)$ is the 
@@ -155,7 +157,7 @@ The geometry of the situation is shown in Figure~\ref{f:one_arm_one_way}.
 a pulsar timing residual measurement.
 The GW propagates in the $\hat k$ direction; the electromagnetic wave
 (e.g., a radio pulse from a pulsar) propagates in the $\hat u$ direction
-(opposite of the direction to the pulsar, $\hat p=-\hat u$.} 
+(opposite of the direction to the pulsar, $\hat p=-\hat u$).} 
 \label{f:one_arm_one_way}
 \end{center}
 \end{figure}
@@ -163,7 +165,7 @@ The GW propagates in the $\hat k$ direction; the electromagnetic wave
 The timing residual response is then given by
 \be
 h(t)\equiv
-\Delta T(t) = \frac{1}{2c} u^a u^b\int_0^L{\rm d}s\> h_{ab}(t(s),\vec x(s))
+\Delta T(t) = \frac{1}{2c} u^a u^b\int_0^L{\rm d}s\> h_{ab}(t(s),\vec x(s))\,,
 \ee
 %
 where
@@ -177,8 +179,8 @@ is a parametric representation of the photon path from the
 source ($s=0$) to the detector ($s=L$).
 Note that we do not need to include any corrections to
 the straight-line path for the photon given above, as the 
-metric perturbations are already first-order small and we 
-can ignore all second-order terms.
+metric perturbations are already first-order and we 
+can ignore all second-order terms in the calculation.
 
 So to do the integral, we first substitute $t(s)$ and 
 $\vec x(s)$ for $t$ and $\vec x$ in the plane-wave 
@@ -215,14 +217,14 @@ R^A(f,\hat k) = \frac{1}{i2\pi f}\,
 \ee
 %
 In the context of pulsar timing, the two terms in square brackets 
-are called the {\em Earth term} and {\em pulsar term} respectively.
+are called the {\em Earth term} and {\em pulsar term}, respectively.
 The pulsar term encodes information about the phase of the GW at
 the location of the pulsar.
 It is usually ignored for stochastic background searches, as 
 this term for different pulsars will not be correlated with one other
-(since the spatial distance between two pulsars is much greater than
-the wavelengths of the GWs that pulsar timing arrays are 
-sensitive to).
+(since the spatial distance between two pulsars, of order kpc, 
+is much greater than the wavelengths of the GWs that pulsar timing arrays are 
+sensitive to, of order 10~light-years).
 
 Both terms {\em are} important for LISA data analysis, however,
 as the wavelengths of the GWs that LISA will be sensitive to
@@ -245,8 +247,8 @@ one-way photon propagation as
 where ${\rm sinc}\,x\equiv \sin x/x$.
 Note that for normal incidence (i.e., $\hat k\cdot\hat u=0$), 
 the timing transfer function has zeroes when $L$ is equal to 
-an integer number of GW wavelengths $\lambda\equiv c/f$, that
-is when $fL/c$ equals an integer
+an integer number of GW wavelengths $\lambda\equiv c/f$---i.e.,
+when $fL/c$ equals an integer
 (Figure~\ref{f:timing_transfer}).
 %
 \begin{figure}[htbp!]
@@ -267,7 +269,7 @@ note that the factor $1/(i2\pi f)$ goes away for the Doppler
 frequency response, $\Delta\nu(t)/\nu_0$, and that the
 phase term $e^{-i2\pi f\hat k\cdot\vec r_2/c}$ equals one
 if we take the $\vec r_2$ to be the origin of coordinates, e.g.,
-at the solar system barycentre.
+at the solar system barycenter.
 Thus, ignoring the pulsar term, the Doppler frequency 
 response is given simply by
 %
@@ -277,7 +279,8 @@ F^A(\hat k)
 \label{e:F^A(k)}
 \ee
 %
-A plot of this response, summed over the two polarizations,
+A plot of the root-summed-squared response (summed over the 
+two polarizations)
 is shown in Figure~\ref{f:one_arm_one_way_peanut} for the 
 case $\hat u=-\hat z$ (or, equivalently, $\hat p=\hat z$ where 
 $\hat p=-\hat u$ is the direction to the pulsar).
@@ -286,7 +289,7 @@ $\hat p=-\hat u$ is the direction to the pulsar).
 \begin{center}
 \includegraphics[width=0.4\textwidth]{Figures/one_arm_one_way_peanut}
 \caption{Polarization-averaged Doppler frequency response
-for pulsar timing, ignoring the pulsar term.
+for pulsar timing, where we have ignored the pulsar term.
 The response is axially symmetric around the $z$-axis, which
 we've chosen to be the direction to the pulsar $\hat p=-\hat u$.}
 \label{f:one_arm_one_way_peanut}
@@ -334,10 +337,12 @@ of $\theta$ satisfying
 \ee
 %
 In Figure \ref{f:one_arm_one_way_peanut_full} we show
-the full response including the pulsar term,
+the full root-summed-squared response 
+including the pulsar term,
 taking $fL/c=20$ for illustration purposes.
 (For most pulsars, $fL/c$ will be of order 100 
-or more, as $L$ is of order a kpc or more.)
+or more, as the distance to typical pulsars is 
+of order a kpc or more.)
 The response without the pulsar term 
 (Figure~\ref{f:one_arm_one_way_peanut}) is also
 shown for comparison.
@@ -360,19 +365,21 @@ in the short-antenna limit}
 
 Another simple example of a detector response function is
 for a equal-arm laser interferometer, like LIGO, in the 
-{\em short-antenna approximation} (Figure~\ref{f:LHO_geometry}).
+{\em short-antenna} (or long-wavelength) 
+approximation (Figure~\ref{f:LHO_geometry}).
 %
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{Figures/LHO_geometry}
 \caption{Geometry for a ground-based interferometer GW response
 calculation.
-(Shown here the LIGO Hanford Observatory, in Hanford, WA.)
+(Shown here is the LIGO Hanford Observatory (LHO), 
+in Hanford, WA.)
 The GW propagates in the $\hat k$ direction;
 $\hat u$, $\hat v$ are unit vectors that point along the 
 two arms of the interferometer.
 In the short-antenna approximation, the length $L$ of the 
-arms does not enter the expression for the response function.}
+arms does not enter the expression for the strain response.}
 \label{f:LHO_geometry}
 \end{center}
 \end{figure}
@@ -381,8 +388,8 @@ This approximation is valid when the wavelength of the GW is
 much larger than the dimensions of the detector.  
 Then, the GW phase is effectively constant as a photon
 travels down an back an interferometer arm.
-(The integral over the photon path is simply proportional
-to the nominal round-trip propagation time $2L/c$.)
+The integral over the photon path is simply proportional
+to the nominal round-trip propagation time $2L/c$.
 Defining the strain response of the interferometer as
 %
 \be
@@ -396,7 +403,7 @@ h(t) = \frac{1}{2}\left(
 one can show that
 %
 \be
-R^A(f,\hat n)\simeq\frac{1}{2}\left(u^au^b-v^av^b\right)\,e^A_{ab}(\hat n).
+R^A(f,\hat k)\simeq\frac{1}{2}\left(u^au^b-v^av^b\right)\,e^A_{ab}(\hat k).
 \ee
 %
 The quantity multiplying $e^A_{ab}(\hat k)$ in the 
@@ -410,8 +417,8 @@ D^{ab}\equiv\frac{1}{2}\left(u^a u^b - v^a v^b\right)\,.
 Plots of the {\em beam pattern functions}
 $|R^+(f,\hat k)|$, $|R^\times(f,\hat k)|$ for the 
 two polarizations individually, and the 
-root-summed-squared response for both polarization
-$\sqrt{|R^+(f,\hat k)|^2 + |R^\times(f,\hat k)|^2}$
+root-summed-squared response (summed over both polarization)
+%$\sqrt{|R^+(f,\hat k)|^2 + |R^\times(f,\hat k)|^2}$
 are shown in Figure~\ref{f:LIGO_beam_patterns}.
 The last plot showing the root-summed-squared response 
 is sometimes called the LIGO ``peanut".
@@ -1328,7 +1335,7 @@ p(d|C_n,S_h)
 = \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]
 \ee
 %
-where $C \equiv C_n + S_h\,\unit$.
+where $C \equiv C_n + S_h$.
 This marginalized likelihood with a prior on the 
 variance $S_h$ for the stochastic signal samples 
 and covariance matrix $C_n$ for the noise then
