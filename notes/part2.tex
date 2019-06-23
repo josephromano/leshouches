@@ -321,6 +321,39 @@ F^\times(\hat k) = 0\,.
 Here $\theta$ is the angle between $\hat k$ and $\hat u$
 (which is the usual polar angle measured from the $z$-axis).
 
+Note that if we include the pulsar term in the response,
+then $F^A(\hat k)$ in \eqref{e:FA_Earth_z} 
+should be multiplied 
+by a term proportional to $\sin(\pi f L[1-\cos\theta]/c)$.
+This introduces a null at $\theta=0$ and at other values 
+of $\theta$ satisfying
+%
+\be
+\cos\theta = 1-\frac{nc}{fL}\,,
+\qquad n=0,1,\cdots\,,{\rm int}[2fL/c]\,.
+\ee
+%
+In Figure \ref{f:one_arm_one_way_peanut_full} we show
+the full response including the pulsar term,
+taking $fL/c=20$ for illustration purposes.
+(For most pulsars, $fL/c$ will be of order 100 
+or more, as $L$ is of order a kpc or more.)
+The response without the pulsar term 
+(Figure~\ref{f:one_arm_one_way_peanut}) is also
+shown for comparison.
+%
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Figures/pulsarPeanutComparison}
+\caption{Same as Figure~\ref{f:one_arm_one_way_peanut} but 
+including the pulsar term and taking $fL/c=20$.
+The response without the pulsar term is shown as a 
+dashed-white curved for comparison.}
+\label{f:one_arm_one_way_peanut_full}
+\end{center}
+\end{figure}
+%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Detector response for a laser interferometer 
 in the short-antenna limit}
