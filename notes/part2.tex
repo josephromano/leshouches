@@ -915,11 +915,11 @@ signal+noise model ${\cal M}_1$ are given by
 %
 \be
 \begin{aligned}
-&p(d|C_n, {\cal M}_0) 
+&p(d|S_{n_1}, S_{n_2}, {\cal M}_0) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
 \exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]\,,
 \\
-&p(d|C_n, S_h, {\cal M}_1) 
+&p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
 \exp\left[-\frac{1}{2} d^T C^{-1} d\right]\,,
 \label{e:stochastic_likelihood}
@@ -945,7 +945,7 @@ S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
 \ee
 %
 For this simple case, there are only three relevant 
-parameters: $S_{n_1}$ and $S_{n_2}$ for the detector noise, 
+parameters: $S_{n_1}$, $S_{n_2}$ for the detector noise, 
 and $S_h$ for the GWB.
 Also, by assuming that the detectors are colocated and 
 coaligned, we don't need to worry about including an 
@@ -1036,24 +1036,51 @@ statisitic.
 \subsection{Bayesian analyses}
 \label{s:bayesian}
 
-GOT TO HERE!
-!
-Bayes' theorem:
+Not suprisingly, Bayesian analyses make use of Bayes'
+theorem:
 %
 \be
 p(H|d) = \frac{p(d|H) p(H)}{p(d)}
+\label{e:bayes_theorem}
 \ee
-
-Posterior distributions:
+%
+which converts probabilities about the data $d$ given 
+an hypothesis $H$ (the likelihood 
+$p(d|H)$) to probabilites about the hypothesis given
+the data (the posterior distribution $p(H|d)$).
+Here, $p(H)$ is the prior probability distribution 
+for $H$, and $p(d)$ is the {\em evidence} or 
+{\em marginalized likelihood}:
 %
 \be
-\begin{aligned}
-&p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
-= \frac{p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1)p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}
-\\
-&p(S_h|d,{\cal M}_1) 
+p(d) \equiv \int {\rm d}H\>
+p(d|H)p(H)\,.
+\ee
+%
+Note that the evidence is simply the normalization 
+factor needed for $\int {\rm d}H\>p(H|d)=1$.
+The importance of Bayes' theorem is that it updates 
+our degree of belief in an hypothesis in light
+of new data.
+It maps the prior $p(H)$ to the posterior $p(H|d)$ 
+via the likelihood function $p(d|H)$.
+
+In the context of searches for stochastic backgrounds,
+Bayes' theorem has the form:
+%
+\be
+p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
+= \frac{p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1)p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}\,.
+\ee
+%
+Here ${\cal M}_1$ is our signal+noise model and
+$S_{n_1}$, $S_{n_2}$, $S_h$ are the parameters 
+desribing our signal+noise model, 
+
+
+\be
+p(S_h|d,{\cal M}_1) 
 = \int {\rm d}S_{n_1}\>\int{\rm d}S_{n_2}\>p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1)
-\end{aligned}
 \ee
 
 Model selection:
