@@ -1,0 +1,211 @@
+\setlength{\oddsidemargin}{0.96cm}
+\setlength{\evensidemargin}{-0.04cm}
+\setlength{\topmargin}{-0.54cm}
+\setlength{\headheight}{0.5cm}
+\setlength{\headsep}{1.0cm}
+\setlength{\textwidth}{15.0cm}
+\setlength{\textheight}{21.2cm}
+\setlength{\footskip}{1.5cm}
+
+%
+% give author data for each author as
+% \epubtkAuthorData{name}{affiliation}{email}{homepage}
+% inside latex's \author macro
+%
+\newcommand{\epubtkAuthorData}[4]{#1\\#2\\email: #3\\\url{#4}}
+
+%
+% to make mpeg-movies available for the publishing toolkit, introduce them
+% as follows:
+% \epubtkMovie{movie.mpeg}{stillFromMovie.png}{\begin{figure}...\end{figure}}
+% i.e. the first argument is the name of the movie file, the second the
+% name of an image file to be included as thumbnail linking to the movie in
+% the online version, the third is a regular figure environment to be 
+% included  in the print versions (which means it should contain an epsf-
+% image and contain a caption in the format ``movie showing ... .'').
+%
+\newcommand{\epubtkMovie}[3]{#3}
+
+%
+% to include an image as figure, just give the regular epsf-figure
+% environment as second argument of
+% \epubtkImage{image.png}{figure-env} 
+% and optionally provide a png image for use in the online version,
+% passing its name as first argument.
+%
+\newcommand{\epubtkImage}[2]{#2}
+
+%
+% to include content from a text file verbatim (e.g. for program code), use
+% the following command:
+% \epubtkVerbatimFile{file.txt}{alt}
+% the first argument is the name of the file to be included, the second
+% argument is either empty (in which case the file will be included also in the
+% print versions) or it contains latex-text which is to be included in the
+% print versions instead of the file content. the online versions will provide
+% a link to a popup window, showing the file content with line numbers for easier
+% referencing from the article and a link to download the unaltered file.
+%
+\newcommand{\epubtkVerbatimFile}[2]{%
+\def\argb{#2}
+\def\empty{}% if 'noprint' is given as first parameter, the file does not 
+\ifx\argb\empty%     appear in the print versions.
+\fvset{frame=single,fontsize=\small,numbers=left,label=#1}
+\VerbatimInput{#1}
+\else
+#2
+\fi}
+
+%
+% to include an arbitrary resource (i.e. something, which has no visual
+% representation like a collection of web pages, an applet, a sound file etc.)
+% use the following command:
+% \epubtkResource{example.html}{caption}
+% the first argument is the file name of a resource. The caption is used as
+% a resource description at the resouce page. The caption might contain a label
+% to be quoted in the text by \ref{}.
+\newtoks\epubtk@Resource%
+\newcounter{epubtkResource}%
+\newcommand\epubtkResource[2]{%
+  \expandafter\epubtk@Resource\expandafter{\the\epubtk@Resource%
+    \refstepcounter{epubtkResource}\item[Resource \theepubtkResource:]#2%
+  }%
+}%
+\newcommand\epubtkShowResources{%
+  \section*{Resources}%
+  \begin{description}%
+  \the\epubtk@Resource%
+  \end{description}%
+}%
+
+%
+% provide a comma-separated list of keywords as argument of \epubtkKeywords
+%
+\newcommand{\epubtkKeywords}[1]{}
+
+%
+% provide a comma separated list of subject fields as argument of
+% \epubtkSubject
+%
+\newcommand{\epubtkSubject}[1]{}
+
+%
+% some special kinds of footnotes are available, e.g. 
+% footnotes containing orginal quotes in various languages.
+% they can be specified by giving the type of the footnote
+% as first parameter, the content of the footnote as second
+% parameter of the \epubtkFootnote command.
+%
+\newcommand{\epubtkFootnote}[2][default]{\footnote{\ #2}}
+
+%
+% descriptions of terms appear in the print versions of documents
+% as simple footnotes; in the online version, all occurrences of the
+% term to be described will be turned into links to the description.
+%
+% pass the following parameters to the \epubtkDesc command
+% #1 type of description (either 'default' or 'biography')
+% #2 term to describe (in case of 'biography' a name)
+% #3 description
+%
+% note: the mechanism will only work, if the terms are unique across
+% the document!
+%
+\newcommand{\epubtkSIMBAD}[2][]{#2}
+
+\newcommand{\epubtkDesc}[3]{#2\footnote{#3}}
+
+\usepackage[breaklinks]{hyperref}
+\usepackage{fancyvrb}
+
+% flag for list of tables
+\newif\ifshowlistoftables\showlistoftablestrue
+
+% LivRev superscript and subscript macros
+\def\getfirst#1#2STOP{#1}%
+\DeclareRobustCommand*\super[1]{%
+\edef\tmpx{\getfirst#1STOP}%
+\def\tmpy{-}%
+\ifx\tmpx\tmpy
+\textsuperscript{-#1}%
+\else
+\textsuperscript{#1}%
+\fi
+}%
+\DeclareRobustCommand*\sub[1]{%
+\edef\tmpx{\getfirst#1STOP}%
+\def\tmpy{-}%
+\ifx\tmpx\tmpy
+\@sub{\selectfont-#1}%
+\else
+\@sub{\selectfont#1}%
+\fi
+}%
+\def\@sub#1{{\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+
+% update macros (used when running without pubBuilder only)
+\RequirePackage{keyval}%
+% \ifepubtkUpdate@defined is false during the definition of
+% updates (i.e. using \epubktUpdate[]{}) and becomes true once we
+% start to collect local update descriptions.
+\newif\ifepubtkUpdate@defined
+\epubtkUpdate@definedfalse
+% Local update information is propagated to the update
+% descriptions in front of the article using an update file
+% ``\jobname.upd''.
+\newwrite\epubtkUpdate@file
+% Definition for keyval arguments of the \epubtkUpdate macro.
+\def\epubtkUpdate@Id{NEW}
+\def\epubtkUpdate@ApprovedBy{unknown}
+\def\epubtkUpdate@AcceptDate{\today}
+\def\epubtkUpdate@PublishDate{\today}
+\def\epubtkUpdate@Type{unknown}
+\define@key{epubtkUpdate}{Id}{\def\epubtkUpdate@Id{#1}}
+\define@key{epubtkUpdate}{ApprovedBy}{\def\epubtkUpdate@ApprovedBy{#1}} % technicaleditor, subjecteditor, referee
+\define@key{epubtkUpdate}{AcceptDate}{\def\epubtkUpdate@AcceptDate{#1}}
+\define@key{epubtkUpdate}{PublishDate}{\def\epubtkUpdate@PublishDate{#1}}
+\define@key{epubtkUpdate}{Type}{\def\epubtkUpdate@Type{#1}} % major, minor
+% Definition of the epubtkUpdate macro having the optional keyval
+% arguments listed above and a description. This macro creates
+% a macro ``\epubtkUpdate<id>'' to be used for local update information
+% within the paper.
+\def\epubtkUpdate{\@ifnextchar[\@epubtkUpdate{\@epubtkUpdate[]}}
+\long\def\@epubtkUpdate[#1]#2{%
+  \begingroup
+    \setkeys{epubtkUpdate}{#1}%
+    \ifepubtkUpdate@defined
+      \errmessage{epubtkUpdate.sty: All updates need to be defined first.}%
+    \fi
+    \textbf{Update (\epubtkUpdate@PublishDate{})}\par
+    #2\par\medskip
+    \IfFileExists{\jobname.upd}{\makeatletter\input\jobname.upd\makeatother}{}%
+    \bigskip
+    \long\expandafter\xdef\csname epubtkUpdate\epubtkUpdate@Id\endcsname##1{%
+      \noexpand\epubtkUpdate@local
+      \write\epubtkUpdate@file{\string\def\string\@tmp{\epubtkUpdate@Id}\relax}%
+      \write\epubtkUpdate@file{\string\ifx\string\epubtkUpdate@Id\string\@tmp\string\begingroup}%
+      \write\epubtkUpdate@file{Page \noexpand\thepage: \relax}%
+      \noexpand\epubtkUpdate@write{##1\par\string\medskip}%
+      \write\epubtkUpdate@file{\string\endgroup\string\fi}%
+    }%
+  \endgroup
+}%
+% Recreate ``\jobname.upd'' in local update macro (do not expand
+% \ifepubtkUpdate@defined too early).
+\def\epubtkUpdate@local{%
+  \ifepubtkUpdate@defined
+  \else
+    \openout\epubtkUpdate@file\jobname.upd
+  \fi
+  \epubtkUpdate@definedtrue
+}%
+% \meaning-trick to write the argument (without immediate to
+% allow for writing the page number as well).
+\long\def\epubtkUpdate@write#1{%
+  \begingroup
+    \def\@tmp{#1}%
+    \expandafter\write\expandafter\epubtkUpdate@file\expandafter{%
+      \expandafter\strip@prefix\meaning\@tmp
+    }%
+  \endgroup
+}%
