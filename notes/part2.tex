@@ -806,15 +806,15 @@ You should find
 =\frac{2}{3}\cos\zeta\,.
 \ee
 %
-The dipole nature of the antennae shows up in the $\cos\gamma$
+The dipole nature of the antennae shows up in the $\cos\zeta$ 
 dependence of the overlap function.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Statistical inference}
 \label{s:statistical_inference}
 
-In order to discuss our final example, which is an
-optimal search for the popcorn-like background
+In order to discuss our final example (Section~\ref{s:nonstationary}),
+which is an optimal search for the popcorn-like background
 produced by stellar-mass BBH mergers throughout the 
 universe, we need to go beyond the frequentist 
 statistics that we have used so far 
@@ -849,19 +849,20 @@ hypothesis $H$.
 
 \i to estimate the value of parameters and/or to decide
 between different hypotheses, one constructs 
-{\em statistics}, which are just functions of the data.
+{\em statistics}, which are particular functions of the data.
 
-\i to make probabilistic statements about the 
+\i to make probabilistic statements about 
 parameter estimates or hypothesis testing, 
 one needs to calculate
-the probability distribution of the statistics;
+the probability distributions of the statistics;
 this can be done either analytically or numerically 
 (e.g., using time slides).
 
-\i given te probability distributions of the statistics,
-one is then able construct confidence intervals and 
-$p$-values for parameter estimation and hypothesis 
-testing.
+\i given the probability distributions of the statistics,
+one can then construct confidence intervals and 
+$p$-values (the probability of obtaining a detection
+statistic value as large or larger than what was measured) 
+for parameter estimation and hypothesis testing.
 
 \ei
 
@@ -879,16 +880,16 @@ that used in frequentist statististics.)
 down a likelihood function $p(d|H)$.
 
 \i in addition to the likeihood function, one needs to
-specify prior degree of belief for the various parameters 
-and hypotheses one is considering.
+specify prior probability distributions for the various 
+parameters and hypotheses that one is considering.
 
 \i one uses Bayes' theorem to update the prior degree 
 of belief in a parameter value or hypothesis in light 
 of new data.
 
 \i one constructs posterior distributions and odds 
-ratios (or {\em Bayes factors}, see below) for 
-parameter estimation and hypothesis testing (also 
+ratios (or {\em Bayes factors}, see Section~\ref{s:bayes_factors}) 
+for parameter estimation and hypothesis testing (also 
 called model selection).
 
 \ei
@@ -904,8 +905,8 @@ Nonetheless, despite this fundamental difference in approach,
 if the data are sufficiently informative (i.e., if the 
 likelihood is peaked relative to the prior distributions 
 for the parameters, see Figure~\ref{f:informative_data}), 
-then both Bayesian and frequentist analyses should give 
-more or less consistent results.
+then both Bayesian and frequentist analyses give more or 
+less consistent results.
 
 \subsubsection{Likelihood functions}
 \label{s:likelihood}
@@ -915,7 +916,7 @@ frequentist and Bayesian analyses is a likelihood function,
 which we can write schematically as
 %
 \be
-{\rm likelihood} = p({\rm data}| {\rm parameters}, {\rm model})
+{\rm likelihood} = p({\rm data}| {\rm parameters}, {\rm model})\,.
 \ee
 %
 For example, for Gaussian-distributed detector noise 
@@ -935,7 +936,7 @@ signal+noise model ${\cal M}_1$ are given by
 \label{e:stochastic_likelihood}
 \end{align}
 %
-where $C_n$ an d $C$ are the covariance matrices
+where $C_n$ and $C$ are the covariance matrices
 for the noise-only and signal+noise models, respectively.
 For $N$ samples of white noise and white GWB in
 two colocated and coaligned detectors:
@@ -957,14 +958,14 @@ For this simple case, there are only three relevant
 parameters: $S_{n_1}$, $S_{n_2}$ for the detector noise, 
 and $S_h$ for the GWB.
 Also, by assuming that the detectors are colocated and 
-coaligned, we don't need to worry about including an 
+coaligned, we don't have to worry about including an 
 overlap function in the
 off-diagonal blocks of the signal+noise covariance matrix $C$.
 
 \subsection{Frequentist analyses}
 \label{s:frequentist}
 
-Starting from the likelihood functions for the noise 
+Starting from the likelihood functions for the noise-only
 and signal+noise models, we can construct the 
 {\em maximum-likelihood ratio} statistic:
 %
@@ -1002,8 +1003,8 @@ S_h\,.
 \ee
 %
 Note that the maximum-likelihood estimator 
-$\hat S_h\equiv \hat C_{12}$ is just the standard 
-cross-correlation estimator introduced in \eqref{e:Sh_ML}.
+$\hat S_h\equiv \hat C_{12}$ of $S_h$ is just the standard 
+cross-correlation statistic introduced in \eqref{e:Sh_ML}.
 The maximum-likelihood estimators of the detector
 noise $S_{n_1}$, $S_{n_2}$ are then
 %
@@ -1033,13 +1034,13 @@ statistic, comparing its value for the given data $d$
 to a threshold $\Lambda_*$.
 If $\Lambda(d)\ge \Lambda_*$, we reject the null 
 hypothesis (the noise-only model) and claim detection 
-of a GW signal, while if $\Lambda(d)<\Lambda_*$, we accept
+of a GW signal; if $\Lambda(d)<\Lambda_*$, we accept
 the null-hypothesis and reject the signal+noise hypothesis.
 Note that the right-hand-side of \eqref{e:Lambda} is the 
 square of the 
-(power) signal-to-noise ratio, which illustrates a connection
-between signal-to-noise ratios and the maximum-likelihood 
-statisitic.
+(power) signal-to-noise ratio, which illustrates a 
+useful general relation between signal-to-noise ratios 
+and the maximum-likelihood statisitic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Bayesian analyses}
