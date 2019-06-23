@@ -1057,7 +1057,15 @@ p(H|d) = \frac{p(d|H) p(H)}{p(d)}\,,
 which converts probabilities about the data $d$ given 
 an hypothesis $H$ (the likelihood 
 $p(d|H)$) to probabilites about the hypothesis given
-the data (the posterior distribution $p(H|d)$).
+the data (the posterior distribution $p(H|d)$).%
+\footnote{Conditional probabilities 
+$p(A|B)$ and $p(B|A)$ are not equal in general.
+Paraphrasing an example from Louis Lyons, 
+the probability that a person is pregnant ($A$), 
+given that that person is a woman  ($B$) is about 
+about 30\%, while the probability that a person is 
+a woman ($B$), given that that person is
+pregnant ($A$) is 100\%.}
 Here, $p(H)$ is the prior probability distribution 
 for $H$, and $p(d)$ is the {\em evidence} or 
 {\em marginalized likelihood}:
@@ -1072,8 +1080,9 @@ factor needed to insure $\int {\rm d}H\>p(H|d)=1$.
 The importance of Bayes' theorem is that it updates 
 our degree of belief in an hypothesis in light
 of new data.
-It maps the prior $p(H)$ to the posterior $p(H|d)$ 
-via the likelihood function $p(d|H)$
+It maps the prior probability $p(H)$ to the posterior 
+probability $p(H|d)$ via the likelihood function 
+$p(d|H)$
 (Figure~\ref{f:bayes_theorem}).
 %
 \begin{figure}[htbp!]
@@ -1091,7 +1100,7 @@ Bayes' theorem has the form:
 \be
 p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1) 
 = \frac{p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1)
-p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}\,.
+p(S_{n_1}, S_{n_2}, S_h|{\cal M}_1)}{p(d|{\cal M}_1)}\,,
 \ee
 %
 where $p(d|S_{n_1}, S_{n_2}, S_h,{\cal M}_1)$ is the likelihood
@@ -1102,8 +1111,8 @@ describing this model.
 The quantity 
 $p(S_{n_1}, S_{n_2}, S_h|d,{\cal M}_1)$ is the 
 {\em joint} posterior probability distribution for
-the parameters
-$S_{n_1}$, $S_{n_2}$, $S_h$.
+the parameters $S_{n_1}$, $S_{n_2}$, $S_h$ of 
+model ${\cal M}_1$ given the data $d$.
 The posterior distribution for $S_h$ alone is 
 given by integrating over $S_{n_1}$, $S_{n_2}$:
 %
@@ -1120,45 +1129,45 @@ To assess which of two models
 ${\cal M}_0$, ${\cal M}_1$ is more consistent with
 the observed data $d$, we form 
 the ratio of the posterior distributions 
-$p({\cal M}_0|d)$, $p({\cal M}_1)$.
+$p({\cal M}_0|d)$, $p({\cal M}_1|d)$.
 Using Bayes' theorem, we obtain
 \be
 \frac{p({\cal M}_1|d)}{p({\cal M}_0|d)} =
 \frac{p(d|{\cal M}_1)\,p({\cal M}_1)}
-{p(d|{\cal M}_0)\,p({\cal M}_0)}
+{p(d|{\cal M}_0)\,p({\cal M}_0)}\,,
 \ee
 %
 where the common evidence term $p(d)$ in
-\eqref{e:bayes_theorem} has cancels out when taking
-the ratio of the two posteriors.
-Thus, we see that the posterior odds
+\eqref{e:bayes_theorem} has canceled out 
+when taking the ratio of the two posteriors.
+Thus, we see that the posterior odds ratio
 $O_{12}(d)\equiv p({\cal M}_1|d)/p({\cal M}_0|d)$
-is equal to the prior odds
+is equal to the prior odds ratio
 $O_{12}\equiv p({\cal M}_1)/p({\cal M}_0)$
-times the {\em Bayes factor} defined by
+times the {\em Bayes factor}
 %
 \be
 {\cal B}_{10}(d)\equiv \frac{p(d|{\cal M}_1)}{p(d|{\cal M}_0)}\,.
 \label{e:bayes_factor}
 \ee
 %
-The numerator and denominator in the Bayes' factor 
+The numerator and denominator in the Bayes factor 
 are the marginalized likelihoods obtained by 
 marginalizing the full likelihood functions
-$p(d|\vec\theta_\alpha,{\cal M}_\alpha)$ over the 
+$p(d|\theta_\alpha,{\cal M}_\alpha)$ over the 
 model parameters $\theta_\alpha$:
 %
 \be
 p(d|{\cal M}_\alpha) \equiv
 \int {\rm d}\theta_\alpha\>
-p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha,{\cal M}_\alpha)\,,
+p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha|{\cal M}_\alpha)\,,
 \ee
 %
 where $\alpha=0,1$ labels the two models.
 If there is no reason to a~priori prefer one model over 
-the other (i.e., if the prior odds $O_{12}=1$), then the 
+the other (i.e., if the prior odds ratio $O_{10}=1$), then the 
 posterior odds ratio for the two models is equal to the 
-Bayes' factor, $O_{12}(d) = {\cal B}_{10}(d)$.
+Bayes' factor, $O_{10}(d) = {\cal B}_{10}(d)$.
 
 Using the above definitions, we are now in a position to 
 relate Bayesian and frequentist inference, at least in the 
@@ -1167,7 +1176,7 @@ By this we mean that the likelihood function for a given
 model is peaked relative to the prior probability 
 distribution for its model parameters 
 (Figure~\ref{f:informative_data}).
-For this case, the marginalized likelihoods functons 
+For this case, the marginalized likelihoods functions 
 have the approximate form 
 %
 \be
@@ -1188,8 +1197,9 @@ This approximation is called the {\em Laplace approximation}.
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{Figures/informative_data}
-\caption{Schematic representation of the likelihood function and 
-prior probability distribution for the model parameters $\theta$,
+\caption{Schematic representation of the likelihood function 
+$p(d|\theta,{\cal M})$ and prior probability distribution 
+$p(\theta|{\cal M})$ for the model parameters $\theta$,
 when the data $d$ are informative.
 In this case, the likelihood function is peaked relative to the 
 prior probability distribution, with maximum at 
@@ -1199,7 +1209,7 @@ The full parameter space volume is denoted by $V$.}
 \end{center}
 \end{figure}
 %
-Substituting these expressions into \eqref{e:bayes_factor} yields
+Substituting these expressions into \eqref{e:bayes_factor} we find
 %
 \be
 {\cal B}_{10}(d) 
@@ -1215,16 +1225,19 @@ This last expression can also be written as
 %
 \be
 2\ln({\cal B}_{10}(d)) \simeq \Lambda(d) + 
-2\ln\left(\frac{\Delta V_1/V_1}{\Delta V0/V_0}\right)
+2\ln\left(\frac{\Delta V_1/V_1}{\Delta V_0/V_0}\right)
 \ee
 %
 where $\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))$
 plays the role of a frequentist detection statistic, 
 and the last term is an Occam's factor that penalizes
 models that use more parameter space volume than needed
-to match the data.
+to fit the data.
 As shown in~\eqref{e:Lambda}, $\Lambda(d)$ is effectively
-a squared signal-to-noise ratio,
+a squared signal-to-noise ratio.
+The key observation here is that the ratio of marginalized
+likelihoods is well approximated by a maximum-likelihood 
+ratio times an Occam's penalty factor when the data are informative.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Bayesian signal priors}
