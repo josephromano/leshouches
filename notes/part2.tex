@@ -456,9 +456,9 @@ Detectors in different locations and with different
 orientations respond differently to a passing GW.
 The {\em overlap function} encodes the reduction in 
 sensitivity of a cross-correlation analysis due to 
-separation and misalignment of the detectors.
+the separation and misalignment of the detectors.
 
-So let $I$ and $J$ label two detectors, and let 
+Let $I$ and $J$ label two detectors, and let 
 $h_I(t)$ and $h_J(t)$ denote the corresponding response
 of these detectors to an unpolarized and isotropic
 GW background.
@@ -468,7 +468,7 @@ can then be written as
 \be
 \langle h_I(t)h_J(t')\rangle 
 = \frac{1}{2}\int_{-\infty}^\infty{\rm d}f\>
-e^{i2\pi f(t-t')}\Gamma_{IJ}(f)S_h(f)
+e^{i2\pi f(t-t')}\Gamma_{IJ}(f)S_h(f)\,,
 \label{e:Gamma-time}
 \ee
 %
@@ -483,9 +483,10 @@ and $\Gamma_{IJ}(f)$ is the overlap function:
 \label{e:Gamma}
 \ee
 %
-The physical interpretation of $\Gamma_{IJ}(f)$ as
-encoding the reduction in sensitivity of a cross-correlation
-analysis relative to an auto-correlation meaurement
+The interpretation of $\Gamma_{IJ}(f)$ as encoding 
+the reduction in sensitivity of a cross-correlation
+analysis due to physical separation and relative
+orientation of the detectors
 is most easily seen in the frequency domain, where
 %
 \be
@@ -494,16 +495,16 @@ is most easily seen in the frequency domain, where
 \label{e:Gamma-freq}
 \ee
 %
-From this expression, one sees that $\Gamma_{IJ}(f)$ 
-acts like a transfer function between the strain
-power in the GWB and detector cross-power.
+From this expression, we see that $\Gamma_{IJ}(f)$ 
+is a transfer function between the strain power 
+$S_h(f)$ in the GWB and the detector cross-power.
 (The factor of $1/2$ arises since $S_h(f)$ is a 
 1-sided power spectral density; the Dirac delta
 function $\delta(f-f)$ is a consequence of 
 stationarity.)
 
-For statistically {\em anisotropic} backgrounds, it 
-turns out that the {\em integrand} of 
+For statistically anisotropic backgrounds, it 
+turns out that the integrand of 
 $\Gamma_{IJ}(f)$ is the most important quantity for
 describing the cross-correlation.
 This is because for this case
@@ -516,8 +517,9 @@ This is because for this case
 \ee
 %
 where ${\cal P}(f,\hat k)$ is the GW power on the 
-sky, coming from direction $\hat n=-\hat k$.
-One then typically expands 
+sky, coming from direction $\hat n=-\hat k$; see \eqref{e:quad_aniso}
+and \eqref{e:Sh_aniso}.
+One typically expands 
 ${\cal P}(f,\hat k)$ in terms of spherical harmonics 
 %
 \be
@@ -546,7 +548,7 @@ Y_{lm}(\hat k)\,.
 %
 So up to a factor of $1/4\pi$, the spherical harmonic 
 components of the integrand of the overlap function
-\eqref{e:Gamma} encodes the reduction in sensitivity
+\eqref{e:Gamma} encode the reduction in sensitivity
 when doing a cross-correlation for anisotropic backgrounds.
 Interested readers can find much more discussion
 about anisotropic background in Section~7 of
@@ -558,8 +560,8 @@ original work cited therein.
 
 Given \eqref{e:Gamma} for $\Gamma_{IJ}(f)$ and 
 explicit expressions for the response functions 
-$R^A_I(f,\hat k)$ for different detectors, we now
-calculate the overlap function for different 
+$R^A_I(f,\hat k)$ for different detectors, we can 
+now calculate the overlap function for different 
 detector pairs.
 
 \subsubsection{Overlap function for a pair of laser
@@ -567,25 +569,23 @@ interferometers in the short-antenna limit}
 
 Our first example will be the overlap function 
 for pairs of laser interferometers in the short-antenna
-limit.
+approximation.
 For concreteness, we will consider the 
 LIGO Hanford-LIGO Livingston detector pair (which we will
 denote LHO-LLO)
 and the LIGO Hanford-Virgo (LHO-Virgo) detector pair.
 Plots of these overlap functions, normalized to unity
-for coincident and coaligned detetors 
-(denoted $\gamma(f)$), are shown in Figure~\ref{f:orfs}.
+for coincident and coaligned detectors 
+(denoted $\gamma(f)$) are shown in Figure~\ref{f:orfs}.
 %
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.49\textwidth]{Figures/LHO-LLO-orf}
 \includegraphics[width=0.49\textwidth]{Figures/LHO-Virgo-orf}
 \caption{Normalized overlap function for ground-based
-interferometers.
+interferometers calculated in the short-antenna approximation.
 Left panel: LHO-LLO overlap funtion.
-Right panel: LHO-Virgo overlap function.
-These overlap functions were calculated in the small-antenna
-approximation.}
+Right panel: LHO-Virgo overlap function.}
 \label{f:orfs}
 \end{center}
 \end{figure}
@@ -602,7 +602,7 @@ The two interferometers are separated by $27.2^\circ$ as
 seen from the center of the Earth, so the tangent planes 
 of the interferometers are tilted relative to one another due 
 to the curvature of the Earth.
-Finally, the first zero crossing of the overlap function
+In addition, the first zero crossing of the overlap function
 occurs at approximately 60~Hz, which corresponds (roughly)
 to the frequency (50~Hz) of a GW having a wavelength 
 equal to 
@@ -610,7 +610,7 @@ twice the separation ($2\times 3000$~km) between the two observatories.
 For lower frequencies, the two interferometers are driven
 (on average) by the same positive (or negative) part of a passing GW;
 while for slightly larger frequencies, the two interferometers 
-will start to be driven by parts of the GW having opposite signs.  
+start to be driven by parts of the GW having opposite signs.  
 The zero crossings correspond to the transitions between
 these in-phase and out-of-phase excitations of the 
 interferometers.
@@ -633,11 +633,11 @@ and LLO.
 
 If one uses \eqref{e:F^A(k)} for the Doppler frequency
 repsonse of a pulsar timing measurement, then the correlation
-between two Earth-pulsar baseline is just a single number as 
+between two Earth-pulsar baselines is just a single number as 
 the response functions $F^A_{I,J}(\hat k)$ are independent of
 frequency.
 This number, which can be interpreted as the expected
-correlation between the two pulsar timing measuerment, 
+correlation between the two pulsar timing measurements, 
 depends on the angular separation between the two 
 Earth-pulsar baselines:
 %
@@ -651,7 +651,7 @@ Earth-pulsar baselines:
 %
 where $\zeta_{IJ} = \cos^{-1}(\hat p_I\cdot\hat p_J)$, with 
 $\hat p_{I,J}$ being unit vectors pointing in the directions
-{\em to} the two pulsars ($\hat p=-\hat u$ in the notation 
+to the pulsars ($\hat p=-\hat u$ in the notation 
 of \eqref{e:F^A(k)}).
 A plot of this expected correlation as a function of the 
 angular separation between the Earth-pulsar baselines is
@@ -660,7 +660,7 @@ shown in Figure~\ref{f:HD_curve}.
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/HD_curve}
-\caption{Hellings-Down curve.
+\caption{Hellings-Downs curve.
 The values of the expected correlation for an unpolarized,
 isotropic GWB as a function of the angle $\zeta$ between
 two Earth-pulsar baselines.}
@@ -668,11 +668,11 @@ two Earth-pulsar baselines.}
 \end{center}
 \end{figure}
 %
-This is called the {\em Hellings-Down curve}, originally 
-calculated in 1983 by Hellings and Down~\cite{Hellings-Down:1983}.
+This is called the {\em Hellings-Downs curve}, originally 
+calculated in 1983 by Hellings and Downs~\cite{Hellings-Downs:1983}.
 This calculation assumes that the GWB is unpolarized
 and isotropic.
-Generalizations of the Hellings-Down curve allowing for 
+Generalizations of the Hellings-Downs curve allowing for 
 anisotropy and non-general-relativity polarization modes
 can be found in e.g., \cite{Mingarelli-et-al, Lee-et-al}.
 The quadrupolar nature of GWs in general relativity is
@@ -683,13 +683,15 @@ $\zeta$ is the angle between two Earth-pulsar baselines.
 The fact that $\chi(0^\circ)$ is twice as large as
 $\chi(180^\circ)$ can easily be demonstrated by using 
 \eqref{e:FA_Earth_z} for the relevant response functions.
-Taking $\hat p_1=\hat p_2 = \hat z$, we have
+Taking the two pulsars to point in the same direction
+($\hat p_1=\hat p_2 = \hat z$), we have
 %
 \be
 \sum_A F_1^A(\hat k) F_2^A(\hat k) = \frac{1}{4}(1+\cos\theta)^2\,,
 \ee
 %
-while $\hat p_1 = -\hat p_2=\hat z$ leads to
+while having them point in opposite directions
+($\hat p_1 = -\hat p_2=\hat z$) leads to
 %
 \be
 \sum_A F_1^A(\hat k) F_2^A(\hat k) = \frac{1}{4}(1+\cos\theta)(1-\cos\theta)
@@ -714,11 +716,11 @@ applied to relate $\Gamma_{IJ}$ to $\chi(\zeta_{IJ})$.
 From Figure~\ref{f:pulsar_overlap}, we see that when the 
 two pulsars both point in the $\hat z$ direction, 
 the majority of support for the overlap function comes from 
-GW sky directions $\hat n=-\hat k$ having $z>0$.
+sky directions $\hat n=-\hat k$ having $z>0$.
 When the two pulsars point in opposite directions, 
 $\hat p_1=-\hat p_2=\hat z$,
 the majority of support for the overlap function comes 
-from GW sky directions in the in the $xy$-plane, which is
+from sky directions in the $xy$-plane, which is
 a smaller contribution.
 %
 \begin{figure}[htbp!]
@@ -728,11 +730,11 @@ a smaller contribution.
 (Earth-only) overlap function for pulsar timing Doppler frequency
 measurements.
 Panel (a): integrand for two Earth-pulsar baselines having
-$\zeta = 0^\circ$ (e.g., $\hat p_1=\hat p_2=\hat z)$;
+$\zeta = 0^\circ$ ($\hat p_1=\hat p_2=\hat z)$;
 Panel (b): integrand for two Earth-pulsar baselines having
-$\zeta = 180^\circ$ (e.g., $\hat p_1=-\hat p_2 =\hat z)$.
+$\zeta = 180^\circ$ ($\hat p_1=-\hat p_2 =\hat z)$.
 These functions are axially symmetric around the $z$-axis,
-which we've chosen to the direction to pulsar 1.}
+which we've chosen to be the direction to pulsar 1.}
 \label{f:pulsar_overlap}
 \end{center}
 \end{figure}
@@ -792,7 +794,8 @@ satify the quadratic expectation values, cf.~\eqref{e:quad_iso}:
 \delta^2(\hat k,\hat k')\,.
 \ee
 %
-Then it is just a matter of ``turning the crank" to calculate
+With these definitions, it is then just a matter of 
+``turning the crank" to calculate
 the expectation value $\langle r_1(t) r_2(t')\rangle$, from
 which you can read off the overlap function $\Gamma_{12}(f)$,
 see~\eqref{e:Gamma-time}.
@@ -800,7 +803,7 @@ You should find
 %
 \be
 \Gamma_{12}(f) =\frac{2}{3}\,\hat u_1\cdot\hat u_2 
-=\frac{2}{3}\cos\gamma\,.
+=\frac{2}{3}\cos\zeta\,.
 \ee
 %
 The dipole nature of the antennae shows up in the $\cos\gamma$
