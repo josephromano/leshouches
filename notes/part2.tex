@@ -913,18 +913,17 @@ and a Gaussian-distributed GWB, the likelihood
 function for the noise-only model ${\cal M}_0$ and 
 signal+noise model ${\cal M}_1$ are given by
 %
-\be
-\begin{aligned}
+\begin{align}
 &p(d|S_{n_1}, S_{n_2}, {\cal M}_0) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\, 
 \exp\left[-\frac{1}{2} d^T C_n^{-1} d\right]\,,
+\label{e:noise_likelihood}
 \\
 &p(d|S_{n_1}, S_{n_2}, S_h, {\cal M}_1) 
 = \frac{1}{\sqrt{{\rm det}(2\pi C)}}\, 
 \exp\left[-\frac{1}{2} d^T C^{-1} d\right]\,,
 \label{e:stochastic_likelihood}
-\end{aligned}
-\ee
+\end{align}
 %
 where $C_n$ an d $C$ are the covariance matrices
 for the noise-only and signal+noise models, respectively.
@@ -1129,6 +1128,7 @@ times the {\em Bayes factor} defined by
 %
 \be
 {\cal B}_{10}(d)\equiv \frac{p(d|{\cal M}_1)}{p(d|{\cal M}_0)}\,.
+\label{e:bayes_factor}
 \ee
 %
 The numerator and denominator in the Bayes' factor 
@@ -1144,36 +1144,41 @@ p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha,{\cal M}_\alpha)\,,
 \ee
 %
 where $\alpha=0,1$ labels the two models.
+If there is no reason to a~priori prefer one model over 
+the other (i.e., if the prior odds $O_{12}=1$), then the 
+posterior odds ratio for the two models is equal to the 
+Bayes' factor, $O_{12}(d) = {\cal B}_{10}(d)$.
 
 Using the above definitions, we are now in a position to 
 relate Bayesian and frequentist inference, at least in the 
 case where the data are informative.
 By this we mean that the likelihood function for a given
 model is peaked relative to the prior probability 
-distribution for those parameters (Figure~\ref{f:informative_data}).
-For this case, the marginalized likelihoods have the 
-approximate form 
+distribution for its model parameters 
+(Figure~\ref{f:informative_data}).
+For this case, the marginalized likelihoods functons 
+have the approximate form 
 %
 \be
-p(d|{\cal M}_\alpha) \equiv
-\int {\rm d}\theta_\alpha\>
-p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha,{\cal M}_\alpha)
+p(d|{\cal M}_\alpha) 
+%\equiv\int {\rm d}\theta_\alpha\>
+%p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha,{\cal M}_\alpha)
 \simeq
 p(d|\hat\theta_\alpha, {\cal M}_\alpha)
-\,\frac{\Delta V_\alpha}{V_\alpha}\,,
+\,{\Delta V_\alpha}/{V_\alpha}\,,
 \ee
 %
 where $\hat\theta_\alpha$ denote the parameter values that
-maximize the likelihood; $\Delta V_\alpha$ is the range of
-parameter values over which the likelihood is peaked; and 
+maximize the likelihood, $\Delta V_\alpha$ is the range of
+parameter values over which the likelihood is peaked, and 
 $V_\alpha$ denotes the full parameter volume.
 This approximation is called the {\em Laplace approximation}.
 %
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{Figures/informative_data}
-\caption{Schematic representation of the likelihood function
-and prior probability distribution for a parameter $\theta$,
+\caption{Schematic representation of the likelihood function and 
+prior probability distribution for the model parameters $\theta$,
 when the data $d$ are informative.
 In this case, the likelihood function is peaked relative to the 
 prior probability distribution, with maximum at 
@@ -1183,8 +1188,7 @@ The full parameter space volume is denoted by $V$.}
 \end{center}
 \end{figure}
 %
-Substituting the above expression for the marginalized
-likelihood functions into \eqref{e:bayes_factor} yields
+Substituting these expressions into \eqref{e:bayes_factor} yields
 %
 \be
 {\cal B}_{10}(d) 
@@ -1211,7 +1215,19 @@ to match the data.
 As shown in~\eqref{e:Lambda}, $\Lambda(d)$ is effectively
 a squared signal-to-noise ratio,
 
-\subsection{Signal priors define the signal model}
+\subsubsection{Signal priors define the signal model}
+\label{s:signal_priors}
+
+The final piece of information that we will need when 
+discussing the Bayesian search for BBH mergers in 
+Section~\ref{s:nonstationary} is related to the choice 
+of prior.
+
+Recall that if we want to perform a Bayesian analysis, 
+we need more than just the likelihood function $p(d|H)$.
+We must also specify the prior $p(H)$ in order to use 
+Bayes' theorem \eqref{e:bayes_theorem} to take us from 
+the likelihood $p(d|H)$ to the posterior $p(H|d)$.
 
 Stochastic:
 %
@@ -1295,8 +1311,7 @@ S_h & S_{n_2} + S_h
 ia the covariance matrix for both the signal and noise.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Searching for the background of binary black-hole
-mergers}
+\section{Searching for the background of binary black-hole mergers}
 \label{s:nonstationary}
 
 As discussed in Section~\ref{s:BBH-BNS-LIGO}, the non-continuous 
