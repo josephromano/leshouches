@@ -1215,47 +1215,86 @@ to match the data.
 As shown in~\eqref{e:Lambda}, $\Lambda(d)$ is effectively
 a squared signal-to-noise ratio,
 
-\subsubsection{Signal priors define the signal model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Bayesian signal priors}
 \label{s:signal_priors}
 
 The final piece of information that we will need when 
 discussing the Bayesian search for BBH mergers in 
 Section~\ref{s:nonstationary} is related to the choice 
-of prior.
+of signal prior.
+We shall see in that section that by choosing the 
+signal prior appropriately, we can properly model 
+the popcorn-like nature of the GWB produced by BBH 
+mergers.
 
-Recall that if we want to perform a Bayesian analysis, 
-we need more than just the likelihood function $p(d|H)$.
-We must also specify the prior $p(H)$ in order to use 
-Bayes' theorem \eqref{e:bayes_theorem} to take us from 
-the likelihood $p(d|H)$ to the posterior $p(H|d)$.
+Here, we illustrate the effect of chosing different
+priors for two simple cases: 
+(i) a deterministic GW signal (a sinusoid), and 
+(ii) a Gaussian-stationary stochastic background in 
+Gaussian-distributed noise.
+For both of these cases, the difference between the 
+observed data $d$ and signal model $h$ is just 
+the noise $n$.
+So we can write down a generic likelihood function for 
+the data $d$ by equating it to the 
+Gaussian-distributed likelihood for the residuals $d-h$:
+%
+\begin{equation}
+p(d|C_n,h) \equiv p_n(d-h|C_n) 
+= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,
+\exp\left[-\frac{1}{2}(d-h)^T C_n^{-1}(d-h)\right]\,,
+\label{e:likelihood_generic}
+\ee
+%
+where $C_n$ is the noise covariance matrix.
+To proceed further we need to specify the form of the 
+signal $h$ in more detail.
 
-Stochastic:
+(i) For a deterministic GW signal, we expect the signal
+samples to have a precise form, e.g., a sine wave
+parametrized by its amplitude, frequency, and initial phase 
+(Figure~\ref{f:det_signal_prior}).
+For this case we would have the prior probability distribution
 %
 \begin{equation}
-p(h|S_h) 
-= \frac{1}{\sqrt{2\pi S_h}}\,\exp\left[-\frac{1}{2}\frac{h^2}{S_h}\right]
-\label{e:stoch-prior}
+p(h|A, f_0, \phi_0)
+=\delta\left(h(t)- A\sin(2\pi f_0 t + \phi_0)\right)\,.
+\label{e:prior_deterministic}
 \ee
 %
-Deterministic:
+Multiplying the likelihood \eqref{e:likelihood_generic}
+by this prior and marginalizing over the signal samples
+$h$ yields
 %
-\begin{equation}
-p(h|A, t_0, f_0)
-=\delta\left(h- A\sin[2\pi f_0(t-t_0)]\right) 
+\be
+\begin{aligned}
+&p(d|C_n,A,f_0,\phi_0)
+\\
+&\quad
+\equiv \int {\rm d}h\>p_n(d-h|C_n)p(h|A, f_0, \phi_0) 
+\\
+&\quad
+=\frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,
+\exp\left[-\frac{1}{2}\sum_{i,j}
+(d_i-A\sin(2\pi f_0 t_i + \phi_0)) 
+[C_n^{-1}]_{ij}(d_j-A\sin(2\pi f_0 t_j + \phi_0))\right]\,.
+\label{e:likelihood_deterministic}
+\end{aligned}
 \ee
 %
-Hybrid (mixture) prior:
-%
-\begin{equation}
-p(h|\xi, A, t_0, f_0) 
-= \xi\,\delta\left(h-A\sin[2\pi f_0(t-t_0)]\right) + (1-\xi)\,\delta(h)
-\ee
+This marginalized likelihood with priors on the range of
+parameter values for $A$, $f_0$, $\phi_0$ and covariance
+matrix $C_n$ for the noise then completely define the deterministic 
+signal+noise model.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/sinusoid_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/sinusoid_prior}
+\label{f:det_signal_prior}}
 \hspace{1 in}
-\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/stochastic_prior}}
+\subfigure[]{\includegraphics[width=0.25\textwidth]{Figures/stochastic_prior}
+\label{f:stoch_signal_prior}}
 \caption{Different signal priors for $h(t)$.
 Panel (a): Determinsitic (sinusoid) signal prior.
 Panel (b): Stochastic signal prior.
@@ -1265,7 +1304,41 @@ Gaussian distribution with variance $S_h$.}
 \end{center}
 \end{figure}
 %
-As an example, start with the generic likelihood:
+
+(ii) For a stohastic GW signal, we don't know what the
+individual samples $h$ will be, other than that they are
+drawn from some probability distribution.  
+Taking that distribution to be a Gaussian with zero mean
+and variance $S_h$ (Figure~\ref{f:stoch_signal_prior}),
+we have
+%
+\begin{equation}
+p(h|S_h) 
+= \frac{1}{\sqrt{2\pi S_h}}\,\exp\left[-\frac{1}{2}\frac{h^2}{S_h}\right]\,.
+\label{e:stoch-prior}
+\ee
+%
+Multiplying the likelihood \eqref{e:likelihood_generic}
+by this prior and marginalizing over the signal samples
+$h$ for this case yields
+%
+\begin{equation}
+p(d|C_n,S_h) 
+\equiv\int {\rm d}h\>p_n(d-h|C_n)p(h|S_h) 
+= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]
+\ee
+%
+where $C \equiv C_n + S_h\,\unit$.
+This marginalized likelihood with a prior on the 
+variance $S_h$ for the stochastic signal samples 
+and covariance matrix $C_n$ for the noise then
+completely defines the Gaussian-stationary stochastic
+signal+noise model.
+
+In Exercise~\ref{exer:10} you are asked to extend the
+above analysis for a stochastic background to the 
+case of two detectors with uncorrelated detector noise.
+Starting with the generic two-detector likelihood
 %
 \begin{equation}
 p(d|C_n,h) \equiv p_n(d-h|C_n) 
@@ -1278,21 +1351,11 @@ where
 C_n = \begin{bmatrix}
 S_{n_1} & 0\\
 0 & S_{n_2}
-\end{bmatrix}
+\end{bmatrix}\,.
 \ee
 %
-Then multiply by the stochastic signal prior 
-\eqref{e:stoch-prior} and marginalize over $h$:
-%
-\begin{equation}
-p(d|C_n,S_h) = \int {\rm d}h\>p_n(d-h|C_n)p(h|S_h) 
-\ee
-%
-Since the likelihood function and prior are both
-Gaussian distributions, the integral can be done
-analytically by completing the square.
-The final result (which you are asked to show in 
-Exercise~\ref{exer:10}) is
+and marginalizing over $h$ using \eqref{e:stoch-prior}, 
+you should find
 %
 \be
 p(d|C_n, S_h)
@@ -1305,10 +1368,12 @@ where
 C = \begin{bmatrix}
 S_{n_1} + S_h & S_h\\
 S_h & S_{n_2} + S_h
-\end{bmatrix}
+\end{bmatrix}\,.
 \ee
 %
-ia the covariance matrix for both the signal and noise.
+This marginalized likelihood is usually taken as the starting
+point for all stochastic cross-correlation searches using
+multiple detectors; see~\eqref{e:stochastic_likelihood}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Searching for the background of binary black-hole mergers}
