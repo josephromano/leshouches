@@ -1226,6 +1226,7 @@ This last expression can also be written as
 \be
 2\ln({\cal B}_{10}(d)) \simeq \Lambda(d) + 
 2\ln\left(\frac{\Delta V_1/V_1}{\Delta V_0/V_0}\right)
+\label{e:BF-SNR}
 \ee
 %
 where $\Lambda(d)\equiv 2\ln(\Lambda_{\rm ML}(d))$
@@ -1411,23 +1412,23 @@ multiple detectors; see~\eqref{e:stochastic_likelihood}.
 
 As discussed in Section~\ref{s:BBH-BNS-LIGO}, the non-continuous 
 popcorn-like background from BBH mergers is a potential signal 
-for advanced LIGO and Virgo.
+for the advanced LIGO and Virgo network of detectors.
 The recent detections of several large signal-to-noise ratio
 BBH and BNS mergers imply the existence of a stochastic GW 
-background of the more distant, weaker events.
+background composed of the more distant, weaker events.
 In 2018, Smith \& Thrane~\cite{Smith-Thrane:2018} 
 proposed an alternative to the standard cross-correlation 
 method (Section~\ref{s:correlations})
 to search for the BBH component, optimally suited for the 
-intermitent nature of the signal.
+popcorn-nature of the signal.
 This was done by describing the BBH 
 background with a ``mixture" signal prior consisting of
 a BBH chirp in a certain fraction $\xi$ of the analyzed 
 segments, and noise only for the remaining segments.
 Also, as the individual signals will not be resolvable, they 
 choose to marginalize over the BBH chirp parameters 
-leaving only the probabity parameter $\xi$ (which is 
-simply related to the rate of BBH signals) to estimate.
+leaving only the probability parameter $\xi$ (which is 
+simply related to the rate of BBH merger signals) to estimate.
 Although in principle they can do the analysis with a
 single detector, they use two detectors to help 
 discriminate against glitches.
@@ -1438,12 +1439,13 @@ The key components of their analysis are as follows:
 \smallskip
 
 \noindent
-1) Begin by splitting data in short (e.g., 4 sec) segments, 
-which should contain at most one BBH merger.
+1) Begin by splitting the data into short (e.g., 4 sec) 
+segments, $i=1,2,\cdots,N_{\rm seg}$, which 
+should contain at most one BBH merger signal.
 
 \smallskip
 \noindent
-2) Choose a mixture signal prior for the signal model:
+2) Choose a {\em mixture} signal prior for the signal model:
 %
 \begin{equation}
 p(h|\xi, \vec\lambda) 
@@ -1452,8 +1454,8 @@ p(h|\xi, \vec\lambda)
 \label{e:mixture-signal-prior}
 \ee
 %
-which consists of a BBH chirp signal with probabiity
-$\xi$ and noise only ($h=0$) with probability $(1-\xi)$
+which consists of a BBH chirp signal with probability
+$\xi$ and just noise ($h=0$) with probability $(1-\xi)$
 (Figure~\ref{f:mixture_signal_priors}).
 This mixture signal prior captures the non-continuous
 popcorn-like nature of the BBH mergers.
@@ -1468,7 +1470,7 @@ Bayesian BBH merger search.
 Panel (a): With probability $\xi$, the signal prior for $h(t)$ is a 
 chirp waveform.
 Panel (b): With probability $(1-\xi)$, the signal prior for $h(t)$ is
-noise only, i.e., $h(t)=0$.}
+just noise, i.e., $h(t)=0$.}
 \label{f:mixture_signal_priors}
 \end{center}
 \end{figure}
@@ -1476,13 +1478,14 @@ noise only, i.e., $h(t)=0$.}
 \smallskip
 \noindent
 3) For each segment of data $d_i$, marginalize
-the standard likelihood function
+the generic likelihood function
 %
 \begin{equation}
 p(d_i|C_n,h)\equiv p_n(d_i-h|C_n)
 \ee
 %
-over the signal prior \eqref{e:mixture-signal-prior}:
+over the signal samples $h$ using the signal prior 
+\eqref{e:mixture-signal-prior}:
 %
 \be
 \begin{aligned}
@@ -1493,7 +1496,7 @@ p(d_i|\xi, \vec\lambda, C_n)
 \end{aligned}
 \ee
 %
-Note that this is a mixture Gaussian likelihood function.
+Note that this is a mixture-Gaussian likelihood function.
 
 \smallskip
 \noindent
@@ -1504,10 +1507,12 @@ the detector noise thus fixing $C_n\equiv \bar C_n$:%
 \begin{equation}
 p(d_i|\xi)=\int {\rm d}\vec\lambda\>
 p(d_i|\xi,\vec\lambda, \bar C_n)\,p(\vec\lambda)
-\equiv (S_i-N_i)\xi + N_i\,.
+\equiv (S_i-N_i)\xi + N_i\,,
 \label{e:p(d_i|xi)}
 \ee
 %
+where $N_i \equiv p(d_i|\bar C_n)$ and 
+$S_i\equiv \int {\rm d}\vec\lambda\> p(d_i|\xi,\vec\lambda,\bar C_n)\,p(\vec \lambda)$.
 
 \smallskip
 \noindent
@@ -1537,19 +1542,13 @@ posteriors $p(\xi|d_i)$ since $p(\xi)={\rm const}$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Illustrating the analysis method on simulated data}
 
-We now illustrate the method on simulated toy-model
+We now illustrate the method on some simulated toy-model
 data.%
 \footnote{The simulated data and analysis routines are
 publically available at \cite{github}.}
-The timeseries data for two detector are each only 
-10~s long, and our simulated BBH chirps are less than 
+The simulated time-series for the two detectors are each 
+only 10~s long, and our simulated BBH chirps are less than 
 0.25~sec in duration.
-As such we chose to divide the simulated data into 40
-segments (each of duration 0.25~s), and we injected 10
-signals into the white Gaussian noise in the two coincident
-and coaligned detector, corresponding ti a injected value 
-of the probability parameter $\xi = 0.25$ 
-(Figure~\ref{f:BBH-BNS-simulated-data}).
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -1564,6 +1563,15 @@ detectors.}
 \label{f:BBH-BNS-simulated-data}
 \end{center}
 \end{figure}
+%
+(Since this is only a toy-model, I didn't worry about 
+making it astrophysically realistic.)
+We divided the simulated data into 40 segments 
+(each of duration 0.25~s), and we injected 10
+signals into uncorrelated white Gaussian noise in two 
+coincident and coaligned detectors, corresponding to 
+a injected value of the probability parameter $\xi = 0.25$ 
+(Figure~\ref{f:BBH-BNS-simulated-data}).
 
 The final result of the analysis is the posterior distribution
 for $\xi$, shown in Figure~\ref{f:posterior_xi}.
@@ -1580,7 +1588,7 @@ combining all 40~segments of data.}
 One sees that it is peaked around the value of $\xi$ used for 
 the injections, $\xi=0.25$.
 Figure~\ref{f:posteriors_xi_seg} shows the posterior distributions
-for $\xi$ for the first 16 segments (i.e., first 4~s) of data.
+for $\xi$ for the first 16 segments (so first 4~sec) of data.
 Note that these distribution are all linear in $\xi$, as to be
 expected from \eqref{e:p(d_i|xi)} for the individual-segment 
 likelihood functions.
@@ -1588,7 +1596,15 @@ In addition,
 the cumulative posterior distributions for $\xi$, obtained by 
 combining the likelihood functions for the first $n$ segments of
 data are shown in Figure~\ref{f:posteriors_xi_cum} for 
-$n=1,2,3,4,10,20,30,40$ segments.
+$n=1$, 2, 3, 4, 10, 20, 30 and 40 segments.
+As $n$ increases, the product of the individual linear functions 
+of $\xi$,
+some with positive slope (when there is evidence in favor of the 
+presence of a signal) and some with negative slope (when there is
+evidence in favor of the absence of a signal), give rise to a 
+distribution that gets more and more peaked.
+The bottom-rightmost part is just the final posterior distribution
+shown before in Figure~\ref{f:posterior_xi}.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -1609,7 +1625,7 @@ $n=1,2,3,4,10,20,30,40$ segments.
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_14}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_15}
 \caption{Posterior distributions for $\xi$ for the first 16 segments
-(i.e., first 4~s) of data.
+(so first 4~sec) of data.
 Since the injected signals were relatively large, the posteriors
 having positive (negative) slope correspond to the segments 
 having (not having) an injected BBH chirp signal.}
@@ -1634,65 +1650,77 @@ The bottom-rightmost plot is also shown in Figure~\ref{f:posterior_xi}.}
 \end{center}
 \end{figure}
 %
-As $n$ increases, the product of the individual linear functions 
-of $\xi$,
-some with positive slope (when the evidence is in favor of the 
-presence of a signal) and some with negative slope (when the 
-evidence is in favor of the absence of a signal), give rise to 
-a distribution that gets more and more peaked.
-The bottom-rightmost part is just the final posterior distribution
-shown before in Figure~\ref{f:posterior_xi}.
-%
 
 \subsection{Comparison with the standard cross-correlation search}
 
-Of course, one can also run the standard cross-correlation search
-on this data to search for the BBH background.
-Although not optimal for an intermitent background like this, 
-the cross-correlation method performed rather well with
-%
-\be
-{\rm SNR}_{\rm CC} = 8.9\,.
-\ee
-%
+Of course, one can also use the standard cross-correlation 
+method to analyse this simulated data.
+Although not optimal for a non-continuous background like 
+this, the cross-correlation method performed rather well
+for this simulation having 
+${\rm SNR}_{\rm CC} = 8.9$.
 This should be compared to
-%
-\be
-{\rm SNR}_{\rm bayes} = 15.3
-\ee
-%
-for the Bayesian search, where we used 
-\eqref{e:BF-SNR} to relate a Bayesian factor to a frequentist
-signal-to-noise ratio.
-So the Bayesian search performed better as expected, roughly
-a factor of two for this particular simulation.
+${\rm SNR}_{\rm bayes} = 15.3$
+for the Bayesian search, where we converted the 
+signal+noise to noise-only Bayes factor ${\cal B}_{10}(d)$ to a 
+signal-to-noise ratio using \eqref{e:BF-SNR} and \eqref{e:Lambda}.
+So the Bayesian search performed better than the 
+standard cross-correlation search as expected, roughly
+a factor of two in signal-to-noise ratio 
+for this particular simulation.
 
-The Bayesian method performs better than the standard 
-cross-correlation method for the BBH background because it 
-properly models the popcorn-nature of the BBH merger signals.
+More generally, the Bayesian method performs better 
+than the standard cross-correlation method for the 
+BBH background because it properly models the 
+popcorn-like nature of the BBH merger signals.
 It uses a mixture likelihood, allowing for different 
 probability distributions for those 
-segments that contain a signal and those that don't.
-The standard cross-correlation method, on the other hand,
-treats all segments equally, looking for excess correlated
-power which it can ascribe to the signal.
-If most of the segments contain only noise, as is the case
+segments that contain a signal and those that do not.
+The standard cross-correlation method 
+treats all segments on an equal footing, looking for 
+excess correlated power which it can ascribe to the signal.
+So if most of the segments contain only noise, as is the case
 for BBH merger background, the standard cross-correlation
-method is going to take a longer to build up a sufficiently
+method is going to take longer to build up the 
 signal-to-noise ratio needed to claim detection.
-The standard cross-correlation method is basically measuring
-the product of the duty cycle $\xi$ and the cross-correlated
-power in an individual segment containing a signal.
-The Bayesian method, on the other hand, is just measuring
-the duty cycle $\xi$.
+The standard cross-correlation method is basically 
+measuring the product of the probability 
+parameter $\xi$ and the cross-correlated power in an 
+individual segment containing a signal.
+The Bayesian method, on the other hand, is simply 
+measuring $\xi$, and hence all segments---even those 
+that contain just noise---are providing useful 
+information.
 
-Note that for this Bayesian analysis, {\em all} segments contribute
-to estimating the probability parameter $\xi$.
+In addition, the Bayesian method incorporates into its
+signal model the fact that the background 
+is produced by individual
+BBH mergers, which are described by {\em deterministic} 
+chirp waveforms (so tracks in time-frequency space).
+This effectively reduces the time-frequency volume 
+over which the Bayesian method has to search.
+The standard cross-correlation method, on the other
+hand, is very much a broadband search, defined by 
+the shape of the power spectral density that one is 
+searching for.
+By searching over a larger time-frequency volume
+than it has to, the standard cross-correlation search
+has to contend with correspondingly more noise.
 
-BBH chirp signal is deterministic and not stochastic.
-
-~40 months of observation reduces to ~1 day!!
-So stay tuned.
+For these two reasons, one expects the proposed 
+Bayesian search method to be more efficient than the standard 
+cross-correlation method in detecting the popcorn
+background produced by BBH merger signals.
+Simulations~\cite{Smith-Thrane:2018} have shown a reduction in time to 
+detection by roughly a factor of 1000.
+This means that
+when the advanced LIGO and Virgo detectors are operating 
+at design sensitivity, 40 months of observation to detect
+the BBH background using the standard cross-correlation 
+method is reduced to $\sim\!1$~day using the Bayesian method
+described here.
+So we might be detecting this background much sooner than we
+originally thought.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Final thoughts}
