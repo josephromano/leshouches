@@ -1243,8 +1243,8 @@ ratio times an Occam's penalty factor when the data are informative.
 \subsubsection{Bayesian signal priors}
 \label{s:signal_priors}
 
-The final piece of information that we need for 
-discussing the Bayesian search in 
+The final piece of information that we will need 
+for discussing the Bayesian search in 
 Section~\ref{s:nonstationary} is the choice 
 of signal prior.
 We shall see in that section that by choosing the 
@@ -1261,7 +1261,7 @@ For both of these cases, the difference between the
 observed data $d$ and signal model $h$ is the noise $n$.
 So we can write down a generic likelihood function for 
 the data $d$ by equating it to the 
-Gaussian-distributed likelihood for the residuals $d-h$:
+Gaussian-distributed noise likelihood for the residuals $d-h$:
 %
 \begin{equation}
 p(d|C_n,h) \equiv p_n(d-h|C_n) 
@@ -1278,7 +1278,8 @@ signal $h$ in more detail.
 samples to have a precise form, e.g., a sine wave
 parametrized by its amplitude, frequency, and initial phase 
 (Figure~\ref{f:det_signal_prior}).
-For this case we would have the prior probability distribution
+For this case the signal prior is Dirac delta function that
+sets the signal samples to the model waveform,
 %
 \begin{equation}
 p(h|A, f_0, \phi_0)
@@ -1287,7 +1288,7 @@ p(h|A, f_0, \phi_0)
 \ee
 %
 Multiplying the likelihood \eqref{e:likelihood_generic}
-by this prior and marginalizing over the signal samples
+by this prior and then marginalizing over the signal samples
 $h$ yields
 %
 \be
@@ -1306,10 +1307,10 @@ $h$ yields
 \end{aligned}
 \ee
 %
-This marginalized likelihood with priors on the range of
-parameter values for $A$, $f_0$, $\phi_0$ and covariance
-matrix $C_n$ for the noise then completely define the deterministic 
-signal+noise model.
+This marginalized likelihood function with priors on the range of
+parameter values for $A$, $f_0$, $\phi_0$ (for the signal) 
+and the covariance matrix $C_n$ (for the noise) then completely defines 
+the deterministic signal+noise model.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -1328,7 +1329,8 @@ Gaussian distribution with variance $S_h$.}
 \end{figure}
 %
 
-(ii) For a stohastic GW signal, we don't know what the
+(ii) For a stochastic GW signal, we cannot predict with
+certainty what the
 individual samples $h$ will be, other than that they are
 drawn from some probability distribution.  
 Taking that distribution to be a Gaussian with zero mean
@@ -1341,14 +1343,14 @@ p(h|S_h)
 \label{e:stoch-prior}
 \ee
 %
-Multiplying the likelihood \eqref{e:likelihood_generic}
+So multiplying the likelihood \eqref{e:likelihood_generic}
 by this prior and marginalizing over the signal samples
-$h$ for this case yields
+$h$ yields for this case
 %
 \begin{equation}
 p(d|C_n,S_h) 
 \equiv\int {\rm d}h\>p_n(d-h|C_n)p(h|S_h) 
-= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]
+= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]\,,
 \ee
 %
 where $C \equiv C_n + S_h$.
@@ -1360,12 +1362,13 @@ signal+noise model.
 
 In Exercise~\ref{exer:10} you are asked to extend the
 above analysis for a stochastic background to the 
-case of two detectors with uncorrelated detector noise.
-Starting with the generic two-detector likelihood
+case of two coincident and coaligned detectors with 
+uncorrelated detector noise.
+You should start with the generic two-detector likelihood
 %
 \begin{equation}
 p(d|C_n,h) \equiv p_n(d-h|C_n) 
-= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,\exp\left[-\frac{1}{2}(d-h)^T C_n^{-1}(d-h)\right]
+= \frac{1}{\sqrt{{\rm det}(2\pi C_n)}}\,\exp\left[-\frac{1}{2}(d-h)^T C_n^{-1}(d-h)\right]\,,
 \ee
 %
 where
@@ -1374,15 +1377,15 @@ where
 C_n = \begin{bmatrix}
 S_{n_1} & 0\\
 0 & S_{n_2}
-\end{bmatrix}\,.
+\end{bmatrix}\,,
 \ee
 %
-and marginalizing over $h$ using \eqref{e:stoch-prior}, 
-you should find
+and then marginalize over $h$ using \eqref{e:stoch-prior}.
+The final result should be
 %
 \be
 p(d|C_n, S_h)
-= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right]
+= \frac{1}{\sqrt{{\rm det}(2\pi C)}}\,\exp\left[-\frac{1}{2}d^T C^{-1} d\right],
 \ee
 %
 where
@@ -1394,6 +1397,10 @@ S_h & S_{n_2} + S_h
 \end{bmatrix}\,.
 \ee
 %
+Note that the stochastic background contributes to both 
+the diagonal and off-diagonal components of the covariance matrix.
+(The overlap function doesn't appear since we have assumed
+coincident and coaligned detectors.)
 This marginalized likelihood is usually taken as the starting
 point for all stochastic cross-correlation searches using
 multiple detectors; see~\eqref{e:stochastic_likelihood}.
