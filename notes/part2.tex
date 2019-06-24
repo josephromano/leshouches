@@ -1060,11 +1060,11 @@ $p(d|H)$) to probabilites about the hypothesis given
 the data (the posterior distribution $p(H|d)$).%
 \footnote{Conditional probabilities 
 $p(A|B)$ and $p(B|A)$ are not equal in general.
-Paraphrasing an example from Louis Lyons, 
-the probability that a person is pregnant ($A$), 
+Paraphrasing an example from Louis Lyons:
+the probability that a person is pregnant ($A$) 
 given that that person is a woman  ($B$) is about 
-about 30\%, while the probability that a person is 
-a woman ($B$), given that that person is
+about 30\%; while the probability that a person is 
+a woman ($B$) given that that person is
 pregnant ($A$) is 100\%.}
 Here, $p(H)$ is the prior probability distribution 
 for $H$, and $p(d)$ is the {\em evidence} or 
@@ -1243,14 +1243,14 @@ ratio times an Occam's penalty factor when the data are informative.
 \subsubsection{Bayesian signal priors}
 \label{s:signal_priors}
 
-The final piece of information that we will need when 
-discussing the Bayesian search for BBH mergers in 
-Section~\ref{s:nonstationary} is related to the choice 
+The final piece of information that we need for 
+discussing the Bayesian search in 
+Section~\ref{s:nonstationary} is the choice 
 of signal prior.
 We shall see in that section that by choosing the 
 signal prior appropriately, we can properly model 
-the popcorn-like nature of the GWB produced by BBH 
-mergers.
+the popcorn-like nature of GW background produced by
+stellar-mass BBH mergers throughout the universe.
 
 Here, we illustrate the effect of chosing different
 priors for two simple cases: 
@@ -1258,8 +1258,7 @@ priors for two simple cases:
 (ii) a Gaussian-stationary stochastic background in 
 Gaussian-distributed noise.
 For both of these cases, the difference between the 
-observed data $d$ and signal model $h$ is just 
-the noise $n$.
+observed data $d$ and signal model $h$ is the noise $n$.
 So we can write down a generic likelihood function for 
 the data $d$ by equating it to the 
 Gaussian-distributed likelihood for the residuals $d-h$:
@@ -1294,8 +1293,8 @@ $h$ yields
 \be
 \begin{aligned}
 &p(d|C_n,A,f_0,\phi_0)
-\\
-&\quad
+%\\
+%&\quad
 \equiv \int {\rm d}h\>p_n(d-h|C_n)p(h|A, f_0, \phi_0) 
 \\
 &\quad
@@ -1693,17 +1692,19 @@ So stay tuned.
 
 The purpose of these lecture notes was to introduce the reader 
 to methods used to search for stochatic GW backgrounds.
-By its very nature, an introduction to a topic is necessarily
-incomplete.
-As such, I was only able to briefly mention stochastic 
-background searches using the proposed space-based
-interferometer LISA, search methods for anisotropic backgrounds, 
-and for backgrounds predicted by alternative theories of gravity, etc.
+By its very nature, an introduction is necessarily
+incomplete; not all topics can be discussed.
+As such, we did not discuss in any detail: (i) searches 
+for stochastic backgrounds using the proposed space-based
+interferometer LISA, (ii) search methods for anisotropic
+or unpolarized backgrounds, and (iii) 
+search methods for backgrounds predicted by 
+alternative theories of gravity, etc.
 The interested reader can find more detail about those topics
 in~\cite{Romano-Cornish:2017} and references therein.
 
 Although as of the time of writing these notes (summer 2019)
-we have not yet detected a stochastic background, we know 
+we have not yet detected a stochastic GW background, we know 
 now that such a signal exists, and it's just a matter of time 
 before we reach the sensitivity level needed to make a confident 
 detection.
@@ -1719,14 +1720,16 @@ As mentioned in Section~\ref{s:nonstationary}, there is a good
 chance that we will detect this background earlier using an 
 optimal Bayesian method that properly models the popcorn-like 
 nature of the BBH mergers.
-But then again, pulsar timing arrays might make the first detection 
+But then again, searches using pulsar timing arrays might make 
+the first detection 
 of a stochastic background, although for a different class of
 source---inspiraling SMBHs in the centers of distant galaxies.
 Either way, it will be an exciting time.
 
-Finally, unlike the detection of the individually resolvable
-BBH and BNS mergers, we probably
-won't be able to say on one particular day that we've 
+Unlike the detection of the individually resolvable
+BBH and BNS mergers that advanced LIGO and Virgo 
+has detected, we won't be able to say on 
+one particular day that we've 
 definitely detected a stochastic GW background.
 Rather we will first see evidence for a background at the 
 3-$\sigma$ level; and then a year or two later, we will have
@@ -1741,6 +1744,8 @@ As mentioned in Section~\ref{s:different_types}, different
 GW sources will produce different types of backgrounds,
 so we will need to tease apart their different contributions.
 And as the sensitivity of GW detectors improve, we will be 
-able to observe additional structures in a background, e.g., 
+able to observe additional structure in a background, e.g., 
 anisotropies, that were not resolvable before.
-Needless to say, there is plenty of work ahead of us.
+Needless to say, there is plenty of work and interesting
+science ahead of us.
+
