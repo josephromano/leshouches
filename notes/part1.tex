@@ -1,9 +1,9 @@
 \part{Overview / Basics}
 \label{p:overview}
 
-In the first part of these notes, we describe different 
-types of stochastic gravitational-wave backgrounds and 
-introduce the
+In the first part of these lecture notes, we describe 
+different types of stochastic gravitational-wave 
+backgrounds and introduce the
 method of cross-correlation for extracting the signal
 from the noise.
 
@@ -17,11 +17,13 @@ The individual signals making up the background are thus
 {\em unresolvable}, unlike the large signal-to-noise ratio
 binary black-hole (BBH) and binary neutron-star (BNS)
 merger signals that have been recently detected by the 
-advanced LIGO and Virgo detectors~%
-\cite{TheLIGOScientific:2016-GW150914,TheLIGOScientific:2017-GW170817,TheLIGOScientifi:2018-GWTC-1}.
-But despite the fact that one cannot resolve individual 
-signals, the detection of a gravitational-wave 
-background (GWB) will provide information about the 
+advanced LIGO and Virgo 
+detectors~\cite{TheLIGOScientific:2016-GW150914,
+TheLIGOScientific:2017-GW170817,TheLIGOScientific:2018-GWTC-1}.
+But despite the fact that one cannot resolve the individual  
+signals that comprise the backgrund, the detection of a 
+gravitational-wave background (GWB) will provide information 
+about the 
 {\em statistical} properties (or population properties)
 of the source.
 
@@ -46,12 +48,13 @@ radiation
 which is a sky map of the temperature fluctuations in 
 the cosmic microwave background (CMB) 
 blackbody radiation, $\Delta T/T_0$, relative 
-to the $T_0 = 2.73~{\rm K}$ isotropic component.
+to the $T_0 = 2.73~{\rm K}$ isotropic 
+component~\cite{Penzias-Wilson:1965, Dicke-et-al:1965}.
 (The dipole contribution due to our motion with respect 
 to the cosmic rest frame has also been subtracted out.)
 The CMB is a background of electromagnetic
-radiation, produced roughly 380,000~yr after the Big Bang%
-~\cite{Penzias-Wilson:1965, Dicke-et-al:1965}.
+radiation, produced roughly 380,000~yr after the Big 
+Bang~\cite{Kolb-Turner:1999, Ryden:2003}.
 At that time, the universe had a temperature of 
 $\sim 3000~{\rm K}$, approximately one thousand times 
 larger than the temperature today, but cool enough for 
@@ -61,27 +64,31 @@ The temperature fluctuations in the CMB radiation tell
 us about the density perturbations at the time of 
 last scattering of photons, 
 thus giving us a picture of the ``seeds" of 
-large-scale structure formation in the early universe.
+large-scale structure formation in the early 
+universe~\cite{COBE:1992, CMB-anisotropies-Planck-Planck:2019}.
 Given the weakness of the gravitational interaction 
 compared to the electromagnetic force, the GW analogue 
 of Figure~\ref{f:CMB} would provide information about
 a much earlier time in the evolution of the universe,
-a mere fraction of a second after the Big Bang 
+a mere fraction of a second after the Big 
+Bang~\cite{Allen:1997, Maggiore:2000} 
 (this is explained in a bit more detail in 
 Section~\ref{s:different_sources}).  
 Detecting the cosmological GWB is thus a ``holy grail" 
 for GW astronomy.
 
 For perspective, Figure~\ref{f:CMB} was produced by 
-the Planck mission in 2013,
-almost 50 years after the CMB radiation was initially
-detected by Penzias and Wilson in 1965.
+the Planck mission in 2015,
+50 years after the CMB radiation was initially
+detected by Penzias and Wilson~\cite{Penzias-Wilson:1965}
+in 1965.
 It took many years and improved experiments
-(COBE, Boomerang, WMAP, Planck to name a few) to get to 
-the high-precision measurements that we have today.
-So it is somewhat sobering to realize that now---at the 
-end of 2018---we have yet to detect the isotropic component 
-of the GWB.
+(COBE~\cite{COBE:web}, Boomerang~\cite{boomerang:2002}, 
+WMAP~\cite{WMAP:web}, and Planck~\cite{Planck:web} to name a few) 
+to get to the high-precision measurements that we have today.
+So it is somewhat sobering to realize that now---in the
+summer of 2019---we have yet to detect even the isotropic 
+component of the GWB.
 
 \subsection{The background of BBH and BNS mergers in the 
 LIGO band}
@@ -93,8 +100,8 @@ sources of GWBs that are much more immediately accessible
 to us.
 For example, as mentioned above, the advanced LIGO
 and Virgo detectors have detected other 
-gravitational-wave signals from several individual BBH 
-and BNS mergers.
+GW signals from several individual BBH 
+and BNS mergers~\cite{TheLIGOScientific:2018-GWTC-1}.
 These were very strong signals, having 
 matched-filter signal-to-noise ratios (SNR) $\gtrsim 10$, 
 and false alarm probabilities $<2\times 10^{-7}$,
@@ -108,22 +115,23 @@ individually undetectable (i.e., {\em subthreshold} events).
 This weaker background of gravitational radiation is 
 nonetheless detectable as a combined/aggregate signal
 via the common influence of the component GWs on 
-multiple detectors.
+multiple detectors~\cite{TheLIGOScientific:2016-stochastic,
+StochImplications:2018}.
 
 To get an idea of the statistical properties of this
 background signal, we can estimate the total rate of 
 stellar-mass BBH mergers throughout the universe by
 using the local rate estimate from these first detections,
-$9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$.
+$9$-$240~{\rm Gpc}^{-3}\,{\rm yr}^{-1}$~\cite{TheLIGOScientific:2016-O1-rates}.
 This leads to a prediction for the total rate of 
 BBH mergers between $\sim\!1$~per minute to a few per hour.
 (You are asked in Exercise~\ref{exer:1} to verify
 these predictions.)%
 \footnote{A more complete description of this and 
 all other exercises are given in 
-Section~\ref{s:exercises}.
+Appendix~\ref{s:exercises}.
 The number next to ``Exercise" is a link that brings 
-you to the detailed exercise in Section~\ref{s:exercises}.}
+you to the detailed exercise in Appendix~\ref{s:exercises}.}
 Since the duration of BBH merger signals in band 
 is $\sim\!1~{\rm s}$, which is much smaller than the 
 average duration between successive mergers, the 
@@ -135,7 +143,7 @@ The predicted total rate for such events is roughly
 one event every $15~{\rm s}$, while the duration of 
 a BNS signal in band is roughly 100~{\rm s}. 
 Thus, the BNS merger signals overlap in time leading to 
-a continuous (or {\em confusion-limited}) background.
+a continuous (or {\em confusion-limited}) background. 
 Figure~\ref{f:BBH-BNS-timeseries} is a plot of the
 expected time-domain signal corresponding to the rate
 estimates mentioned above.
@@ -144,7 +152,7 @@ estimates mentioned above.
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-timeseries}
 \caption{Simulated time-domain signal for the predicted BBH and 
-BNS background.  
+BNS backgrounds.  
 Figure taken from \cite{StochImplications:2018}.}
 \label{f:BBH-BNS-timeseries}
 \end{center}
@@ -153,7 +161,7 @@ Figure taken from \cite{StochImplications:2018}.}
 
 The combined signal from BBH and BNS mergers is 
 potentially detectable with advanced LIGO and Virgo, 
-shortly after reaching design sensitivity.
+shortly after reaching design sensitivity~\cite{StochImplications:2018}.
 Although the signal-to-noise ratios for the 
 individual events are small, the combined 
 signal-to-noise ratio of the correlated data 
@@ -165,7 +173,7 @@ observation (Figure~\ref{f:BBH-BNS-SNR}).
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-SNR}
-\caption{Expected signal-to-noise ratio of the correlated 
+\caption{Expected signal-to-noise ratio of the correlated
 data for the advanced LIGO and Virgo detectors as a function 
 of observation time.
 The points labeled O1, O2, etc., indicate the start of
@@ -179,8 +187,8 @@ Figure taken from \cite{StochImplications:2018}.}
 This estimate of time to detection is based on 
 the standard cross-correlation search (Section~\ref{s:correlations}), 
 which assumes a Gaussian-stationary background.
-But there is a new method, recently proposed by 
-Smith and Thrane~\cite{Smith-Thrane:2018}, 
+But there is a new method~\cite{Smith-Thrane:2018}, 
+recently proposed by Smith and Thrane,
 which can potentially reduce the time to detection by several 
 orders of magnitude (factor of $\sim\!1000$), 
 meaning that the background would be detectable after only
@@ -227,7 +235,9 @@ the parameters that define the string network and the
 energy scale where the phase transition occurs.
 Also, the primordial background of relic GWs predicted 
 by standard inflation is flat across the whole frequency 
-band shown here.}
+band shown here.
+(See, e.g.,~\cite{Allen:1997, Maggiore:2000} for more
+details.)}
 \label{f:GWspectrum}
 \end{center}
 \end{figure}
@@ -237,12 +247,12 @@ Of particular note is the combined GW
 signal produced by compact white-dwarf binaries in 
 the Milky Way, producing a ``confusion-limited" GWB
 in the frequency band $\sim 10^{-4}~{\rm Hz}$ to 
-$10^{-1}~{\rm Hz}$.
+$10^{-1}~{\rm Hz}$~\cite{Bender-Hils:1997}.
 This is a guaranteed signal for the proposed 
 space-based interferometer LISA (expected launch date 2034), 
 which consists of three spacecraft in an 
 equilaterial-triangle configuration 
-in orbit around the Sun.
+in orbit around the Sun~\cite{LISA:web}.
 Each spacecraft houses two lasers, two telescopes, and 
 two test masses; 
 the arms will be several million km long.
@@ -252,7 +262,7 @@ so strong that it will
 dominate the instrumental noise at low frequencies, 
 forming a GW ``foreground" that will
 have to be contended with when searching for other 
-gravitational sources in the LISA band.
+gravitational sources in the LISA band~\cite{Adams-Cornish:2014}.
 
 At lower frequencies between 
 $\sim\!10^{-9}~{\rm Hz}$ and $10^{-7}~{\rm Hz}$
@@ -268,14 +278,15 @@ radio pulses emitted by each pulsar behaving like
 By carefully monitoring the arrival times of these
 radio pulses, one can search for a GWB by looking for 
 correlated modulations in the arrival times 
-induced by a passing gravitational wave.
+induced by a passing gravitational wave~\cite{Sazhin:1978, 
+Detweiler:1979, Hellings-Downs:1983}.
 
 In addition to these {\em astrophysical} GWBs 
 associated with stellar-mass or supermassive BHs 
 and NSs, one also expects backgrounds of 
 {\em cosmological} origin, produced in the 
-very early universe, much before the formation of 
-stars and galaxies.  
+very early universe~\cite{Grishchuk:1976}, 
+much before the formation of stars and galaxies.
 Two examples, indicated in Figure~\ref{f:GWspectrum}, 
 are cosmic strings (line-like topological defects 
 associated with 
@@ -284,11 +295,15 @@ relic gravitational waves (quantum
 fluctuations in the geometry of space-time, 
 driven to macroscopic scales by a period of rapid 
 expansion---e.g., inflation---a mere 
-$\sim\!10^{-32}~{\rm s}$ after the Big Bang).
+$\sim\!10^{-32}~{\rm s}$ after the Big Bang); 
+see, e.g., \cite{Allen:1997, Maggiore:2000}
+for a discussion of these sources.
 This relic background is potentially detectable 
-by its effect on the polarization of the CMB radiation.
+by its effect on the polarization of the CMB 
+radiation~\cite{Seljak:1996gy}.
 This signal has been searched for by CMB experiments
-such as Planck and BICEP, and is a core target of many
+such as Planck and BICEP~\cite{BICEP/Keck:web}, 
+and is a core target of many
 proposed future experiments, such as PIXIE and LiteBIRD.
 
 \subsection{Different signal properties}
