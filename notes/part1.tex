@@ -6,6 +6,9 @@ different types of stochastic gravitational-wave
 backgrounds and introduce the
 method of cross-correlation for extracting the signal
 from the noise.
+Interested readers should see e.g., 
+\cite{Allen:1997, Allen-Romano:1999, Romano-Cornish:2017}
+for more details.
 
 \section{Motivation}
 \label{s:motivation}
@@ -632,9 +635,8 @@ background being unpolarized---i.e., that the
 $+$ and $\times$ polarization components are statistically
 equivalent and uncorrelated with one another.
 Similarly, the dependence on GW propagation directions 
-only via $\delta(\hat k,\hat k')$ is a consequence of 
-exact isotropy,
-i.e., that the power in the GWB has no preferred
+only via $\delta^2(\hat k,\hat k')$ is a consequence of 
+exact isotropy---i.e., that the power in the GWB has no preferred
 direction, and that the GWs propagating in
 different directions have uncorrelated phases.
 
@@ -695,7 +697,7 @@ waves contained in the frequency interval $f$ to $f+\D f$, and
 $\rho_{\rm c}\equiv {3 H_0^2 c^2}/{8\pi G}$
 is the {\em critical} energy density (that needed to just 
 close the universe today).
-The result is 
+The result is~\cite{Allen-Romano:1999}
 %
 \be
 S_h(f) = \frac{3H_0^2}{2\pi^2}\frac{\Omega_{\rm gw}(f)}{f^3}\,,
@@ -763,8 +765,7 @@ for which $\beta=2/3$ and $\alpha=-2/3$.
 This last dependence is valid for both compact binary coalescences 
 consisting of NSs and/or 
 stellar-mass BHs (relevant for advanced LIGO, Virgo, etc.),
-and also for inspirals of SMBHs
-in the centers of distant galaxies (relevant for pulsar timing searches).
+and also for SMBH binaries (relevant for pulsar timing searches).
  
 \subsection{Calculating $\Omega_{\rm gw}(f)$ for an
 astrophysically-generated background}
@@ -773,7 +774,7 @@ astrophysically-generated background}
 There is a relatively simple formula for calculating
 the energy density spectrum $\Omega_{\rm gw}(f)$ 
 produced by a collection of discrete astrophysical GW 
-sources distributed throughout the universe\cite{Phinney:2001}:
+sources distributed throughout the universe~\cite{Phinney:2001}:
 %
 \be
 \left.
@@ -796,6 +797,9 @@ observed (present-day) frequency $f$ via $f_{\rm s}=f(1+z)$.
 The factor of $1/(1+z)$ in the integrand is needed to 
 redshift the energy measured in the source frame to that
 measured today.
+Note that the right-hand side of \eqref{e:phinney1} is
+just the right-hand side of \eqref{e:Omega_gw} expanded in 
+terms of its contribution from individual sources.
 
 The above relationship can also be written in terms of 
 the comoving rate density $R(z)$, which is related to the
@@ -805,7 +809,7 @@ comoving number density $n(z)$ via
 n(z)\,\D z = R(z)\,|\D t|_{t=t(z)}\,.
 \ee
 %
-The result is
+The final result is
 %
 \be
 \left.
@@ -821,7 +825,8 @@ where
 E(z)\equiv \sqrt{\Omega_{\rm m}(1+z)^3 + \Omega_\Lambda}
 \ee
 %
-is a cosmological factor that arises when evaluating $\D t/\D z$.
+is a cosmological factor that arises when evaluating 
+$\D t/\D z$~\cite{Ryden:2003}.
 $\Omega_{\rm m}$ and $\Omega_\Lambda$ are the 
 fractional energy densities for matter
 (ordinary baryonic matter plus dark matter) 
@@ -839,8 +844,8 @@ verify the $\Omega_{\rm gw}(f)\propto f^{2/3}$
 power-law dependence for binary inspiral, which we
 stated without proof at the end of Section~\ref{s:Omega_gw}.
 Since we are interested here only in the frequency 
-dependence of $\Omega_{\rm gw}(f)$, all we need to 
-calculate is the energy spectrum $\D E_{\rm gw}/\D f_{\rm s}$
+dependence of $\Omega_{\rm gw}(f)$, we just need to
+calculate the energy spectrum $\D E_{\rm gw}/\D f_{\rm s}$
 for a single binary system.
 
 So let us consider two masses, $m_1$ and $m_2$, in circular 
@@ -848,7 +853,7 @@ orbits around their common center of mass (Figure~\ref{f:binary_inspiral}).
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.4\textwidth]{Figures/binary_inspiral}
+\includegraphics[width=0.45\textwidth]{Figures/binary_inspiral}
 \caption{Two masses $m_1$, $m_2$ in orbit around their common
 of mass.}
 \label{f:binary_inspiral}
@@ -876,7 +881,7 @@ E_{\rm orb} = -\frac{GM\mu}{2r}\,,
 %
 where $\omega\equiv 2\pi f_{\rm orb}$ is the orbital 
 angular frequency.
-The power emitted in gravitational waves comes from
+The power emitted in GWs comes from
 the orbital energy
 %
 \be
@@ -915,7 +920,8 @@ arising for quadrupolar radiation in general relativity.%
 \footnote{For elliptical orbits, one should average
 the radiated power, etc., over a period of the orbit.
 There will also be contributions to the gravitational
-radiation from harmonics other than just the quadrupole.} 
+radiation from harmonics other than just the 
+quadrupole~\cite{Peters-Mathews:1963}.} 
 Returning now to (\ref{e:phinney2}), we substitute
 $f_s=(1+z)f$ and multiply by the factor of $f$ outside 
 the integral to get
@@ -929,7 +935,8 @@ As discussed above, a stochastic background of GWs
 is described by a {\em random} signal, which looks 
 like noise in a single detector.
 As such, standard search techniques like 
-{\em matched filtering}, which correlate the data 
+{\em matched filtering}~\cite{Wainstein-Zubakov:1971, Helstrom:1968}, 
+which correlate the data 
 against known, deterministic waveforms (e.g., BBH chirps) 
 won't work when trying to detect a GWB.
 Instead, we have to consider other possibilities:
@@ -942,11 +949,11 @@ This was basically how Penzias and Wilson
 initially detected the CMB; they saw an excess 
 noise temperature of $\sim\!3.5^\circ~{\rm K}$ in their
 radio antenna that they could not attribute to 
-any other noise source.
+any other noise source~\cite{Penzias-Wilson:1965}.
 This is also what one hopes to do with LISA,
-because the time-delay interferometry (TDI) data
-combinations that one uses to remove the laser
-frequency noise are orthogonal to one another.
+because the time-delay interferometry (TDI)~\cite{Estabrook:2000ef}
+data combinations that one uses to remove the laser
+frequency noise are orthogonal to one another~\cite{Prince:2002hp}.
 Thus, one cannot cross-correlate these data 
 streams to look for a GWB.
 Instead, one must properly model the instrumental 
@@ -959,30 +966,30 @@ have shown that you can separate the detector
 noise, astrophysical foreground, and cosmological
 background using differences in their spectral
 shapes and the modulation of the astrophysical 
-background due LISA motion around the Sun 
-(Figure~\ref{f:cyclostationarity}).
+background due to LISA's motion around the Sun 
+(Figure~\ref{f:cyclostationary_data}).
 
 (ii) Another possibility is to use data from 
 multiple detectors.
 Then we can look for evidence of a common 
-disturbance in the multiple data streams 
-consistent with each detector's response to 
-gravitational waves.
+disturbance in the multiple data streams that is
+consistent with each detector's response to GWs.
 
 Currently, (i) is not an option for ground-based 
 interferometers since, even though the individual 
 noise sources 
 are understood pretty well, their amplitude is not 
 known precisely enough to attribute any observed 
-excess power to gravitational waves.
+excess power to GWs.
 One would need a really loud GWB relative to the
 detector noise in order detect it in a way similar
 to Penzias and Wilson's detection of the CMB.
 But (ii) is an option as LIGO consists of two 
-detectors, one in Hanford, WA, the other in Livingston, LA.
-Virgo, in Italy, provides a third detector, 
+detectors, one in Hanford, WA, the other in Livingston, LA~\cite{LIGO:web}.
+Virgo~\cite{Virgo:web}, in Italy, provides a third detector, 
 and soon we will have two more large-scale 
-interferometers in Japan and India.
+interferometers: one in Japan, called Kagra~\cite{Kagra:web},
+and the other in India, called IndIGO~\cite{Indigo:web}.
 Cross-correlating data from multiple detectors works
 for detecting a GWB since, even though the signal is 
 random, it is the {\em same} signal in the different 
