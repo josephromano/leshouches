@@ -430,7 +430,8 @@ $C(t-t') \equiv \langle x(t)x(t')\rangle$, or,
 equivalently, $\langle \tilde x(f)\tilde x^*(f')\rangle =
 \frac{1}{2}P_x(f)\,\delta(f-f')$, where $\tilde x(f)$ is the Fourier
 transform of $x(t)$.
-The factor of $1/2$ is needed for a {\em one-sided} power spectrum.}
+The factor of $1/2$ is needed for a {\em one-sided} power spectrum;
+see also \eqref{e:Gamma_def_freq}.}
 as shown in Figure~\ref{f:different_power_spectra}.
 Here we plot simulated time-domain data (including the signals for an
 individaul BNS merger and BBH ringdown%
@@ -1045,8 +1046,8 @@ is {\em uncorrelated} (which is a good valid assumption
 if the detectors are widely separated%
 \footnote{Note that global magnetic fields, e.g., Schumann 
 resonances, {\em can} produce environmental correlations in 
-widely separated detectors.}), then $\langle n_1 n_2\rangle =0$,
-leaving
+widely separated detectors~\cite{schumann1, schumann2, schumann3}.}), 
+then $\langle n_1 n_2\rangle =0$, leaving
 %
 \be
 \langle \hat C_{12}\rangle = \langle h^2\rangle\equiv S_h\,,
@@ -1098,7 +1099,8 @@ where $S_h$, $S_{n_1}$, $S_{n_2}$ are the variances
 are white is made here just to simplify the analysis.
 One can use cross-correlation methods for the more 
 general case where the signal and noise power spectral
-densities are non-trivial functions of frequency~\cite{allen-romano}.}
+densities are non-trivial functions of 
+frequency; see Section~\ref{s:optimal_filtering}.}
 For this case, our cross-correlation statistic is the
 average of the products of the individual data samples
 %
@@ -1110,7 +1112,7 @@ average of the products of the individual data samples
 \ee
 %
 which, as we shall see below, is again an estimator of the 
-power in the GWB (hence the ``hat" ($\hat{\ }$) over the 
+power in the GWB (hence the ``hat" over the 
 $S_h$ on the LHS of this equation).
 
 Using the above definitions and quadratic expectation 
@@ -1191,7 +1193,7 @@ of the observation time (in this case, the total number of samples).
 To handle the case of physically-separated and misaligned 
 detectors, we need to include the non-trivial response of 
 a GW detector to a GWB.  
-We will do this in more detail in 
+We will do this in detail in 
 Sections~\ref{s:nontrivial_response} and
 \ref{s:nontrivial_correlations}.
 Here, it suffices to simply define the {\em overlap function} 
@@ -1199,14 +1201,12 @@ Here, it suffices to simply define the {\em overlap function}
 denoted $\Gamma_{12}(f)$, as the transfer function relating
 the strain power in the GWB, $S_h(f)$, 
 to the cross-correlated signal power 
-in the two detectors, 
+in the two detectors~\cite{Flanagan:1993, Christensen:1997}:
 %
 \be
 C_{12}(f) \equiv \Gamma_{12}(f) S_h(f)\,.
 \ee
 %
-(We will derive the form of $\Gamma_{12}(f)$ and discuss
-more of its properties in Section~\ref{s:nontrivial_correlations}.)
 In terms of the quadratic expectation values of the GW 
 signal in the two detectors, we have%
 \footnote{The factor of $1/2$ is included on the RHS
@@ -1220,10 +1220,11 @@ The factor of $\delta(f-f')$ is a consequence of stationarity.}:
 \be
 \langle \tilde h_1(f) \tilde h_2^*(f')\rangle
 =\frac{1}{2}\delta(f-f')\Gamma_{12}(f)S_h(f)\,,
+\label{e:Gamma_def_freq}
 \ee
 %
 where $\tilde h_1(f)$, $\tilde h_2(f)$ denote the 
-Fourier transforms of GW signal components 
+Fourier transforms of the GW signal components 
 $h_1(t)$, $h_2(t)$ in  the two detectors.
 For comparison, the (auto-correlated) power spectra 
 of the detector noise $P_{n_1}(f)$, $P_{n_2}(f)$ 
@@ -1250,7 +1251,7 @@ Plots of $\Gamma_{12}(f)$ for the
 LIGO Hanford-LIGO Livingston interferometer pair 
 and for the LIGO Hanford-Virgo interferometer pair 
 can be found in 
-Section~\ref{s:nontrivial_correlations}.
+Section~\ref{s:examples-overlap}.
 
 Given the above definitions, we can now ask
 the question: ``What is the optimal way to correlate 
@@ -1281,7 +1282,7 @@ In the Fourier domain, we can then write
 where $\tilde Q(f)$ is the Fourier transform of 
 $Q(\Delta t)$, and $\delta_T(f-f')$ is a finite-time
 version of the Dirac delta function defined by 
-$\delta_T(f-f')\equiv T\,{\rm sinc}\,(\pi(f-f'))$, where
+$\delta_T(f-f')\equiv T\,{\rm sinc}\,(\pi(f-f')T)$, where
 ${\rm sinc}\,x \equiv \sin x/x$.
 
 To proceed further we need to define what we mean by 
