@@ -1453,7 +1453,7 @@ popcorn-nature of the signal.
 This was done by describing the BBH 
 background with a ``mixture" signal prior consisting of
 a BBH chirp in a certain fraction $\xi$ of the analyzed 
-segments, and noise only for the remaining segments.
+segments, and just noise for the remaining segments.
 Also, as the individual signals will not be resolvable, they 
 choose to marginalize over the BBH chirp parameters 
 leaving only the probability parameter $\xi$ (which is 
@@ -1574,7 +1574,7 @@ posteriors $p(\xi|d_i)$ since $p(\xi)={\rm const}$.
 We now illustrate the method on some simulated toy-model
 data.%
 \footnote{The simulated data and analysis routines are
-publically available at \cite{github}.}
+publicly available at \cite{github-code}.}
 The simulated time-series for the two detectors are each 
 only 10~s long, and our simulated BBH chirps are less than 
 0.25~sec in duration.
@@ -1617,7 +1617,7 @@ combining all 40~segments of data.}
 One sees that it is peaked around the value of $\xi$ used for 
 the injections, $\xi=0.25$.
 Figure~\ref{f:posteriors_xi_seg} shows the posterior distributions
-for $\xi$ for the first 16 segments (so first 4~sec) of data.
+for $\xi$ for the first 16 segments (first 4~sec) of data.
 Note that these distribution are all linear in $\xi$, as to be
 expected from \eqref{e:p(d_i|xi)} for the individual-segment 
 likelihood functions.
@@ -1625,15 +1625,15 @@ In addition,
 the cumulative posterior distributions for $\xi$, obtained by 
 combining the likelihood functions for the first $n$ segments of
 data are shown in Figure~\ref{f:posteriors_xi_cum} for 
-$n=1$, 2, 3, 4, 10, 20, 30 and 40 segments.
+$n=1$, 2, 3, 4, 10, 20, 30, and 40 segments.
 As $n$ increases, the product of the individual linear functions 
 of $\xi$,
 some with positive slope (when there is evidence in favor of the 
 presence of a signal) and some with negative slope (when there is
 evidence in favor of the absence of a signal), give rise to a 
 distribution that gets more and more peaked.
-The bottom-rightmost part is just the final posterior distribution
-shown before in Figure~\ref{f:posterior_xi}.
+The bottom-rightmost plot is just the final posterior distribution
+shown in Figure~\ref{f:posterior_xi}.
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -1654,7 +1654,7 @@ shown before in Figure~\ref{f:posterior_xi}.
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_14}
 \includegraphics[width=0.24\textwidth]{Figures/posterior_xi_seg_15}
 \caption{Posterior distributions for $\xi$ for the first 16 segments
-(so first 4~sec) of data.
+(first 4~sec) of data.
 Since the injected signals were relatively large, the posteriors
 having positive (negative) slope correspond to the segments 
 having (not having) an injected BBH chirp signal.}
@@ -1706,7 +1706,7 @@ It uses a mixture likelihood, allowing for different
 probability distributions for those 
 segments that contain a signal and those that do not.
 The standard cross-correlation method 
-treats all segments on an equal footing, looking for 
+treats all segments on equal footing, looking for 
 excess correlated power which it can ascribe to the signal.
 So if most of the segments contain only noise, as is the case
 for BBH merger background, the standard cross-correlation
@@ -1745,9 +1745,10 @@ detection by roughly a factor of 1000.
 This means that
 when the advanced LIGO and Virgo detectors are operating 
 at design sensitivity, 40 months of observation to detect
-the BBH background using the standard cross-correlation 
-method is reduced to $\sim\!1$~day using the Bayesian method
-described here.
+the BBH background at the 3-$\sigma$ level using the standard 
+cross-correlation 
+method (see Figure~\ref{f:BBH-BNS-SNR}) is reduced to 
+$\sim\!1$~day using the Bayesian method described here.
 So we might be detecting this background much sooner than we
 originally thought.
 
@@ -1772,22 +1773,25 @@ we have not yet detected a stochastic GW background, we know
 now that such a signal exists, and it's just a matter of time 
 before we reach the sensitivity level needed to make a confident 
 detection.
-For the GWB produced by stellar-mass binary BHs throughout 
+For the GWB produced by stellar-mass BBHs throughout 
 the universe, we expect to reach this level
 by the time the advanced LIGO and Virgo detectors are operating
 at design sensitivity (in a couple of years time).
 But recall that this time-to-detection estimate is 
 conservative, since it assumes that we are using the standard 
 cross-correlation method, which is not optimal for 
-signals that aren't on all the time.
+non-continuous backgrounds.
 As mentioned in Section~\ref{s:nonstationary}, there is a good 
 chance that we will detect this background earlier using an 
-optimal Bayesian method that properly models the popcorn-like 
-nature of the BBH mergers.
+optimal Bayesian method~\cite{Smith-Thrane:2018}
+that properly models the non-continuous, 
+popcorn-like nature of the BBH mergers.
 But then again, searches using pulsar timing arrays might make 
 the first detection 
-of a stochastic background, although for a different class of
-source---inspiraling SMBHs in the centers of distant galaxies.
+of a stochastic background~\cite{Siemens-et-al:2013,
+Rosado:2015epa, Taylor-et-al:2016a}, 
+although for a different class of source---inspiraling SMBHs 
+in the centers of distant galaxies. 
 Either way, it will be an exciting time.
 
 Unlike the detection of the individually resolvable
@@ -1809,7 +1813,8 @@ GW sources will produce different types of backgrounds,
 so we will need to tease apart their different contributions.
 And as the sensitivity of GW detectors improve, we will be 
 able to observe additional structure in a background, e.g., 
-anisotropies, that were not resolvable before.
+anisotropies~\cite{Cusin-et-al:2017, Jenkins-Sakellariadou:2018} 
+that were not resolvable before.
 Needless to say, there is plenty of work and interesting
 science ahead of us.
 
