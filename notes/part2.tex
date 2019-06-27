@@ -1170,9 +1170,9 @@ where the common evidence term $p(d)$ in
 \eqref{e:bayes_theorem} has canceled out 
 when taking the ratio of the two posteriors.
 Thus, we see that the posterior odds ratio
-$O_{12}(d)\equiv p({\cal M}_1|d)/p({\cal M}_0|d)$
+$O_{10}(d)\equiv p({\cal M}_1|d)/p({\cal M}_0|d)$
 is equal to the prior odds ratio
-$O_{12}\equiv p({\cal M}_1)/p({\cal M}_0)$
+$O_{10}\equiv p({\cal M}_1)/p({\cal M}_0)$
 times the {\em Bayes factor}
 %
 \be
@@ -1193,7 +1193,7 @@ p(d|\theta_\alpha, {\cal M}_\alpha)p(\theta_\alpha|{\cal M}_\alpha)\,,
 \ee
 %
 where $\alpha=0,1$ labels the two models.
-If there is no reason to a~priori prefer one model over 
+If there is no {\em a~priori} reason prefer one model over 
 the other (i.e., if the prior odds ratio $O_{10}=1$), then the 
 posterior odds ratio for the two models is equal to the 
 Bayes' factor, $O_{10}(d) = {\cal B}_{10}(d)$.
@@ -1266,7 +1266,8 @@ to fit the data.
 As shown in~\eqref{e:Lambda}, $\Lambda(d)$ is effectively
 a squared signal-to-noise ratio.
 The key observation here is that the ratio of marginalized
-likelihoods is well approximated by a maximum-likelihood 
+likelihoods, i.e., the Bayes factor, 
+is well approximated by a maximum-likelihood 
 ratio times an Occam's penalty factor when the data are informative.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1282,7 +1283,7 @@ signal prior appropriately, we can properly model
 the popcorn-like nature of GW background produced by
 stellar-mass BBH mergers throughout the universe.
 
-Here, we illustrate the effect of chosing different
+Here we illustrate the effect of chosing different
 priors for two simple cases: 
 (i) a deterministic GW signal (a sinusoid), and 
 (ii) a Gaussian-stationary stochastic background in 
@@ -1302,7 +1303,7 @@ p(d|C_n,h) \equiv p_n(d-h|C_n)
 %
 where $C_n$ is the noise covariance matrix.
 To proceed further we need to specify the form of the 
-signal $h$ in more detail.
+signal $h$.
 
 (i) For a deterministic GW signal, we expect the signal
 samples to have a precise form, e.g., a sine wave
@@ -1318,14 +1319,12 @@ p(h|A, f_0, \phi_0)
 \ee
 %
 Multiplying the likelihood \eqref{e:likelihood_generic}
-by this prior and then marginalizing over the signal samples
-$h$ yields
+by this prior and then (trivially) marginalizing over 
+the signal samples $h$ yields
 %
 \be
 \begin{aligned}
 &p(d|C_n,A,f_0,\phi_0)
-%\\
-%&\quad
 \equiv \int {\rm d}h\>p_n(d-h|C_n)p(h|A, f_0, \phi_0) 
 \\
 &\quad
@@ -1361,8 +1360,8 @@ Gaussian distribution with variance $S_h$.}
 
 (ii) For a stochastic GW signal, we cannot predict with
 certainty what the
-individual samples $h$ will be, other than that they are
-drawn from some probability distribution.  
+individual samples $h$ will be; we can only say that they 
+are drawn from some probability distribution.  
 Taking that distribution to be a Gaussian with zero mean
 and variance $S_h$ (Figure~\ref{f:stoch_signal_prior}),
 we have
@@ -1395,6 +1394,7 @@ above analysis for a stochastic background to the
 case of two coincident and coaligned detectors with 
 uncorrelated detector noise.
 You should start with the generic two-detector likelihood
+function
 %
 \begin{equation}
 p(d|C_n,h) \equiv p_n(d-h|C_n) 
