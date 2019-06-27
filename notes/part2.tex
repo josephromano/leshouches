@@ -125,6 +125,7 @@ where
 %
 \be
 R^A(f,\hat k) \equiv R^{ab}(f,\hat k)e^A_{ab}(\hat k)
+\label{e:R^A_def}
 \ee
 %
 and
@@ -133,6 +134,7 @@ and
 R^{ab}(f,\hat k) \equiv e^{-i 2\pi f\hat k\cdot\vec x/c}\,
 \int_{-\infty}^\infty {\rm d}\tau \int {\rm d}^3 y\>
 R^{ab}(\tau,\vec y)\,e^{-i2\pi f(\tau-\hat k\cdot\vec y/c)}\,.
+\label{e:R^ab_def}
 \ee
 %
 Note that $R^A(f,\hat k)$ is the 
@@ -483,6 +485,24 @@ and $\Gamma_{IJ}(f)$ is the overlap function:
 \label{e:Gamma}
 \ee
 %
+Recall from \eqref{e:R^A_def}, \eqref{e:R^ab_def}
+that the location of the detector is already included
+in the response functions $R^A(f,\hat k)$ via
+the phase factor $e^{-i2\pi \hat k\cdot \vec x/c}$.
+If we explicitly display this dependence by writing
+$R^A(f,\hat k) \equiv \bar R^A(f,\hat k)e^{-i2\pi f\hat k\cdot\vec x/c}$,
+then
+%
+\be
+\Gamma_{IJ}(f) 
+= \frac{1}{8\pi}\int {\rm d}^2\Omega_{\hat k}\> 
+\sum_A \bar R_I^A(f,\hat k) \bar R_J^{A}{}^{*}(f,\hat k)\,
+e^{-i2\pi f\hat k\cdot(\vec x_I-\vec x_J)/c}\,.
+\ee
+%
+One often sees this alternative expression for $\Gamma_{IJ}(f)$
+in the literature, e.g., \cite{Flanagan:1993, Christensen:1997, Allen-Romano:1999}.
+
 The interpretation of $\Gamma_{IJ}(f)$ as encoding 
 the reduction in sensitivity of a cross-correlation
 analysis due to physical separation and relative
