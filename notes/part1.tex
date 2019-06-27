@@ -39,7 +39,7 @@ the GW analogue of Figure~\ref{f:CMB},
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Figures/CMB}
+\includegraphics[width=0.7\textwidth]{Figures/CMB}
 \caption{Skymap of $\Delta T/T_0$ for the cosmic microwave background
 radiation
 (\url{https://www.cosmos.esa.int/documents/387566/425793/2015_SMICA_CMB/}).}
@@ -153,7 +153,7 @@ estimates mentioned above.
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-timeseries}
+\includegraphics[width=0.65\textwidth]{Figures/BBH-BNS-timeseries}
 \caption{Simulated time-domain signal for the predicted BBH and 
 BNS backgrounds.  
 (Figure taken from \cite{StochImplications:2018}.)}
@@ -175,7 +175,7 @@ observation (Figure~\ref{f:BBH-BNS-SNR}).
 %
 \begin{figure}[htbp!]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{Figures/BBH-BNS-SNR}
+\includegraphics[width=0.65\textwidth]{Figures/BBH-BNS-SNR}
 \caption{Expected signal-to-noise ratio of the correlated
 data for the advanced LIGO and Virgo detectors as a function 
 of observation time.
@@ -1489,22 +1489,19 @@ N_{12}(f,f')
 %
 which is the product of the noise power spectra
 in the two detectors in the weak-signal approximation.
-The likelihood function is then%
-\footnote{We are using here an {\em index-free} matrix notation, 
-dropping the $\alpha$, $\beta$, $f$, and $f'$ indices, 
-as well as the sums and integrals 
-over $\alpha$ and $f$.
-If we explicitly insert all of the indices, 
-sums, etc., the argument of the exponential becomes
-$$
--\frac{1}{2}\int_{-\infty}^\infty \D f
-\frac{|\hat C_{12}(f)-\sum_\alpha M_\alpha(f)A_\alpha|^2}
-{P_1(f)P_2(f)}\,.
-$$}
+The likelihood function is then
 %
 \be
-p(\hat C|A,N)\propto\exp\left[-\frac{1}{2}
-(\hat C-MA)^\dagger N^{-1}(\hat C-MA)\right]\,,
+\begin{aligned}
+p(\hat C|A,N)
+&\propto\exp\left[-\frac{1}{2}
+(\hat C-MA)^\dagger N^{-1}(\hat C-MA)\right]
+\\
+&\propto
+\exp\left[-\frac{1}{2}\int_{-\infty}^\infty \D f
+\frac{|\hat C_{12}(f)-\sum_\alpha M_\alpha(f)A_\alpha|^2}
+{P_1(f)P_2(f)}\right]\,,
+\end{aligned}
 \ee
 %
 which is the probability of the cross-correlated data
@@ -1512,10 +1509,16 @@ $\hat C_{12}(f)$
 given the amplitudes $A_\alpha$ of the GWB 
 spectral components 
 and the noise in the two detectors $N_{12}(f,f')$.
+The advantage of using an 
+{\em index-free} matrix notation, as we did in 
+the first line of the above expression, is that 
+we can use standard linear algebra calculations
+to find the values of $A$ that maximize the 
+likelihood.
 
-We can now obtain estimators of the amplitudes of the 
-GWB components, by maximizing the likelihood function 
-with respect to the $A_\alpha$.
+Given the likelihood $p(\hat C|A,N)$, we can now obtain 
+estimators of the amplitudes of the GWB components
+by maximizing it with respect to the $A_\alpha$.
 The final result (which you are asked to show in 
 Exercise~\ref{exer:5}) is: 
 %
