@@ -557,7 +557,7 @@ for which \eqref{e:aniso-corr} becomes
 \label{e:Gamma-freq-aniso}
 \ee
 %
-with
+with~\cite{Allen-Ottewill:1997, Thrane-et-al:2009}
 %
 \be
 \Gamma_{IJ,lm}(f) \equiv 
@@ -572,7 +572,7 @@ components of the integrand of the overlap function
 \eqref{e:Gamma} encode the reduction in sensitivity
 when doing a cross-correlation for anisotropic backgrounds.
 Interested readers can find much more discussion
-about anisotropic background in Section~7 of
+about anisotropic backgrounds in Section~7 of
 \cite{Romano-Cornish:2017}, and references to the
 original work cited therein.
 
@@ -641,14 +641,14 @@ For the LHO-Virgo detector pair, note
 that in the limit $f\rightarrow 0$, $\gamma(f)\simeq 0$.
 This is because the two interferometers effectively respond
 to the two orthogonal polarizations of a GW, corresponding 
-to a rotation by $45^\circ$.
+to a rotation of the interferometer arms by $45^\circ$.
 This $45^\circ$ misalignment is also the reason for the 
 (overall) reduced amplitude of the LHO-Virgo overlap 
 function relative to that for LHO-LLO.  
 The fact that the first zero crossing for the LHO-Virgo 
-overlap function is just over $30^\circ$ (almost half of 
+overlap function is just over $30^\circ$ (almost half 
 that for LHO-LLO) is due the larger separation between the
-LHO and Virgo interferometers, compared to that for LHO 
+LHO and Virgo interferometers, compared to LHO 
 and LLO.
 
 \subsubsection{Overlap function for pulsar timing arrays}
@@ -661,7 +661,7 @@ frequency.
 This number, which can be interpreted as the expected
 correlation between the two pulsar timing measurements, 
 depends on the angular separation between the two 
-Earth-pulsar baselines:
+Earth-pulsar baselines~\cite{Hellings-Downs:1983}:
 %
 \be
 \chi(\zeta_{IJ})\equiv
@@ -682,21 +682,23 @@ shown in Figure~\ref{f:HD_curve}.
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{Figures/HD_curve}
-\caption{Hellings-Downs curve.
-The values of the expected correlation for an unpolarized,
+\caption{Hellings and Downs curve.
+Plotted are the values of the expected correlation for 
+an unpolarized,
 isotropic GWB as a function of the angle $\zeta$ between
 two Earth-pulsar baselines.}
 \label{f:HD_curve}
 \end{center}
 \end{figure}
 %
-This is called the {\em Hellings-Downs curve}, originally 
+This is called the {\em Hellings and Downs curve}, originally 
 calculated in 1983 by Hellings and Downs~\cite{Hellings-Downs:1983}.
 This calculation assumes that the GWB is unpolarized
 and isotropic.
 Generalizations of the Hellings-Downs curve allowing for 
 anisotropy and non-general-relativity polarization modes
-can be found in e.g., \cite{Mingarelli-et-al, Lee-et-al}.
+can be found in e.g., \cite{Mingarelli-et-al:2013, 
+Gair-et-al:2014, Lee-et-al:2007, Chamberlin-Siemens:2012, Gair-et-al:2015}.
 The quadrupolar nature of GWs in general relativity is
 apparent in the Hellings-Down curve, with an angular dependence
 that is qualitatively similar to $\cos(2\zeta)$, where 
@@ -724,7 +726,11 @@ These functions are plotted in Figure~\ref{f:pulsar_overlap},
 where $\theta$ is the usual polar angle measured with respect
 to the $z$-axis.
 Multiplying by $1/8\pi$ and integrating 
-over the sphere, we find:
+over the sphere, we find:%
+\footnote{The factor of 3 difference between 
+these two values for $\Gamma_{12}$ and $\chi(0^\circ)=1/2$
+and $\chi(180^\circ)=1/4$ is due to a normalization factor that is conventionally
+applied to relate $\Gamma_{IJ}$ to $\chi(\zeta_{IJ})$.}
 %
 \be
 \Gamma_{12} = \frac{1}{6}\quad({\rm for}\ \hat p_1=\hat p_2=\hat z)\,,
@@ -732,9 +738,6 @@ over the sphere, we find:
 \Gamma_{12} = \frac{1}{12}\quad({\rm for}\ \hat p_1=-\hat p_2=\hat z)\,.
 \ee
 %
-The factor of 3 difference between these values and $\chi(0^\circ)=1/2$
-and $\chi(180^\circ)=1/4$ is due to a normalization factor that is conventionally
-applied to relate $\Gamma_{IJ}$ to $\chi(\zeta_{IJ})$.
 From Figure~\ref{f:pulsar_overlap}, we see that when the 
 two pulsars both point in the $\hat z$ direction, 
 the majority of support for the overlap function comes from 
@@ -768,7 +771,7 @@ antennae}
 For the final example, you are asked in Exercise~\ref{exer:7} to 
 calculate the overlap function for a pair of short, colocated
 electric dipole antennae in the presence of an unpolarized
-and isotropic electric field $\vec E(t,\vec x)$.
+and isotropic electric field $\vec E(t,\vec x)$; see also~\cite{Jenet-Romano:2015}.
 The two dipole antennae point in different directions
 separated by an angle $\zeta$ as shown in Figure~\ref{f:dipole-orf}.
 %
@@ -784,7 +787,7 @@ for an unpolarized and isotropic electric field
 \end{figure}
 %
 To do the calculation, you should use the fact that the 
-response of dipole $I$ to the electric field is 
+response of dipole antenna $I$ to the electric field is 
 %
 \be
 r_I(t) = \hat u_I\cdot\vec E(t,\vec x_0)\,.
@@ -796,7 +799,7 @@ similar to that for an unpolarized, isotropic GWB:
 \be
 \vec E(t,\vec x) = \int_{-\infty}^\infty df\>\int d^2\Omega_{\hat k}\> 
 \sum_{\alpha =1}^2 \tilde E_\alpha(f,\hat k)\hat\epsilon_\alpha(\hat k) 
-e^{i2\pi f(t-\hat k\cdot \vec x/c)}
+e^{i2\pi f(t-\hat k\cdot \vec x/c)}\,,
 \ee
 %
 where the polarization vectors are given by
@@ -818,9 +821,9 @@ satify the quadratic expectation values, cf.~\eqref{e:quad_iso}:
 %
 With these definitions, it is then just a matter of 
 ``turning the crank" to calculate
-the expectation value $\langle r_1(t) r_2(t')\rangle$, from
-which you can read off the overlap function $\Gamma_{12}(f)$,
-see~\eqref{e:Gamma-time}.
+the expectation value $\langle r_1(t) r_2(t')\rangle$, and from
+that you can read off the overlap function $\Gamma_{12}(f)$
+according to~\eqref{e:Gamma-time}.
 You should find
 %
 \be
@@ -847,7 +850,9 @@ it to frequentist statistics, focusing mainly on those topics
 needed for the stochastic search that we shall describe in
 Section~\ref{s:nonstationary}.
 Readers who are interested in more details should 
-consult John Veitch's contribution to this Volume.
+consult John Veitch's contribution to this Volume,
+Section~3 of~\cite{Romano-Cornish:2017}, and e.g.,
+\cite{Gregory:2005}.
 
 \subsection{Comparing frequentist statistics and Bayesian inference}
 
@@ -878,7 +883,8 @@ parameter estimates or hypothesis testing,
 one needs to calculate
 the probability distributions of the statistics;
 this can be done either analytically or numerically 
-(e.g., using time slides).
+(e.g., using time slides to produce different realistic
+noise realizations of the data).
 
 \i given the probability distributions of the statistics,
 one can then construct confidence intervals and 
@@ -920,7 +926,7 @@ In a nutshell, the main different between Bayesian and
 frequentist statistics is the definition of probability.
 As such, certain probabilistic statements that you can
 make as a Bayesian are not valid from a frequentist perspective.
-Hence Bayesian and frequentist statistic often ask 
+Hence, Bayesian and frequentist statistics often ask 
 (and subsequently answer) {\em different} questions 
 about the data.
 Nonetheless, despite this fundamental difference in approach,
@@ -967,8 +973,8 @@ two colocated and coaligned detectors:
 C_n = \begin{bmatrix}
 S_{n_1}\,{\mathsf 1}_{N\times N} & {\mathsf 0}_{N\times N}\\
 {\mathsf 0}_{N\times N} & S_{n_2}\,{\mathsf 1}_{N\times N}
-\end{bmatrix}
-\quad\&\quad
+\end{bmatrix}\,,
+\qquad
 C = \begin{bmatrix}
 (S_{n_1} + S_h)\,{\mathsf 1}_{N\times N} & S_h\,{\mathsf 1}_{N\times N}\\
 S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
@@ -1031,11 +1037,11 @@ The maximum-likelihood estimators of the detector
 noise $S_{n_1}$, $S_{n_2}$ are then
 %
 \be
-\hat S_{n_1} = 
+\hat S_{n_1}\equiv 
 \hat S_1-\hat S_h=
 \hat C_{11}-\hat C_{12}\,,
 \qquad
-\hat S_{n_2} = 
+\hat S_{n_2}\equiv
 \hat S_2-\hat S_h=
 \hat C_{22}-\hat C_{12}\,.
 \ee
@@ -1049,7 +1055,7 @@ show that
 \label{e:Lambda}
 \ee
 %
-which holds in the {\em weak-signal approximation}, 
+which holds in the weak-signal approximation, 
 where $S_h\ll S_{n_1}, S_{n_2}$.
 The quantity $\Lambda(d)$ can be used as a frequentist detection 
 statistic, comparing its value for the given data $d$ 
@@ -1060,7 +1066,8 @@ of a GW signal; if $\Lambda(d)<\Lambda_*$, we accept
 the null-hypothesis and reject the signal+noise hypothesis.
 Note that the right-hand-side of \eqref{e:Lambda} is the 
 square of the 
-(power) signal-to-noise ratio, which illustrates a 
+(power) signal-to-noise ratio, cf.~\eqref{e:rho_expected},
+which illustrates a 
 useful general relation between signal-to-noise ratios 
 and the maximum-likelihood statisitic.
 
