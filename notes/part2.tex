@@ -37,7 +37,7 @@ Joseph Weber, is a much different type of detector.
 Roughly speaking, a resonant bar detector responds
 like a giant tuning fork to a passing GW, provided
 the GW has frequencies equal to the resonant frequencies 
-of the bar.)
+of the bar~\cite{MTW:1973}.)
 The response of a beam detector to a passing GW is 
 the change in the light-travel time $\Delta T(t)$ 
 between the two 
@@ -49,8 +49,8 @@ This is illustrated schematically in Figure~\ref{f:beam_detectors}.
 \includegraphics[width=\textwidth]{Figures/beam_detectors}
 \caption{Spacetime diagram showing the response of beam
 detectors to a passing GW.  
-Left column: pulsar timing; middle column: spacecraft Doppler
-tracking; right column: interferometer (ground or space-based).
+Left: pulsar timing; middle: spacecraft Doppler
+tracking; right: interferometer (ground or space-based).
 A passing GW perturbs the path of the photon (red trajectory) 
 relative to its nominal path in the absence of the wave 
 (blue dotted line), leading to a 
@@ -91,8 +91,8 @@ other quantities listed above.
 
 Gravitational waves are weak.
 As such, a GW detector act like a {\em linear} system,%
-\footnote{It's a linear system 
-since second-order and higher terms in the 
+\footnote{It is a linear system 
+because second and higher-order terms in the 
 metric perturbations can be safely ignored.}
 converting metric perturbations $h_{ab}(t,\vec x)$ 
 to the detector output.
@@ -113,7 +113,8 @@ $R^{ab}(\tau,\vec y)$ is the {\em impulse repsonse}
 of the detector.
 Expanding $h_{ab}(t-\tau,\vec x-\vec y)$ as a sum of
 plane waves \eqref{e:planewave}, and substituting 
-this into the RHS of the above expression, we find that the 
+this into the right-hand side of the above expression, 
+we find that the 
 Fourier transform $\tilde h(f)$ of $h(t)$ can be written as
 %
 \be
@@ -159,7 +160,8 @@ The geometry of the situation is shown in Figure~\ref{f:one_arm_one_way}.
 a pulsar timing residual measurement.
 The GW propagates in the $\hat k$ direction; the electromagnetic wave
 (e.g., a radio pulse from a pulsar) propagates in the $\hat u$ direction
-(opposite of the direction to the pulsar, $\hat p=-\hat u$).} 
+(opposite of the direction to the pulsar, $\hat p=-\hat u$).
+(Figure taken from \cite{Romano-Cornish:2017}.)}
 \label{f:one_arm_one_way}
 \end{center}
 \end{figure}
@@ -182,9 +184,9 @@ source ($s=0$) to the detector ($s=L$).
 Note that we do not need to include any corrections to
 the straight-line path for the photon given above, as the 
 metric perturbations are already first-order and we 
-can ignore all second-order terms in the calculation.
+can ignore all second and higher-order terms in the calculation.
 
-So to do the integral, we first substitute $t(s)$ and 
+To do the integral, we first substitute $t(s)$ and 
 $\vec x(s)$ for $t$ and $\vec x$ in the plane-wave 
 expansion for $h_{ab}(t,\vec x)$.
 The $s$ dependence shows up only in the exponential:
@@ -221,8 +223,8 @@ R^A(f,\hat k) = \frac{1}{i2\pi f}\,
 In the context of pulsar timing, the two terms in square brackets 
 are called the {\em Earth term} and {\em pulsar term}, respectively.
 The pulsar term encodes information about the phase of the GW at
-the location of the pulsar.
-It is usually ignored for stochastic background searches, as 
+the location of the pulsar, at the time the radio pulse was emitted.
+The pulsar term is usually ignored for stochastic background searches, as 
 this term for different pulsars will not be correlated with one other
 (since the spatial distance between two pulsars, of order kpc, 
 is much greater than the wavelengths of the GWs that pulsar timing arrays are 
@@ -259,7 +261,8 @@ when $fL/c$ equals an integer
 \caption{Plot of the absolute value of the timing transfer 
 function $|{\cal T}_{\vec u}(f,0)|$ for normal incidence.
 Note the nulls in the response when $L$ equals an integer 
-number of GW wavelengths $\lambda \equiv c/f$.}
+number of GW wavelengths $\lambda \equiv c/f$.
+(Figure taken from \cite{Romano-Cornish:2017}.)}
 \label{f:timing_transfer}
 \end{center}
 \end{figure}
@@ -293,7 +296,7 @@ $\hat p=-\hat u$ is the direction to the pulsar).
 \caption{Polarization-averaged Doppler frequency response
 for pulsar timing, where we have ignored the pulsar term.
 The response is axially symmetric around the $z$-axis, which
-we've chosen to be the direction to the pulsar $\hat p=-\hat u$.}
+we've chosen to be in the direction to the pulsar $\hat p=-\hat u$.}
 \label{f:one_arm_one_way_peanut}
 \end{center}
 \end{figure}
@@ -388,18 +391,18 @@ arms does not enter the expression for the strain response.}
 %
 This approximation is valid when the wavelength of the GW is 
 much larger than the dimensions of the detector.  
-Then, the GW phase is effectively constant as a photon
-travels down an back an interferometer arm.
+The GW phase is then effectively constant as a photon
+travels down and back an interferometer arm.
 The integral over the photon path is simply proportional
 to the nominal round-trip propagation time $2L/c$.
 Defining the strain response of the interferometer as
 %
 \be
-h(t) = \frac{1}{2}\left(
+h(t) \equiv \frac{1}{2}\left(
 \frac{\Delta T_{\vec u,\, {\rm roundtrip}}(t)}{T}
 -
 \frac{\Delta T_{\vec v,\, {\rm roundtrip}}(t)}{T}
-\right)
+\right)\,,
 \ee
 %
 one can show that
@@ -417,7 +420,7 @@ D^{ab}\equiv\frac{1}{2}\left(u^a u^b - v^a v^b\right)\,.
 \ee
 %
 Plots of the {\em beam pattern functions}
-$|R^+(f,\hat k)|$, $|R^\times(f,\hat k)|$ for the 
+$|R^+(f,\hat k)|$ and $|R^\times(f,\hat k)|$ for the 
 two polarizations individually, and the 
 root-summed-squared response (summed over both polarization)
 %$\sqrt{|R^+(f,\hat k)|^2 + |R^\times(f,\hat k)|^2}$
@@ -437,7 +440,7 @@ the arms.
 \caption{Beam pattern functions for a ground-based interferometer
 like LIGO in the short-antenna approximation---i.e., $f\lesssim {\rm few\ kHz}$.
 The vertex of the interferometer is at the origin of coordinates,
-and interferometer arms are assumed to be orthogonal pointing along
+and the interferometer arms are assumed to be orthogonal, pointing along
 the $x$ and $y$ directions.}
 \label{f:LIGO_beam_patterns}
 \end{center}
@@ -518,7 +521,8 @@ is most easily seen in the frequency domain, where
 %
 From this expression, we see that $\Gamma_{IJ}(f)$ 
 is a transfer function between the strain power 
-$S_h(f)$ in the GWB and the detector cross-power..
+$S_h(f)$ in the GWB and the detector cross-power
+$C_{IJ}(f) = \Gamma_{IJ}(f)S_h(f)$.
 
 For statistically anisotropic backgrounds, it 
 turns out that the integrand of 
@@ -752,7 +756,7 @@ $\zeta = 0^\circ$ ($\hat p_1=\hat p_2=\hat z)$;
 Panel (b): integrand for two Earth-pulsar baselines having
 $\zeta = 180^\circ$ ($\hat p_1=-\hat p_2 =\hat z)$.
 These functions are axially symmetric around the $z$-axis,
-which we've chosen to be the direction to pulsar 1.}
+which we've chosen to be in the direction to pulsar 1.}
 \label{f:pulsar_overlap}
 \end{center}
 \end{figure}
