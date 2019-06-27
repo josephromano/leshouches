@@ -1251,7 +1251,8 @@ Plots of $\Gamma_{12}(f)$ for the
 LIGO Hanford-LIGO Livingston interferometer pair 
 and for the LIGO Hanford-Virgo interferometer pair 
 can be found in 
-Section~\ref{s:examples-overlap}.
+Section~\ref{s:examples-overlap}; other examples
+of overlap functions are also given in that section.
 
 Given the above definitions, we can now ask
 the question: ``What is the optimal way to correlate 
@@ -1282,7 +1283,7 @@ In the Fourier domain, we can then write
 where $\tilde Q(f)$ is the Fourier transform of 
 $Q(\Delta t)$, and $\delta_T(f-f')$ is a finite-time
 version of the Dirac delta function defined by 
-$\delta_T(f-f')\equiv T\,{\rm sinc}\,(\pi(f-f')T)$, where
+$\delta_T(f-f')\equiv T\,{\rm sinc}\,[\pi(f-f')T]$, where
 ${\rm sinc}\,x \equiv \sin x/x$.
 
 To proceed further we need to define what we mean by 
@@ -1300,7 +1301,8 @@ $\sigma^2\equiv \langle \hat C_{12}^2\rangle -\langle
 As you are asked to show in Exercise~\ref{exer:4},
 this maximization condition  determines the form of the 
 filter 
-function $\tilde Q(f)$ up to an overall normalization:
+function $\tilde Q(f)$ up to an overall 
+normalization~\cite{Allen:1997, Allen-Romano:1999}
 %
 \be
 \tilde Q(f) \propto \frac{\Gamma_{12}(f) H(f)}
@@ -1434,7 +1436,7 @@ To better extract the amplitudes of the individual
 components for example (iii), we need to go beyond 
 single-component optimal-filtering, and consider 
 a signal model that allows for a superpostion 
-of multiple GWB components~\cite{Parida:2016}.
+of multiple GWB components~\cite{Parida-et-al:2015}.
 So instead of taking the cross-correlation to be a 
 {\em single number}, $\hat C_{12}$, which is obtained 
 by integrating the contributions from all 
@@ -1458,7 +1460,7 @@ and noise models.%
 \footnote{See Section~\ref{s:statistical_inference}
 and John Veitch's lectures in this Volume 
 for more details regarding likelihood functions and
-Bayesian inference.}
+statistical inference.}
 For this case, the signal model is given by the expected 
 value of the correlated data:
 %
