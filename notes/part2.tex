@@ -90,7 +90,8 @@ other quantities listed above.
 \label{e:det_response}
 
 Gravitational waves are weak.
-As such, a GW detector act like a {\em linear} system,%
+As such, a GW detector acts 
+like a {\em linear} system,%
 \footnote{It is a linear system 
 because second and higher-order terms in the 
 metric perturbations can be safely ignored.}
@@ -254,6 +255,9 @@ the timing transfer function has zeroes when $L$ is equal to
 an integer number of GW wavelengths $\lambda\equiv c/f$---i.e.,
 when $fL/c$ equals an integer
 (Figure~\ref{f:timing_transfer}).
+This is because a photon's trajectory undergoes an integer
+number of cycles of contraction and dilation produced by the
+GW when $fL/c=1,2,\cdots$, thereby giving a net zero effect. 
 %
 \begin{figure}[htbp!]
 \begin{center}
@@ -646,7 +650,7 @@ This $45^\circ$ misalignment is also the reason for the
 (overall) reduced amplitude of the LHO-Virgo overlap 
 function relative to that for LHO-LLO.  
 The fact that the first zero crossing for the LHO-Virgo 
-overlap function is just over $30^\circ$ (almost half 
+overlap function is just over $30~{\rm Hz}$ (almost half 
 that for LHO-LLO) is due the larger separation between the
 LHO and Virgo interferometers, compared to LHO 
 and LLO.
@@ -978,10 +982,12 @@ S_{n_1}\,{\mathsf 1}_{N\times N} & {\mathsf 0}_{N\times N}\\
 C = \begin{bmatrix}
 (S_{n_1} + S_h)\,{\mathsf 1}_{N\times N} & S_h\,{\mathsf 1}_{N\times N}\\
 S_h\,{\mathsf 1}_{N\times N} & (S_{n_2}+S_h)\,{\mathsf 1}_{N\times N}
-\end{bmatrix}\,.
+\end{bmatrix}\,,
 \label{e:covariance_matrices}
 \ee
 %
+where ${\mathsf 1}_{N\times N}$ and ${\mathsf 0}_{N\times N}$
+denote the unit matrix and zero matrix, respectively, in $N$ dimensions.
 For this simple case, there are only three relevant 
 parameters: $S_{n_1}$, $S_{n_2}$ for the detector noise, 
 and $S_h$ for the GWB.
@@ -1084,7 +1090,7 @@ p(H|d) = \frac{p(d|H) p(H)}{p(d)}\,,
 \ee
 %
 which converts probabilities about the data $d$ given 
-an hypothesis $H$ (the likelihood 
+a hypothesis $H$ (the likelihood 
 $p(d|H)$) to probabilites about the hypothesis given
 the data (the posterior distribution $p(H|d)$).%
 \footnote{Conditional probabilities 
@@ -1107,7 +1113,7 @@ p(d|H)p(H)\,.
 Note that the evidence is simply the normalization 
 factor needed to insure $\int {\rm d}H\>p(H|d)=1$.
 The importance of Bayes' theorem is that it updates 
-our degree of belief in an hypothesis in light
+our degree of belief in a hypothesis in light
 of new data.
 It maps the prior probability $p(H)$ to the posterior 
 probability $p(H|d)$ via the likelihood function 
@@ -1546,7 +1552,7 @@ $S_i\equiv \int {\rm d}\vec\lambda\> p(d_i|\xi,\vec\lambda,\bar C_n)\,p(\vec \la
 \smallskip
 \noindent
 5) Calculate the posterior for each segment
-using Bayes theorem
+using Bayes' theorem
 %
 \be
 p(\xi|d_i)
@@ -1586,7 +1592,7 @@ only 10~s long, and our simulated BBH chirps are less than
 detectors.
 The confusion-limited BNS background is shown in orange;
 the popcorn-like BBH background is shown in green.
-The black trace is the data consisting of the BBH and BNS signal
+The black trace is the data consisting of the BBH and BNS signals
 plus white Gaussian-stationary noise, uncorrelated in the two
 detectors.}
 \label{f:BBH-BNS-simulated-data}
@@ -1601,6 +1607,10 @@ signals into uncorrelated white Gaussian noise in two
 coincident and coaligned detectors, corresponding to 
 a injected value of the probability parameter $\xi = 0.25$ 
 (Figure~\ref{f:BBH-BNS-simulated-data}).
+The signal parameters $\vec\lambda$ that we 
+marginalized over were just the amplitude and time of 
+arrival of a BBH chirp in each segment.  
+We assumed that we knew the shape and duration of the signal.
 
 The final result of the analysis is the posterior distribution
 for $\xi$, shown in Figure~\ref{f:posterior_xi}.
