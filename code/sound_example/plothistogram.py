@@ -7,10 +7,10 @@ import matplotlib.pylab as plt
 def plothistogram(t, y, t1, t2, fileprefix):
 
     '''
-    plot histogram of time-series data between t1 and t2 and save plot to .png file
+    plot histogram of time-series data between t1 and t2 and save plot to .pdf file
     '''
     
-    filename = fileprefix + '_hist.png'
+    filename = fileprefix + '_hist.pdf'
         
     # find indices for tlow, thigh
     n1 = np.where(t>=t1)[0]

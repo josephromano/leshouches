@@ -5,10 +5,10 @@ import matplotlib.pylab as plt
 def plottimeseries(t, y, t1, t2, fileprefix):
 
     '''
-    plot time-series data between t1 and t2 and save plot to .png file
+    plot time-series data between t1 and t2 and save plot to .pdf file
     '''
     
-    filename = fileprefix + '.png'
+    filename = fileprefix + '.pdf'
         
     # find indices for tlow, thigh
     n1 = np.where(t>=t1)[0]

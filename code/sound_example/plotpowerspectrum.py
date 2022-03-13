@@ -7,10 +7,10 @@ from scipy import signal
 def plotpowerspectrum(t, y, t1, t2, Fs, fileprefix):
 
     '''
-    plot powerspectrum of time-series data between t1 and t2 and save plot to .png file
+    plot powerspectrum of time-series data between t1 and t2 and save plot to .pdf file
     '''
     
-    filename = fileprefix + '_powerspectrum.png'
+    filename = fileprefix + '_powerspectrum.pdf'
         
     # find indices for tlow, thigh
     n1 = np.where(t>=t1)[0]
